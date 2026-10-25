@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://mazooniosman299-blip.github.io/sitemap.xml
+Sitemap: https://mazooniosman299-blip.github.io/freetools/sitemap.xml
