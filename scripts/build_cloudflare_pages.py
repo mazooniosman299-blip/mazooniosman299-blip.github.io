@@ -109,6 +109,8 @@ def run():
         if not target.exists():
             raise AssertionError(f"Sitemap URL missing HTML: {location}")
     for page in OUTPUT.rglob("*.html"):
+        if page.name == "google611146e9ceec162a.html":
+            continue  # Google ownership token is intentionally a plain one-line file.
         content = page.read_text(encoding="utf-8")
         if OLD_ORIGIN in content:
             raise AssertionError(f"Obsolete canonical URL in {page}")
