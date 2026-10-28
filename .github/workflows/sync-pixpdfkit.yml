@@ -1,0 +1,43 @@
+name: Sync PixPDFKit site
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/sync-pixpdfkit.yml'
+permissions:
+  contents: write
+concurrency:
+  group: pixpdfkit-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download verified PixPDFKit release
+        run: |
+          curl -fsSL --retry 4 --retry-delay 2 "https://raw.githubusercontent.com/mazooniosman299-blip/PixPDFKit/main/PixPDFKit-website.zip" -o /tmp/pixpdfkit.zip
+          echo "676c847027840cb329710c0ad70cfae5d9635b8ee554ef68556c067a6db17be1  /tmp/pixpdfkit.zip" | sha256sum -c -
+      - name: Expand to isolated subfolder
+        run: |
+          mkdir -p PixPDFKit
+          unzip -qo /tmp/pixpdfkit.zip -d PixPDFKit
+          test -f PixPDFKit/ar/index.html
+          python -m pip install --quiet beautifulsoup4
+          python PixPDFKit/tests/audit.py
+          python PixPDFKit/tests/verify.py
+          node --check PixPDFKit/assets/tool.js
+          node --check PixPDFKit/assets/home.js
+      - name: Commit only PixPDFKit directory
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A PixPDFKit/
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish PixPDFKit PDF tools in isolated directory"
+            git push origin HEAD:main
+          else
+            echo "PixPDFKit already up to date."
+          fi
