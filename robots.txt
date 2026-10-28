@@ -3,3 +3,4 @@ Allow: /
 Sitemap: https://mazooniosman299-blip.github.io/sitemap.xml
 Sitemap: https://mazooniosman299-blip.github.io/freetools/sitemap.xml
 Sitemap: https://mazooniosman299-blip.github.io/PixPDFKit/sitemap.xml
+Sitemap: https://mazooniosman299-blip.github.io/pdf-sitemap.xml
