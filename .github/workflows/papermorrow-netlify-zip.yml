@@ -1,0 +1,47 @@
+name: Prepare PaperMorrow Netlify backup
+on:
+  push:
+    branches:
+      - papermorrow-package-20261028
+permissions:
+  contents: write
+jobs:
+  create-zip:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Assemble complete static PaperMorrow deployment and apply narrow workaround
+        run: python3 scripts/reconstruct_papermorrow.py
+      - name: Check zip contents and PDF routing change
+        run: |
+          python3 - <<'PY'
+          import zipfile, hashlib
+          p = "PaperMorrow_Netlify_Complete_2026-10-28.zip"
+          with zipfile.ZipFile(p) as z:
+              paths = z.namelist()
+              assert z.testzip() is None
+              assert len(paths) >= 100
+              assert len([x for x in paths if x.endswith("index.html") and "tools/" in x]) == 48
+              assert "sitemap-0.xml" in paths
+              assert "robots.txt" in paths
+              assert "ads.txt" in paths
+              content=z.read("_assets/ToolWorkbench.DKrvvzVM.js").decode()
+              assert "&&e.operation!==\u0060pdf-to-images\u0060" in content
+              assert "ca-pub-5086201923236113" in z.read("ar/index.html").decode()
+          print("ZIP integrity and structural checks passed")
+          PY
+      - name: Publish ZIP as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PaperMorrow-NETLIFY-complete-backup
+          path: PaperMorrow_Netlify_Complete_2026-10-28.zip
+      - name: Commit ZIP to branch for direct download
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add PaperMorrow_Netlify_Complete_2026-10-28.zip
+          git commit -m "Add complete PaperMorrow Netlify ZIP [skip ci]"
+          git push origin HEAD:papermorrow-package-20261028
