@@ -28,6 +28,8 @@ jobs:
           assert '<link rel="canonical" href="https://pixpdfkit.pages.dev/ar/">' in (root/'ar/index.html').read_text()
           assert 'https://pixpdfkit.pages.dev/sitemap.xml' in (root/'robots.txt').read_text()
           assert '/PixPDFKit/' not in (root/'manifest.webmanifest').read_text()
+          assert all(not el.text.endswith('.html') for el in __import__('xml.etree.ElementTree',fromlist=['parse']).parse(root/'sitemap.xml').getroot().findall('.//{*}loc'))
+          assert 'https://pixpdfkit.pages.dev/ar/tools/merge' in (root/'ar/tools/merge.html').read_text()
           print('Cloudflare-ready SEO, PWA, and publisher configuration verified.')
           PY
       - name: Verify preview protection

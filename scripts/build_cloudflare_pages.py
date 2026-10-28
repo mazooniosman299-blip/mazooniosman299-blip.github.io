@@ -48,6 +48,12 @@ def run():
             continue
         data = file.read_text(encoding="utf-8")
         new_data = data.replace(OLD_ORIGIN, origin).replace("/PixPDFKit/", "/")
+        # Pages automatically redirects /page.html -> /page. Publish the
+        # destination URL consistently in links, canonicals, hreflang and JSON-LD.
+        if file.suffix == ".html":
+            new_data = re.sub(r'\.html(?=["\'<> ])', "", new_data)
+        elif file.name == "sitemap.xml":
+            new_data = new_data.replace(".html</loc>", "</loc>")
         if new_data != data:
             file.write_text(new_data, encoding="utf-8")
             updates += 1
@@ -79,6 +85,7 @@ def run():
     root = ET.parse(OUTPUT / "sitemap.xml").getroot()
     locs = [x.text for x in root.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
     assert len(locs) == 46 and len(set(locs)) == 46, "All 46 unique links must be in the sitemap"
+    assert not any(u.endswith(".html") for u in locs), "Cloudflare sitemap must use canonical extensionless HTML routes"
     assert len(list(OUTPUT.rglob("*.html"))) >= 46, "Missing translated HTML pages"
     for location in locs:
         if not location.startswith(origin + "/"):
@@ -87,6 +94,9 @@ def run():
         target = OUTPUT / relative
         if relative.endswith("/"):
             target = target / "index.html"
+        elif target.suffix == "":
+            # Public Cloudflare route is clean; source file keeps .html.
+            target = target.with_suffix(".html")
         if not target.exists():
             raise AssertionError(f"Sitemap URL missing HTML: {location}")
     for page in OUTPUT.rglob("*.html"):
