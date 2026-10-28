@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "PixPDFKit"
 OUTPUT = ROOT / "dist-cloudflare"
 OLD_ORIGIN = "https://mazooniosman299-blip.github.io/PixPDFKit"
+PRIMARY_ORIGIN = "https://mazooniosman299-blip-github-io.pages.dev"
 PUBLISHER = "google.com, pub-5086201923236113, DIRECT, f08c47fec0942fa0"
 
 
@@ -47,7 +48,7 @@ def run():
         if not file.is_file() or file.suffix not in {".html", ".xml", ".js", ".css", ".json", ".webmanifest", ".txt", ".svg"}:
             continue
         data = file.read_text(encoding="utf-8")
-        new_data = data.replace(OLD_ORIGIN, origin).replace("/PixPDFKit/", "/")
+        new_data = data.replace(OLD_ORIGIN, origin).replace(PRIMARY_ORIGIN, origin).replace("/PixPDFKit/", "/")
         # Pages automatically redirects /page.html -> /page. Publish the
         # destination URL consistently in links, canonicals, hreflang and JSON-LD.
         if file.suffix == ".html":
