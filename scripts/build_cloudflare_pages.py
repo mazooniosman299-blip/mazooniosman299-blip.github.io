@@ -93,9 +93,9 @@ def run():
 
     root = ET.parse(OUTPUT / "sitemap.xml").getroot()
     locs = [x.text for x in root.findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")]
-    assert len(locs) == 46 and len(set(locs)) == 46, "All 46 unique links must be in the sitemap"
+    assert len(locs) == 50 and len(set(locs)) == 50, "All 46 unique links must be in the sitemap"
     assert not any(u.endswith(".html") for u in locs), "Cloudflare sitemap must use canonical extensionless HTML routes"
-    assert len(list(OUTPUT.rglob("*.html"))) >= 46, "Missing translated HTML pages"
+    assert len(list(OUTPUT.rglob("*.html"))) >= 50, "Missing translated HTML pages"
     for location in locs:
         if not location.startswith(origin + "/"):
             raise AssertionError(f"Offsite or obsolete sitemap URL: {location}")

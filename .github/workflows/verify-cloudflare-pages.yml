@@ -25,6 +25,9 @@ jobs:
           from pathlib import Path
           import xml.etree.ElementTree as ET
           root = Path('dist-cloudflare')
+          assert len(ET.parse(root/'sitemap.xml').getroot().findall('.//{*}loc')) == 50
+          assert (root/'ar/guides/pdf-under-2mb.html').exists()
+          assert (root/'en/guides/job-application-pdf.html').exists()
           assert (root/'ads.txt').read_text().strip() == 'google.com, pub-5086201923236113, DIRECT, f08c47fec0942fa0'
           assert (root/'google611146e9ceec162a.html').read_text().strip() == 'google-site-verification: google611146e9ceec162a.html'
           assert '<link rel="canonical" href="https://pixpdfkit.pages.dev/ar/">' in (root/'ar/index.html').read_text()
