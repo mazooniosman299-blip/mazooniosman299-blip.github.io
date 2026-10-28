@@ -30,6 +30,19 @@ jobs:
           python PixPDFKit/tests/verify.py
           node --check PixPDFKit/assets/tool.js
           node --check PixPDFKit/assets/home.js
+      - name: Prepare publisher verification on every HTML page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          meta = '<meta name="google-adsense-account" content="ca-pub-5086201923236113">'
+          count = 0
+          for file in Path('PixPDFKit').rglob('*.html'):
+              html = file.read_text(encoding='utf-8')
+              if '<head>' in html and 'name="google-adsense-account"' not in html:
+                  file.write_text(html.replace('<head>', '<head>' + meta, 1), encoding='utf-8')
+                  count += 1
+          print(f"Publisher verification ensured on {count} additional pages.")
+          PY
       - name: Commit only PixPDFKit directory
         run: |
           git config user.name "github-actions[bot]"
