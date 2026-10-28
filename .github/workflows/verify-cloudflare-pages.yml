@@ -1,0 +1,40 @@
+name: Verify Cloudflare Pages build
+on:
+  push:
+    paths:
+      - "scripts/build_cloudflare_pages.py"
+      - "PixPDFKit/**"
+      - "ads.txt"
+      - ".github/workflows/verify-cloudflare-pages.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and validate Cloudflare Pages output
+        env:
+          CF_PAGES_URL: https://abcd1234.pixpdfkit.pages.dev
+          CF_PAGES_BRANCH: main
+        run: |
+          python3 scripts/build_cloudflare_pages.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          root = Path('dist-cloudflare')
+          assert (root/'ads.txt').read_text().strip() == 'google.com, pub-5086201923236113, DIRECT, f08c47fec0942fa0'
+          assert '<link rel="canonical" href="https://pixpdfkit.pages.dev/ar/">' in (root/'ar/index.html').read_text()
+          assert 'https://pixpdfkit.pages.dev/sitemap.xml' in (root/'robots.txt').read_text()
+          assert '/PixPDFKit/' not in (root/'manifest.webmanifest').read_text()
+          print('Cloudflare-ready SEO, PWA, and publisher configuration verified.')
+          PY
+      - name: Verify preview protection
+        env:
+          CF_PAGES_URL: https://preview-1234.pixpdfkit.pages.dev
+          CF_PAGES_BRANCH: preview
+        run: |
+          python3 scripts/build_cloudflare_pages.py
+          grep -q 'Disallow: /' dist-cloudflare/robots.txt
+          grep -q 'X-Robots-Tag: noindex' dist-cloudflare/_headers
