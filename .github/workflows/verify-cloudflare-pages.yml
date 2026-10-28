@@ -15,6 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Audit 50 sitemap pages, both languages and local links
+        run: |
+          python3 PixPDFKit/tests/audit.py
+          python3 PixPDFKit/tests/verify.py
+          node --check PixPDFKit/assets/tool.js
+          node --check PixPDFKit/assets/home.js
       - name: Build and validate Cloudflare Pages output
         env:
           CF_PAGES_URL: https://abcd1234.pixpdfkit.pages.dev
