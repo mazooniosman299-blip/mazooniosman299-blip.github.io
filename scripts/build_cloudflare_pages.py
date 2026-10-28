@@ -67,6 +67,15 @@ def run():
     if PUBLISHER not in ads.splitlines():
         raise ValueError("Root ads.txt must contain the verified AdSense publisher ID")
     (OUTPUT / "ads.txt").write_text(ads + "\n", encoding="utf-8")
+    # Search Console ownership: the same Google verification file is used on
+    # the GitHub Pages site and must also exist at the NEW site's domain root.
+    verification_name = "google611146e9ceec162a.html"
+    verification_source = ROOT / verification_name
+    expected_verification = "google-site-verification: " + verification_name
+    if verification_source.read_text(encoding="utf-8").strip() != expected_verification:
+        raise ValueError("Google Search Console verification file has unexpected content")
+    shutil.copyfile(verification_source, OUTPUT / verification_name)
+
 
     # Preview deployments must not compete with production for Google indexing.
     branch = os.environ.get("CF_PAGES_BRANCH", "main")

@@ -5,6 +5,7 @@ on:
       - "scripts/build_cloudflare_pages.py"
       - "PixPDFKit/**"
       - "ads.txt"
+      - "google611146e9ceec162a.html"
       - ".github/workflows/verify-cloudflare-pages.yml"
   workflow_dispatch:
 permissions:
@@ -25,6 +26,7 @@ jobs:
           import xml.etree.ElementTree as ET
           root = Path('dist-cloudflare')
           assert (root/'ads.txt').read_text().strip() == 'google.com, pub-5086201923236113, DIRECT, f08c47fec0942fa0'
+          assert (root/'google611146e9ceec162a.html').read_text().strip() == 'google-site-verification: google611146e9ceec162a.html'
           assert '<link rel="canonical" href="https://pixpdfkit.pages.dev/ar/">' in (root/'ar/index.html').read_text()
           assert 'https://pixpdfkit.pages.dev/sitemap.xml' in (root/'robots.txt').read_text()
           assert '/PixPDFKit/' not in (root/'manifest.webmanifest').read_text()
