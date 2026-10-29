@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - ofuq-2026-modernization-oct30
+      - main
     paths:
       - 'scripts/update_ofuq_news.py'
       - '.github/workflows/ofuq-arabic-news-refresh.yml'
