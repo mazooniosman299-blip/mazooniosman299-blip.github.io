@@ -21,6 +21,10 @@ try{
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded',timeout:30000});
  if(await page.locator('iframe[src*="youtube"]').count()||await page.locator('#youtubeStage').count())throw Error('YouTube player must not exist');
  if(!(await page.locator('#adVideo').count()))throw Error('Top advertising video missing');
+ if(!(await page.locator('#networkAdOverlay').count()))throw Error('Network video slot missing');
+ if(!(await page.locator('#networkAdOverlay').isHidden()))throw Error('Ad network overlay should be hidden when no approved VAST inventory is configured');
+ if(await page.evaluate(()=>Boolean(window.google?.ima)))throw Error('External IMA SDK should not load without active publisher ad tag');
+
  const desktopLayout=await page.evaluate(()=>{const hero=document.querySelector('.hero'),copy=document.querySelector('.hero-copy'),ad=document.querySelector('#adScreen'),channels=document.querySelector('#channels'),news=document.querySelector('#news');const a=ad.getBoundingClientRect(),c=copy.getBoundingClientRect();return {direction:getComputedStyle(hero).direction,layout:getComputedStyle(hero).flexDirection,adX:a.x,copyX:c.x,adW:a.width,adH:a.height,liveY:channels.getBoundingClientRect().top,newsY:news.getBoundingClientRect().top}});
  console.log('DESKTOP LAYOUT '+JSON.stringify(desktopLayout));
  if(!(desktopLayout.adX<desktopLayout.copyX&&desktopLayout.liveY<desktopLayout.newsY&&desktopLayout.adW<740&&desktopLayout.adW>250))throw Error('Incorrect ad-left, title-right, or channels-first layout');
