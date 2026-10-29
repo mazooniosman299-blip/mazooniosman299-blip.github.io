@@ -1,0 +1,36 @@
+name: Ofuq TV official breaking-news alerts
+on:
+  push:
+    paths:
+      - ".github/workflows/ofuq-breaking.yml"
+      - "scripts/update_ofuq_breaking.py"
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: ofuq-breaking-news
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Evaluate explicit official breaking alerts
+        run: python scripts/update_ofuq_breaking.py
+      - name: Commit fresh alerts only when changed
+        run: |
+          if git diff --quiet -- ofuq-tv/breaking.json; then
+            echo "No active breaking alert changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ofuq-tv/breaking.json
+          git commit -m "Refresh verified time-limited Ofuq breaking alerts"
+          git push
