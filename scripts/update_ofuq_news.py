@@ -114,7 +114,7 @@ def update_sitemap(items):
             continue
         seen_ids.add(ident)
         updated = (story.get("published_at") or "")[:10]
-        if not re.fullmatch(r"\\d{4}-\\d{2}-\\d{2}", updated):
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", updated):
             updated = ""
         pages.append(("story.html?id=" + ident, updated))
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
@@ -123,7 +123,7 @@ def update_sitemap(items):
         lines.append("  <url><loc>" + BASE + route + "</loc>" +
                      ("<lastmod>" + lastmod + "</lastmod>" if lastmod else "") + "</url>")
     lines.append("</urlset>")
-    xml = "\\n".join(lines) + "\\n"
+    xml = "\n".join(lines) + "\n"
     if not SITEMAP.exists() or SITEMAP.read_text(encoding="utf-8") != xml:
         SITEMAP.write_text(xml, encoding="utf-8")
         print(f"SITEMAP SAVED: {len(pages)} real URLs")
