@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#071827"><meta name="description" content="أُفُق TV: القنوات والأخبار داخل موقع واحد."><link rel="icon" href="assets/ofuq-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="portal.css?v=20261030-newsrebuild-v2"><title>أُفُق TV | الأخبار والشاشة</title></head><body>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#071827"><meta name="description" content="أُفُق TV: القنوات والأخبار داخل موقع واحد."><link rel="icon" href="assets/ofuq-mark.svg" type="image/svg+xml"><link rel="stylesheet" href="portal.css?v=20261030-native-news-v3"><title>أُفُق TV | الأخبار والشاشة</title></head><body>
 <div class="eyebar"><div class="layout eyebrow"><strong>OFUQ <i>TV</i></strong><span>أُفُق TV</span><time id="clock">مسقط</time></div></div>
 <header class="mast"><div class="layout mastrow"><a class="brand" href="./" aria-label="أفق TV الرئيسية"><img src="assets/ofuq-mark.svg" alt="" width="34" height="34"><span>أُفُق <b>TV</b></span></a><button class="navbutton" id="menuButton" type="button" aria-expanded="false" aria-controls="navigation">القائمة</button><nav id="navigation" aria-label="التنقل"><a href="#news">الأخبار</a><a href="#channels">البث المباشر</a><a href="#editorial">عن أُفُق</a><a href="editorial.html">معايير التحرير</a></nav></div></header>
 <main><section class="hero layout"><div class="hero-copy"><div class="mini-heading"><span></span> OFUQ TV</div><h1>أُفُق <em>TV</em></h1><p>نافذتك للأخبار والبث المباشر والإعلانات المصوّرة.</p><div class="hero-actions"><a class="primary" href="#news">آخر الأخبار</a><a class="secondary" href="#channels">شاهد القنوات</a></div></div><div class="hero-graphic hero-tv-screen hero-ad-screen" id="adScreen" aria-label="شاشة الإعلانات المصورة لأُفُق TV">
@@ -17,8 +17,8 @@
 <div class="player-head"><span class="player-name"><i class="signal" id="signalLight"></i><b id="playingChannel">القنوات الإخبارية</b></span><span class="player-hd">OFUQ TV</span></div>
 <div class="video-stage" id="videoStage">
 <div class="idle" id="idle"><div class="starting-channel"><img src="assets/ofuq-mark.svg" width="46" height="46" alt=""><span>أُفُق TV</span><i></i></div></div>
-<div id="youtubeStage" class="youtube-host" hidden></div>
-<video id="nativePlayer" class="native-player" controls playsinline muted preload="none" hidden aria-label="مشغل القنوات داخل أُفُق"></video>
+
+<video id="nativePlayer" class="native-player" controls playsinline muted autoplay preload="auto" hidden aria-label="مشغل القنوات داخل أُفُق"></video>
 </div>
 <div class="player-foot"><span id="playState" role="status" aria-live="polite"></span><button id="full" type="button">ملء الشاشة</button></div>
 </div></div>
@@ -27,4 +27,4 @@
 
 <section class="about-strip" id="editorial"><div class="layout about-strip-inner"><div><span class="subcaption">ABOUT OFUQ</span><h2>أخبار وقنوات في مكان واحد.</h2><p>منصة لمتابعة القنوات وقراءة الأخبار داخل أُفُق.</p></div><a class="about-policy" href="editorial.html">ميثاق التحرير</a></div></section></main>
 <footer><div class="layout foot"><strong>أُفُق <i>TV</i></strong><nav aria-label="روابط قانونية"><a href="editorial.html">ميثاق التحرير</a><a href="privacy.html">الخصوصية</a></nav><small>© <span id="year">2026</span> OFUQ TV</small></div></footer>
-<script src="portal.js?v=20261030-newsrebuild-v2" defer></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js" defer></script><script src="portal.js?v=20261030-native-news-v3" defer></script></body></html>
