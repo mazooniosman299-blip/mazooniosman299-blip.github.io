@@ -25,7 +25,23 @@ function updateFeatured(){const title=$('idleTitle'),description=$('idleDescript
 function startFeatured(){if(featuredTimer)clearInterval(featuredTimer);updateFeatured();featuredTimer=setInterval(()=>{if(!document.hidden&&!selected)updateFeatured()},9000)}
 
 function category(title){if(/سودان|الفاشر|الأبيض/.test(title))return 'sudan';if(/اليمن|أفغانستان|الشرق الأوسط/.test(title))return 'region';return 'global'}
-function renderNews(){const host=$('newsGrid');host.replaceChildren();const selection=allNews.filter(x=>(group==='all'||category(x.title)===group)&&(!search||[x.title,x.source||''].join(' ').toLocaleLowerCase().includes(search)));if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='ما في أخبار تطابق البحث الحالي. غيّر كلمات البحث أو اختر «الكل».';host.append(p);return}for(const n of selection){const id=String(n.url).split('/').pop().match(/^[0-9]{5,12}$/)?.[0];title.textContent=n.title;const meta=document.createElement('div');meta.className='date';const date=document.createElement('span');try{date.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{date.textContent='تاريخ النشر لدى المصدر'}const read=document.createElement('span');read.textContent='اقرأ في أُفُق';meta.append(date,read);const more=document.createElement('span');more.className='more';more.textContent=briefs[id]?.paragraphs?.length>1?'تقرير موجز موثق داخل الموقع':'موجز الخبر داخل الموقع';a.append(source,title,meta,more);host.append(a)}}
+function renderNews(){
+ const host=$('newsGrid');host.replaceChildren();
+ const selection=allNews.filter(x=>(group==='all'||category(x.title)===group)&&(!search||[x.title,x.source||''].join(' ').toLocaleLowerCase().includes(search)));
+ if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار تطابق البحث الحالي. جرّب كلمات أخرى أو اختر الكل.';host.append(p);return}
+ for(const n of selection){
+  const id=String(n.url||'').split('/').pop().match(/^[0-9]{5,12}$/)?.[0];if(!id)continue;
+  const a=document.createElement('a');a.className='news-card';a.href='story.html?id='+encodeURIComponent(id);
+  const source=document.createElement('span');source.className='tag';source.textContent=(n.source||'مصدر رسمي')+' · '+(category(n.title)==='sudan'?'السودان':category(n.title)==='region'?'المنطقة':'العالم');
+  const title=document.createElement('h3');title.textContent=n.title;
+  const meta=document.createElement('div');meta.className='date';
+  const date=document.createElement('span');
+  try{date.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{date.textContent='تاريخ النشر لدى المصدر'}
+  const read=document.createElement('span');read.textContent='اقرأ داخل أُفُق';meta.append(date,read);
+  const more=document.createElement('span');more.className='more';more.textContent='قراءة الخبر داخل الموقع';a.append(source,title,meta,more);host.append(a);
+ }
+}
+
 Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?v=20261030-r3',{cache:'no-store'}).then(r=>r.ok?r.json():{})]).then(([data,b])=>{allNews=(data.items||[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');briefs=b||{};if(!allNews.length)throw Error('empty news');renderNews();startFeatured();}).catch(()=>{$('newsGrid').innerHTML='';const p=document.createElement('p');p.className='empty-news';p.textContent='تعذّر تحميل الأخبار حالياً. يمكن إعادة تحميل الصفحة بعد قليل.';$('newsGrid').append(p)});
 $('newsSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase();renderNews()});document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.group;document.querySelectorAll('[data-group]').forEach(el=>el.classList.toggle('active',el===b));renderNews()}));
 const BREAKING_ALLOW_HOSTS=new Set(['news.un.org','www.news.un.org','www.ungeneva.org']);
