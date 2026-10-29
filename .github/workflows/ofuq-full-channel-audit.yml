@@ -1,0 +1,31 @@
+name: Audit every OFUQ direct channel video
+on:
+  push:
+    branches:
+      - ofuq-channel-qa-layout-articles-20261030
+    paths:
+      - 'ofuq-tv/channels.json'
+      - 'ofuq-tv/portal.js'
+      - 'scripts/audit_ofuq_all_channels.mjs'
+      - '.github/workflows/ofuq-full-channel-audit.yml'
+  workflow_dispatch:
+jobs:
+  full-channel-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [0,1,2,3]
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - run: |
+          npm install --no-save playwright@1.64.1
+          npx playwright install --with-deps chromium
+      - name: Decode every listed stream (real Chrome video frames)
+        env:
+          BATCH: ${{ matrix.batch }}
+        run: node scripts/audit_ofuq_all_channels.mjs
