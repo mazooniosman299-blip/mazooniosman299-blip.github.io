@@ -15,14 +15,30 @@ on:
       - 'ofuq-tv/**'
       - 'scripts/check_ofuq_portal.mjs'
       - '.github/workflows/verify-ofuq-native-hls.yml'
+permissions:
+  contents: write
 jobs:
   static-validation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Generate and save original advertisement video
+        run: |
+          python3 -m pip install --break-system-packages Pillow==11.3.0
+          python3 scripts/generate_ofuq_ad_video.py
+          test -s ofuq-tv/ads/ofuq-promo.mp4
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ofuq-tv/ads/ofuq-promo.mp4
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add OFUQ promotional video for advertising screen'
+            git push origin HEAD:${{ github.head_ref || github.ref_name }}
+          fi
       - name: Validate OFUQ HTML, channels, news and JavaScript
         run: node scripts/check_ofuq_portal.mjs
       - name: Probe direct HLS manifests and CORS (read-only)
