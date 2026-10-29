@@ -22,7 +22,7 @@ fetch('channels.json?v=20261030-r3&ts='+Date.now(),{cache:'no-store'}).then(r=>{
 let allNews=[], briefs={}, group='all',search='';
 let featuredIndex=0, featuredTimer=null;
 function updateFeatured(){const title=$('idleTitle'),description=$('idleDescription'),origin=$('idleAttribution'),categoryEl=$('idleCategory'),count=$('idleSlide');if(!title||!allNews.length)return;const entries=allNews.filter(n=>typeof n.title==='string'&&n.title.trim()&&typeof n.published_at==='string').slice(0,10);if(!entries.length)return;const n=entries[featuredIndex%entries.length];const id=(new URL(n.url).pathname.split('/').pop()||'');title.textContent=n.title;description.textContent=briefs[id]?.lead||'اقرأ الخبر بتفاصيله داخل أُفُق TV من قسم آخر الأخبار.';origin.textContent=n.source||'معلومات من مصدر رسمي';categoryEl.textContent=category(n.title)==='sudan'?'أخبار السودان':category(n.title)==='region'?'أخبار المنطقة':'أخبار العالم';count.textContent=String(featuredIndex%entries.length+1).padStart(2,'0')+' / '+String(entries.length).padStart(2,'0');featuredIndex++}
-function startFeatured(){if(featuredTimer)clearInterval(featuredTimer);updateFeatured();featuredTimer=setInterval(()=>{if(!document.hidden&&!selected)updateFeatured()},9000)}
+function startFeatured(){if(featuredTimer)clearInterval(featuredTimer);updateFeatured();featuredTimer=setInterval(()=>{if(!document.hidden)updateFeatured()},9000)}
 
 function category(title){if(/سودان|الفاشر|الأبيض/.test(title))return 'sudan';if(/اليمن|أفغانستان|الشرق الأوسط/.test(title))return 'region';return 'global'}
 function renderNews(){
