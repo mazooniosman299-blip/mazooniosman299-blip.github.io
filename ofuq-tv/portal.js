@@ -66,7 +66,7 @@ function startSource(ch,token){
   video.src=source;startPlayback();return;
  }
  if(!window.Hls?.isSupported()){fallback();return}
- const controller=new Hls({enableWorker:true,startLevel:-1,capLevelToPlayerSize:true,capLevelOnFPSDrop:true,maxBufferLength:28,lowLatencyMode:true});
+ const controller=new Hls({enableWorker:true,startLevel:-1,abrEwmaDefaultEstimate:5_500_000,abrBandWidthFactor:0.85,abrBandWidthUpFactor:0.75,capLevelToPlayerSize:false,capLevelOnFPSDrop:true,maxBufferLength:28,lowLatencyMode:true});
  hlsController=controller;
  controller.on(Hls.Events.ERROR,(_event,data)=>{
   if(!valid()||hlsController!==controller||!data.fatal)return;
