@@ -68,22 +68,46 @@ async function startHls(ch){
 }
 
 
-let featuredIndex=0,featuredTimer=null;
-function updateFeatured(){
-  const title=$('idleTitle'),lead=$('idleDescription'),categoryEl=$('idleCategory'),counter=$('idleSlide'),link=$('upperRead');
-  if(!title||!allNews.length)return;
-  const items=allNews.filter(n=>typeof n.title==='string'&&n.title&&typeof n.url==='string').slice(0,12);
-  if(!items.length)return;
-  const article=items[featuredIndex%items.length];
-  const id=String(article.url||'').split('/').pop().match(/^[0-9]{5,12}$/)?.[0];
-  title.textContent=article.title;
-  categoryEl.textContent=category(article.title)==='sudan'?'أخبار السودان':category(article.title)==='region'?'أخبار المنطقة':'أخبار العالم';
-  lead.textContent=(id&&briefs[id]?.lead)||'اقرأ الخبر من داخل أُفُق، وتابع التحديثات الجديدة.';
-  link.href=id?'story.html?id='+encodeURIComponent(id):'#news';
-  counter.textContent=String(featuredIndex%items.length+1).padStart(2,'0')+' / '+String(items.length).padStart(2,'0');
-  featuredIndex++;
+/* First-party advertising video playlist; refreshes automatically when ads.json changes. */
+const adVideo=$('adVideo');
+let ads=[],adIndex=0,adCurrent='',adStatus='idle';
+function validAd(ad){
+ if(!ad||typeof ad!=='object'||typeof ad.video!=='string'||typeof ad.title!=='string')return false;
+ try{const u=new URL(ad.video,location.href);return u.origin===location.origin&&u.pathname.includes('/ofuq-tv/ads/')&&u.pathname.toLowerCase().endsWith('.mp4')}catch{return false}
 }
-function startFeatured(){if(featuredTimer)clearInterval(featuredTimer);updateFeatured();featuredTimer=setInterval(()=>{if(!document.hidden)updateFeatured()},8500)}
+function applyAdText(ad){
+ $('adTitle').textContent=ad.title;
+ $('adDescription').textContent=typeof ad.description==='string'?ad.description:'';
+ $('adEyebrow').textContent=typeof ad.eyebrow==='string'?ad.eyebrow:'OFUQ TV · VIDEO ADVERTISING';
+ $('adNumber').textContent=String(adIndex+1).padStart(2,'0')+' / '+String(ads.length).padStart(2,'0');
+}
+function showAd(index){
+ if(!ads.length)return;
+ adIndex=((index%ads.length)+ads.length)%ads.length;
+ const ad=ads[adIndex];adCurrent=ad.video;adStatus='loading';
+ applyAdText(ad);adVideo.classList.remove('is-playing');
+ adVideo.pause();adVideo.muted=true;adVideo.setAttribute('playsinline','');adVideo.src=ad.video;adVideo.load();
+ adVideo.play().catch(()=>{adStatus='waiting';}); // Silent autoplay is allowed on most modern browsers.
+}
+adVideo.addEventListener('playing',()=>{adStatus='playing';adVideo.classList.add('is-playing')});
+adVideo.addEventListener('pause',()=>{if(!adVideo.ended)adVideo.classList.remove('is-playing')});
+adVideo.addEventListener('ended',()=>showAd(adIndex+1));
+adVideo.addEventListener('error',()=>{adStatus='unavailable';adVideo.classList.remove('is-playing');if(ads.length>1){const failed=adIndex;const next=(adIndex+1)%ads.length;if(next!==failed)showAd(next)}});
+async function refreshAds(){
+ try{
+  const res=await fetch('ads.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'});
+  if(!res.ok)throw Error('ads unavailable');
+  const data=await res.json();const next=Array.isArray(data.ads)?data.ads.filter(validAd):[];
+  if(!next.length)return;
+  const current=next.findIndex(a=>a.video===adCurrent);
+  ads=next;
+  if(!adCurrent||adStatus==='unavailable')showAd(0);
+  else {adIndex=Math.max(0,current);applyAdText(ads[adIndex])}
+ }catch{if(!ads.length){ads=[{video:'ads/ofuq-promo.mp4',title:'إعلانك على شاشة أُفُق',description:'مساحة إعلانية بالفيديو تلفت الأنظار وتظهر لجمهورك.'}];showAd(0)}}
+}
+refreshAds();
+setInterval(()=>{if(!document.hidden)refreshAds()},180000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&adVideo.paused&&!adVideo.ended&&adStatus!=='unavailable')adVideo.play().catch(()=>{})});
 const heroClockFmt=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',hour:'2-digit',minute:'2-digit',hour12:false});
 function updateHeroClock(){if($('upperClock'))$('upperClock').textContent=heroClockFmt.format(new Date())+' · مسقط'}
 updateHeroClock();setInterval(updateHeroClock,60000);
@@ -107,7 +131,7 @@ function renderNews(){
  }
 }
 
-Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?v=20261030-r3',{cache:'no-store'}).then(r=>r.ok?r.json():{})]).then(([data,b])=>{allNews=(data.items||[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');briefs=b||{};if(!allNews.length)throw Error('empty news');renderNews();startFeatured();}).catch(()=>{$('newsGrid').innerHTML='';const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)});
+Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?v=20261030-r3',{cache:'no-store'}).then(r=>r.ok?r.json():{})]).then(([data,b])=>{allNews=(data.items||[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');briefs=b||{};if(!allNews.length)throw Error('empty news');renderNews();}).catch(()=>{$('newsGrid').innerHTML='';const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)});
 $('newsSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase();renderNews()});document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.group;document.querySelectorAll('[data-group]').forEach(el=>el.classList.toggle('active',el===b));renderNews()}));
 const BREAKING_ALLOW_HOSTS=new Set(['news.un.org','www.news.un.org','www.ungeneva.org']);
 let lastBreakingId='';
