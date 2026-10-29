@@ -1,6 +1,6 @@
 {
   "source_note": "روابط وعناوين وصور مصغّرة من خلاصات الناشرين؛ المحتوى الكامل لدى المصدر.",
-  "updated_at": "2026-10-29T23:55:46.918081+00:00",
+  "updated_at": "2026-10-29T23:56:03.229861+00:00",
   "items": [
     {
       "id": "d0900c9de10c9b",
@@ -1093,14 +1093,14 @@
       "image": "https://images.euronews.com/articles/stories/09/96/02/48/696x392_cmsv2_16445dd5-e0fc-5e21-a2ac-a565c8a06cf3-9960248.jpg"
     },
     {
+      "id": "1145620",
       "title": "اليمن – أكثر من 281 ألف شخص نزحوا وسط حاجة ملحة للمأوى",
       "url": "https://news.un.org/ar/story/2026/10/1145620",
       "source": "أخبار الأمم المتحدة",
+      "section": "region",
       "published_at": "2026-10-28T12:00:00+00:00",
-      "id": "1145620",
-      "section": "world",
-      "image": "",
-      "excerpt": ""
+      "excerpt": "أفاد مكتب الأمم المتحدة لتنسيق الشؤون الإنسانية (أوتشا) بأن أكثر من 281 ألف شخص قد نزحوا في اليمن منذ بداية شهر آب/أغسطس، يقيم أكثر من نصفهم في محافظة تعز وحدها.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/05-10-2026-UNICEF-Yemen.jpg/image560x340cropped.jpg"
     },
     {
       "title": "فولكر تورك: حقوق الإنسان قوة للتغيير والشعوب تريد عالما أفضل وترفض القسوة",
@@ -1433,6 +1433,16 @@
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/27/images/348171.jpg"
     },
     {
+      "id": "1145609",
+      "title": "غروسي: الدبلوماسية هي السبيل الوحيد لمنع الانتشار النووي وإيران مطالبة بتسهيل عودة المفتشين",
+      "url": "https://news.un.org/ar/story/2026/10/1145609",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "excerpt": "أكد المدير العام للوكالة الدولية للطاقة الذرية رافائيل غروسي أن الدبلوماسية المدعومة بالتحقق النووي هي السبيل الوحيد لمنع الانتشار النووي على المدى الطويل، في إيران وفي جميع أنحاء العالم. ودعا إيران إلى التعاون مع الوكالة لتوضيح المسائل العالقة المتعلقة بالضمانات، وتزوي",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/19-04-2024_Unsplash_Iran-01.jpg/image560x340cropped.jpg"
+    },
+    {
       "title": "بعد عام من هجوم الفاشر، دعوات للمحاسبة والوقاية لمنع تكرار الفظائع",
       "url": "https://news.un.org/ar/story/2026/10/1145613",
       "source": "أخبار الأمم المتحدة",
@@ -1468,16 +1478,6 @@
       "source": "أخبار الأمم المتحدة",
       "published_at": "2026-10-27T12:00:00+00:00",
       "id": "1145610",
-      "section": "world",
-      "image": "",
-      "excerpt": ""
-    },
-    {
-      "title": "غروسي: الدبلوماسية هي السبيل الوحيد لمنع الانتشار النووي وإيران مطالبة بتسهيل عودة المفتشين",
-      "url": "https://news.un.org/ar/story/2026/10/1145609",
-      "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-27T12:00:00+00:00",
-      "id": "1145609",
       "section": "world",
       "image": "",
       "excerpt": ""
@@ -1703,24 +1703,44 @@
       "image": "https://images.euronews.com/articles/stories/09/96/76/11/696x392_cmsv2_6e1e2732-a756-5fdb-acb7-6f8181074013-9967611.jpg"
     },
     {
+      "id": "1145602",
       "title": "الأمم المتحدة والعراق يبحثان التعاون في إزالة الألغام ومشاركة بغداد في حفظ السلام",
       "url": "https://news.un.org/ar/story/2026/10/1145602",
       "source": "أخبار الأمم المتحدة",
+      "section": "region",
       "published_at": "2026-10-26T12:00:00+00:00",
-      "id": "1145602",
-      "section": "world",
-      "image": "",
-      "excerpt": ""
+      "excerpt": "زار جان بيير لاكروا وكيل الأمين العام لعمليات السلام العراق، خلال عطلة نهاية الأسبوع، بهدف تسليط الضوء على أهمية العمل المتعلق بالألغام، ودور دائرة الأمم المتحدة للأعمال المتعلقة بالألغام (أونماس).",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/30-12-2020_UNAMI_Baghdad.jpg/image560x340cropped.jpg"
     },
     {
+      "id": "1145606",
       "title": "الأمم المتحدة تقدم الدعم الإنساني لنازحين جدد في الضفة الغربية وغزة",
       "url": "https://news.un.org/ar/story/2026/10/1145606",
       "source": "أخبار الأمم المتحدة",
+      "section": "region",
       "published_at": "2026-10-26T12:00:00+00:00",
-      "id": "1145606",
-      "section": "world",
-      "image": "",
-      "excerpt": ""
+      "excerpt": "أفاد مكتب تنسيق الشؤون الإنسانية (أوتشا) بأن الأمم المتحدة وشركاءها يستجيبون لحالات نزوح جديدة في كل من غزة والضفة الغربية من بينهم 3000 فلسطيني أجلتهم القوات الإسرائيلية من منازلهم عقب هجوم فلسطيني بإطلاق نار الأسبوع الماضي على جنود إسرائيليين.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/15-10-2026_UNNews_Gaza_Winter_Preparation_06.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145600",
+      "title": "لجنة أممية مستقلة: إسرائيل ارتكبت جرائم حرب في الأرض الفلسطينية المحتلة في ظل استمرار الإبادة في غزة",
+      "url": "https://news.un.org/ar/story/2026/10/1145600",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "excerpt": "قالت لجنة تحقيق دولية مستقلة تابعة للأمم المتحدة إن إسرائيل ارتكبت جرائم حرب وجرائم ضد الإنسانية تتمثل في \"الإفناء والاضطهاد والتعذيب والاغتصاب وغير ذلك من أشكال العنف الجنسي\"، في الأرض الفلسطينية المحتلة، مستهدفة بشكل متعمد المدنيين الفلسطينيين فيما تواصل ارتكاب إبادة ",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/10-12-2025-UNICEF-Gaza-01.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145598",
+      "title": "من مصر، أمين عام الأمم المتحدة يحذر من شبح التطهير العرقي في الضفة الغربية المحتلة",
+      "url": "https://news.un.org/ar/story/2026/10/1145598",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "excerpt": "أثناء زيارته التاسعة لمصر منذ توليه منصبه، أشاد الأمين العام للأمم المتحدة بالدور المحوري الذي تقوم به مصر أثناء \"أصعب الأوقات التي تواجه المنطقة والعالم\" وسعيها لإفساح المجال أمام الدبلوماسية وجمع الأطراف على طاولة المفاوضات. ووصفها بأنها ركيزة للعمل متعدد الأطراف.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/26-10-2026_SG_Egypt_presser1.jpeg/image560x340cropped.jpg"
     },
     {
       "title": "الأمم المتحدة: تضاعف حصيلة وفيات النساء والفتيات في النزاعات المسلحة منذ عام 2021",
@@ -1748,16 +1768,6 @@
       "source": "أخبار الأمم المتحدة",
       "published_at": "2026-10-26T12:00:00+00:00",
       "id": "1145601",
-      "section": "world",
-      "image": "",
-      "excerpt": ""
-    },
-    {
-      "title": "لجنة أممية مستقلة: إسرائيل ارتكبت جرائم حرب في الأرض الفلسطينية المحتلة في ظل استمرار الإبادة في غزة",
-      "url": "https://news.un.org/ar/story/2026/10/1145600",
-      "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-26T12:00:00+00:00",
-      "id": "1145600",
       "section": "world",
       "image": "",
       "excerpt": ""
@@ -1911,6 +1921,26 @@
       "published_at": "2026-10-23T19:04:08+00:00",
       "excerpt": "أعلنت الولايات المتحدة الهيليوم مادة حيوية، مع اشتداد الحرب في الشرق الأوسط وقيود التصدير من روسيا والصين التي تضغط على الإمدادات العالمية لهذا الغاز الضروري لصناعة الرقائق، ما يدفع أوروبا إلى سباق لتأمين حصتها.",
       "image": "https://images.euronews.com/articles/stories/09/96/52/60/696x392_cmsv2_ce281391-7806-59ae-b05c-0ce008ee6c87-9965260.jpg"
+    },
+    {
+      "id": "1145596",
+      "title": "الأمين العام للأمم المتحدة يدين الهجوم الإرهابي على كنيسة بالأردن",
+      "url": "https://news.un.org/ar/story/2026/10/1145596",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-23T12:00:00+00:00",
+      "excerpt": "أدان الأمين العام للأمم المتحدة بشدة الهجوم الإرهابي الذي وقع أثناء تشييع جنازة في كنيسة في حمود في محافظة الكرك في الأردن، مما أدى إلى مقتل 7 أشخاص وإصابة الكثيرين بجراح وفق التقارير.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/09-10-2026-UN-Photo-Guterres-01.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145595",
+      "title": "الضفة الغربية - الأمم المتحدة تبدي القلق إزاء تصاعد العنف والقرار الإسرائيلي بفرض إغلاق شامل",
+      "url": "https://news.un.org/ar/story/2026/10/1145595",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-23T12:00:00+00:00",
+      "excerpt": "أعرب الأمين العام للأمم المتحدة عن قلق بالغ إزاء تصاعد العنف في الضفة الغربية المحتلة، وعمليات الإغلاق واسعة النطاق التي تفرضها إسرائيل على التجمعات الفلسطينية هناك. وقال المكتب الأممي لحقوق الإنسان إن القرار الذي اتخذته إسرائيل اليوم الجمعة بفرض إغلاق شامل على الضفة ال",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/08/19-08-2026-UNICEF-West-Bank-01.jpg/image560x340cropped.jpg"
     },
     {
       "id": "1145589",
