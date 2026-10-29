@@ -1,0 +1,40 @@
+name: Build original OFUQ advertising video
+on:
+  push:
+    branches:
+      - ofuq-native-hls-20261030
+    paths:
+      - 'scripts/generate_ofuq_ad_video.py'
+      - '.github/workflows/build-ofuq-ad-video.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  render-ad:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image rendering dependency
+        run: python -m pip install Pillow==11.3.0
+      - name: Generate original OFUQ advertisement film
+        run: python scripts/generate_ofuq_ad_video.py
+      - name: Validate actual MP4 and duration
+        run: |
+          test -s ofuq-tv/ads/ofuq-promo.mp4
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height -of default=noprint_wrappers=1 ofuq-tv/ads/ofuq-promo.mp4
+      - name: Save promotional video in project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ofuq-tv/ads/ofuq-promo.mp4
+          if git diff --cached --quiet; then
+            echo "Video unchanged"
+          else
+            git commit -m "Add generated original OFUQ promo advertising MP4"
+            git push origin HEAD:ofuq-native-hls-20261030
+          fi
