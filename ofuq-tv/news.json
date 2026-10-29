@@ -1,6 +1,6 @@
 {
   "source_note": "روابط وعناوين وصور مصغّرة من خلاصات الناشرين؛ المحتوى الكامل لدى المصدر.",
-  "updated_at": "2026-10-29T23:56:03.229861+00:00",
+  "updated_at": "2026-10-29T23:58:14.496521+00:00",
   "items": [
     {
       "id": "d0900c9de10c9b",
@@ -23,16 +23,6 @@
       "image": "https://images.skynewsarabia.com/images/v1/2026/10/30/1901469/95/53/1-1901469.jpg"
     },
     {
-      "id": "00e81f66345228",
-      "title": "نتنياهو \"لم يفز لكنه لم يخسر أيضاً\".. ما حل \"معضلة\" الانتخابات الإسرائيلية؟",
-      "url": "https://arabic.cnn.com/middle-east/article/2026/10/30/the-final-israeli-election-results-are-in-netanyahu-hasnt-won-but-he-hasnt-los",
-      "source": "CNN بالعربية",
-      "section": "world",
-      "published_at": "2026-10-29T23:32:21+00:00",
-      "excerpt": "لم يُحسم الفائز في الانتخابات الإسرائيلية بعد فرز جميع الأصوات، وفقاً للجنة الانتخابات المركزية.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_64,w_3516,h_1977,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/30/images/348463.jpg"
-    },
-    {
       "id": "81974c5ccdf904",
       "title": "أوكرانيا: غارة روسية تقتل فتاتين مراهقتين في تشيرنيهيف",
       "url": "https://arabic.euronews.com/video/2026/10/30/ukraine-russian-strike-kills-two-teenage-girls-in-chernihiv",
@@ -43,16 +33,6 @@
       "image": "https://images.euronews.com/articles/stories/09/97/26/67/696x392_cmsv2_72194766-53cf-5c75-a033-89c12ebde793-9972667.jpg"
     },
     {
-      "id": "4e2d2cbd2febfa",
-      "title": "الحوثيون يعلنون استهداف مطارات ومصافٍ نفطية سعودية والتحالف يعترض صاروخين فوق الرياض",
-      "url": "https://www.bbc.com/arabic/articles/cw4g1vz4dxgzo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "world",
-      "published_at": "2026-10-29T22:55:08+00:00",
-      "excerpt": "أعلنت السعودية تدمير صاروخين أُطلقوا باتجاه الرياض، فيما قال مصدر في شرطة عدن بأن صاروخاً حوثياً سقط في مطار المدينة قبل إصدار الحوثيين دعوة إلى إخلائه.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/98ce/live/95d7a590-d3c2-11f1-a62f-fd53d503ac8d.jpg"
-    },
-    {
       "id": "317c1eee1211d7",
       "title": "وفاة الممثل ​البريطاني باتريك ستيوارت عن عمر ناهز 86 عاما",
       "url": "https://www.france24.com/ar/%D8%AB%D9%82%D8%A7%D9%81%D8%A9/20261029-%D9%88%D9%81%D8%A7%D8%A9-%D8%A7%D9%84%D9%85%D9%85%D8%AB%D9%84-%D8%A7%D9%84%D8%A8%D8%B1%D9%8A%D8%B7%D8%A7%D9%86%D9%8A-%D8%A8%D8%A7%D8%AA%D8%B1%D9%8A%D9%83-%D8%B3%D8%AA%D9%8A%D9%88%D8%A7%D8%B1%D8%AA-%D9%85%D8%B3%D8%B1%D8%AD-%D8%B3%D9%8A%D9%86%D9%85%D8%A7-%D8%B9%D9%85%D8%B1-86-%D8%B9%D8%A7%D9%85%D8%A7",
@@ -61,6 +41,16 @@
       "published_at": "2026-10-29T22:04:56+00:00",
       "excerpt": "بعد مسيرة بدأت من الفقر وقادته إلى الشهرة العالمية في المسرح والسينما، توفي الممثل البريطاني باتريك ستيوارت عن عمر ناهز 86 عاما. وعرف ستيوارت بأدواره في أعمال شكسبير، كما حقق نجاحا عالميا بدور القبطان جان-لوك بيكار في مسلسل \"ستار تريك: الجيل التالي\" (ستار تريك: نيكست جي",
       "image": "https://s.france24.com/media/display/3f9776de-d3d5-11f1-8290-695cb59fade5/w:1024/p:16x9/AP26302717036908.jpg"
+    },
+    {
+      "id": "a3f70bb04bc1f1",
+      "title": "\"اعتنِ بلياقتك البدنية فمظهرك سيئ\".. ترامب يهاجم صحفياً سأله عن حالته الصحية",
+      "url": "https://arabic.cnn.com/world/article/2026/10/30/trump-explains-decision-to-scrap-kansas-and-lashes-when-asked-about-his-health",
+      "source": "CNN بالعربية",
+      "section": "world",
+      "published_at": "2026-10-29T21:38:21+00:00",
+      "excerpt": "قال الرئيس الأمريكي دونالد ترامب، الخميس، إن قراره بإلغاء تجمع انتخابي كان مقرراً في ولاية كانساس نهاية هذا الأسبوع لا علاقة له بفرص السيناتور روجر مارشال الانتخابية",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_0,w_7558,h_4251,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/30/images/348461.jpg"
     },
     {
       "id": "3e17b77fbb40b0",
@@ -193,16 +183,6 @@
       "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/-1%20%288%29_0.jpg?h=7e3e2fcb&itok=eeqEIjJJ"
     },
     {
-      "id": "b55e78099fcaa0",
-      "title": "ترامب يعلق على رسالة فانس لإيران وتقارير عن خيارات عسكرية جديدة وسط توتر في هرمز",
-      "url": "https://www.bbc.com/arabic/articles/cm4g14554xzlo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "world",
-      "published_at": "2026-10-29T22:53:38+00:00",
-      "excerpt": "حذرت إيران من أنها سترد بشكل أوسع في حال وقوع أي هجوم جديد، وهدد رضائي باستهداف بنية تحتية مرتبطة بالولايات المتحدة.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/da67/live/0bf06f00-d3af-11f1-8d02-39b68eca6add.jpg"
-    },
-    {
       "id": "ac937366905daf",
       "title": "إسبانيا: دقيقة صمت لضحايا حادث القطار والملك يزور المستشفى",
       "url": "https://arabic.euronews.com/video/2026/10/29/spain-minute-of-silence-for-train-crash-victims-as-king-visits-hospital",
@@ -243,14 +223,44 @@
       "image": "https://images.skynewsarabia.com/images/v1/2026/10/30/1901464/95/53/1-1901464.jpg"
     },
     {
-      "id": "ae4f9b662a5fc8",
-      "title": "\"روساتوم\" توضح \"العراقيل\" التي واجهتها في إنشاء محطة الضبعة النووية بمصر",
-      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/rosatom-egypt-obstacles-construction-el-dabaa-plant",
+      "id": "444d2383502a97",
+      "title": "طلاب مدرسة الفنون الإنجيلية في صيدا يدعمون المصابات بسرطان الثدي",
+      "url": "https://www.alaraby.co.uk/society/%D8%B7%D9%84%D8%A7%D8%A8-%D9%85%D8%AF%D8%B1%D8%B3%D8%A9-%D8%A7%D9%84%D9%81%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%A5%D9%86%D8%AC%D9%8A%D9%84%D9%8A%D8%A9-%D9%81%D9%8A-%D8%B5%D9%8A%D8%AF%D8%A7-%D9%8A%D8%AF%D8%B9%D9%85%D9%88%D9%86-%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D8%A8%D8%A7%D8%AA-%D8%A8%D8%B3%D8%B1%D8%B7%D8%A7%D9%86-%D8%A7%D9%84%D8%AB%D8%AF%D9%8A",
+      "source": "العربي الجديد",
+      "section": "world",
+      "published_at": "2026-10-29T22:20:15+00:00",
+      "excerpt": "ليس دعم المصابات بسرطان الثدي مجرد واجب إنساني، بل رسالة محبة وتضامن تؤكد أن الأمل والدعم يصنعان فارقاً كبيراً، وهذه رسالة طلاب مدرسة الفنون الإنجيلية في صيدا.",
+      "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/174.jpeg?h=19ad3fdd&itok=ztY_dVEY"
+    },
+    {
+      "id": "daf90d74c07230",
+      "title": "طلاب فرنسا... مطالب بإصلاحات تتجاوز خطة الحكومة",
+      "url": "https://www.alaraby.co.uk/society/%D8%B7%D9%84%D8%A7%D8%A8-%D9%81%D8%B1%D9%86%D8%B3%D8%A7-%D9%85%D8%B7%D8%A7%D9%84%D8%A8-%D8%A8%D8%A5%D8%B5%D9%84%D8%A7%D8%AD%D8%A7%D8%AA-%D8%AA%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-%D8%AE%D8%B7%D8%A9-%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9",
+      "source": "العربي الجديد",
+      "section": "world",
+      "published_at": "2026-10-29T22:20:02+00:00",
+      "excerpt": "رغم القرارات الحكومية التي اتخذتها فرنسا إثر الاحتجاجات الطلابية والنقابية، تتوالى الانتقادات باعتبارها مجرّد فُتات مقارنةً بما يحتاج إليه قطاع التعليم.",
+      "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/GettyImages-2301424471.jpg?h=7e35dd79&itok=47lT52d5"
+    },
+    {
+      "id": "00e81f66345228",
+      "title": "نتنياهو \"لم يفز لكنه لم يخسر أيضاً\".. ما حل \"معضلة\" الانتخابات الإسرائيلية؟",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/30/the-final-israeli-election-results-are-in-netanyahu-hasnt-won-but-he-hasnt-los",
       "source": "CNN بالعربية",
       "section": "region",
-      "published_at": "2026-10-29T14:20:38+00:00",
-      "excerpt": "علقت شركة \"روساتوم\" الروسية للطاقة النووية، مساء الأربعاء، على تصريحات مديرها العام، بشأن \"العراقيل\" التي واجهتها الشركة في إنشاء محطة الضبعة النووية في مصر.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348428.jpg"
+      "published_at": "2026-10-29T23:32:21+00:00",
+      "excerpt": "لم يُحسم الفائز في الانتخابات الإسرائيلية بعد فرز جميع الأصوات، وفقاً للجنة الانتخابات المركزية.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_64,w_3516,h_1977,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/30/images/348463.jpg"
+    },
+    {
+      "id": "4e2d2cbd2febfa",
+      "title": "الحوثيون يعلنون استهداف مطارات ومصافٍ نفطية سعودية والتحالف يعترض صاروخين فوق الرياض",
+      "url": "https://www.bbc.com/arabic/articles/cw4g1vz4dxgzo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
+      "section": "region",
+      "published_at": "2026-10-29T22:55:08+00:00",
+      "excerpt": "أعلنت السعودية تدمير صاروخين أُطلقوا باتجاه الرياض، فيما قال مصدر في شرطة عدن بأن صاروخاً حوثياً سقط في مطار المدينة قبل إصدار الحوثيين دعوة إلى إخلائه.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/98ce/live/95d7a590-d3c2-11f1-a62f-fd53d503ac8d.jpg"
     },
     {
       "id": "1145620",
@@ -263,6 +273,126 @@
       "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/05-10-2026-UNICEF-Yemen.jpg/image560x340cropped.jpg"
     },
     {
+      "id": "b55e78099fcaa0",
+      "title": "ترامب يعلق على رسالة فانس لإيران وتقارير عن خيارات عسكرية جديدة وسط توتر في هرمز",
+      "url": "https://www.bbc.com/arabic/articles/cm4g14554xzlo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
+      "section": "region",
+      "published_at": "2026-10-29T22:53:38+00:00",
+      "excerpt": "حذرت إيران من أنها سترد بشكل أوسع في حال وقوع أي هجوم جديد، وهدد رضائي باستهداف بنية تحتية مرتبطة بالولايات المتحدة.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/da67/live/0bf06f00-d3af-11f1-8d02-39b68eca6add.jpg"
+    },
+    {
+      "id": "4d03ce41dc45cf",
+      "title": "وفاة عنصرين من الجيش الأمريكي بالشرق الأوسط في ظروف \"غير قتالية\".. ما السبب؟",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/30/air-force-member-dies-in-middle-east-under-non-hostile-circumstances-second-dies",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T22:12:14+00:00",
+      "excerpt": "سجلت قاعدة بيانات وزارة الدفاع الأمريكية (البنتاغون)، التي تتعقب الخسائر البشرية في سياق التوترات مع إيران، وفاة عنصرين من القوات الجوية خلال الأيام الأخيرة",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_273,w_5038,h_2833,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/30/images/348462.jpg"
+    },
+    {
+      "id": "3ab3dfa29aeb25",
+      "title": "البورصة المصرية تنهي أسبوعا مضطربا وسط ضغوط السيولة وترقب التعافي",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/egyptian-stock-exchange-a-volatile-week-liquidity-pressures",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T19:46:19+00:00",
+      "excerpt": "شهدت البورصة المصرية أسبوعا من التقلبات الحادة، بعدما تراجعت مؤشراتها بقوة في بداية الأسبوع، قبل أن تستعيد جزءا من خسائرها في الجلسات الأخيرة، دون أن تنجح في تعويض تراجعها مقارنة بالأسبوع السابق.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_6,w_4931,h_2774,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348455.jpg"
+    },
+    {
+      "id": "c1df6782234175",
+      "title": "وكالة: أردوغان يرتدي ربطة عنق تحمل رسوما للمقاتلة \"قآن\" لهذا السبب",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/erdogan-wears-a-tie-featuring-the-kaan-fighter-jet",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T19:36:49+00:00",
+      "excerpt": "ارتدى الرئيس التركي رجب طيب أردوغان، الخميس، ربطة عنق حمراء تحمل رسوما للطائرة المقاتلة \"قآن\"، خلال مراسم إحياء عيد الجمهورية في ضريح أتاتورك بالعاصمة أنقرة، بحسب ما أوردت وكالة \"الأناضول\" التركية للأنباء.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348454.jpg"
+    },
+    {
+      "id": "8d684598c4fe01",
+      "title": "مصر.. الداخلية تعلن وقف شاشة إعلانية بعد بث لقطات \"خارجة\" عليها",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/moiegy-shutting-down-a-compromised-billboards",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T18:15:30+00:00",
+      "excerpt": "كشفت وزارة الداخلية المصرية، الخميس، تفاصيل عن اختراق شاشة إعلانية تابعة لإحدى شركات الإعلان المتعاقدة مع شركة دولية، حيث تم وقف الشاشة بعد بث لقطات وصفتها بأنها \"خارجة\" عليها.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_196,w_2809,h_1580,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348447.jpg"
+    },
+    {
+      "id": "35c7826a6de382",
+      "title": "منازل بأسعار أقل إذا أردت \"العيش مع شبح\" في اليابان",
+      "url": "https://www.bbc.com/arabic/articles/c8r4y191367ro?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
+      "section": "region",
+      "published_at": "2026-10-29T17:44:38+00:00",
+      "excerpt": "قد تشهد العقارات التي توفي فيها شخص في ظروف مأساوية انخفاضاً كبيراً في أسعارها في اليابان بسبب الثقافة المحلية.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/e19a/live/79bf7e60-d385-11f1-93e1-3b657b665bcf.jpg"
+    },
+    {
+      "id": "f2fdea7edf9d9a",
+      "title": "\"بحضور السيسي\".. علاء مبارك يعلّق على تصريحات بوتين عن والده الراحل",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/putins-remarks-about-mubarak-alaas-comment",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T17:44:25+00:00",
+      "excerpt": "علّق علاء مبارك نجل الرئيس المصري الأسبق محمد حسني مبارك، الخميس، على تصريحات نقلها موقع إخباري عن الرئيس الروسي فلاديمير بوتين، تحدث فيها عن حسني مبارك، في وجود الرئيس الحالي عبدالفتاح السيسي.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_138,w_3005,h_1690,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348435.jpg"
+    },
+    {
+      "id": "e5e30177303a54",
+      "title": "توم باراك: التوترات مع إيران قد تهدأ \"خلال الأسبوعين المقبلين\"",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/us-special-envoy-tensions-iran-might-ease",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T16:57:11+00:00",
+      "excerpt": "قال توم باراك، سفير الولايات المتحدة لدى تركيا والمبعوث الخاص إلى سوريا والعراق، إنه يأمل في أن تهدأ التوترات في الشرق الأوسط خلال الأسبوعين المقبلين، في ظل المخاوف من تجدد الضربات الجوية على إيران.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_49,w_3995,h_2247,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348433.jpg"
+    },
+    {
+      "id": "e83f2d8d56a0ce",
+      "title": "كيري يحذّر ترامب من ضرب إيران مجددًا: \"خطأ فادح سيُبعدها عن المفاوضات\"",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/john-kerry-trump-iran-wa-whole-bunch-false-assumptions",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T16:30:01+00:00",
+      "excerpt": "حذّر وزير الخارجية الأمريكي الأسبق، جون كيري، من أن شن ضربات عسكرية جديدة على طهران عقب انتخابات التجديد النصفي الأمريكية سيكون خطأً فادحًا، وقد يدفع الإيرانيين إلى الابتعاد عن المفاوضات بدلًا من العودة إليها.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_40,w_3204,h_1802,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348432.jpg"
+    },
+    {
+      "id": "dcbafbf4c3ec17",
+      "title": "إيران تكشف عن رسالة من نائب ترامب.. وتتمسك بشروطها السبعة للتفاوض",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/iran-message-vance-maintains-seven-conditions-negotiation",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T15:31:10+00:00",
+      "excerpt": "أعلنت إيران أنها تسلمت رسالة أرسلها جي دي فانس نائب الرئيس الأمريكي دونالد ترامب إلى أمين المجلس الأعلى للأمن القومي في إيران، محسن رضائي، لكنها لم ترد عليها حتى الآن، حسبما ذكرت وكالة أنباء \"تسنيم\" الإيرانية شبه الرسمية، الخميس.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_146,w_8185,h_4604,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348430.jpg"
+    },
+    {
+      "id": "2fc634d54a2696",
+      "title": "مصر.. البنك المركزي يعلن رفع أسعار الفائدة ويوضح السبب",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/egypt-central-bank-interest-rate-hike",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T15:26:11+00:00",
+      "excerpt": "أعلن البنك المركزي المصري في بيان، الخميس، أنه قرر رفع سعر الفائدة بمعدل 1% للإقراض والإيداع، من أجل الحفاظ على المسار النزولي معدلات التضخم.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348431.jpg"
+    },
+    {
+      "id": "ae4f9b662a5fc8",
+      "title": "\"روساتوم\" توضح \"العراقيل\" التي واجهتها في إنشاء محطة الضبعة النووية بمصر",
+      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/rosatom-egypt-obstacles-construction-el-dabaa-plant",
+      "source": "CNN بالعربية",
+      "section": "region",
+      "published_at": "2026-10-29T14:20:38+00:00",
+      "excerpt": "علقت شركة \"روساتوم\" الروسية للطاقة النووية، مساء الأربعاء، على تصريحات مديرها العام، بشأن \"العراقيل\" التي واجهتها الشركة في إنشاء محطة الضبعة النووية في مصر.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348428.jpg"
+    },
+    {
       "id": "303fb15a6b454f",
       "title": "\"لسنا كبش فداء\".. قطر ترد على اتهامات التدخل في الانتخابات الإسرائيلية",
       "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/qatar-accusations-interfering-israeli-elections",
@@ -271,6 +401,16 @@
       "published_at": "2026-10-29T13:35:47+00:00",
       "excerpt": "نفت قطر، الخميس، تدخلها في الانتخابات الإسرائيلية أو تمويل أي أنشطة تستهدف التأثير في نتائجها، رافضةً اتهامات وجّهها سياسيون إسرائيليون وأطراف إعلامية مرتبطة بهم، ووصفتها بأنها جزء من \"حملة تضليل جديدة\" تستهدف الزج باسمها.",
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_183,w_5992,h_3370,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348426.jpg"
+    },
+    {
+      "id": "5dcf0230c2c282",
+      "title": "فلافيو بولسونارو يصل الولايات المتحدة، ويقول إنه \"غادر من أجل البرازيل\"",
+      "url": "https://www.bbc.com/arabic/articles/cm9wzq2250d4o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
+      "section": "region",
+      "published_at": "2026-10-29T13:28:20+00:00",
+      "excerpt": "يدّعي المرشح البرازيلي المهزوم أنه ضحية لانقلاب واضطهاد سياسي، مُعيداً طرح مزاعم لا أساس لها حول وقوع \"تزوير انتخابي\".",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/1e77/live/30f94cd0-d38d-11f1-b31d-29088a2dcf13.jpg"
     },
     {
       "id": "87d6b38ad2f30c",
@@ -293,6 +433,16 @@
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348420.jpg"
     },
     {
+      "id": "60ead467f2bc6d",
+      "title": "نتنياهو فقد تفويضه وقد يفقد السلطة أيضاً - الغارديان",
+      "url": "https://www.bbc.com/arabic/articles/cwe8rlm2z9n7o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
+      "section": "region",
+      "published_at": "2026-10-29T12:05:24+00:00",
+      "excerpt": "تابعت صحف بريطانية تغطية الانتخابات الإسرائيلية وما قد تفرزه نتائجها على مستوى السلطة، وعرضت صحيفة تلغراف نقاشاً حول موجة العنف التي ميزت الاحتجاجات الأخيرة وتبريرها. ونشرت صحيفة الإندبندنت دراسة حول قيمة العناق لدى البشر.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/54e4/live/6d2a5270-d384-11f1-b441-2b33b063138f.jpg"
+    },
+    {
       "id": "2c1e094fd18d61",
       "title": "مستشار بارز سابق بالبيت الأبيض يعلق على \"حلف مكة\" وما ينطوي عليه.. ماذا قال؟",
       "url": "https://arabic.cnn.com/middle-east/video/2026/10/29/v204409-cnn-gp-doha-mecca-pact",
@@ -301,6 +451,16 @@
       "published_at": "2026-10-29T11:56:52+00:00",
       "excerpt": "خلال فعالية \"CNN Global Perspectives\" التي تُقام في الدوحة، علق بريت ماكغورك، أحد كبار مستشاري البيت الأبيض السابقين الذي كان في قلب بعض من أكثر مفاوضات أمريكا تعقيداً في الشرق الأوسط، على دخول بعض حلفاء أمريكا في \"حلف مكة\" وما ينطوي عليه، معربًا عن قلقه من \"إدخال تنافس",
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348405.jpg"
+    },
+    {
+      "id": "77b05f5e6426f4",
+      "title": "رئيس وزراء العراق يزور مقام السيدة زينب في دمشق، فما حكاية هذا المقام والمنطقة المحيطة به؟",
+      "url": "https://www.bbc.com/arabic/articles/c8rx375k717o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
+      "section": "region",
+      "published_at": "2026-10-29T11:43:55+00:00",
+      "excerpt": "أثارت زيارة رئيس الوزراء العراقي، علي الزيدي، لمقام السيدة زينب في دمشق وتبرعه السخي بملايين الدولارات لصالح المرقد المقدس اهتماماً وتفاعلاً عبر الإنترنت، فماذا نعرف عن هذا المقام والحي الذي يقع به.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/47a6/live/1066e610-a033-11ef-a983-61fc4f1ba624.jpg"
     },
     {
       "id": "fded263b0432d1",
@@ -321,166 +481,6 @@
       "published_at": "2026-10-29T09:52:07+00:00",
       "excerpt": "أعرب رئيس الوزراء القطري، الشيخ محمد بن عبدالرحمن آل ثاني، الخميس، عن سعادته بالمشاركة في فعالية \"وجهات نظر عالمية في الدوحة\" والتي تنظمها CNN.",
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_10,w_3496,h_1966,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348401.jpg"
-    },
-    {
-      "id": "920e864d79b3ca",
-      "title": "مذيع CNN يوضح كيف دفع سؤاله السادات إلى زيارة إسرائيل في عهد كارتر",
-      "url": "https://arabic.cnn.com/middle-east/video/2026/10/29/v204405-cnn-gp-doha-blitzer-washington-sadat",
-      "source": "CNN بالعربية",
-      "section": "region",
-      "published_at": "2026-10-29T09:38:39+00:00",
-      "excerpt": "استذكر مذيع CNN، وولف بليتزر، لحظة من واشنطن عقب حرب 1973، حين سأل الرئيس المصري الراحل أنور السادات، في مؤتمر صحفي، عن إمكانية تبادل الزيارات بين المصريين والإسرائيليين. أجاب السادات أن شعبه ليس مستعداً بعد، لكنه أعلن بعد أسبوع واحد أنه سيذهب إلى إسرائيل لمخاطبة الكنيس",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348395.jpg"
-    },
-    {
-      "id": "a7d120997c8245",
-      "title": "بفعاليات CNN Global Perspectives.. نقاش حيوي حول تأثير \"القوى المتوسطة\"",
-      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/a-spirited-debate-on-the-power-of-the-middle-powers",
-      "source": "CNN بالعربية",
-      "section": "region",
-      "published_at": "2026-10-29T08:51:25+00:00",
-      "excerpt": "انضم عدد من الضيوف إلى ريتشارد كويست، المذيع في شبكة CNN، لمناقشة الكيفية التي يمكن بها لـ \"القوى المتوسطة\" الإسهام في تشكيل النظام الاقتصادي العالمي، وذلك ضمن فعاليات CNN: وجهات نظر عالمية من العاصمة القطرية، الدوحة.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348374.jpg"
-    },
-    {
-      "id": "3e4a7092e29517",
-      "title": "بفعاليات CNN Global Perspectives.. تومسون: قطر \"تضع أساساً لمستقبل أفضل\"",
-      "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/qatar-provides-a-foundation-for-a-better-future-says-chairman-cnn",
-      "source": "CNN بالعربية",
-      "section": "region",
-      "published_at": "2026-10-29T08:21:42+00:00",
-      "excerpt": "أكد السير مارك تومسون، رئيس مجلس الإدارة والرئيس التنفيذي لشبكة CNN الدور المحوري الذي تؤديه قطر في بناء مستقبل مزدهر على الصعيد العالمي.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348371.jpg"
-    },
-    {
-      "id": "1145609",
-      "title": "غروسي: الدبلوماسية هي السبيل الوحيد لمنع الانتشار النووي وإيران مطالبة بتسهيل عودة المفتشين",
-      "url": "https://news.un.org/ar/story/2026/10/1145609",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-27T12:00:00+00:00",
-      "excerpt": "أكد المدير العام للوكالة الدولية للطاقة الذرية رافائيل غروسي أن الدبلوماسية المدعومة بالتحقق النووي هي السبيل الوحيد لمنع الانتشار النووي على المدى الطويل، في إيران وفي جميع أنحاء العالم. ودعا إيران إلى التعاون مع الوكالة لتوضيح المسائل العالقة المتعلقة بالضمانات، وتزوي",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/19-04-2024_Unsplash_Iran-01.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145602",
-      "title": "الأمم المتحدة والعراق يبحثان التعاون في إزالة الألغام ومشاركة بغداد في حفظ السلام",
-      "url": "https://news.un.org/ar/story/2026/10/1145602",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-26T12:00:00+00:00",
-      "excerpt": "زار جان بيير لاكروا وكيل الأمين العام لعمليات السلام العراق، خلال عطلة نهاية الأسبوع، بهدف تسليط الضوء على أهمية العمل المتعلق بالألغام، ودور دائرة الأمم المتحدة للأعمال المتعلقة بالألغام (أونماس).",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/30-12-2020_UNAMI_Baghdad.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145606",
-      "title": "الأمم المتحدة تقدم الدعم الإنساني لنازحين جدد في الضفة الغربية وغزة",
-      "url": "https://news.un.org/ar/story/2026/10/1145606",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-26T12:00:00+00:00",
-      "excerpt": "أفاد مكتب تنسيق الشؤون الإنسانية (أوتشا) بأن الأمم المتحدة وشركاءها يستجيبون لحالات نزوح جديدة في كل من غزة والضفة الغربية من بينهم 3000 فلسطيني أجلتهم القوات الإسرائيلية من منازلهم عقب هجوم فلسطيني بإطلاق نار الأسبوع الماضي على جنود إسرائيليين.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/15-10-2026_UNNews_Gaza_Winter_Preparation_06.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145600",
-      "title": "لجنة أممية مستقلة: إسرائيل ارتكبت جرائم حرب في الأرض الفلسطينية المحتلة في ظل استمرار الإبادة في غزة",
-      "url": "https://news.un.org/ar/story/2026/10/1145600",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-26T12:00:00+00:00",
-      "excerpt": "قالت لجنة تحقيق دولية مستقلة تابعة للأمم المتحدة إن إسرائيل ارتكبت جرائم حرب وجرائم ضد الإنسانية تتمثل في \"الإفناء والاضطهاد والتعذيب والاغتصاب وغير ذلك من أشكال العنف الجنسي\"، في الأرض الفلسطينية المحتلة، مستهدفة بشكل متعمد المدنيين الفلسطينيين فيما تواصل ارتكاب إبادة ",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/10-12-2025-UNICEF-Gaza-01.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145598",
-      "title": "من مصر، أمين عام الأمم المتحدة يحذر من شبح التطهير العرقي في الضفة الغربية المحتلة",
-      "url": "https://news.un.org/ar/story/2026/10/1145598",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-26T12:00:00+00:00",
-      "excerpt": "أثناء زيارته التاسعة لمصر منذ توليه منصبه، أشاد الأمين العام للأمم المتحدة بالدور المحوري الذي تقوم به مصر أثناء \"أصعب الأوقات التي تواجه المنطقة والعالم\" وسعيها لإفساح المجال أمام الدبلوماسية وجمع الأطراف على طاولة المفاوضات. ووصفها بأنها ركيزة للعمل متعدد الأطراف.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/26-10-2026_SG_Egypt_presser1.jpeg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145596",
-      "title": "الأمين العام للأمم المتحدة يدين الهجوم الإرهابي على كنيسة بالأردن",
-      "url": "https://news.un.org/ar/story/2026/10/1145596",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-23T12:00:00+00:00",
-      "excerpt": "أدان الأمين العام للأمم المتحدة بشدة الهجوم الإرهابي الذي وقع أثناء تشييع جنازة في كنيسة في حمود في محافظة الكرك في الأردن، مما أدى إلى مقتل 7 أشخاص وإصابة الكثيرين بجراح وفق التقارير.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/09-10-2026-UN-Photo-Guterres-01.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145595",
-      "title": "الضفة الغربية - الأمم المتحدة تبدي القلق إزاء تصاعد العنف والقرار الإسرائيلي بفرض إغلاق شامل",
-      "url": "https://news.un.org/ar/story/2026/10/1145595",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-23T12:00:00+00:00",
-      "excerpt": "أعرب الأمين العام للأمم المتحدة عن قلق بالغ إزاء تصاعد العنف في الضفة الغربية المحتلة، وعمليات الإغلاق واسعة النطاق التي تفرضها إسرائيل على التجمعات الفلسطينية هناك. وقال المكتب الأممي لحقوق الإنسان إن القرار الذي اتخذته إسرائيل اليوم الجمعة بفرض إغلاق شامل على الضفة ال",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/08/19-08-2026-UNICEF-West-Bank-01.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145589",
-      "title": "اليمن - الأمم المتحدة تحذر من الوضع الإنساني في تعز بعد 20 يوما على عزل المدينة",
-      "url": "https://news.un.org/ar/story/2026/10/1145589",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-23T12:00:00+00:00",
-      "excerpt": "بعد مرور 20 يوما على عزل مدينة تعز في اليمن، أفاد مكتب الأمم المتحدة لتنسيق الشؤون الإنسانية (أوتشا) بأن استمرار القتال \"يجعل من المستحيل\" على العاملين في المجال الإنساني الوصول إلى المدينة ويمنع السكان من مغادرتها، في ظل استمرار قطع الطرق المؤدية إليها.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/19-05-2025-UNOCHA-Yemen.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145585",
-      "title": "مقتل 350 طفلا في غزة منذ إعلان وقف إطلاق النار، ووفد دبلوماسي يزور الضفة الغربية",
-      "url": "https://news.un.org/ar/story/2026/10/1145585",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-22T12:00:00+00:00",
-      "excerpt": "دعت منظمة اليونيسف السلطات الإسرائيلية إلى اتخاذ إجراءات فورية وحاسمة لحماية الأطفال في قطاع غزة، بما يتماشى مع التزاماتها بموجب القانون الدولي الإنساني، مشيرة إلى استمرار قتل الأطفال في القطاع.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/30-05-2025-UNICEF-Gaza-06.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145583",
-      "title": "عشية زيارته لمصر، غوتيريش يدعو إلى وقف توسع الحرب ويحذر من أن تبعات الصراعات تجتاح العالم بأسره",
-      "url": "https://news.un.org/ar/story/2026/10/1145583",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-22T12:00:00+00:00",
-      "excerpt": "حذر أمين عام الأمم المتحدة أنطونيو غوتيريش، من أن تصاعد النزاعات وتوسع نطاقها يحملان عواقب بعيدة المدى، تؤدي إلى مضاعفة المعاناة الإنسانية وتعميق أوجه التفاوت في جميع أنحاء العالم، مؤكدا أن \"المسافة بين مضيق هرمز ومنزل عائلة ما أو سوق في قرية، أقصر مما نتصور\".",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/22-10-2026-UN-Guterres-press.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145580",
-      "title": "اليمن – المبعوث الأممي يختتم زيارتين إلى لندن وبرلين لدعم العملية السياسية",
-      "url": "https://news.un.org/ar/story/2026/10/1145580",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-21T12:00:00+00:00",
-      "excerpt": "اختتم المبعوث الخاص للأمم المتحدة إلى اليمن هانس غروندبرغ زيارتين إلى لندن وبرلين هذا الأسبوع، حيث أجرى مناقشات مع مسؤولين رفيعين في البلدين، تمحورت حول التطورات في اليمن والمنطقة ككل، وكيفية دفع العملية السياسية التي يقودها اليمنيون.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/09/25-09-2026_UNICEF_Yemen-01.jpg/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145578",
-      "title": "الأمم المتحدة: الهجوم على موسم قطف الزيتون الفلسطيني أداة للتهجير والسلب",
-      "url": "https://news.un.org/ar/story/2026/10/1145578",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-21T12:00:00+00:00",
-      "excerpt": "قال مكتب الأمم المتحدة لحقوق الإنسان إن الهجوم الإسرائيلي على موسم قطف الزيتون يعد \"أداة أخرى من أدوات التهجير والسلب\" تضيف إلى معاناة المجتمعات الفلسطينية. ودعا جميع الدول والجهات المانحة إلى التحرّك بشكل عاجل لحمايته.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/assets/2014/10/20457/image560x340cropped.jpg"
-    },
-    {
-      "id": "1145570",
-      "title": "اليونيسف: تعز هي مصدر القلق الأول وسط \"بحر من الهموم\" في اليمن",
-      "url": "https://news.un.org/ar/story/2026/10/1145570",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-20T12:00:00+00:00",
-      "excerpt": "حذرت منظمة اليونيسف من أن تصاعد القتال في اليمن يؤدي إلى تعطيل \"أبسط الخدمات الأساسية\" لنحو ثلاثة ملايين شخص في جميع أنحاء البلاد، مشيرة إلى أن \"تعز تمثل الهم الأول في الوقت الراهن، وسط بحر من الهموم\".",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/09/15-09-2026_IOM_Yemen.jpg/image560x340cropped.jpg"
     },
     {
       "id": "268552bc33e5a8",
@@ -823,6 +823,26 @@
       "image": ""
     },
     {
+      "id": "18cac62d519535",
+      "title": "\"حدوتة\" أحمد حلمي تصل إلى صالات السينما في نوفمبر",
+      "url": "https://arabic.cnn.com/entertainment/article/2026/10/30/hadouta-a-film-starring-ahmed-helmy-arrives-in-theaters-in-november",
+      "source": "CNN بالعربية",
+      "section": "variety",
+      "published_at": "2026-10-29T20:56:46+00:00",
+      "excerpt": "بعد ما يزيد على الـ4 سنوات على تقديمه فيلم \"واحد تاني\"، يعود الفنان المصري أحمد حلمي إلى منافسات شباك التذاكر بفيلم \"حدوتة\".",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/30/images/348459.jpg"
+    },
+    {
+      "id": "ef537bfdd927a9",
+      "title": "شيماء سيف تقبل اعتذار آيتن عامر وتتحدث عن حدود الزمالة",
+      "url": "https://arabic.cnn.com/entertainment/article/2026/10/29/shaimaa-saif-accepts-ayten-amers-public-apology-to-her",
+      "source": "CNN بالعربية",
+      "section": "variety",
+      "published_at": "2026-10-29T18:36:14+00:00",
+      "excerpt": "أعلنت شيماء سيف في تدوينة نشرتها عبر صفحتها الشخصية على فيسبوك، الخميس، قبول اعتذار زميلتها آيتن عامر لها، بعد فترة وجيزة من نشره في حسابها الرسمي على إنستغرام، لكنها أشارت إلى أنه ليس كل المواضيع \"ينفع فيها النصح\"، وتحدثت عن حدود الزمالة.",
+      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348436.jpg"
+    },
+    {
       "id": "6cab66ebe14e47",
       "title": "أمريكا.. الشرطة تغلق التحقيق في وفاة الممثلة هايدن بانيتير",
       "url": "https://arabic.cnn.com/entertainment/article/2026/10/29/us-police-close-investigation-into-the-death-of-actress-hayden-panettiere",
@@ -881,96 +901,6 @@
       "published_at": "2026-10-28T07:39:47+00:00",
       "excerpt": "أعلنت إليسا، عبر حساباتها الرسمية على مواقع التواصل الاجتماعي، الثلاثاء، عن قرب إصدار ألبومها الـ 14، بالتزامن مع احتفالها بعيد ميلادها.",
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/28/images/348241.jpg"
-    },
-    {
-      "id": "4b8dc5a83f1fb5",
-      "title": "ياسمين صبري \"أرملة ثرية تبحث عن شريك\" في فيلم \"نصيب\"",
-      "url": "https://arabic.cnn.com/entertainment/article/2026/10/28/screening-of-the-film-naseeb-starring-yasmine-sabri-begins-in-egypt",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-28T06:36:45+00:00",
-      "excerpt": "انطلقت عروض فيلم \"نصيب\"، من بطولة الفنانة المصرية ياسمين صبري، في صالات السينما المصرية، الأربعاء، ومن المقرر أن تنطلق عروض الفيلم في دول الخليج اعتباراً من الخميس.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_338,w_4993,h_2808,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/28/images/348226.jpg"
-    },
-    {
-      "id": "f47fce41bc3915",
-      "title": "وفاة الممثلة سوزان سانت جيمس بطلة مسلسل \"McMillan & Wife\" عن عمر يناهز 80 عاماً",
-      "url": "https://arabic.cnn.com/entertainment/article/2026/10/28/american-actress-susan-saint-james-has-died-at-the-age-of-80",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-27T21:04:24+00:00",
-      "excerpt": "رحلت الممثلة الأمريكية سوزان سانت جيمس، التي شاركت روك هدسون بطولة مسلسل الجريمة التلفزيوني \"McMillan & Wife\" في سبعينيات القرن الماضي، وجين كيرتين بطولة المسلسل الكوميدي \"Kate & Allie\" في ثمانينيات القرن الماضي، عن عمر ناهز 80 عاماً.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/28/images/348207.jpg"
-    },
-    {
-      "id": "374465a14ffa52",
-      "title": "جاي زي سيقدم عرض \"سوبر بول\" الـ61.. ماذا عن بيونسيه؟",
-      "url": "https://arabic.cnn.com/entertainment/article/2026/10/28/jay-z-to-headline-the-61st-super-bowl-halftime-show-what-about-beyonce",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-27T20:13:42+00:00",
-      "excerpt": "أعلن مغني الراب ورائد الأعمال الأمريكي جاي زي أنه سيقدم عرض استراحة ما بين الشوطين في النسخة الـ 61 من \"سوبر بول\" في فبراير/شباط 2027",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_0,w_5754,h_3236,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/28/images/348204.jpg"
-    },
-    {
-      "id": "60b0011a2bc1d8",
-      "title": "المغنية السورية بيسان إسماعيل تفوز بجائزتها الأولى في مصر",
-      "url": "https://arabic.cnn.com/entertainment/article/2026/10/27/syrian-singer-bisan-ismail-wins-her-first-award-in-egypt",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-27T13:18:28+00:00",
-      "excerpt": "فازت المغنية السورية الشابة بيسان إسماعيل، الاثنين، بجائزة \"أفضل مطربة شابة\" لعام 2026، بناء على تصويت الجمهور، في حفل توزيع جوائز \"The Best\"، الذي أقيم عند سفح هضبة أهرامات الجيزة في مصر.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/27/images/348182.jpg"
-    },
-    {
-      "id": "62317a419670be",
-      "title": "ياسمين عبدالعزيز لم تنسَ الذي كان.. وأهدت جوائزها لمن يُحارِبها",
-      "url": "https://arabic.cnn.com/entertainment/article/2026/10/27/this-is-what-yasmin-abdelaziz-said-in-her-acceptance-speech-for-the-best-awards",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-27T12:51:39+00:00",
-      "excerpt": "فازت الفنانة المصرية ياسمين عبدالعزيز بجائزتي أفضل ممثلة عن فئتي الدراما والسينما في حفل توزيع جوائز \"The Best\"، الذي أقيم عند سفح هضبة الأهرامات في مصر، الاثنين، إلى جانب فوز مسلسل \"وننسى اللي كان\" بجائزة أفضل مسلسل في عام 2026.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/27/images/348171.jpg"
-    },
-    {
-      "id": "70308eb4ac32b9",
-      "title": "وفاة والتر كونيغ نجم سلسلة \"ستار تريك\" عن عمر يناهز 90 عاماً",
-      "url": "https://arabic.cnn.com/entertainment/article/2026/10/26/walter-koenig-star-of-the-star-trek-series-dies-at-the-age-of-90",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-26T19:40:38+00:00",
-      "excerpt": "توفي الممثل والتر كونيغ، الذي اشتهر بتجسيد شخصية الملاح الروسي المفعم بالحيوية \"بافيل تشيكوف\" في سلسلة \"ستار تريك\" الأصلية والعديد من الأفلام اللاحقة ضمن السلسلة، عن عمر يناهز 90 عاماً.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_89,w_2996,h_1685,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/26/images/348092.jpg"
-    },
-    {
-      "id": "a9750d691f7978",
-      "title": "وفاة إريك باوزا مؤدي أصوات الرسوم المتحركة الشهير عن عمر يناهز 46 عاماً",
-      "url": "https://arabic.cnn.com/entertainment/article/2026/10/26/death-of-eric-bauza-the-renowned-animated-voice-actor-at-the-age-of-46",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-26T17:17:48+00:00",
-      "excerpt": "توفي إريك باوزا، الذي أدى أصوات شخصيات شهيرة مثل \"باغز باني\" و\"دافي داك\" في نسختيهما المعاصرتين من سلسلة الرسوم المتحركة \"لوني تونز\"، عن عمر يناهز 46 عاماً، وذلك وفقاً لما أكدته عائلته والسجلات الصحية الرسمية.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_0,w_3432,h_1930,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/26/images/348087.jpg"
-    },
-    {
-      "id": "297028954e4a3a",
-      "title": "مسؤول بإدارة ترامب يلمح مازحًا إلى تعيين نيكي ميناج متحدثة باسم البيت الأبيض",
-      "url": "https://arabic.cnn.com/entertainment/video/2026/10/26/v204204-white-house-official-quips-nicki-minaj-could-be-new-press-secretary",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-26T11:08:36+00:00",
-      "excerpt": "نشر ستيفن تشيونغ، مدير الاتصالات في البيت الأبيض، مقطع فيديو يجمعه بمغنية الراب نيكي ميناج على متن طائرة الرئاسة (Air Force One)، وأرفقه بتعليق يشير إلى أنهما \"ربما عثرا\" على المتحدثة الرسمية الجديدة باسم البيت الأبيض.",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/26/images/348070.jpg"
-    },
-    {
-      "id": "6f868794e8d979",
-      "title": "\"فرحة العمر\".. سميرة سعيد تحتفل بزفاف ابنها شادي بأغنية \"وليدي\"",
-      "url": "https://arabic.cnn.com/entertainment/article/2026/10/26/samira-said-celebrates-her-son-shadys-wedding-with-the-song-walidi",
-      "source": "CNN بالعربية",
-      "section": "variety",
-      "published_at": "2026-10-25T20:18:09+00:00",
-      "excerpt": "شاركت الفنانة المغربية سميرة سعيد، عبر حسابها الرسمي على إنستغرام، الأحد، مقطع فيديو من حفل زفاف ابنها الوحيد شادي نابلسي، علّقت عليه بعبارة \"فرحة العمر\".",
-      "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_0,w_5004,h_2815,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/25/images/348009.jpg"
     },
     {
       "id": "d3b8b7610a364c",
@@ -1143,26 +1073,6 @@
       "image": ""
     },
     {
-      "id": "444d2383502a97",
-      "title": "طلاب مدرسة الفنون الإنجيلية في صيدا يدعمون المصابات بسرطان الثدي",
-      "url": "https://www.alaraby.co.uk/society/%D8%B7%D9%84%D8%A7%D8%A8-%D9%85%D8%AF%D8%B1%D8%B3%D8%A9-%D8%A7%D9%84%D9%81%D9%86%D9%88%D9%86-%D8%A7%D9%84%D8%A5%D9%86%D8%AC%D9%8A%D9%84%D9%8A%D8%A9-%D9%81%D9%8A-%D8%B5%D9%8A%D8%AF%D8%A7-%D9%8A%D8%AF%D8%B9%D9%85%D9%88%D9%86-%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D8%A8%D8%A7%D8%AA-%D8%A8%D8%B3%D8%B1%D8%B7%D8%A7%D9%86-%D8%A7%D9%84%D8%AB%D8%AF%D9%8A",
-      "source": "العربي الجديد",
-      "section": "world",
-      "published_at": "2026-10-29T22:20:15+00:00",
-      "excerpt": "ليس دعم المصابات بسرطان الثدي مجرد واجب إنساني، بل رسالة محبة وتضامن تؤكد أن الأمل والدعم يصنعان فارقاً كبيراً، وهذه رسالة طلاب مدرسة الفنون الإنجيلية في صيدا.",
-      "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/174.jpeg?h=19ad3fdd&itok=ztY_dVEY"
-    },
-    {
-      "id": "daf90d74c07230",
-      "title": "طلاب فرنسا... مطالب بإصلاحات تتجاوز خطة الحكومة",
-      "url": "https://www.alaraby.co.uk/society/%D8%B7%D9%84%D8%A7%D8%A8-%D9%81%D8%B1%D9%86%D8%B3%D8%A7-%D9%85%D8%B7%D8%A7%D9%84%D8%A8-%D8%A8%D8%A5%D8%B5%D9%84%D8%A7%D8%AD%D8%A7%D8%AA-%D8%AA%D8%AA%D8%AC%D8%A7%D9%88%D8%B2-%D8%AE%D8%B7%D8%A9-%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D8%A9",
-      "source": "العربي الجديد",
-      "section": "world",
-      "published_at": "2026-10-29T22:20:02+00:00",
-      "excerpt": "رغم القرارات الحكومية التي اتخذتها فرنسا إثر الاحتجاجات الطلابية والنقابية، تتوالى الانتقادات باعتبارها مجرّد فُتات مقارنةً بما يحتاج إليه قطاع التعليم.",
-      "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/GettyImages-2301424471.jpg?h=7e35dd79&itok=47lT52d5"
-    },
-    {
       "id": "f6bd72eda5ecf5",
       "title": "السودان: حملة وطنية لحماية 11 مليوناً من شلل الأطفال وسط النزاع",
       "url": "https://www.alaraby.co.uk/society/%D8%A7%D9%84%D8%B3%D9%88%D8%AF%D8%A7%D9%86-%D8%AD%D9%85%D9%84%D8%A9-%D9%88%D8%B7%D9%86%D9%8A%D8%A9-%D9%84%D8%AD%D9%85%D8%A7%D9%8A%D8%A9-11-%D9%85%D9%84%D9%8A%D9%88%D9%86%D8%A7%D9%8B-%D9%85%D9%86-%D8%B4%D9%84%D9%84-%D8%A7%D9%84%D8%A3%D8%B7%D9%81%D8%A7%D9%84-%D9%88%D8%B3%D8%B7-%D8%A7%D9%84%D9%86%D8%B2%D8%A7%D8%B9",
@@ -1263,104 +1173,144 @@
       "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/GettyImages-2302242289.jpg?h=73ef07b8&itok=xcSVy46d"
     },
     {
-      "id": "1145568",
-      "title": "قلق أممي إزاء التصعيد العسكري وهجمات الحوثيين على السعودية وتفاقم الأزمة الإنسانية في تعز",
-      "url": "https://news.un.org/ar/story/2026/10/1145568",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-19T12:00:00+00:00",
-      "excerpt": "أعربت الأمم المتحدة عن قلق بالغ إزاء استمرار التصعيد العسكري في الشرق الأوسط، وهجمات الحوثيين المستمرة على المملكة العربية السعودية، بما فيها الهجمات التي طالت بنية تحتية مدنية ومنشآت الطاقة، فضلا عن الأعمال العدائية المكثفة على جبهات متعددة – لا سيما في مدينة تعز، مشير",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/10/16-10-2026-WFP-Yemen-01.jpg/image560x340cropped.jpg"
+      "id": "4578b9cff24350",
+      "title": "فرنسا: وزير الداخلية يحذر من \"خطر وقوع اضطرابات عامة\" في احتجاجات السبت ويتعهد برد \"حازم للغاية\"",
+      "url": "https://www.france24.com/ar/%D9%81%D8%B1%D9%86%D8%B3%D8%A7/20261029-%D9%81%D8%B1%D9%86%D8%B3%D8%A7-%D9%88%D8%B2%D9%8A%D8%B1-%D8%A7%D9%84%D8%AF%D8%A7%D8%AE%D9%84%D9%8A%D8%A9-%D9%84%D9%88%D8%B1%D8%A7%D9%86-%D9%86%D9%88%D9%86%D9%8A%D9%8A%D8%B2-%D9%85%D8%A7%D9%83%D8%B1%D9%88%D9%86-%D8%B7%D9%84%D8%A7%D8%A8-%D8%BA%D9%84%D8%A7%D8%A1-%D8%A7%D8%AD%D8%AA%D8%AC%D8%A7%D8%AC%D8%A7%D8%AA-%D9%86%D9%82%D8%A7%D8%A8%D8%A7%D8%AA",
+      "source": "فرانس 24 العربية",
+      "section": "world",
+      "published_at": "2026-10-29T21:06:44+00:00",
+      "excerpt": "قال وزير الداخلية الفرنسي لوران نونييز الخميس إنه سيسمح بالمظاهرات السبت، ولكن \"ليس في مراكز المدن، حيث هناك خطر حدوث اضطرابات عامة\"، متعهدا برد \"حازم للغاية\" في حال حصول تجاوزات. ويأتي تصريح الوزير الفرنسي تزامنا مع دعوات إلى التظاهر مجددا. والتقى نونييز الخميس ممثلين ",
+      "image": "https://s.france24.com/media/display/2d4a3b18-ced2-11f1-a609-5b4a75578ebb/w:1024/p:16x9/trad-2.jpg"
     },
     {
-      "id": "1145567",
-      "title": "اليونيفيل تواصل تسجيل انتهاكات، ورئيس إدارة عمليات السلام يواصل زيارته الإقليمية",
-      "url": "https://news.un.org/ar/story/2026/10/1145567",
-      "source": "أخبار الأمم المتحدة",
-      "section": "region",
-      "published_at": "2026-10-19T12:00:00+00:00",
-      "excerpt": "سجلت قوة الأمم المتحدة المؤقتة في لبنان (اليونيفيل) عدة غارات جوية إسرائيلية، في الفترة الممتدة من يوم الجمعة إلى الأحد، ورصدت كذلك عمليات قصف مكثفة بالمدفعية وقذائف الهاون، وأعمالا هندسية.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/16-01-2026-UNDOF-patrol.jpg/image560x340cropped.jpg"
+      "id": "e6c6d10e3c5899",
+      "title": "غلاء الطاقة يضع أوروبا على حافة الركود التضخمي",
+      "url": "https://www.alaraby.co.uk/economy/%D8%BA%D9%84%D8%A7%D8%A1-%D8%A7%D9%84%D8%B7%D8%A7%D9%82%D8%A9-%D9%8A%D8%B6%D8%B9-%D8%A3%D9%88%D8%B1%D9%88%D8%A8%D8%A7-%D8%B9%D9%84%D9%89-%D8%AD%D8%A7%D9%81%D8%A9-%D8%A7%D9%84%D8%B1%D9%83%D9%88%D8%AF-%D8%A7%D9%84%D8%AA%D8%B6%D8%AE%D9%85%D9%8A",
+      "source": "العربي الجديد",
+      "section": "world",
+      "published_at": "2026-10-29T20:59:53+00:00",
+      "excerpt": "نمو ضعيف وطاقة غالية وتضخم عند 3.8%: أوروبا تقترب من الركود التضخمي والمركزي الأوروبي يثبت الفائدة بانتظار ديسمبر.",
+      "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/GettyImages-2188788381.jpg?h=790be497&itok=1KEG31zW"
     },
     {
-      "id": "1145566",
-      "title": "حصاد الزيتون - خبراء أمميون يحثون إسرائيل على حماية المزارعين في الضفة الغربية المحتلة",
-      "url": "https://news.un.org/ar/story/2026/10/1145566",
-      "source": "أخبار الأمم المتحدة",
+      "id": "80c5fc3b86563f",
+      "title": "\"مخضبون بالدماء، مذهولون، وغاضبون\": هكذا تحولت رحلة ركاب عبر القطار إلى كارثة في إسبانيا",
+      "url": "https://www.bbc.com/arabic/articles/ck79pj52pwz0o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
       "section": "region",
-      "published_at": "2026-10-19T12:00:00+00:00",
-      "excerpt": "حذر خبراء أمميون مستقلون من التهديدات التي يتعرض لها المزارعون الفلسطينيون في الضفة الغربية المحتلة فيما يتعلق بسبل كسب الرزق وحقوقهم الثقافية وأمنهم الغذائي خلال موسم حصاد الزيتون. وحثوا إسرائيل على ضمان حمايتهم ووصولهم الآمن إلى أراضيهم.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/21-10-2025-PARC-olive-harvest-01.jpg/image560x340cropped.jpg"
+      "published_at": "2026-10-29T09:22:41+00:00",
+      "excerpt": "تحدّث ناجون من حادث قطار في إسبانيا عن شعورهم بالصدمة والذعر والغضب إزاء الحادث الذي وقع في مقاطعة طليطلة يوم الأربعاء.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/8cdf/live/48bcf420-d360-11f1-bf17-db0635e21017.jpg"
     },
     {
-      "id": "1145563",
-      "title": "غزة - نقص التمويل يحرم نصف مليون شخص من المساعدات الغذائية",
-      "url": "https://news.un.org/ar/story/2026/10/1145563",
-      "source": "أخبار الأمم المتحدة",
+      "id": "fda68816077549",
+      "title": "هجوم الكرك: كيف تواجه العائلات ألم الفقد وأسئلة العدالة؟",
+      "url": "https://www.bbc.com/arabic/articles/c3zxj1j2xjeko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
       "section": "region",
-      "published_at": "2026-10-19T12:00:00+00:00",
-      "excerpt": "أعلن برنامج الأغذية العالمي أنه اضطر إلى تقليص عدد المستفيدين من مساعداته بمقدار نصف مليون شخص، وخفض حجم حصص الغذاء المخصصة للعائلات في قطاع غزة إلى النصف خلال هذا الشهر، وذلك بسبب نقص التمويل. وحذر من أن المكاسب المحدودة التي تحققت في القطاع في مجال الأمن الغذائي قد تض",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/14-01-2025-UNRWA-Gaza-07.jpg/image560x340cropped.jpg"
+      "published_at": "2026-10-29T07:13:14+00:00",
+      "excerpt": "وبين المطالبة بالعدالة ومحاولة التعايش مع الخسارة، تستعيد العائلات ذكريات من رحلوا، وتتحدث عن حياة تغيّرت إلى الأبد، فيما تتمسك برسالة مفادها أن ما حدث \"لن يفرّق بين أبناء المجتمع الواحد\"",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/e3ff/live/a8bcc2a0-d2c1-11f1-bd17-fbcee4e93744.jpg"
     },
     {
-      "id": "1145528",
-      "title": "ما بعد الركام - نساء لبنانيات يحمين الذاكرة والتراث",
-      "url": "https://news.un.org/ar/story/2026/10/1145528",
-      "source": "أخبار الأمم المتحدة",
+      "id": "c5074e3d9b5ac7",
+      "title": "ما الذي يحدث بين سوريا والأردن؟",
+      "url": "https://www.bbc.com/arabic/articles/cmy0r31rl5xdo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
       "section": "region",
-      "published_at": "2026-10-17T12:00:00+00:00",
-      "excerpt": "أنقذت ريما شرارة الأرشيف الرقمي للمكتبة العامة في بنت جبيل، محافظةً على سنوات من التاريخ المحلي والذكريات وقصص المجتمع.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/12-10-2026_UNWomen_Lebanon_Rima_Library.jpg/image560x340cropped.jpg"
+      "published_at": "2026-10-27T15:00:21+00:00",
+      "excerpt": "بينما قال وزير الاتصال الحكومي الأردني إن الغارات الجوية على جنوب سوريا أسفرت عن \"خسائر كبيرة في صفوف التنظيم، تُقدّر بأكثر من 20 عنصراً\"، وتدمير مستودع أسلحة ضخم\"، أعلنت الحكومة السورية أن \"ضحايا مدنيين\" قُتلوا في الغارات.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/9409/live/724ae360-d216-11f1-8f84-ebd3099fed63.jpg"
     },
     {
-      "id": "1145557",
-      "title": "اليمن – عدد النازحين يتجاوز 233 ألفا مع استمرار التصعيد",
-      "url": "https://news.un.org/ar/story/2026/10/1145557",
+      "id": "1145609",
+      "title": "غروسي: الدبلوماسية هي السبيل الوحيد لمنع الانتشار النووي وإيران مطالبة بتسهيل عودة المفتشين",
+      "url": "https://news.un.org/ar/story/2026/10/1145609",
       "source": "أخبار الأمم المتحدة",
       "section": "region",
-      "published_at": "2026-10-16T12:00:00+00:00",
-      "excerpt": "أعربت منظمات إنسانية تابعة للأمم المتحدة عن قلقها إزاء استمرار تصعيد الأعمال العدائية في اليمن وتداعيات ذلك على المدنيين، ودعت إلى تأمين وصول مستدام للمساعدات إلى جميع المحتاجين في أنحاء البلاد، ولا سيما في محافظة تعز.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/09/15-09-2026_IOM_Yemen.jpg/image560x340cropped.jpg"
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "excerpt": "أكد المدير العام للوكالة الدولية للطاقة الذرية رافائيل غروسي أن الدبلوماسية المدعومة بالتحقق النووي هي السبيل الوحيد لمنع الانتشار النووي على المدى الطويل، في إيران وفي جميع أنحاء العالم. ودعا إيران إلى التعاون مع الوكالة لتوضيح المسائل العالقة المتعلقة بالضمانات، وتزوي",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/19-04-2024_Unsplash_Iran-01.jpg/image560x340cropped.jpg"
     },
     {
-      "id": "1145556",
-      "title": "اليونيسف - تبعات الحرب ما زالت تحدد جميع جوانب الطفولة في غزة",
-      "url": "https://news.un.org/ar/story/2026/10/1145556",
-      "source": "أخبار الأمم المتحدة",
+      "id": "bd049f01eb2e13",
+      "title": "داخل عالم التخريب الروسي المناهض لبوتين",
+      "url": "https://www.bbc.com/arabic/articles/cv62ygn5jldko?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
       "section": "region",
-      "published_at": "2026-10-16T12:00:00+00:00",
-      "excerpt": "حذرت منظمة اليونيسف من التكلفة البشرية الفادحة التي تواصل تدمير حياة أطفال غزة، \"سالبة إياهم حياتهم وطفولتهم ومستقبلهم\"، وأكدت على ضرورة الاستماع لأصواتهم ووضع حد لمعاناتهم.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/07/13-07-2026_UNNews_Gaza_Daily_Life_05.jpg/image560x340cropped.jpg"
+      "published_at": "2026-10-27T08:51:23+00:00",
+      "excerpt": "قدّم رجلان روسيان يعملان سراً لصالح المخابرات الأوكرانية روايات نادرة عن عمليات يزعمان مشاركتهما فيها، استهدفت أصولاً عسكرية وأفراداً داخل روسيا.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/2d08/live/62e1e9b0-d1e3-11f1-93e1-3b657b665bcf.jpg"
     },
     {
-      "id": "1145554",
-      "title": "أعضاء مجلس الأمن يدينون هجمات الحوثيين ضد السعودية، وتهديدهم للملاحة في البحر الأحمر",
-      "url": "https://news.un.org/ar/story/2026/10/1145554",
-      "source": "أخبار الأمم المتحدة",
+      "id": "ff229a468d2a88",
+      "title": "كاميرات مراقبة الأطفال في السيارة: بث مباشر وتقنيات حديثة",
+      "url": "https://www.bbc.com/arabic/articles/cj75pe6nyr7lo?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
       "section": "region",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "excerpt": "أدان أعضاء مجلس الأمن الدولي بأشد العبارات الهجمات المتواصلة والتصعيدية التي يشنها الحوثيون ضد المملكة العربية السعودية، بما فيها الهجمات التي طالت الطيران المدني والبنية التحتية للطاقة وأسفرت عن مقتل وإصابة مدنيين.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/09-10-2026-UN-Photo-SC-wideview.jpg/image560x340cropped.jpg"
+      "published_at": "2026-10-26T12:22:15+00:00",
+      "excerpt": "كاميرات مراقبة الأطفال في السيارة: بث مباشر وتقنيات حديثة",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/a6a1/live/ab271df0-d137-11f1-93e1-3b657b665bcf.jpg"
     },
     {
-      "id": "1145552",
-      "title": "شتاء آخر في غزة بدون مأوى آمن - العائلات تلجأ لأكياس الدقيق وحديد الأنقاض للاحتماء من البرد والفيضانات",
-      "url": "https://news.un.org/ar/story/2026/10/1145552",
+      "id": "1145602",
+      "title": "الأمم المتحدة والعراق يبحثان التعاون في إزالة الألغام ومشاركة بغداد في حفظ السلام",
+      "url": "https://news.un.org/ar/story/2026/10/1145602",
       "source": "أخبار الأمم المتحدة",
       "section": "region",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "excerpt": "يستعد أحمد العمري، مثل الكثيرين من سكان غزة، لاستقبال شتاء آخر ببرده القارس وأمطاره التي تحمل خطر الفيضانات، وهم يعيشون في خيام مهترئة ومساكن مُهدمة. يسارع بمساعدة شباب آخرين لتعبئة الرمال في أكياس فارغة حملت لهم من قبل مساعدات الدقيق من برنامج الأغذية العالمي.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/15-10-2026_UNNews_Gaza_Winter_Preparation_05.jpg/image560x340cropped.jpg"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "excerpt": "زار جان بيير لاكروا وكيل الأمين العام لعمليات السلام العراق، خلال عطلة نهاية الأسبوع، بهدف تسليط الضوء على أهمية العمل المتعلق بالألغام، ودور دائرة الأمم المتحدة للأعمال المتعلقة بالألغام (أونماس).",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/30-12-2020_UNAMI_Baghdad.jpg/image560x340cropped.jpg"
     },
     {
-      "id": "1145550",
-      "title": "الأمم المتحدة تحذر من خطر العودة إلى الحرب في غزة، وتؤكد ضرورة استئناف عملية السلام",
-      "url": "https://news.un.org/ar/story/2026/10/1145550",
+      "id": "1145606",
+      "title": "الأمم المتحدة تقدم الدعم الإنساني لنازحين جدد في الضفة الغربية وغزة",
+      "url": "https://news.un.org/ar/story/2026/10/1145606",
       "source": "أخبار الأمم المتحدة",
       "section": "region",
-      "published_at": "2026-10-15T12:00:00+00:00",
-      "excerpt": "أمام مجلس الأمن، دق القائم بأعمال منسق الأمم المتحدة لعملية السلام في الشرق الأوسط ناقوس الخطر بشأن الأوضاع في غزة والضفة الغربية وقال إن مخاطر العودة إلى الحرب أكبر من أي وقت مضى. وشدد على ضرورة تجنب ذلك بكل السبل.",
-      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/15-10-2026-UN-Photo-Ramiz-Alakbarov.jpg/image560x340cropped.jpg"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "excerpt": "أفاد مكتب تنسيق الشؤون الإنسانية (أوتشا) بأن الأمم المتحدة وشركاءها يستجيبون لحالات نزوح جديدة في كل من غزة والضفة الغربية من بينهم 3000 فلسطيني أجلتهم القوات الإسرائيلية من منازلهم عقب هجوم فلسطيني بإطلاق نار الأسبوع الماضي على جنود إسرائيليين.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/15-10-2026_UNNews_Gaza_Winter_Preparation_06.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145600",
+      "title": "لجنة أممية مستقلة: إسرائيل ارتكبت جرائم حرب في الأرض الفلسطينية المحتلة في ظل استمرار الإبادة في غزة",
+      "url": "https://news.un.org/ar/story/2026/10/1145600",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "excerpt": "قالت لجنة تحقيق دولية مستقلة تابعة للأمم المتحدة إن إسرائيل ارتكبت جرائم حرب وجرائم ضد الإنسانية تتمثل في \"الإفناء والاضطهاد والتعذيب والاغتصاب وغير ذلك من أشكال العنف الجنسي\"، في الأرض الفلسطينية المحتلة، مستهدفة بشكل متعمد المدنيين الفلسطينيين فيما تواصل ارتكاب إبادة ",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/10-12-2025-UNICEF-Gaza-01.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145598",
+      "title": "من مصر، أمين عام الأمم المتحدة يحذر من شبح التطهير العرقي في الضفة الغربية المحتلة",
+      "url": "https://news.un.org/ar/story/2026/10/1145598",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "excerpt": "أثناء زيارته التاسعة لمصر منذ توليه منصبه، أشاد الأمين العام للأمم المتحدة بالدور المحوري الذي تقوم به مصر أثناء \"أصعب الأوقات التي تواجه المنطقة والعالم\" وسعيها لإفساح المجال أمام الدبلوماسية وجمع الأطراف على طاولة المفاوضات. ووصفها بأنها ركيزة للعمل متعدد الأطراف.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/26-10-2026_SG_Egypt_presser1.jpeg/image560x340cropped.jpg"
+    },
+    {
+      "id": "4f4eaf831a8098",
+      "title": "حين أرسل عبد الناصر الجيش المصري إلى اليمن لمواجهة قوات تدعمها السعودية",
+      "url": "https://www.bbc.com/arabic/articles/ck1l38q5m815o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
+      "section": "region",
+      "published_at": "2026-10-24T04:56:21+00:00",
+      "excerpt": "بعد إعلان الرئيس المصري عبد الفتاح السيسي استعداد بلاده للتدخل عسكرياً دفاعاً عن السعودية في مواجهة الحوثيين، نستعيد تجربة الجيش المصري في اليمن خلال الستينيات، حين خاض حرباً ضد الملكيين المدعومين من الرياض.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/512b/live/fa1f0560-cc6b-11f1-baeb-8d65d4bcd7ab.jpg"
+    },
+    {
+      "id": "74256423e5d8e3",
+      "title": "من هم المسيحيون الأردنيون؟ وماذا نعرف عن تاريخهم؟",
+      "url": "https://www.bbc.com/arabic/articles/crd6dx7vqx62o?at_medium=RSS&at_campaign=rss",
+      "source": "BBC عربي",
+      "section": "region",
+      "published_at": "2026-10-23T20:28:44+00:00",
+      "excerpt": "أعاد الهجوم المسلح الذي استهدف كنيسة للروم الأرثوذكس في محافظة الكرك جنوبي الأردن، خلال مراسم تشييع جنازة، تسليط الضوء على المسيحيين في المملكة، الذين يعود وجودهم في المنطقة إلى قرون سبقت تأسيس الدولة الأردنية الحديثة.",
+      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/9699/live/0e9a7200-cf1d-11f1-9796-954775b3a434.jpg"
     }
   ]
 }
