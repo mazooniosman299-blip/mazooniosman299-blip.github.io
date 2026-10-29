@@ -170,3 +170,44 @@
  .hero-tv-screen .upper-story .upper-read{font-size:9px;padding:3px 5px}
 }
 @media(prefers-reduced-motion:reduce){.hero-tv-screen .upper-orbit{animation:none}}
+
+
+/* Advertising film occupies the entire primary screen, separate from the lower live player. */
+.hero-ad-screen{position:relative!important;isolation:isolate;background:#041725!important;overflow:hidden!important}
+.hero-ad-screen::before{display:none}
+.ad-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#061b2b;z-index:1;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.ad-video.is-playing{opacity:1}
+.ad-fallback{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 45% 55%,#1a6781 0%,#0b3650 45%,#041525 82%);overflow:hidden}
+.ad-fallback:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#b5f9f50d 1px,transparent 1px),linear-gradient(90deg,#b5f9f50d 1px,transparent 1px);background-size:54px 54px}
+.ad-orbit{position:absolute;width:min(59%,360px);aspect-ratio:1;left:17%;top:3%;border-radius:50%;border:2px solid #91edf98a;box-shadow:0 0 60px #54bfc340,inset 0 0 45px #18617c80;animation:adOrbit 15s linear infinite}
+.ad-orbit:before,.ad-orbit:after,.ad-orbit i{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #92ebf65e;transform:rotate(32deg) scaleX(.4)}
+.ad-orbit:after{transform:rotate(-38deg) scaleX(.7)}
+.ad-orbit i:first-child{transform:rotate(75deg) scaleX(.27)}
+.ad-orbit i:last-child{inset:28% 0;transform:none}
+.ad-pulse{position:absolute;inset:5%;border-radius:50%;background:radial-gradient(circle,#7cd6e41b 0%,transparent 68%);animation:adPulse 4s ease-in-out infinite alternate}
+.ad-overlay{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#0213215e,#06253d20 42%,#02182aba 100%),linear-gradient(0deg,#041322cb,transparent 25%,transparent 80%,#04132256)}
+.ad-identity{position:absolute;z-index:4;top:17px;right:20px;display:flex;align-items:center;gap:8px;background:#021827aa;border:1px solid #69dae873;padding:6px 12px}
+.ad-identity img{object-fit:contain}
+.ad-identity strong{font-size:18px;font-weight:900;color:#f5feff;line-height:1.2}
+.ad-identity em{font-style:normal;font:800 .85em Arial;color:#75e2eb}
+.ad-message{position:absolute;z-index:4;right:7%;left:8%;top:27%;bottom:17%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;pointer-events:none;text-shadow:0 3px 18px #020d16}
+.ad-message>span{color:#8ef5f2;font:800 11px Arial,sans-serif;letter-spacing:2px;direction:ltr}
+.ad-message h2{font-size:clamp(26px,3.2vw,48px);line-height:1.4;font-weight:900;color:#fff;margin:10px 0;max-width:90%}
+.ad-message p{font-size:clamp(12px,1.4vw,18px);line-height:1.8;color:#d7f3f5;margin:0;max-width:85%}
+.ad-footer{position:absolute;z-index:5;bottom:0;right:0;left:0;min-height:37px;background:#041826d9;border-top:2px solid #5cd7e4;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:5px 13px;color:#d0ecf4;font:10px Arial,sans-serif;direction:ltr}
+.ad-footer time{direction:ltr}
+.hero-ad-screen .hero-breaking{z-index:7}
+@keyframes adOrbit{to{transform:rotate(360deg)}}
+@keyframes adPulse{to{transform:scale(1.15);opacity:.6}}
+@media(max-width:650px){
+ .hero-ad-screen{height:290px!important}
+ .ad-identity{top:9px;right:10px;padding:4px 8px}
+ .ad-identity img{width:23px;height:23px}
+ .ad-identity strong{font-size:14px}
+ .ad-message{top:24%;right:6%;left:6%;bottom:15%}
+ .ad-message>span{font-size:9px;letter-spacing:1px}
+ .ad-message h2{font-size:clamp(24px,5vw,30px);margin:6px 0}
+ .ad-message p{font-size:12px;max-width:95%}
+ .ad-orbit{width:64%;left:16%;top:14%}
+}
+@media(prefers-reduced-motion:reduce){.ad-orbit,.ad-pulse{animation:none}}
