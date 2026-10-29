@@ -1,150 +1,1646 @@
 {
-  "source_note": "عناوين وروابط كما نشرها المصدر؛ ليست نشرة أُفُق المحررة.",
-  "updated_at": "2026-10-29T21:24:50.755980+00:00",
+  "source_note": "روابط وعناوين وصور مصغّرة من خلاصات الناشرين؛ المحتوى الكامل لدى المصدر.",
+  "updated_at": "2026-10-29T22:52:22.652102+00:00",
   "items": [
     {
+      "id": "ac937366905daf",
+      "title": "إسبانيا: دقيقة صمت لضحايا حادث القطار والملك يزور المستشفى",
+      "url": "https://arabic.euronews.com/video/2026/10/29/spain-minute-of-silence-for-train-crash-victims-as-king-visits-hospital",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T22:48:59+00:00",
+      "excerpt": "إسبانيا في حداد على 69 شخصا قُتلوا في تصادم قطار فائق السرعة قرب توليدو، فيما يزور الملك فيليب السادس مستشفى يعالج المصابين، وتواصل فرق الإنقاذ البحث في الحطام، وتُقام دقيقة صمت في موقع الحادث.",
+      "image": "https://images.euronews.com/articles/stories/09/97/26/54/696x392_cmsv2_460dd171-90b1-55b5-84d6-368311c150a8-9972654.jpg"
+    },
+    {
+      "id": "b59e8c09d11fa8",
+      "title": "دراسة تربط اضطراب نسبة البروتين المسؤول عن نقل الأكسجين في الدم بزيادة خطر الخرف",
+      "url": "https://arabic.euronews.com/2026/10/29/study-links-abnormal-levels-of-the-protein-that-carries-oxygen-in-the-blood-to-increased-d",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T22:00:47+00:00",
+      "excerpt": "يرى الباحثون أن قياس الهيموغلوبين، المتاح ضمن الفحوصات القياسية في مختلف أنحاء العالم، يوفر وسيلة سهلة لدراسة المؤشرات المرتبطة بمخاطر الخرف مقارنة بتقنيات تصوير الدماغ المتخصصة.",
+      "image": "https://images.euronews.com/articles/stories/09/91/76/98/696x392_cmsv2_0ca0eb8c-2591-5309-9a4a-c0fa6124a9e7-9917698.jpg"
+    },
+    {
+      "id": "a2405fc3c000e8",
+      "title": "وفاة الممثل باتريك ستيوارت نجم \"ستار تريك\" و\"إكس مين\" عن عمر 86 عاما",
+      "url": "https://arabic.euronews.com/2026/10/29/patrick-stewart-star-of-star-trek-and-x-men-dies-aged-86",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-29T20:09:44+00:00",
+      "excerpt": "توفي الممثل البالغ من العمر 86 عاما في لوس أنجلِس يوم الأربعاء، بعد \"رحلة قصيرة ومؤثرة\" مع مرض ألزهايمر.",
+      "image": "https://images.euronews.com/articles/stories/09/97/26/10/696x392_cmsv2_c0b0af00-63bf-5bf3-ab74-01fe822a8bd2-9972610.jpg"
+    },
+    {
+      "id": "2ad26faf80dca6",
+      "title": "هل أثّر \"غروك\" على قرارات ترامب العسكرية؟.. مشرّعان يطالبان بتوضيحات حول استخدامه الذكاء الاصطناعي",
+      "url": "https://arabic.euronews.com/2026/10/29/ai-chatbots-grok-presidential-records-military-decisions-congress-donald-trump",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T20:00:05+00:00",
+      "excerpt": "حذر المشرعان من المخاطر الكامنة خلف اعتماد الرئيس المفترض على برنامج دردشة تديره جهة خاصة في قضايا السياسة الخارجية، مؤكدين أن المخرجات التي يولدها الذكاء الاصطناعي قد تكون غير دقيقة أو خاضعة للتلاعب.",
+      "image": "https://images.euronews.com/articles/stories/09/97/25/43/696x392_cmsv2_669fd14d-3bb3-5c86-b5db-81d5096c4e12-9972543.jpg"
+    },
+    {
+      "id": "dd56398b9ac29f",
+      "title": "بعد تسلمه من لبنان.. دمشق تفرج عن \"عماد جمعة\" مفجر معارك عرسال والقيادي بتنظيم الدولة",
+      "url": "https://arabic.euronews.com/2026/10/29/imad-jomaa-islamic-state-arsal-battles-roumieh-prison-al-qusayr-fajr-al-islam-brigade",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T19:30:38+00:00",
+      "excerpt": "كان الجيش اللبناني قد أوقف \"جمعة\" في آب/أغسطس 2014 عند حاجز في جرود عرسال، ما أشعل اشتباكات عنيفة في المنطقة.",
+      "image": "https://images.euronews.com/articles/stories/09/97/24/49/696x392_cmsv2_55393bff-b00b-5a0f-97d8-5c1bc66b6589-9972449.jpg"
+    },
+    {
+      "id": "ac381d48381246",
+      "title": "تصعيد إسرائيلي في الضفة الغربية.. اعتقالات وهدم منازل وحصار يهدد آلاف الفلسطينيين",
+      "url": "https://arabic.euronews.com/2026/10/29/israeli-escalation-in-the-west-bank-arrests-home-demolitions-and-a-blockade-threatening",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T19:00:22+00:00",
+      "excerpt": "أظهرت بيانات صادرة عن بلدية الخليل ولجنة المتابعة والمساندة أن نحو 780 عائلة، تضم قرابة خمسة آلاف فلسطيني، تضررت من الإجراءات العسكرية، بين مهجرين قسراً من منازلهم وآخرين يعيشون تحت الحصار.",
+      "image": "https://images.euronews.com/articles/stories/09/97/22/46/696x392_cmsv2_2d199461-d0be-5b67-adb7-6224c3eb931e-9972246.jpg"
+    },
+    {
+      "id": "8d58a93ccf81ac",
+      "title": "الانتخابات الإسرائيلية بعد فرز جميع الأصوات: 53 مقعداً لمعسكر نتنياهو و48 للمعارضة و19 للأحزاب العربية",
+      "url": "https://arabic.euronews.com/2026/10/29/israeli-elections-after-all-votes-counted-53-seats-for-netanyahus-bloc-48-for-the-oppos",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T18:30:25+00:00",
+      "excerpt": "أخفق معسكرا رئيس الوزراء بنيامين نتنياهو ومعارضيه في حسم الأغلبية البرلمانية، مع تحقيق الأحزاب العربية مكاسب غير مسبوقة تمنحها دوراً محورياً في تحديد ملامح الحكومة المقبلة، وتفتح الباب أمام سيناريوهات متعددة.",
+      "image": "https://images.euronews.com/articles/stories/09/97/25/42/696x392_cmsv2_4cc02705-db85-5d08-b67e-54c851671f7e-9972542.jpg"
+    },
+    {
+      "id": "c0e7a120c0c37e",
+      "title": "الاتحاد الأوروبي يعتزم ضخ 42.6 مليون برميل من النفط وسط مخاوف من \"شتاء صعب\"",
+      "url": "https://arabic.euronews.com/2026/10/29/europe-energy-crisis-oil-prices-gas-winter-supply-diesel",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T18:00:28+00:00",
+      "excerpt": "مع ارتفاع أسعار النفط والغاز وتصاعد القلق من تداعيات أزمة الطاقة على الأوروبيين خلال الشتاء، أعلن الاتحاد الأوروبي عزمه ضخ 42.6 مليون برميل من احتياطاته النفطية الاستراتيجية في الأسواق.",
+      "image": "https://images.euronews.com/articles/stories/09/97/25/15/696x392_cmsv2_5fc3ebc9-f7b6-513e-80a1-e8a4cefbea17-9972515.jpg"
+    },
+    {
+      "id": "bf524f62f116c0",
+      "title": "وسط رفض القاهرة الاتفاق التركي الليبي.. أنقرة تجدد عرض ترسيم الحدود البحرية مع مصر",
+      "url": "https://arabic.euronews.com/2026/10/29/amid-cairos-rejection-of-the-turkish-libyan-agreement-ankara-renews-its-offer-to-demarca",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T17:00:25+00:00",
+      "excerpt": "لا يقتصر التباين التركي اليوناني في شرق المتوسط على ترسيم الحدود البحرية، بل يمتد إلى مشروعات الطاقة والربط الكهربائي.",
+      "image": "https://images.euronews.com/articles/stories/09/97/21/20/696x392_cmsv2_fb397caa-f821-5e65-9628-53ca8fb24987-9972120.jpg"
+    },
+    {
+      "id": "c0676b288dad1d",
+      "title": "عون يستقبل وزيرة التعاون الاقتصادي الألمانية: تأكيد على الحلول الدبلوماسية وأهمية دعم الجيش",
+      "url": "https://arabic.euronews.com/2026/10/29/lebanon-israel-germany-diplomacy-negotiations-hezbollah-unifil",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T16:00:07+00:00",
+      "excerpt": "جدّد الرئيس اللبناني جوزاف عون تمسّك بلاده بالحلول الدبلوماسية، مؤكداً أن المفاوضات مع إسرائيل لم تحقق التقدم المطلوب، فيما أعلنت ألمانيا مواصلة دعمها للبنان وجيشه ومسار الإصلاحات.",
+      "image": "https://images.euronews.com/articles/stories/09/97/21/07/696x392_cmsv2_3028bf80-5bcc-5840-b5ff-7130f3af8339-9972107.jpg"
+    },
+    {
+      "id": "e1dfe4c7dfa3f7",
+      "title": "معرض في الفاتيكان يوثق قرناً من سيارات \"الباباموبيل\" لشركة مرسيدس-بنز",
+      "url": "https://arabic.euronews.com/video/2026/10/29/vatican-century-of-mercedes-benz-popemobiles-goes-on-display",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T15:41:39+00:00",
+      "excerpt": "من سيارات الليموزين المبطنة بالحرير إلى المركبات المزودة بزجاج مضاد للرصاص، تعرض متاحف الفاتيكان ثماني سيارات بابوية قديمة، لتسليط الضوء على تطوّر وسائل نقل البابا خلال ما يقرب من قرن.",
+      "image": "https://images.euronews.com/articles/stories/09/97/22/95/696x392_cmsv2_369f1415-608a-54d3-9ccf-fd8202f876aa-9972295.jpg"
+    },
+    {
+      "id": "2ae36c53911471",
+      "title": "القضاء العراقي يحكم بالمؤبد على ثلاثة فرنسيين لإدانتهم بالانتماء إلى \"داعش\"",
+      "url": "https://arabic.euronews.com/2026/10/29/iraq-life-sentences-three-french-isis-death-penalty-fears",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T15:30:48+00:00",
+      "excerpt": "انتقدت منظمات حقوقية مرارا سرعة المحاكمات في القضايا المرتبطة بالإرهاب في العراق، محذرة من عدم احترام الضمانات الإجرائية اللازمة لضمان محاكمات عادلة.",
+      "image": "https://images.euronews.com/articles/stories/09/97/21/25/696x392_cmsv2_28fea1eb-50c4-5fab-83e9-557553b3c121-9972125.jpg"
+    },
+    {
+      "id": "c026a2b664f465",
+      "title": "ميسترال تطرح أحدث نموذج ذكاء اصطناعي للتحميل يمنح الشركات سيطرة على أمنها السيبراني",
+      "url": "https://arabic.euronews.com/2026/10/29/mistral-has-released-its-latest-ai-model-for-download-allowing-companies-greater-control-o",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-29T14:46:34+00:00",
+      "excerpt": "تقول شركة الذكاء الاصطناعي الفرنسية إن نموذجها \"Large 4\" يوفر قدرات متقدمة في **البرمجة** و**الدفاع السيبراني**، ويمكن تشغيله على حواسيب وخوادم المؤسسة نفسها.",
+      "image": "https://images.euronews.com/articles/stories/09/90/51/59/696x392_cmsv2_64fc6db3-f040-5e86-a8b0-bbbd933c6a22-9905159.jpg"
+    },
+    {
+      "id": "e9462c90f3e9d4",
+      "title": "14 قتيلاً في هجوم روسي على محطة قطارات بأوكرانيا.. وزيلينسكي يطالب بتشديد العقوبات على موسكو",
+      "url": "https://arabic.euronews.com/2026/10/29/ukraine-russia-dnipro-drone-attack-railway-station-zelensky",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T14:30:07+00:00",
+      "excerpt": "قُتل 14 شخصاً على الأقل وأُصيب 13 آخرون، الخميس، في هجوم بمسيّرة روسية استهدف رصيفاً بمحطة قطارات في مدينة دنيبرو شرقي أوكرانيا، ما دفع الرئيس فولوديمير زيلينسكي إلى المطالبة بتشديد العقوبات على موسكو.",
+      "image": "https://images.euronews.com/articles/stories/09/97/19/36/696x392_cmsv2_3f2b4513-cfe1-59c9-b2fe-516a1f2f7bbe-9971936.jpg"
+    },
+    {
+      "id": "a53e23fa2176fe",
+      "title": "تجربة أداء واحدة فقط: أي ممثلين اقتربوا من تجسيد جيمس بوند؟",
+      "url": "https://arabic.euronews.com/2026/10/29/you-only-audition-once-which-actors-came-close-to-being-cast-as-james-bond",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-29T14:19:56+00:00",
+      "excerpt": "تُعد شخصية جيمس بوند من أكثر الأدوار المطلوبة في هوليوود، وقد اقترب بعض الممثلين المشهورين من تجسيد 007. وبينما ننتظر هوية الممثل السابع الذي سينال الدور، نستعرض الشخصيات التي لم ترَ النور.",
+      "image": "https://images.euronews.com/articles/stories/09/97/18/59/696x392_cmsv2_437566d3-97b6-5f0b-99fe-4fe51b5dab8c-9971859.jpg"
+    },
+    {
+      "id": "b6387910d55fd6",
+      "title": "ألبانيا: نواب المعارضة يعطلون البرلمان بقنابل دخانية",
+      "url": "https://arabic.euronews.com/video/2026/10/29/albania-opposition-mps-disrupt-parliament-using-smoke-flares",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T14:10:09+00:00",
+      "excerpt": "عطّل **نواب المعارضة** جلسة برلمانية في ألبانيا، ملوّحين بقنابل دخانية ومعرضين صور متظاهرين مصابين. واتهموا الشرطة باستخدام العنف ضد محتجين يطالبون باستقالة **رئيس الوزراء إيدي راما**.",
+      "image": "https://images.euronews.com/articles/stories/09/97/20/55/696x392_cmsv2_44e7a797-088a-5d94-b3ed-b20e728b6beb-9972055.jpg"
+    },
+    {
+      "id": "da08f1e8270c1b",
+      "title": "سيناريوهات قانونية متعددة.. هل تُلغى الانتخابات الإسرائيلية بعد الاتهامات بتلقي رشاوى وتمويل أجنبي؟",
+      "url": "https://arabic.euronews.com/2026/10/29/israeli-elections-foreign-funding-election-bribery-knesset-canceling-results-election",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T14:00:21+00:00",
+      "excerpt": "كشفت صحيفة \"جيروزاليم بوست\" العبرية عن إمكانية إلغاء نتائج الانتخابات الإسرائيلية على مستوى البلاد، في حال ثبوت مخالفات قانونية أثّرت في نتائج التصويت، على خلفية شبهات تتعلق بالتمويل الأجنبي والرشوة الانتخابية.",
+      "image": "https://images.euronews.com/articles/stories/09/97/18/78/696x392_cmsv2_e65c4299-09af-54f0-871c-ba0bb8fdb97f-9971878.jpg"
+    },
+    {
+      "id": "8c57584d7216c2",
+      "title": "روائع لوحات ريمبرانت تتحول إلى وشوم فنية في هولندا",
+      "url": "https://arabic.euronews.com/video/2026/10/29/rembrandts-masterpieces-become-tattoos-in-the-netherlands",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T13:38:37+00:00",
+      "excerpt": "يمكن لزوار متحف بيت رمبرانت في أمستردام في هولندا مرة أخرى أن يأخذوا معهم قطعة من فن هذا الرسام الهولندي، على شكل وشم دائم على بشرتهم.",
+      "image": "https://images.euronews.com/articles/stories/09/97/19/40/696x392_cmsv2_aa383286-b57e-5463-ab11-d5f811617fbb-9971940.jpg"
+    },
+    {
+      "id": "4763e704e13e0f",
+      "title": "إقالة مفاجئة في البنتاغون.. اتهامات بتسريب أسرار الحرب على إيران تلاحق كبير المخططين العسكريين",
+      "url": "https://arabic.euronews.com/2026/10/29/pete-hegseth-dismissal-pentagon-iran-trump",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T13:00:17+00:00",
+      "excerpt": "تتقاطع هذه التطورات في أروقة البنتاغون مع تسريبات تؤكد بحث إدارة الرئيس دونالد ترامب إمكانية شنّ موجة جديدة من الضربات الجوية المكثفة ضد إيران فور انتهاء الاستحقاق الانتخابي، مما يضع خطوة الإقالة تحت مجهر الترتيبات الميدانية للمواجهة المحتملة.",
+      "image": "https://images.euronews.com/articles/stories/09/97/18/60/696x392_cmsv2_7d7a7c54-4302-5c64-88fe-dffe37bdfc54-9971860.jpg"
+    },
+    {
+      "id": "42ccaf33ec73aa",
+      "title": "الولايات المتحدة والصين: العالم ينقسم إلى تكتلات ذكاء اصطناعي فأين موقع أوروبا؟",
+      "url": "https://arabic.euronews.com/2026/10/29/us-vs-china-as-the-world-splits-into-ai-blocs-where-does-europe-stand",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-29T12:53:27+00:00",
+      "excerpt": "بينما تبني الولايات المتحدة والصين تكتلات متنافسة في مجال الذكاء الاصطناعي، تسعى أوروبا لتقليل اعتمادها عليهما، لكنها رغم طموحها لتصبح قوة تكنولوجية ما زالت تفتقر إلى الرقائق والبنية التحتية والنماذج المحلية اللازمة للمنافسة على قدم المساواة.",
+      "image": "https://images.euronews.com/articles/stories/09/91/94/73/696x392_cmsv2_0e0daf1a-cd2e-5a94-a470-5de3b42a6298-9919473.jpg"
+    },
+    {
+      "id": "ea5978605b3a2c",
+      "title": "تصعيد عسكري وأزمة إنسانية في تعز.. القوات الحكومية تتهم الحوثيين باستخدام قذائف سامة",
+      "url": "https://arabic.euronews.com/2026/10/29/yemen-government-forces-saudi-arabia-houthis-accusations",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T12:30:01+00:00",
+      "excerpt": "تأتي هذه التطورات في سياق تصعيد عسكري واسع، حيث أطلقت القوات الحكومية اليمنية المدعومة من التحالف بقيادة السعودية، في الخامس من أكتوبر/تشرين الأول، عملية \"فجر اليمن\" بهدف استعادة مناطق خاضعة لسيطرة الحوثيين، وفي مقدمتها العاصمة صنعاء، عقب تصعيد للجماعة بدأ في يوليو/تموز",
+      "image": "https://images.euronews.com/articles/stories/09/97/17/78/696x392_cmsv2_f81ca931-5803-5aa3-8971-85aafdde4ea4-9971778.jpg"
+    },
+    {
+      "id": "2dfdfc479f43cf",
+      "title": "طائرة جديدة من \"جيت تو\" بدرجة رجال أعمال فقط للرحلات العارضة",
+      "url": "https://arabic.euronews.com/2026/10/29/nothing-beats-a-jet2-charter-low-cost-airline-unveils-business-class-only-plane",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-29T12:16:51+00:00",
+      "excerpt": "تضم طائرة \"بوينغ 737-800NG\" 76 مقعدا في درجة الأعمال، وتتخذ من مطار \"ليفربول جون لينون\" قاعدة لانطلاق رحلاتها.",
+      "image": "https://images.euronews.com/articles/stories/09/97/18/10/696x392_cmsv2_06e50e0d-067d-5b4c-b867-e3978f05c59c-9971810.jpg"
+    },
+    {
+      "id": "0a7b60d2b5e2d2",
+      "title": "هرمز يعود إلى الواجهة.. انفجارات تطال 3 ناقلات وتحذيرات أمريكية من تجدد الحرب",
+      "url": "https://arabic.euronews.com/2026/10/29/hormuz-back-in-focus-tanker-explosions-us-warnings-war-resumption",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T12:00:20+00:00",
+      "excerpt": "يمثل مضيق هرمز إحدى أبرز نقاط الضغط في المواجهة، نظرًا إلى أهميته في نقل النفط والغاز من الخليج إلى الأسواق العالمية. وأي اضطراب طويل في حركة الملاحة عبره يمكن أن يرفع تكاليف الشحن والتأمين، ويزيد الضغوط على أسواق الطاقة.",
+      "image": "https://images.euronews.com/articles/stories/09/97/17/28/696x392_cmsv2_9fda1dd0-cafd-5444-8ee8-363341a3ef5f-9971728.jpg"
+    },
+    {
+      "id": "1145627",
       "title": "أوكرانيا - الأمم المتحدة تدين هجوما على قطار في دنيبرو أسفر عن مقتل مدنيين",
       "url": "https://news.un.org/ar/story/2026/10/1145627",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-29T12:00:00+00:00"
+      "section": "world",
+      "published_at": "2026-10-29T12:00:00+00:00",
+      "excerpt": "أدانت مساعدة المتحدث باسم الأمين العام للأمم المتحدة شيرين ياسين، الهجوم الجوي المميت الذي شنته طائرة مسيرة صباح اليوم الخميس على قطار في محطة للسكك الحديدية بمدينة دنيبرو في أوكرانيا والذي أسفر عن مقتل وإصابة مدنيين.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/10/27-10-2026-UNHCR-Ukraine-01.jpg/image560x340cropped.jpg"
     },
     {
+      "id": "1145625",
       "title": "رئيس محكمة العدل الدولية: عدد قياسي من القضايا الخلافية قيد النظر أمام المحكمة",
       "url": "https://news.un.org/ar/story/2026/10/1145625",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-29T12:00:00+00:00"
+      "section": "world",
+      "published_at": "2026-10-29T12:00:00+00:00",
+      "excerpt": "قال رئيس محكمة العدل الدولية إن عدد القضايا المدرجة في جدول أعمال المحكمة حتى آب/أغسطس 2025 كان 25 قضية، مشيرا إلى أن عدد القضايا ظل عند مستواه القياسي المرتفع خلال العام، حيث لا تزال هناك 24 قضية خلافية قيد النظر حاليا.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/assets/2011/11/13871/image560x340cropped.jpg"
     },
     {
+      "id": "1145623",
       "title": "أفغانستان – إنتاج الأفيون يقفز بنسبة 400% في 2026 رغم الحظر",
       "url": "https://news.un.org/ar/story/2026/10/1145623",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-29T12:00:00+00:00"
+      "section": "world",
+      "published_at": "2026-10-29T12:00:00+00:00",
+      "excerpt": "شهدت زراعة خشخاش الأفيون وإنتاجه ارتفاعا حادا في أفغانستان، إذ زادت المساحات المزروعة بنسبة 330 في المئة، فيما ارتفع الإنتاج بنسبة 400 في المئة على أساس سنوي، وفقا لمسح أجراه مكتب الأمم المتحدة المعني بالمخدرات والجريمة.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/assets/2015/05/21787/image560x340cropped.jpg"
     },
     {
+      "id": "1145624",
       "title": "كيف يتأثر الأمن البحري بالذكاء الاصطناعي؟ مجلس الأمن يبحث الفرص والتحديات",
       "url": "https://news.un.org/ar/story/2026/10/1145624",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-29T12:00:00+00:00"
+      "section": "world",
+      "published_at": "2026-10-29T12:00:00+00:00",
+      "excerpt": "الطائرات المسيرة والسفن ذاتية القيادة والهجمات السيبرانية، تغير التهديدات الماثلة على الأمن البحري وأدوات مواجهتها. من هذا المنطلق وبرئاسة رئيس وزراء اليونان - الذي تتولى بلاده الرئاسة الدورية لمجلس الأمن - يعقد المجلس اجتماعا رفيع المستوى حول الأمن البحري المرتبط بالتط",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/29-10-2026_Adobe-_Shipping-lane.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "5fb6fe27564cf1",
+      "title": "سيول جارفة تضرب محافظات سوريا الشرقية.. وفاة شخص وإجلاء مئات العائلات وتعطّل جسور وطرق حيوية",
+      "url": "https://arabic.euronews.com/2026/10/29/syria-floods-displaced-persons-warnings-al-hasakah-raqqa-rescue",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T11:30:39+00:00",
+      "excerpt": "مياه الأمطار الغزيرة غمرت الخيام وأجبرت النازحين على الإخلاء الفوري، حيث سُجل نزوح 200 عائلة من مخيم \"سهلة البنات\"، و100 عائلة من مخيم \"اليوناني\"، بالإضافة إلى 75 عائلة من مخيم \"المقص\".",
+      "image": "https://images.euronews.com/articles/stories/09/97/16/65/696x392_cmsv2_1efaf3fb-9b90-5efb-ad63-5e65e697a120-9971665.jpg"
+    },
+    {
+      "id": "8e6ed07e4d32a5",
+      "title": "إسرائيل: محتجون يطالبون بحكومة وحدة عربية يهودية بعد الانتخابات",
+      "url": "https://arabic.euronews.com/video/2026/10/29/israel-protesters-demand-arab-jewish-unity-government-after-election",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T11:22:36+00:00",
+      "excerpt": "خرج محتجون إلى شوارع تل أبيب مطالبين بحكومة تجمع الأحزاب اليهودية والعربية. ومع عدم إفراز انتخابات إسرائيل فائزا واضحا، تدخلت الشرطة لتفريق ناشطين كانوا يعطلون حركة المرور.",
+      "image": "https://images.euronews.com/articles/stories/09/97/16/91/696x392_cmsv2_8408114b-a5ae-58cd-a720-3e9658f344b0-9971691.jpg"
+    },
+    {
+      "id": "b4f64d80f9c7ad",
+      "title": "آيزنكوت يتهم نتنياهو بمحاولة تأخير نتائج الانتخابات.. وفرز 96% من الأصوات دون تغيير في توزيع المقاعد",
+      "url": "https://arabic.euronews.com/2026/10/29/ben-gvir-asks-arrest-arab-party-leaders",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T11:00:58+00:00",
+      "excerpt": "رأت صحيفة فايننشال تايمز أن ارتفاع نسبة المشاركة بين المواطنين الفلسطينيين في إسرائيل، الذين يشكلون نحو خُمس السكان، أسهم في تحقيق الأحزاب العربية أفضل نتائجها الانتخابية.",
+      "image": "https://images.euronews.com/articles/stories/09/97/16/36/696x392_cmsv2_25e97fb9-d09d-50f8-b959-5d57882a30d8-9971636.jpg"
+    },
+    {
+      "id": "7330cb46b65ccd",
+      "title": "إسبانيا: رافعات تزيل حطام القطار المتشابك والمنقذون يعملون طوال الليل",
+      "url": "https://arabic.euronews.com/video/2026/10/29/spain-cranes-clear-twisted-train-wreckage-as-rescuers-work-through-the-night",
+      "source": "يورونيوز العربية",
+      "section": "world",
+      "published_at": "2026-10-29T10:33:20+00:00",
+      "excerpt": "عملت فرق الإنقاذ طوال الليل في موقع تصادم قطار أودى بحياة 68 شخصا قرب مدينة توليدو، فيما واصلت الرافعات إزالة الحطام وأقامت السلطات مشرحة مؤقتة لتحديد هويات الضحايا.",
+      "image": "https://images.euronews.com/articles/stories/09/97/15/96/696x392_cmsv2_ae286065-1645-5215-99eb-2bf869db47fc-9971596.jpg"
+    },
+    {
+      "id": "1d7a354dc58457",
+      "title": "في بومبي خزانة امرأة تظهر من جديد بأدوات تجميل ومقتنيات ثمينة",
+      "url": "https://arabic.euronews.com/2026/10/29/in-pompeii-a-womans-wardrobe-has-been-uncovered-containing-beauty-items-and-valuables",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-29T10:07:51+00:00",
+      "excerpt": "أحجار كريمة وعملات وأدوات ومنتجات تجميل؛ خزانة في منزل \"كورنليوس ماكسيموس\" تكشف تفاصيل حياة نساء بومبي قبل ثوران فيزوف عام 79 بعد الميلاد.",
+      "image": "https://images.euronews.com/articles/stories/09/97/15/66/696x392_cmsv2_f1f3189d-770a-58b9-bf44-de8591e3a549-9971566.jpg"
+    },
+    {
+      "id": "0ae1aa7167719e",
+      "title": "الطبيب يراك الآن: نواه وايل يتوج أكثر الرجال جاذبية في \"بيبول\" 2026",
+      "url": "https://arabic.euronews.com/2026/10/29/the-doctor-will-see-you-now-noah-wyle-crowned-people-magazines-2026-sexiest-man-alive",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-29T08:32:13+00:00",
+      "excerpt": "الممثل البالغ من العمر 55 عاما، المعروف بأدواره في \"ER\" و\"The Pitt\"، اختير رسميا من مجلة \"بيبول\" كأكثر الرجال جاذبية لعام 2026.",
+      "image": "https://images.euronews.com/articles/stories/09/97/14/75/696x392_cmsv2_4e54d694-2c5b-50d2-a6e1-7e6602429f60-9971475.jpg"
+    },
+    {
+      "id": "e31547139006d0",
+      "title": "فيلم الأسبوع في قسم الثقافة في يورونيوز: \"ويكر\" - ٥٠ درجة من القش؟",
+      "url": "https://arabic.euronews.com/2026/10/29/euronews-cultures-film-of-the-week-wicker-50-shades-of-hay",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-29T07:28:04+00:00",
+      "excerpt": "هذه الحكاية الخيالية، التي تتناول فكرة **التحرر** بأسلوب طريف، تقدم في النهاية قصة رقيقة وليست **مغامرة جنسية فاضحة** كما أوحت الإعلانات المنتشرة على الإنترنت.",
+      "image": "https://images.euronews.com/articles/stories/09/97/02/50/696x392_cmsv2_c37498b3-d177-5ac6-957e-a68d3a097f6c-9970250.jpg"
+    },
+    {
+      "id": "094c4a587b2323",
+      "title": "رحلات احتفالية: أفضل رحلات نهرية لأسواق عيد الميلاد الأوروبية عام 2026",
+      "url": "https://arabic.euronews.com/2026/10/29/festive-voyages-europes-top-christmas-market-river-cruises-to-book-in-2026",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-29T07:21:20+00:00",
+      "excerpt": "يمكنك الاختيار بين رحلة نهرية على نهر الماين أو الدانوب أو الراين، والاستمتاع بالنبيذ الساخن والكستناء المشوية طوال الطريق.",
+      "image": "https://images.euronews.com/articles/stories/09/96/47/22/696x392_cmsv2_0ec4f7de-d0af-5590-8b8a-80292fdb15ed-9964722.jpg"
+    },
+    {
+      "id": "3462b4fd84f52d",
+      "title": "تأخر الرحلات الجوية؟ أفضل وأسوأ شركات الطيران الأوروبية للمطالبة بالتعويض",
+      "url": "https://arabic.euronews.com/2026/10/29/flight-delay-these-are-the-best-and-worst-european-airlines-for-making-a-compensation-clai",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-29T06:58:26+00:00",
+      "excerpt": "صُنِّفت شركات الطيران \"TAP Air Portugal\" و\"LOT Polish Airlines\" و\"Wizz Air\" كأكثر شركات الطيران صدقا في أوروبا، وفقا لبيانات \"AirAdvisor\".",
+      "image": "https://images.euronews.com/articles/stories/09/97/07/37/696x392_cmsv2_8e93f7ad-b023-5f9c-af6c-edd8548e2f29-9970737.jpg"
+    },
+    {
+      "id": "8796299154ab2b",
+      "title": "إنه مجرد برد وصمت: راغنار يوناسون ويرسا سيغورداردوتير يتحدثان عن صعود أدب \"نوار\" الآيسلندي",
+      "url": "https://arabic.euronews.com/2026/10/29/its-just-cold-and-silent-ragnar-jonasson-and-yrsa-sigurdardottir-discuss-the-rise-of-icela",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-29T06:16:52+00:00",
+      "excerpt": "مع استمرار هيمنة **أدب الجريمة** على قوائم الكتب في **إيسلندا**، اجتمع اثنان من أكثر كتّابها مبيعا، \"راغنار يوناسون\" و\"يرسا سيغورداردوتير\"، مع قسم الثقافة في \"يورونيوز\" لمناقشة انجذاب هذا البلد الآمن إلى عوالم أدبية قاتمة.",
+      "image": "https://images.euronews.com/articles/stories/09/91/30/90/696x392_cmsv2_97e19c90-e21a-5f29-87ed-c31bd4b409c6-9913090.jpg"
+    },
+    {
+      "id": "3d0b51df840777",
+      "title": "من مغامرات التزلج إلى أضواء الميلاد.. هذه أبرز عشر وجهات أوروبية لقضاء عطلة شتوية استثنائية",
+      "url": "https://arabic.euronews.com/2026/10/29/whats-trending-for-winter-travel-tripadvisor-reveals-its-top-european-destinations-and-exp",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-29T06:00:06+00:00",
+      "excerpt": "من مغامرات التزلج إلى مشاهدة الشفق القطبي والاستمتاع بالأجواء الاحتفالية لأسواق عيد الميلاد، ما هي أبرز الوجهات الأوروبية والتجارب الأكثر رواجاً هذا الشتاء؟",
+      "image": "https://images.euronews.com/articles/stories/09/97/04/92/696x392_cmsv2_b35aef6c-8a01-5551-bc3c-074e7b58d082-9970492.jpg"
+    },
+    {
+      "id": "53130c9757eb74",
+      "title": "الاتحاد الأوروبي يقر 319 مليون يورو لدعم مصنع نمساوي من نوعه لأشباه موصلات الجيل المقبل",
+      "url": "https://arabic.euronews.com/2026/10/28/the-eu-has-approved-319-million-in-state-aid-for-an-austrian-first-of-a-kind-next-generati",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-28T16:08:08+00:00",
+      "excerpt": "المفوضية الأوروبية توافق على منحة دعم حكومية من النمسا لشركة \"إنفينيون تكنولوجيز\" لتحديث مصنعها لأشباه الموصلات في فيلاك بجنوب النمسا وتحويله لأول مصنع عالمي للإنتاج الضخم للجيل الجديد.",
+      "image": "https://images.euronews.com/articles/stories/09/97/08/30/696x392_cmsv2_a3cca55c-2276-5dae-a953-b5b14e254272-9970830.jpg"
+    },
+    {
+      "id": "f586ce334e14c9",
+      "title": "أقمار صناعية بحجم علب المشروبات: تحدي فضائي لشباب المهندسين في أوزبكستان",
+      "url": "https://arabic.euronews.com/2026/10/28/satellites-the-size-of-drink-cans-young-engineers-take-on-a-space-challenge-in-uzbekistan",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-28T14:34:20+00:00",
+      "excerpt": "من الحسابات في قاعات الدراسة إلى إطلاق الصواريخ، اختبرت فرق من 15 دولة ابتكاراتها في ظروف طيران حقيقية، مزودة بحساسات وأنظمة اتصال لجمع البيانات قبل هبوطها بالمظلات.",
+      "image": "https://images.euronews.com/articles/stories/09/96/46/56/696x392_cmsv2_db991fe1-dcb0-5fb1-aeaa-9042e6a0f6d4-9964656.jpg"
+    },
+    {
+      "id": "ece8591c45c565",
+      "title": "الأوروبيون الأكثر حذرا تجاه تقنيات السفر الرقمية: استطلاع إياتا",
+      "url": "https://arabic.euronews.com/2026/10/28/biometrics-ai-and-digital-passports-europeans-are-the-most-cautious-about-travel-technolog",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-28T13:28:26+00:00",
+      "excerpt": "أظهر استطلاع الركاب العالمي لعام 2026 لـ\"إياتا\" أن المسافرين الأوروبيين الأقل حماسة لاستخدام جواز سفر رقمي، وأن مخاوف الخصوصية الرقمية ومتطلبات الدخول باتت تشكل طريقة سفر الناس حول العالم.",
+      "image": "https://images.euronews.com/articles/stories/09/97/04/90/696x392_cmsv2_95c7ceb8-a0fa-579b-857b-2c5d3f0cf07c-9970490.jpg"
+    },
+    {
+      "id": "aa80fe2e2ddf13",
+      "title": "المخرج الإيراني الفائز بسعفة كان الذهبية جعفر بناهي يواجه حكما بالسجن ٥ سنوات بحكم جديد",
+      "url": "https://arabic.euronews.com/2026/10/28/iranian-director-jafar-panahi-winner-of-the-palme-dor-is-facing-a-five-year-prison-sentenc",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-28T12:55:15+00:00",
+      "excerpt": "يأتي الحكم الأخير بعد إدانة في ديسمبر 2025 بتهمة \"أنشطة دعائية ضد النظام\"، وحُكم عليه بالسجن لعام واحد ومنع من السفر لمدة عامين.",
+      "image": "https://images.euronews.com/articles/stories/09/97/04/75/696x392_cmsv2_2593ff2a-2b4d-5ee3-b8fb-b41bbb77f171-9970475.jpg"
+    },
+    {
+      "id": "29a94a4eb36eb2",
+      "title": "تسجيل الأمتعة مع رايان إير: الشركة تعلن مهلة أبكر لتسليم الحقائب",
+      "url": "https://arabic.euronews.com/2026/10/28/checking-in-luggage-with-ryanair-the-airline-has-announced-an-earlier-deadline-for-baggage",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-28T12:13:49+00:00",
+      "excerpt": "أجرت أكبر شركة طيران في أوروبا هذا التغيير لضمان حصول المسافرين على وقت أطول لاجتياز إجراءات أمن المطار ومراقبة جوازات السفر.",
+      "image": "https://images.euronews.com/articles/stories/09/97/04/21/696x392_cmsv2_1966322b-1a64-5050-9c39-480e7bab0895-9970421.jpg"
+    },
+    {
+      "id": "3b6b24f58979d3",
+      "title": "المكتبة البريطانية تستكشف عالم أغاثا كريستي الغامض فكم تعرف عنها؟",
+      "url": "https://arabic.euronews.com/2026/10/28/the-british-library-is-exploring-the-mysterious-world-of-agatha-christie-but-how-much-do-y",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-28T12:10:29+00:00",
+      "excerpt": "ارتد أفضل سترة تويد لديك ولفّ شاربك، فهناك اختبار شيق ينتظر محبي الألغاز.",
+      "image": "https://images.euronews.com/articles/stories/09/96/02/48/696x392_cmsv2_16445dd5-e0fc-5e21-a2ac-a565c8a06cf3-9960248.jpg"
     },
     {
       "title": "اليمن – أكثر من 281 ألف شخص نزحوا وسط حاجة ملحة للمأوى",
       "url": "https://news.un.org/ar/story/2026/10/1145620",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-28T12:00:00+00:00"
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "id": "1145620",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "فولكر تورك: حقوق الإنسان قوة للتغيير والشعوب تريد عالما أفضل وترفض القسوة",
       "url": "https://news.un.org/ar/story/2026/10/1145621",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-28T12:00:00+00:00"
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "id": "1145621",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "تغير المناخ يشكل حالة طوارئ صحية متفاقمة، في حين تضعف قدرة المحيطات على التصدي له",
       "url": "https://news.un.org/ar/story/2026/10/1145616",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-28T12:00:00+00:00"
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "id": "1145616",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "المدير الجديد لبرنامج الأغذية العالمي يؤكد أن وكالته ستواصل العمل رغم التحديات، والسودان وجهته الأولى",
       "url": "https://news.un.org/ar/story/2026/10/1145619",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-28T12:00:00+00:00"
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "id": "1145619",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "السودان - بعثة تقصي الحقائق تحذر من الوضع في الأبيض وآثار التدخل الخارجي في الصراع",
       "url": "https://news.un.org/ar/story/2026/10/1145617",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-28T12:00:00+00:00"
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "id": "1145617",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "للمرة الـ 34، الجمعية العامة تعتمد قرارا يدعو لإنهاء الحصار الأمريكي على كوبا",
       "url": "https://news.un.org/ar/story/2026/10/1145615",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-28T12:00:00+00:00"
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "id": "1145615",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "الجزائر - الصندوق الأخضر للمناخ يوافق على مشروع رائد لتعزيز العمل المناخي وسبل العيش",
       "url": "https://news.un.org/ar/story/2026/10/1145614",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-28T12:00:00+00:00"
+      "published_at": "2026-10-28T12:00:00+00:00",
+      "id": "1145614",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
+    },
+    {
+      "id": "42985f9a150d5f",
+      "title": "افتتاح مصنع \"ستيلار هب\" للأقمار الصناعية في تورينو من الأكبر في أوروبا",
+      "url": "https://arabic.euronews.com/2026/10/28/space-industries-opens-the-stellar-hub-in-turin-one-of-the-largest-satellite-factories-in",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-28T11:50:18+00:00",
+      "excerpt": "في سيتيمو تورينيزه جرى تدشين **\"Stellar Hub\"**، فضاء صناعي بمساحة 8.000 متر مربع مخصص للإنتاج المتسلسل للأقمار الصناعية حتى وزن 600 كيلوغرام. وتضم الموقع غرفة بيضاء بمساحة 2.000 متر مربع تُعد من الأكبر في أوروبا.",
+      "image": "https://images.euronews.com/articles/stories/09/97/02/84/696x392_cmsv2_34eae329-fa48-5ce1-a78a-22addd1cae7e-9970284.jpg"
+    },
+    {
+      "id": "4b2036927f50ad",
+      "title": "بين \"بلاك فرايداي\" و\"ترافل تيوداي\" كيف تحجز أفضل عروض الفنادق والرحلات في 2026",
+      "url": "https://arabic.euronews.com/2026/10/28/black-friday-or-travel-tuesday-how-to-secure-the-best-deals-on-hotels-and-flights-in-2026",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-28T11:28:37+00:00",
+      "excerpt": "قد لا نحتفل بعيد الشكر في أوروبا، لكن هذا لا يعني أنك لا تستطيع الحصول على عرض عطلة مغرٍ خلال شهر نوفمبر.",
+      "image": "https://images.euronews.com/articles/stories/09/97/02/05/696x392_cmsv2_e8ac72e2-c390-52f7-954a-1e44faa32bdd-9970205.jpg"
+    },
+    {
+      "id": "ad486045fbe089",
+      "title": "وسائل التواصل الاجتماعي أمام القضاء مجددا: ميتا وسناب متهمان بإلحاق الضرر بالمراهقين",
+      "url": "https://arabic.euronews.com/2026/10/28/social-media-on-trial-again-meta-and-snap-face-jury-over-alleged-harm-to-teens",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-28T11:20:12+00:00",
+      "excerpt": "تشكل القضية الأخيرة مؤشرا إلى تصاعد المواجهة القانونية في أنحاء العالم ضد الأضرار المفترضة لوسائل التواصل الاجتماعي على المستخدمين، ولا سيما الأطفال والمراهقين.",
+      "image": "https://images.euronews.com/articles/stories/09/97/02/85/696x392_cmsv2_19a61e4f-2174-5347-af81-4a9f5980a5e3-9970285.jpg"
+    },
+    {
+      "id": "87ba4833527b6a",
+      "title": "نداء إخلاء للسفينة نحو ٢٠٠ راكب في رحلة دائمة عالقون في كمبوديا",
+      "url": "https://arabic.euronews.com/2026/10/28/abandon-ship-around-200-cruise-for-life-passengers-stranded-in-cambodia",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-28T10:32:08+00:00",
+      "excerpt": "أعلنت شركة \"فيلا في ريزيدنسز\" الأميركية تعليق نشاطها بسبب ارتفاع \"استثنائي\" في تكاليف الوقود منذ بداية الحرب في إيران.",
+      "image": "https://images.euronews.com/articles/stories/09/97/02/04/696x392_cmsv2_0fd1d07b-3304-516b-a499-6a2fa62eea6a-9970204.jpg"
+    },
+    {
+      "id": "89ac1101060a16",
+      "title": "تيرانوصور ركس صغير ومخيف: هيكل ديناصور نادر يباع ب42 مليون يورو في مزاد",
+      "url": "https://arabic.euronews.com/2026/10/28/small-and-very-scary-rare-miniature-t-rex-dinosaur-skeleton-fetches-42-million-at-auction",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-28T10:16:38+00:00",
+      "excerpt": "أصبح ديناصور يشبه نسخة مصغرة من \"تي ريكس\" من أغلى الحفريات في العالم، بعد بيعه في مزاد \"سوذبيز\" بنيويورك مقابل 42,6 مليون يورو.",
+      "image": "https://images.euronews.com/articles/stories/09/97/01/70/696x392_cmsv2_15fa2ebd-475b-5b21-a295-326f5947430d-9970170.jpg"
+    },
+    {
+      "id": "395e30732dd32b",
+      "title": "هل رشح البيت الأبيض مغنية الراب نيكي ميناج لتكون المتحدثة باسم ترامب؟",
+      "url": "https://arabic.euronews.com/2026/10/28/has-the-white-house-tipped-rapper-nicki-minaj-as-donald-trumps-new-press-secretary",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-28T10:11:06+00:00",
+      "excerpt": "ظهرت مغنية الراب نيكي ميناج إلى جانب ترامب في تجمع أخير بميشيغان، حيث وصف مؤخرةها بأنها \"جميلة\" و\"لا يمكن تجاهلها\"، وسط حديث عن احتمال حصولها على منصب في البيت الأبيض للمغنية المؤيدة لحركة \"MAGA\".",
+      "image": "https://images.euronews.com/articles/stories/09/97/01/44/696x392_cmsv2_baa3a239-71c0-5fa3-a924-bef1b3f5127c-9970144.jpg"
+    },
+    {
+      "id": "1879450964eca9",
+      "title": "\"نادي الشعراء الموتى\" يحقق نفاد التذاكر لثمانية أشهر متتالية في مسرح ترينداد",
+      "url": "https://arabic.euronews.com/2026/10/28/dead-poets-society-sells-out-for-eight-consecutive-months-at-the-trindade-theatre",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-28T09:00:10+00:00",
+      "excerpt": "النسخة المسرحية للفيلم الذي أسر قلوب عدة أجيال مكتملة العدد في مسرح \"تياترو دا ترينداد\" حتى نهاية العام، ثم تجوب لاحقا مختلف أنحاء البلاد.",
+      "image": "https://images.euronews.com/articles/stories/09/95/84/11/696x392_cmsv2_56e56e4a-bbd7-5fd6-acd5-034e5422089c-9958411.jpg"
+    },
+    {
+      "id": "8d107e6cce39e4",
+      "title": "حماية الهوية من التحول الطبقي.. نموذج فندقي جديد يوجه عائدات السياحة لإنعاش المجتمعات المحلية",
+      "url": "https://arabic.euronews.com/2026/10/28/the-agreement-that-aims-to-return-the-wealth-of-tourism-to-the-residents",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-28T08:00:12+00:00",
+      "excerpt": "تسعى حركة ناشئة في مالطا إلى تغيير قواعد السياحة العالمية عبر إشراك الفنادق في تنمية المجتمعات المضيفة، بهدف رد جزء من الثروة التي يخلقها الزوار للسكان المحليين والحد من أزمة التحول الطبقي.",
+      "image": "https://images.euronews.com/articles/stories/09/96/51/24/696x392_cmsv2_9641bb09-99b5-5a72-8a30-ab45059d4fe7-9965124.jpg"
+    },
+    {
+      "id": "4846aec2f1d6a0",
+      "title": "المسافرون يتجهون لخيارات أكثر استدامة لتحسين تجارب الرحلات حسب دراسة جديدة",
+      "url": "https://arabic.euronews.com/2026/10/28/travellers-are-making-more-sustainable-choices-to-enhance-journeys-new-study-finds",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-28T07:13:34+00:00",
+      "excerpt": "يلعب مفهوم الاستدامة دورا متزايدا في اختيار طرق السفر ووجهاته، إذ تكشف دراسة جديدة أن استكشاف الطبيعة والرحلات بالقطارات ذات المناظر الخلابة وزيارة الوجهات الأقل شهرة يعزز تجربة السياحة في الخارج.",
+      "image": "https://images.euronews.com/articles/stories/09/96/90/95/696x392_cmsv2_55e3ef12-5515-59b0-bd1f-9acfc2b32b4e-9969095.jpg"
+    },
+    {
+      "id": "268552bc33e5a8",
+      "title": "أوروبا اليوم: إسرائيل أمام مأزق بعد الانتخابات وزعماء الشمال يتصلون ببوتين",
+      "url": "https://arabic.euronews.com/2026/10/28/europe-today-israel-faces-deadlock-after-vote-nordic-leaders-hold-rare-putin-call",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-28T07:03:20+00:00",
+      "excerpt": "الانتخابات الإسرائيلية انتهت بلا حسم، فلا بنيامين نتنياهو ولا غادي آيزنكوت يحصلان على أغلبية. زعماء فنلندا والنرويج اتصلوا بفلاديمير بوتين فيما تسعى أوروبا إلى دور أكبر، مع متابعة اقتراع صربيا وانتخابات منتصف المدة الأميركية وخلاف مبابي مع الصين.",
+      "image": "https://images.euronews.com/articles/stories/09/96/60/74/696x392_cmsv2_1652e175-10f2-5274-9335-5e2d9b4c6a3c-9966074.jpg"
+    },
+    {
+      "id": "1d528a5ede59e0",
+      "title": "أوروبا تسعى لإنهاء اعتمادها على \"سبيس إكس\": قمة \"إيسا\" في روما",
+      "url": "https://arabic.euronews.com/2026/10/28/space-europe-wants-to-free-itself-from-dependence-on-spacex-esa-summit-in-rome",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-28T05:28:14+00:00",
+      "excerpt": "أوروبا تسعى إلى تعزيز حضورها في الفضاء وتقليص تبعيتها في التكنولوجيا. قمة \"إيسا\" في روما في 15 ديسمبر ستكون حاسمة لقرارات الرواد والشحن والاستثمارات.",
+      "image": "https://images.euronews.com/articles/stories/09/96/69/33/696x392_cmsv2_de88110e-fffc-58f4-aa89-18ed7a4d4541-9966933.jpg"
+    },
+    {
+      "id": "2439a75cc4db81",
+      "title": "النرويج: تضاعف عدد الهجمات الإلكترونية الناجحة ضد البلاد ثلاث مرات خلال 6 أشهر",
+      "url": "https://arabic.euronews.com/2026/10/27/norway-says-successful-cyberattacks-against-the-country-have-tripled-in-the-last-six-month",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-27T19:00:10+00:00",
+      "excerpt": "قالت هيئة الأمن القومي النرويجية إن التطور السريع لتقنيات الذكاء الاصطناعي يشكّل أيضًا خطرًا كبيرًا على الشركات والمؤسسات في البلاد.",
+      "image": "https://images.euronews.com/articles/stories/09/96/95/66/696x392_cmsv2_7c4ac9bb-f1b9-5c19-a5ec-f143c29374d7-9969566.jpg"
+    },
+    {
+      "id": "8a502d6a5f5395",
+      "title": "تصريح يورّط مبابي في أزمة مع الصين.. تعليق بث \"الليغا\" والنجم الفرنسي يعتذر",
+      "url": "https://arabic.euronews.com/2026/10/27/mbappe-china-mao-zedong-laliga-boycott-sponsors-apology",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-27T17:00:13+00:00",
+      "excerpt": "أثارت تصريحات للنجم الفرنسي كيليان مبابي، مهاجم ريال مدريد، بشأن الزعيم الصيني الراحل ماو تسي تونغ موجة غضب واسعة في الصين، دفعت شركات كبرى إلى إنهاء عقود رعايتها معه، وأدت إلى تعليق بث مباريات من الدوري الإسباني، ما اضطر اللاعب إلى تقديم اعتذار علني لاحتواء الأزمة.",
+      "image": "https://images.euronews.com/articles/stories/09/96/93/22/696x392_cmsv2_9e6d429f-4d0a-5f64-abea-fe268815e503-9969322.jpg"
+    },
+    {
+      "id": "db74fcc6ad3f80",
+      "title": "وسائل إعلام نرويجية تقاضي ميتا بسبب خطط لاستخدام محتواها الصحفي في الذكاء الاصطناعي",
+      "url": "https://arabic.euronews.com/2026/10/27/norwegian-media-sue-meta-over-plans-to-use-their-journalism-for-ai",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-27T15:14:41+00:00",
+      "excerpt": "يقول ناشرون إن الشروط الجديدة لحسابات الأعمال على \"فيسبوك\" و\"إنستغرام\" قد تتيح لـ\"ميتا\" جمع مقالات وصور وفيديوهات من مواقعهم من دون إذن.",
+      "image": "https://images.euronews.com/articles/stories/09/96/92/66/696x392_cmsv2_67b6dfd7-88ef-5418-b1da-8d54496e1e79-9969266.jpg"
+    },
+    {
+      "id": "31cb9f42237647",
+      "title": "نيل يونغ يرفع دعوى على اللجنة السياسية لترامب بسبب انتهاك حقوق النشر مجددا",
+      "url": "https://arabic.euronews.com/2026/10/27/neil-young-sues-donald-trumps-political-committee-for-copyright-infringement-once-again",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-27T14:45:47+00:00",
+      "excerpt": "قدّم نيل يونغ دعوى بقيمة عشرة ملايين دولار ضد لجنة العمل السياسي التابعة لدونالد ترامب \"Trump 47 Committee Inc.\" بسبب استخدام أغنيته الشهيرة \"Rockin’ in the Free World\" بعد ستة أعوام من تسوية سابقة بشأنها.",
+      "image": "https://images.euronews.com/articles/stories/09/96/92/24/696x392_cmsv2_2d971ae1-f865-5533-a9ca-258da904212e-9969224.jpg"
+    },
+    {
+      "id": "b76fb4719b8fa5",
+      "title": "أستراليا تحذر من هجمات إلكترونية غير مسبوقة مدعومة بالذكاء الاصطناعي: ما دوافعها",
+      "url": "https://arabic.euronews.com/2026/10/27/australia-warns-of-unprecedented-ai-powered-cyberattacks-heres-whats-driving-them",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-27T13:54:13+00:00",
+      "excerpt": "تقول وكالة الأمن السيبراني في البلاد إن الذكاء الاصطناعي يساعد مجرمين وقراصنة ترعاهم دول على استغلال الثغرات بسرعة أكبر، فيما تكشف حوادث حديثة عن مخاطر تهدد أنظمة الحكومة والبنية التحتية الحيوية.",
+      "image": "https://images.euronews.com/articles/stories/09/96/90/96/696x392_cmsv2_5c4c359e-9101-5b31-a901-bb7f366b1ce7-9969096.jpg"
+    },
+    {
+      "id": "6ac2589a329b60",
+      "title": "أزمة يوروفيجن: هولندا تتراجع وتنسحب من مسابقة يوروفيجن ٢٠٢٧",
+      "url": "https://arabic.euronews.com/2026/10/27/eurovision-in-crisis-netherlands-make-u-turn-and-pull-out-of-eurovision-2027",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-27T13:39:15+00:00",
+      "excerpt": "هولندا أعلنت انسحابها من مسابقة \"يوروفيجن\" الغنائية العام المقبل، بعدما بررت شبكة \"إن بي أو\" القرار بـ\"حساسيات\" حول مشاركة إسرائيل، لتتراجع بذلك عن قرار سابق بالمشاركة.",
+      "image": "https://images.euronews.com/articles/stories/09/96/91/28/696x392_cmsv2_8d6810af-b326-529c-a8b0-16feceb172c5-9969128.jpg"
     },
     {
       "title": "بعد عام من هجوم الفاشر، دعوات للمحاسبة والوقاية لمنع تكرار الفظائع",
       "url": "https://news.un.org/ar/story/2026/10/1145613",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-27T12:00:00+00:00"
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "id": "1145613",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "غوتيريش: المشاركة الفاعلة للمرأة تعزز السلام والأمن، والمساواة قرار يجب على العالم اتخاذه",
       "url": "https://news.un.org/ar/story/2026/10/1145607",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-27T12:00:00+00:00"
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "id": "1145607",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "منظمة العمل الدولية: أكثر من 66 مليون عامل منزلي حول العالم يفتقرون إلى حماية وظيفية رسمية",
       "url": "https://news.un.org/ar/story/2026/10/1145612",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-27T12:00:00+00:00"
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "id": "1145612",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "السودان – قلق أممي إزاء استمرار هجمات الطائرات المسيرة بعد تعرض محطات كهرباء للقصف",
       "url": "https://news.un.org/ar/story/2026/10/1145610",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-27T12:00:00+00:00"
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "id": "1145610",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "غروسي: الدبلوماسية هي السبيل الوحيد لمنع الانتشار النووي وإيران مطالبة بتسهيل عودة المفتشين",
       "url": "https://news.un.org/ar/story/2026/10/1145609",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-27T12:00:00+00:00"
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "id": "1145609",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "المنظمة العالمية للأرصاد الجوية: مستويات قياسية لثاني أكسيد الكربون ستؤثر علينا لقرون قادمة",
       "url": "https://news.un.org/ar/story/2026/10/1145608",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-27T12:00:00+00:00"
+      "published_at": "2026-10-27T12:00:00+00:00",
+      "id": "1145608",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
+    },
+    {
+      "id": "65c873afe697bf",
+      "title": "أكثر فنادق أوروبا رعبا يمكنك حجز إقامة فيها في الهالوين",
+      "url": "https://arabic.euronews.com/2026/10/27/the-most-haunted-hotels-in-europe-you-can-book-a-stay-at-this-halloween",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-27T11:29:32+00:00",
+      "excerpt": "من عشاق محطمين إلى طيّارين لقوا حتفهم مبكرا، تستضيف هذه الفنادق في القارة الأوروبية نزلاء لا يحترمون موعد تسجيل المغادرة في الساعة 11 صباحا.",
+      "image": "https://images.euronews.com/articles/stories/09/96/89/82/696x392_cmsv2_6e5cd1cd-664c-52be-8576-4e610db1385d-9968982.jpg"
+    },
+    {
+      "id": "324805bcc65f48",
+      "title": "لماذا تعرف شركات التكنولوجيا الكبرى مهامك اتهام سكيل آي بالتجسس على مدربي الذكاء الاصطناعي",
+      "url": "https://arabic.euronews.com/2026/10/27/why-should-big-tech-know-what-youre-working-on-scale-ai-accused-of-spying-on-ai-trainers",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-27T11:19:52+00:00",
+      "excerpt": "يتقدم المركز الأوروبي للحقوق الرقمية، المعروف باسم \"Noyb\"، بشكاوى ضد شركة \"Scale AI\" الناشئة في سان فرانسيسكو بسبب طريقة تعقب منصة التدريب \"Outlier\" لـ900.000 عامل.",
+      "image": "https://images.euronews.com/articles/stories/09/96/87/92/696x392_cmsv2_0ebd48ce-7381-54e9-8a2d-9746b33f5366-9968792.jpg"
+    },
+    {
+      "id": "7d7e62632502c1",
+      "title": "محبو هالوين يبحثون عن رعب حقيقي في جولات خوارق بين مشارح وغرف تشريح",
+      "url": "https://arabic.euronews.com/2026/10/27/funeral-homes-mortuaries-and-autopsy-rooms-halloween-enthusiasts-seek-the-real-experience",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-27T10:44:34+00:00",
+      "excerpt": "من مستشفيات الأمراض النفسية السابقة إلى دور الجنائز، تقدم المواقع السياحية الأميركية مطاردات للأشباح ومبيتًا ليلاً لعشاق \"هالوين\" الباحثين عن تجربة خارقة للطبيعة.",
+      "image": "https://images.euronews.com/articles/stories/09/96/88/18/696x392_cmsv2_161a49e4-879c-5e70-8a58-eecfa89471a3-9968818.jpg"
+    },
+    {
+      "id": "c1eb80c26385bc",
+      "title": "من الشك إلى المسرح: تأكيد جاي زي نجم عرض منتصف مباراة سوبر بول 2027",
+      "url": "https://arabic.euronews.com/2026/10/27/from-doubt-to-delivery-jay-z-confirmed-as-headliner-for-the-2027-super-bowl-halftime-show",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-27T10:28:15+00:00",
+      "excerpt": "بعد أيام من التكهنات، يعود مغني الراب جاي زي، الذي أصبح أول ملياردير في عالم الهيب هوب بفضل مسيرته كمدير ورجل أعمال، إلى جذوره كفنّان ليحيي فقرة ما بين شوطي مباراة \"سوبر بول\".",
+      "image": "https://images.euronews.com/articles/stories/09/96/86/08/696x392_cmsv2_b1bad53a-926b-5871-bdbe-c4f52da0c1aa-9968608.jpg"
+    },
+    {
+      "id": "e466700081bcfc",
+      "title": "أوروبا تبقى محرك السياحة العالمي في العقد المقبل تقرير جديد يتوقع ذلك",
+      "url": "https://arabic.euronews.com/2026/10/27/europe-is-set-to-remain-the-powerhouse-of-global-travel-over-the-next-decade-according-to",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-27T10:25:59+00:00",
+      "excerpt": "ما العوامل التي ستعيد تشكيل قطاع السياحة في أوروبا خلال السنوات العشر المقبلة؟ دراسة جديدة تتوقع استمرار جاذبية القارة مع نمو الطلب الداخلي والدولي.",
+      "image": "https://images.euronews.com/articles/stories/09/96/86/35/696x392_cmsv2_232d9f89-2f38-5adc-95ec-9002dfb87602-9968635.jpg"
+    },
+    {
+      "id": "90f063531214d8",
+      "title": "ماكلمور يطلق جولة \"فري فلسطين\" في أوروبا ويدعو إلى الوحدة في دبلن",
+      "url": "https://arabic.euronews.com/2026/10/27/macklemore-begins-free-palestine-tour-in-europe-with-a-call-for-unity-in-dublin",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-27T09:19:59+00:00",
+      "excerpt": "قال \"ماكلمور\" على المسرح في دبلن مساء أمس: \"أشعر بالفخر لوقوفي هنا متضامنا مع الشعب الفلسطيني، وسنواصل النضال من أجل التحرر الجماعي حتى آخر نفس لنا\".",
+      "image": "https://images.euronews.com/articles/stories/09/96/87/07/696x392_cmsv2_0d087c64-9065-53a9-bd34-96486412c796-9968707.jpg"
+    },
+    {
+      "id": "3e58257c87e3d3",
+      "title": "مخاطر ذكاء اصطناعي منفلت وهجمات إلكترونية وأسلحة: أنثروبيك تحذر المستثمرين قبل اكتتابها",
+      "url": "https://arabic.euronews.com/2026/10/27/rogue-ai-cyberattacks-and-weapons-the-risks-anthropic-is-warning-investors-about-ahead-of",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-27T08:54:01+00:00",
+      "excerpt": "تحذّر وثائق **الطرح الأولي** لشركة **الذكاء الاصطناعي** من أضرار محتملة نتيجة الأنظمة التي تزداد استقلالية، إضافة إلى تحديات مالية وتنظيمية.",
+      "image": "https://images.euronews.com/articles/stories/09/96/86/36/696x392_cmsv2_8a74ca30-c44b-5559-8193-9f4518ea4f26-9968636.jpg"
+    },
+    {
+      "id": "9b8fc81aea1a02",
+      "title": "وفاة والتر كوينغ ممثل شخصية بافل تشيخوف في \"ستار تريك\" عن 90 عاما",
+      "url": "https://arabic.euronews.com/2026/10/27/star-trek-actor-walter-koenig-who-played-pavel-chekov-dies-aged-90",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-27T08:24:08+00:00",
+      "excerpt": "أدى رحيل كوينيغ إلى بقاء ويليام شاتنر، مجسّد شخصية القبطان جيمس تي كيرك، وجورج تاكي، الذي أدى دور هيكارو سولو، آخر عضوين على قيد الحياة من طاقم أبطال السلسلة الأصلية.",
+      "image": "https://images.euronews.com/articles/stories/09/96/86/09/696x392_cmsv2_deafb29e-c82d-5a8d-9a44-0d22c9c099da-9968609.jpg"
+    },
+    {
+      "id": "3a7bb0cfc24457",
+      "title": "من إيطاليا إلى النمسا وفرنسا.. أكثر عشر وجهات تزلج موثوقية في أوروبا",
+      "url": "https://arabic.euronews.com/2026/10/27/seeking-guaranteed-snow-these-are-europes-most-reliable-ski-resorts-and-regions",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-27T07:30:32+00:00",
+      "excerpt": "دراسة جديدة صنّفت أكثر منتجعات ومناطق التزلج موثوقية في أوروبا. إليكم أبرز الوجهات التي يمكن اختيارها لعطلتكم الشتوية النشطة المقبلة.",
+      "image": "https://images.euronews.com/articles/stories/09/96/71/58/696x392_cmsv2_df319351-907c-5a57-bebd-a35adf260d1f-9967158.jpg"
+    },
+    {
+      "id": "c3e28a81c9bbb5",
+      "title": "علماء يحددون ملامح السماء الحقيقية خلف لوحة ليلة النجوم لفان غوخ",
+      "url": "https://arabic.euronews.com/2026/10/27/scientists-uncover-new-clues-to-the-actual-night-sky-behind-van-goghs-the-starry-night",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-27T07:09:02+00:00",
+      "excerpt": "يقول باحثون يقودهم العالم الكوري الجنوبي \"إيليا جونغ هيون كيم\" إن لوحة \"فنسنت فان غوخ\" قد تجسّد كوكبة الثور لا برج الحمل، مما يثير شكوكا حول التسلسل الزمني المقبول لهذه التحفة الانطباعية.",
+      "image": "https://images.euronews.com/articles/stories/09/96/47/77/696x392_cmsv2_6a3971e2-552d-5202-a2e6-4b0183d96cbe-9964777.jpg"
+    },
+    {
+      "id": "ee33af7751ee67",
+      "title": "أشهر شارع للتسوق في لندن يصبح مخصصا للمشاة بالكامل",
+      "url": "https://arabic.euronews.com/2026/10/27/londons-most-famous-shopping-street-is-now-pedestrianised",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-27T06:58:31+00:00",
+      "excerpt": "قبيل موسم العطلات، تُمنع السيارات والحافلات والدراجات من استخدام مقطع يمتد قرابة كيلومتر من شارع \"أوكسفورد ستريت\".",
+      "image": "https://images.euronews.com/articles/stories/09/96/79/65/696x392_cmsv2_75dc509c-1617-516e-8603-2184b0e36c2e-9967965.jpg"
+    },
+    {
+      "id": "7d37f16db27a84",
+      "title": "هاري كين يفوز بالكرة الذهبية.. أول لاعب من الدوري الألماني منذ ماتس زامر",
+      "url": "https://arabic.euronews.com/2026/10/27/harry-kane-wins-the-golden-ball-the-first-player-from-the-german-league-since-matthias-s",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-27T05:24:00+00:00",
+      "excerpt": "مهاجم بايرن ميونيخ هو أول لاعب إنجليزي منذ 25 عاما، وأول محترف في الدوري الألماني منذ 1996 ينال هذه الجائزة المرموقة، وذلك بمناسبة ذكرى في بلده إنجلترا.",
+      "image": "https://images.euronews.com/articles/stories/09/96/83/60/696x392_cmsv2_a93ede06-e407-5e59-b5bf-603c16eb8e3a-9968360.jpg"
+    },
+    {
+      "id": "1162e5faa45ee5",
+      "title": "كلمة عام 2026 من \"ديكشينري دوت كوم\": مصطلح يعكس واقعا كئيبا",
+      "url": "https://arabic.euronews.com/2026/10/26/dictionarycom-reveals-2026-word-of-the-year-and-its-a-depressing-one",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-26T15:45:12+00:00",
+      "excerpt": "تم اختيار مصطلح لغة الإنترنت \"Maxxing\" رسميا من قبل موقع \"Dictionary.com\" ليكون \"كلمة العام 2026\" في معجم الموقع.",
+      "image": "https://images.euronews.com/articles/stories/09/96/76/29/696x392_cmsv2_6e7993bf-26ba-5637-b481-c2f331259d56-9967629.jpg"
+    },
+    {
+      "id": "6e0a846d4cefcb",
+      "title": "الحكومة السويدية تمنع استخدام \"تشات جي بي تي\" و\"كلود\" بسبب مخاوف أمنية",
+      "url": "https://arabic.euronews.com/2026/10/26/swedish-government-blocks-chatgpt-and-claude-heres-why",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-26T15:19:24+00:00",
+      "excerpt": "دخل حظر استخدام الموظفين للإصدارات المعتمدة على المتصفح من \"تشات جي بي تي\" و\"كلود\" حيّز التنفيذ يوم الإثنين 26 أكتوبر، وسط مخاوف أمنية تتعلق بمعالجة البيانات.",
+      "image": "https://images.euronews.com/articles/stories/08/40/56/14/696x392_cmsv2_8aa6ac45-6312-55a8-89e2-1d6690c4b8b6-8405614.jpg"
+    },
+    {
+      "id": "c1c13a594e3473",
+      "title": "نفايات خالصة: مقطع \"أوديسة\" لإيلون ماسك المولد بالذكاء الاصطناعي يثير السخرية عبر الإنترنت",
+      "url": "https://arabic.euronews.com/2026/10/26/pure-garbage-elon-musks-ai-generated-the-odyssey-clip-ridiculed-online",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-26T14:52:30+00:00",
+      "excerpt": "المقطع المصنوع بالذكاء الاصطناعي تعرّض لهجوم واسع على الإنترنت، إذ وصفه كثيرون بأنه \"قمامة\" و\"إهدار كامل للوقت والمال مثل معظم شركة ماسك\".",
+      "image": "https://images.euronews.com/articles/stories/09/96/74/08/696x392_cmsv2_8a682cac-85f4-5275-b811-7a60dbb6f6d6-9967408.jpg"
+    },
+    {
+      "id": "f53d3c02faa6bc",
+      "title": "أول رحلة دولية تصل إلى مطار غرب سيدني الجديد",
+      "url": "https://arabic.euronews.com/2026/10/26/first-international-flight-arrives-at-the-new-western-sydney-airport",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-26T14:28:42+00:00",
+      "excerpt": "المطار الجديد في سيدني، العامل على مدار 24 ساعة، استقبل أول ركابه الدوليين، ووُصف افتتاحه بأنه \"محطة مفصلية يجري الإعداد لها منذ عقود\".",
+      "image": "https://images.euronews.com/articles/stories/09/96/78/27/696x392_cmsv2_853102ea-33fc-5521-b3b4-3bdb26a11a1e-9967827.jpg"
+    },
+    {
+      "id": "65719c76e3a9da",
+      "title": "إير بي إن بي تغيّر قواعد مهام إنهاء الإقامة والمضيفون غاضبون",
+      "url": "https://arabic.euronews.com/2026/10/26/airbnb-has-changed-its-check-out-chore-rules-and-hosts-are-fuming-about-it",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-26T12:52:10+00:00",
+      "excerpt": "يدعو بعض المستخدمين إلى مقاطعة منصة تأجير المنازل لفترات قصيرة بعدما منعت أصحاب المساكن من مطالبة الضيوف بنزع أغطية الأسرة أو غسل الأطباق.",
+      "image": "https://images.euronews.com/articles/stories/09/96/75/98/696x392_cmsv2_32f05bc7-432c-58d1-99f1-4b348bfe6895-9967598.jpg"
+    },
+    {
+      "id": "80ba0629ad5dd1",
+      "title": "لماذا يقاضي أصحاب حقوق أغاني إلفيس بريسلي شركة الذكاء الاصطناعي \"أنثروبيك\"؟",
+      "url": "https://arabic.euronews.com/2026/10/26/why-are-elvis-presley-rightsholders-suing-the-ai-company-anthropic",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-26T12:30:11+00:00",
+      "excerpt": "قد تواجه شركة \"أنثروبيك\" للذكاء الاصطناعي مطالبات بتعويضات تتجاوز 40 مليون دولار، على خلفية اتهامات باستخدام مجموعة أغاني النجم الراحل إلفيس بريسلي دون الحصول على إذن.",
+      "image": "https://images.euronews.com/articles/stories/09/96/71/83/696x392_cmsv2_f0ab5348-64c9-5f6e-aa37-68fddbb0dca1-9967183.jpg"
+    },
+    {
+      "id": "4e38b64496f07b",
+      "title": "سجين أسترالي مدان بالقتل يفشل في استعادة حق تناول فيجيمايت في السجن",
+      "url": "https://arabic.euronews.com/2026/10/26/yeast-or-famine-australian-convicted-murderer-loses-bid-to-eat-vegemite-in-prison",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-26T12:12:49+00:00",
+      "excerpt": "مدان بالقتل خسر طعنا قانونيا لإلغاء حظر منتج \"فيجيميت\" في سجون ولاية فيكتوريا، رغم زعمه أن الحظر غير قانوني لأنه يحرمه حقه الإنساني في الاستمتاع بالثقافة الأسترالية.",
+      "image": "https://images.euronews.com/articles/stories/09/96/76/11/696x392_cmsv2_6e1e2732-a756-5fdb-acb7-6f8181074013-9967611.jpg"
     },
     {
       "title": "الأمم المتحدة والعراق يبحثان التعاون في إزالة الألغام ومشاركة بغداد في حفظ السلام",
       "url": "https://news.un.org/ar/story/2026/10/1145602",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-26T12:00:00+00:00"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "id": "1145602",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "الأمم المتحدة تقدم الدعم الإنساني لنازحين جدد في الضفة الغربية وغزة",
       "url": "https://news.un.org/ar/story/2026/10/1145606",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-26T12:00:00+00:00"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "id": "1145606",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "الأمم المتحدة: تضاعف حصيلة وفيات النساء والفتيات في النزاعات المسلحة منذ عام 2021",
       "url": "https://news.un.org/ar/story/2026/10/1145605",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-26T12:00:00+00:00"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "id": "1145605",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "الأمم المتحدة تؤكد استمرار دعمها للصومال بعد انتهاء ولاية بعثتها الحالية",
       "url": "https://news.un.org/ar/story/2026/10/1145603",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-26T12:00:00+00:00"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "id": "1145603",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "الأمم المتحدة: انتهاكات صارخة ضد الأطفال في النزاعات المسلحة رغم ما تحقق من نتائج ملموسة",
       "url": "https://news.un.org/ar/story/2026/10/1145601",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-26T12:00:00+00:00"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "id": "1145601",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "لجنة أممية مستقلة: إسرائيل ارتكبت جرائم حرب في الأرض الفلسطينية المحتلة في ظل استمرار الإبادة في غزة",
       "url": "https://news.un.org/ar/story/2026/10/1145600",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-26T12:00:00+00:00"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "id": "1145600",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
     },
     {
       "title": "لجنة دولية مستقلة: روسيا ارتكبت جرائم حرب في أوكرانيا واتجرت بمواطنين من 29 دولة لتجنيدهم",
       "url": "https://news.un.org/ar/story/2026/10/1145599",
       "source": "أخبار الأمم المتحدة",
-      "published_at": "2026-10-26T12:00:00+00:00"
+      "published_at": "2026-10-26T12:00:00+00:00",
+      "id": "1145599",
+      "section": "world",
+      "image": "",
+      "excerpt": ""
+    },
+    {
+      "id": "93a0bc4e38ed00",
+      "title": "شركة يابانية تعوض المستخدمين المتضررين من هجوم إلكتروني",
+      "url": "https://arabic.euronews.com/2026/10/26/japanese-company-to-compensate-users-affected-by-cyberattack",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-26T11:54:25+00:00",
+      "excerpt": "قالت شركة \"GMO Internet\" اليابانية إنها ستعوض العملاء عن خسائر التداول غير المصرح به المرتبط بهجوم إلكتروني على خدمة السحابة، وستدفع 5.000 ين (28 يورو) كتعويض رمزي لكل من يستخدم الخدمة المتأثرة.",
+      "image": "https://images.euronews.com/articles/stories/09/96/75/63/696x392_cmsv2_26e0e834-c3da-5fec-a7fe-32be42bc45d6-9967563.jpg"
+    },
+    {
+      "id": "dd2c2437ccf55f",
+      "title": "دليل سفر نوفمبر 2026: أفضل أماكن في أوروبا للزيارة وأحدث الفنادق للحجز",
+      "url": "https://arabic.euronews.com/2026/10/26/november-2026-travel-guide-where-to-go-what-to-see-and-the-new-hotels-to-book-in-europe",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-26T10:59:20+00:00",
+      "excerpt": "من أسواق عيد الميلاد المبكرة في فيينا إلى شمس أواخر الخريف في جزر الكناري، يمنح نوفمبر المسافرين كثيرا من الأسباب للتخطيط لهروب أوروبي قبل زحمة الأعياد.",
+      "image": "https://images.euronews.com/articles/stories/09/96/49/58/696x392_cmsv2_3d2e63d1-7d26-59b0-bd81-d82005b8a86b-9964958.jpg"
+    },
+    {
+      "id": "a6e6ee7e8be7cb",
+      "title": "وفاة مؤدي الأصوات إريك باوزا صوت \"باغز باني\" و\"دافي داك\" عن عمر 46 عاما",
+      "url": "https://arabic.euronews.com/2026/10/26/eric-bauza-the-current-voice-of-bugs-bunny-and-daffy-duck-has-died-at-the-age-of-46",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-26T08:10:06+00:00",
+      "excerpt": "قدّم مؤدي الأصوات الغزير إريك باوزا صوت شخصيات \"بغز باني\" و\"دافي دَك\" و\"رود رَنر\" و\"بوركي بيغ\"، إلى جانب مئات الشخصيات الأخرى.",
+      "image": "https://images.euronews.com/articles/stories/09/96/71/27/696x392_cmsv2_83accf19-7be5-54f1-acf6-704fe853d53d-9967127.jpg"
+    },
+    {
+      "id": "7f10a1f08c5b33",
+      "title": "فيلم خوص مثير ومعرض لأغاثا كريستي: أفضل ما يمكن فعله وسماعه ورؤيته في أوروبا هذا الأسبوع",
+      "url": "https://arabic.euronews.com/2026/10/26/sexy-wicker-and-an-agatha-christie-exhibition-the-best-things-to-do-hear-see-or-watch-in-e",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-26T07:53:32+00:00",
+      "excerpt": "تظهر أوليفيا كولمان في فيلم جديد مع \"زوج\" من الخوص. وفي لندن تحتفي \"المكتبة البريطانية\" بحياة وأعمال كاتبة الجريمة الأسطورية أغاثا كريستي. إليكم أبرز ما ينتظركم هذا الأسبوع.",
+      "image": "https://images.euronews.com/articles/stories/09/96/19/44/696x392_cmsv2_8da9ae2a-8e3e-5732-9328-a49bcbcfd6ff-9961944.jpg"
+    },
+    {
+      "id": "f3c9f9c0e0f36b",
+      "title": "اكتشاف ألماتي: صباحات الجبال وفن الشارع ونكهات الأسواق",
+      "url": "https://arabic.euronews.com/2026/10/26/discovering-almaty-mountain-mornings-street-art-and-market-flavours",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-26T07:09:22+00:00",
+      "excerpt": "احتفلت العاصمة السابقة لكازاخستان بعيدها بالموسيقى والأسواق ومهرجانات التفاح. وخارج أجواء الاحتفال، تدعو الفطور الجبلي والعمارة الملونة والفن المختبئ في كل زاوية إلى إطالة البقاء.",
+      "image": "https://images.euronews.com/articles/stories/09/96/16/95/696x392_cmsv2_832da4e8-9a55-5fba-a208-125f1477700e-9961695.jpg"
+    },
+    {
+      "id": "8f255c0da89a4e",
+      "title": "جائزة جنيف الكبرى لصناعة الساعات 2026: تلغي الفئات المخصصة للرجال والنساء لنفس جديد",
+      "url": "https://arabic.euronews.com/2026/10/26/gphg-2026-the-oscars-of-watchmaking-removes-gender-categories-for-a-breath-of-fresh-air",
+      "source": "يورونيوز العربية",
+      "section": "arts",
+      "published_at": "2026-10-26T06:18:16+00:00",
+      "excerpt": "في كل عام تُحتفى أرقى ساعات العالم في حفل توزيع جوائز \"Grand Prix d’Horlogerie de Genève\" المعروف بـ\"GPHG\"، والذي يحتفل يوم السبت السابع من نوفمبر بذكراه 26.",
+      "image": "https://images.euronews.com/articles/stories/09/96/13/80/696x392_cmsv2_1c5af21f-a861-5f0e-bbda-5a12d8ef603c-9961380.jpg"
+    },
+    {
+      "id": "1bb7bc471de371",
+      "title": "جمهوريات مستقلة وقلاع وخبز البايغل.. كيف تقضي 24 ساعة في فيلنيوس عاصمة ليتوانيا؟",
+      "url": "https://arabic.euronews.com/2026/10/26/independent-republics-castles-and-bagels-how-to-spend-24-hours-in-vilnius-the-capital-of-l",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-26T05:00:14+00:00",
+      "excerpt": "من التجوّل في البلدة القديمة المدرجة على قائمة التراث العالمي لليونسكو إلى الاطلاع على دستور جمهورية أوجوبيس المستقلة، تُعدّ عاصمة ليتوانيا وجهة مثالية لاستكشافها خلال يوم واحد.",
+      "image": "https://images.euronews.com/articles/stories/09/96/44/33/696x392_cmsv2_86f04a58-3f96-53a9-8f89-95776c3f5cf1-9964433.jpg"
+    },
+    {
+      "id": "6e782e5d4fd860",
+      "title": "سياحة المقابر: لماذا تتحول مقابر أوروبا إلى وجهات مفضلة في الهالوين",
+      "url": "https://arabic.euronews.com/2026/10/25/graveyard-tourism-why-europes-cemeteries-are-on-the-must-visit-list-for-halloween",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-25T07:15:34+00:00",
+      "excerpt": "من قبر جيم موريسون في باريس إلى المقابر القوطية المتهالكة في لندن، تشكّل هذه المدافن التاريخية خيارا بديلا عن مزارات \"هالووين\" السياحية المعتادة.",
+      "image": "https://images.euronews.com/articles/stories/09/96/47/36/696x392_cmsv2_bf45c863-297b-54c7-85ae-09237d332887-9964736.jpg"
+    },
+    {
+      "id": "56c4556ac6824f",
+      "title": "نقل مدرب نادي بايرن ميونخ فينسنت كومباني إلى المستشفى إثر تعرضه لنوبة إغماء أثناء التدريب",
+      "url": "https://arabic.euronews.com/2026/10/24/bayern-munich-manager-vincent-kompany-taken-to-the-hospital-collapse-during-training",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-24T08:30:53+00:00",
+      "excerpt": "قال المدير الرياضي ماكس إيبرل إن كومباني، الذي أفادت تقارير بأنه يحتاج إلى مساعدة لصعود السلم، كان يعاني من عدوى فيروسية وإصابة في الورك.",
+      "image": "https://images.euronews.com/articles/stories/09/96/52/56/696x392_cmsv2_fc172790-b1c4-5d9a-bc06-5aed848c17e6-9965256.jpg"
+    },
+    {
+      "id": "838c80714656d2",
+      "title": "من فيلات فوق المياه إلى السباحة مع الدلافين.. أسبوع في جزر المالديف يكشف وجها آخر للجنة الاستوائية",
+      "url": "https://arabic.euronews.com/2026/10/23/sun-sand-and-snorkelling-a-week-in-the-maldives-on-two-stunning-resort-islands",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-23T21:30:01+00:00",
+      "excerpt": "على مياه المالديف الفيروزية وشواطئها الرملية، استكشفت فخرية م. سليمان جزيرتين منتجعيتين، ووضعت برنامجا لأسبوع حافل بالغوص السطحي وتجارب الطعام وقليل من الاستجمام.",
+      "image": "https://images.euronews.com/articles/stories/09/96/01/53/696x392_cmsv2_ecc9f47f-ba07-5b15-9c17-be4618b1e54b-9960153.jpg"
+    },
+    {
+      "id": "1c21061348f234",
+      "title": "الولايات المتحدة تصنف الهيليوم مادة حيوية وأوروبا تعاني نقص الإمدادات",
+      "url": "https://arabic.euronews.com/2026/10/23/us-designates-helium-as-a-critical-material-as-europe-faces-a-supply-squeeze",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-23T19:04:08+00:00",
+      "excerpt": "أعلنت الولايات المتحدة الهيليوم مادة حيوية، مع اشتداد الحرب في الشرق الأوسط وقيود التصدير من روسيا والصين التي تضغط على الإمدادات العالمية لهذا الغاز الضروري لصناعة الرقائق، ما يدفع أوروبا إلى سباق لتأمين حصتها.",
+      "image": "https://images.euronews.com/articles/stories/09/96/52/60/696x392_cmsv2_ce281391-7806-59ae-b05c-0ce008ee6c87-9965260.jpg"
+    },
+    {
+      "id": "1145589",
+      "title": "اليمن - الأمم المتحدة تحذر من الوضع الإنساني في تعز بعد 20 يوما على عزل المدينة",
+      "url": "https://news.un.org/ar/story/2026/10/1145589",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-23T12:00:00+00:00",
+      "excerpt": "بعد مرور 20 يوما على عزل مدينة تعز في اليمن، أفاد مكتب الأمم المتحدة لتنسيق الشؤون الإنسانية (أوتشا) بأن استمرار القتال \"يجعل من المستحيل\" على العاملين في المجال الإنساني الوصول إلى المدينة ويمنع السكان من مغادرتها، في ظل استمرار قطع الطرق المؤدية إليها.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/19-05-2025-UNOCHA-Yemen.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "8bb89649ea6b3b",
+      "title": "جوائز الطهي العالمية: أفضل شركات الطيران والمطارات لتناول الطعام؟",
+      "url": "https://arabic.euronews.com/2026/10/23/world-culinary-awards-which-are-the-best-airlines-and-airports-for-dining",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-23T10:37:48+00:00",
+      "excerpt": "أين يمكن تذوق أشهى الأطباق في الجو أو قبل الصعود إلى الطائرة؟ شركات الطيران والمطارات وصالات الانتظار كانت بين الفائزين في جوائز \"عالم فنون الطهي\" لهذا العام.",
+      "image": "https://images.euronews.com/articles/stories/09/96/42/81/696x392_cmsv2_8805e34d-ed85-5d93-af4a-5320b341a740-9964281.jpg"
+    },
+    {
+      "id": "41814d6fc0d61c",
+      "title": "استطلاع يكشف أن الأطفال في فرنسا يستخدمون الذكاء الاصطناعي أكثر بكثير مما يعتقد الآباء",
+      "url": "https://arabic.euronews.com/2026/10/23/french-children-use-ai-much-more-than-their-parents-realise-a-survey-finds",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-23T09:58:21+00:00",
+      "excerpt": "كشف استطلاع جديد لـ\"يوغوف\" أن آباء فرنسا يستهينون باستخدام أطفالهم للذكاء الاصطناعي؛ 40% من أطفال 11 و12 عاما يستخدمون خدمات مثل \"تشات جي بي تي\" أسبوعيا، مقابل إدراك 26% فقط من الآباء لذلك.",
+      "image": "https://images.euronews.com/articles/stories/09/96/35/04/696x392_cmsv2_ef71010c-b389-5b0b-b133-386f3dfa9713-9963504.jpg"
+    },
+    {
+      "id": "36ef29ab0e884b",
+      "title": "تصويت في \"نيويورك\" لحظر عربات الخيل في \"سنترال بارك\" وإنهاء جولة سياحية شهيرة",
+      "url": "https://arabic.euronews.com/2026/10/23/central-parks-horse-drawn-carriages-face-ban-as-new-york-votes-to-end-tourist-attraction",
+      "source": "يورونيوز العربية",
+      "section": "variety",
+      "published_at": "2026-10-23T07:34:42+00:00",
+      "excerpt": "قد تنتهي جولات العربات التي تجرها الخيول في \"سنترال بارك\" في يونيو 2028، بعد سنوات من الجدل حول رعاية الحيوانات وسلامة الجمهور.",
+      "image": "https://images.euronews.com/articles/stories/09/96/42/28/696x392_cmsv2_5b4d055f-b729-5b59-afb4-77cfbc5da017-9964228.jpg"
+    },
+    {
+      "id": "3902175da5cf0a",
+      "title": "ثغرة أمنية في \"بي إتش بي\" تعطل مواقع أوروبية: ما معناها لمستخدمي الإنترنت",
+      "url": "https://arabic.euronews.com/2026/10/22/php-security-flaw-why-websites-across-europe-went-dark-and-what-it-means-for-you",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-22T12:07:48+00:00",
+      "excerpt": "كشفت نماذج الذكاء الاصطناعي ما تصفه شركة \"OpenAI\" بأنه \"واحدة من أكثر الثغرات الأمنية تأثيرا في الذاكرة الحديثة\"، كانت مخفية في لغة \"PHP\" لأكثر من عقد، ما دفع مواقع من \"متتبع نوم بوكيمون\" إلى البرلمان الهولندي للتوقف استباقا لهجمات القراصنة.",
+      "image": "https://images.euronews.com/articles/stories/09/96/32/16/696x392_cmsv2_a13a802b-8010-5f41-99bb-64cac2b09c71-9963216.jpg"
+    },
+    {
+      "id": "1145585",
+      "title": "مقتل 350 طفلا في غزة منذ إعلان وقف إطلاق النار، ووفد دبلوماسي يزور الضفة الغربية",
+      "url": "https://news.un.org/ar/story/2026/10/1145585",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "excerpt": "دعت منظمة اليونيسف السلطات الإسرائيلية إلى اتخاذ إجراءات فورية وحاسمة لحماية الأطفال في قطاع غزة، بما يتماشى مع التزاماتها بموجب القانون الدولي الإنساني، مشيرة إلى استمرار قتل الأطفال في القطاع.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/30-05-2025-UNICEF-Gaza-06.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145583",
+      "title": "عشية زيارته لمصر، غوتيريش يدعو إلى وقف توسع الحرب ويحذر من أن تبعات الصراعات تجتاح العالم بأسره",
+      "url": "https://news.un.org/ar/story/2026/10/1145583",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-22T12:00:00+00:00",
+      "excerpt": "حذر أمين عام الأمم المتحدة أنطونيو غوتيريش، من أن تصاعد النزاعات وتوسع نطاقها يحملان عواقب بعيدة المدى، تؤدي إلى مضاعفة المعاناة الإنسانية وتعميق أوجه التفاوت في جميع أنحاء العالم، مؤكدا أن \"المسافة بين مضيق هرمز ومنزل عائلة ما أو سوق في قرية، أقصر مما نتصور\".",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/22-10-2026-UN-Guterres-press.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "22632511c59a19",
+      "title": "\"بالانتير\" تقول نظام الذكاء الاصطناعي لحلف \"ناتو\" بلا زر تعطيل بعد اضطراب \"ستارلينك\" في أوكرانيا",
+      "url": "https://arabic.euronews.com/2026/10/22/palantir-says-nato-ai-system-has-no-kill-switch-after-starlink-disruptions-in-ukraine",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-22T10:32:05+00:00",
+      "excerpt": "تقول شركة برمجيات أميركية إنها لا تستطيع تعطيل أنظمة **الذكاء الاصطناعي** التابعة للناتو، وسط مخاوف أوروبية من الاعتماد على التكنولوجيا الأميركية بعد تعطل خدمة \"ستارشيلد\" في أوكرانيا.",
+      "image": "https://images.euronews.com/articles/stories/09/96/28/07/696x392_cmsv2_8bbe6607-7db4-5ba8-b07a-9f0ce22b288c-9962807.jpg"
+    },
+    {
+      "id": "b63c38b1d9e0e7",
+      "title": "مواقع إلكترونية تتعطل بعد كشف الذكاء الاصطناعي ثغرة أمنية في لغة برمجة",
+      "url": "https://arabic.euronews.com/2026/10/22/websites-go-offline-after-ai-reveals-significant-security-flaw-in-major-programming-langua",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-22T09:27:58+00:00",
+      "excerpt": "أغلقت هيئات حكومية وشركات حول العالم مواقعها على الإنترنت يوم الأربعاء، بعدما ظهرت ثغرتان خطيرتان في لغة البرمجة \"PHP\" التي تقوم عليها نسبة كبيرة من الشبكة.",
+      "image": "https://images.euronews.com/articles/stories/09/90/84/22/696x392_cmsv2_9f36bdac-70e8-53f7-aaba-f8fd0841a2df-9908422.jpg"
+    },
+    {
+      "id": "1145580",
+      "title": "اليمن – المبعوث الأممي يختتم زيارتين إلى لندن وبرلين لدعم العملية السياسية",
+      "url": "https://news.un.org/ar/story/2026/10/1145580",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-21T12:00:00+00:00",
+      "excerpt": "اختتم المبعوث الخاص للأمم المتحدة إلى اليمن هانس غروندبرغ زيارتين إلى لندن وبرلين هذا الأسبوع، حيث أجرى مناقشات مع مسؤولين رفيعين في البلدين، تمحورت حول التطورات في اليمن والمنطقة ككل، وكيفية دفع العملية السياسية التي يقودها اليمنيون.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/09/25-09-2026_UNICEF_Yemen-01.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145578",
+      "title": "الأمم المتحدة: الهجوم على موسم قطف الزيتون الفلسطيني أداة للتهجير والسلب",
+      "url": "https://news.un.org/ar/story/2026/10/1145578",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-21T12:00:00+00:00",
+      "excerpt": "قال مكتب الأمم المتحدة لحقوق الإنسان إن الهجوم الإسرائيلي على موسم قطف الزيتون يعد \"أداة أخرى من أدوات التهجير والسلب\" تضيف إلى معاناة المجتمعات الفلسطينية. ودعا جميع الدول والجهات المانحة إلى التحرّك بشكل عاجل لحمايته.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/assets/2014/10/20457/image560x340cropped.jpg"
+    },
+    {
+      "id": "7331a79cac2f9d",
+      "title": "ترامب يدخل على خط أزمة مراكز البيانات: مقترحٌ بدفع عائد مالي لحل مشكلة العزوف الشعبي",
+      "url": "https://arabic.euronews.com/2026/10/21/trump-tells-companies-to-pay-a-dividend-to-communities-to-make-data-centres-popular",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-21T10:14:58+00:00",
+      "excerpt": "دعا الرئيس الأميركي عبر منصته على وسائل التواصل الاجتماعي \"تروث سوشال\" يوم الأربعاء، الشركات إلى إبرام اتفاقات مع المجتمعات المحلية لجعلها تتقبل مشاريع فتح مراكز البيانات في مناطقها.",
+      "image": "https://images.euronews.com/articles/stories/09/96/14/06/696x392_cmsv2_f699c76e-ea2e-5dac-af8f-24e010c83240-9961406.jpg"
+    },
+    {
+      "id": "d178360710547a",
+      "title": "الذكاء الاصطناعي والتحول الرقمي يغيران الطيران: السلامة خط أحمر",
+      "url": "https://arabic.euronews.com/2026/10/21/ai-and-digital-transformation-are-changing-aviation-but-safety-remains-non-negotiable",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-21T06:00:04+00:00",
+      "excerpt": "خلال مؤتمر \"World Aviation Festival\" في لشبونة، دعت الرئيسة التنفيذية لشركة \"Hitit\" نفرا أونورصال كاراعاغات ومسؤول مشاريع التحول الرقمي أراس كوبيلاي إلى تحديث تدريجي لأنظمة شركات الطيران، محذرين من مخاطر اعتماد الذكاء الاصطناعي من دون إستراتيجية واضحة.",
+      "image": "https://images.euronews.com/articles/stories/09/95/21/43/696x392_cmsv2_43a8b3b8-ec60-5803-b9d7-32df2b00ab41-9952143.jpg"
+    },
+    {
+      "id": "1145570",
+      "title": "اليونيسف: تعز هي مصدر القلق الأول وسط \"بحر من الهموم\" في اليمن",
+      "url": "https://news.un.org/ar/story/2026/10/1145570",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-20T12:00:00+00:00",
+      "excerpt": "حذرت منظمة اليونيسف من أن تصاعد القتال في اليمن يؤدي إلى تعطيل \"أبسط الخدمات الأساسية\" لنحو ثلاثة ملايين شخص في جميع أنحاء البلاد، مشيرة إلى أن \"تعز تمثل الهم الأول في الوقت الراهن، وسط بحر من الهموم\".",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/09/15-09-2026_IOM_Yemen.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "e3433889cc9b4e",
+      "title": "انقطاع عالمي في خدمات البنك الرقمي \"ريفولت\": كل ما تحتاج معرفته",
+      "url": "https://arabic.euronews.com/2026/10/20/digital-bank-revolut-experiences-major-worldwide-outage",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-20T10:46:54+00:00",
+      "excerpt": "تطبيق \"ريفولت\" وخدماته توقفت الثلاثاء عن العمل لدى ملايين المستخدمين، بسبب عطل مرتبط بانقطاع كهرباء في مركز بيانات \"غوغل كلاود\" قرب لندن، قبل أن تعلن الشركة أنها أصلحت الخلل وأعادت الخدمات.",
+      "image": "https://images.euronews.com/articles/stories/09/95/98/80/696x392_cmsv2_134aae59-46f1-579e-83c2-0ae354b42500-9959880.jpg"
+    },
+    {
+      "id": "6faed25ab3bd30",
+      "title": "اليابان تطلق مهمة غير مسبوقة لإعادة عينات من قمر المريخ فوبوس",
+      "url": "https://arabic.euronews.com/2026/10/20/japan-launches-unprecedented-mission-to-bring-back-samples-from-mars-moon-phobos",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-20T05:12:51+00:00",
+      "excerpt": "تمكنت \"ناسا\" خلال الأعوام الخمسين الماضية من إنزال تسع مركبات على المريخ، كما هبطت الصين عام 2021، لكن لم تُستعد بعد أي عينات من الكوكب أو من أقماره.",
+      "image": "https://images.euronews.com/articles/stories/09/95/91/98/696x392_cmsv2_d522d96e-7861-5cd1-838c-566c5aa704fa-9959198.jpg"
+    },
+    {
+      "id": "dfda91b8e15c71",
+      "title": "الاتحاد البرتغالي يعاقب رونالدو بالإيقاف 30 يوماً وغرامة مالية على خلفية مغادرته معسكر المنتخب",
+      "url": "https://arabic.euronews.com/2026/10/19/portuguese-football-federation-hands-ronaldo-a-30-day-suspension-and-a-fine-over-his-depar",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-19T21:00:01+00:00",
+      "excerpt": "عاقب الاتحاد البرتغالي رونالدو بالإيقاف 30 يوماً وغرامة مالية لمغادرته معسكر المنتخب دون إخطار مسبق، على أن يعود قبل مباراتَي نوفمبر.",
+      "image": "https://images.euronews.com/articles/stories/09/95/90/47/696x392_cmsv2_845e8f4e-72a2-5aab-bd9d-09c6d5d7470c-9959047.jpg"
+    },
+    {
+      "id": "553592ba89e619",
+      "title": "النرويج تمدد حظر التواصل الاجتماعي المقترح لمن دون 16 ليشمل الألعاب وتطبيقات الرسائل",
+      "url": "https://arabic.euronews.com/2026/10/19/norway-to-extend-proposed-under-16-social-media-ban-to-online-games-and-messaging-apps",
+      "source": "يورونيوز العربية",
+      "section": "technology",
+      "published_at": "2026-10-19T14:28:51+00:00",
+      "excerpt": "كان من المتوقع في البداية أن تحصل ألعاب الإنترنت وخدمات التراسل على إعفاءات واسعة، لكن الحكومة قررت الآن تقييم هذه المنصات وفق المخاطر المحتملة على الأطفال.",
+      "image": "https://images.euronews.com/articles/stories/09/95/85/92/696x392_cmsv2_993bf262-3d9a-55c1-ae95-73d8fc46b71b-9958592.jpg"
+    },
+    {
+      "id": "1145568",
+      "title": "قلق أممي إزاء التصعيد العسكري وهجمات الحوثيين على السعودية وتفاقم الأزمة الإنسانية في تعز",
+      "url": "https://news.un.org/ar/story/2026/10/1145568",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-19T12:00:00+00:00",
+      "excerpt": "أعربت الأمم المتحدة عن قلق بالغ إزاء استمرار التصعيد العسكري في الشرق الأوسط، وهجمات الحوثيين المستمرة على المملكة العربية السعودية، بما فيها الهجمات التي طالت بنية تحتية مدنية ومنشآت الطاقة، فضلا عن الأعمال العدائية المكثفة على جبهات متعددة – لا سيما في مدينة تعز، مشير",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/10/16-10-2026-WFP-Yemen-01.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145567",
+      "title": "اليونيفيل تواصل تسجيل انتهاكات، ورئيس إدارة عمليات السلام يواصل زيارته الإقليمية",
+      "url": "https://news.un.org/ar/story/2026/10/1145567",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-19T12:00:00+00:00",
+      "excerpt": "سجلت قوة الأمم المتحدة المؤقتة في لبنان (اليونيفيل) عدة غارات جوية إسرائيلية، في الفترة الممتدة من يوم الجمعة إلى الأحد، ورصدت كذلك عمليات قصف مكثفة بالمدفعية وقذائف الهاون، وأعمالا هندسية.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/16-01-2026-UNDOF-patrol.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145566",
+      "title": "حصاد الزيتون - خبراء أمميون يحثون إسرائيل على حماية المزارعين في الضفة الغربية المحتلة",
+      "url": "https://news.un.org/ar/story/2026/10/1145566",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-19T12:00:00+00:00",
+      "excerpt": "حذر خبراء أمميون مستقلون من التهديدات التي يتعرض لها المزارعون الفلسطينيون في الضفة الغربية المحتلة فيما يتعلق بسبل كسب الرزق وحقوقهم الثقافية وأمنهم الغذائي خلال موسم حصاد الزيتون. وحثوا إسرائيل على ضمان حمايتهم ووصولهم الآمن إلى أراضيهم.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/21-10-2025-PARC-olive-harvest-01.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145563",
+      "title": "غزة - نقص التمويل يحرم نصف مليون شخص من المساعدات الغذائية",
+      "url": "https://news.un.org/ar/story/2026/10/1145563",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-19T12:00:00+00:00",
+      "excerpt": "أعلن برنامج الأغذية العالمي أنه اضطر إلى تقليص عدد المستفيدين من مساعداته بمقدار نصف مليون شخص، وخفض حجم حصص الغذاء المخصصة للعائلات في قطاع غزة إلى النصف خلال هذا الشهر، وذلك بسبب نقص التمويل. وحذر من أن المكاسب المحدودة التي تحققت في القطاع في مجال الأمن الغذائي قد تض",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/14-01-2025-UNRWA-Gaza-07.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145528",
+      "title": "ما بعد الركام - نساء لبنانيات يحمين الذاكرة والتراث",
+      "url": "https://news.un.org/ar/story/2026/10/1145528",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-17T12:00:00+00:00",
+      "excerpt": "أنقذت ريما شرارة الأرشيف الرقمي للمكتبة العامة في بنت جبيل، محافظةً على سنوات من التاريخ المحلي والذكريات وقصص المجتمع.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/12-10-2026_UNWomen_Lebanon_Rima_Library.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145557",
+      "title": "اليمن – عدد النازحين يتجاوز 233 ألفا مع استمرار التصعيد",
+      "url": "https://news.un.org/ar/story/2026/10/1145557",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-16T12:00:00+00:00",
+      "excerpt": "أعربت منظمات إنسانية تابعة للأمم المتحدة عن قلقها إزاء استمرار تصعيد الأعمال العدائية في اليمن وتداعيات ذلك على المدنيين، ودعت إلى تأمين وصول مستدام للمساعدات إلى جميع المحتاجين في أنحاء البلاد، ولا سيما في محافظة تعز.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/09/15-09-2026_IOM_Yemen.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145556",
+      "title": "اليونيسف - تبعات الحرب ما زالت تحدد جميع جوانب الطفولة في غزة",
+      "url": "https://news.un.org/ar/story/2026/10/1145556",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-16T12:00:00+00:00",
+      "excerpt": "حذرت منظمة اليونيسف من التكلفة البشرية الفادحة التي تواصل تدمير حياة أطفال غزة، \"سالبة إياهم حياتهم وطفولتهم ومستقبلهم\"، وأكدت على ضرورة الاستماع لأصواتهم ووضع حد لمعاناتهم.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/07/13-07-2026_UNNews_Gaza_Daily_Life_05.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145554",
+      "title": "أعضاء مجلس الأمن يدينون هجمات الحوثيين ضد السعودية، وتهديدهم للملاحة في البحر الأحمر",
+      "url": "https://news.un.org/ar/story/2026/10/1145554",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-15T12:00:00+00:00",
+      "excerpt": "أدان أعضاء مجلس الأمن الدولي بأشد العبارات الهجمات المتواصلة والتصعيدية التي يشنها الحوثيون ضد المملكة العربية السعودية، بما فيها الهجمات التي طالت الطيران المدني والبنية التحتية للطاقة وأسفرت عن مقتل وإصابة مدنيين.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/09-10-2026-UN-Photo-SC-wideview.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145552",
+      "title": "شتاء آخر في غزة بدون مأوى آمن - العائلات تلجأ لأكياس الدقيق وحديد الأنقاض للاحتماء من البرد والفيضانات",
+      "url": "https://news.un.org/ar/story/2026/10/1145552",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-15T12:00:00+00:00",
+      "excerpt": "يستعد أحمد العمري، مثل الكثيرين من سكان غزة، لاستقبال شتاء آخر ببرده القارس وأمطاره التي تحمل خطر الفيضانات، وهم يعيشون في خيام مهترئة ومساكن مُهدمة. يسارع بمساعدة شباب آخرين لتعبئة الرمال في أكياس فارغة حملت لهم من قبل مساعدات الدقيق من برنامج الأغذية العالمي.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/15-10-2026_UNNews_Gaza_Winter_Preparation_05.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145550",
+      "title": "الأمم المتحدة تحذر من خطر العودة إلى الحرب في غزة، وتؤكد ضرورة استئناف عملية السلام",
+      "url": "https://news.un.org/ar/story/2026/10/1145550",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-15T12:00:00+00:00",
+      "excerpt": "أمام مجلس الأمن، دق القائم بأعمال منسق الأمم المتحدة لعملية السلام في الشرق الأوسط ناقوس الخطر بشأن الأوضاع في غزة والضفة الغربية وقال إن مخاطر العودة إلى الحرب أكبر من أي وقت مضى. وشدد على ضرورة تجنب ذلك بكل السبل.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/15-10-2026-UN-Photo-Ramiz-Alakbarov.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145545",
+      "title": "ترحيب أممي بالإفراج عن أحد الموظفين المحتجزين لدى الحوثيين ودعوة لإطلاق سراح الآخرين",
+      "url": "https://news.un.org/ar/story/2026/10/1145545",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-14T12:00:00+00:00",
+      "excerpt": "رحبت الأمم المتحدة بالإفراج عن السيد سامي الكلابي الموظف بمكتب المبعوث الأممي إلى اليمن الذي احتجزته السلطات الحوثية منذ حزيران/يونيو عام 2024.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/25-03-2026_Unsplash_Yemen.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145536",
+      "title": "غزة - بعد موجات النزوح المتكررة، مزارعون فلسطينيون يعودون إلى أراضيهم",
+      "url": "https://news.un.org/ar/story/2026/10/1145536",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-14T12:00:00+00:00",
+      "excerpt": "تقول المزارعة الفلسطينية مريم - التي تبلغ من العمر 39 عاما - من جنوب قطاع غزة، إن الزراعة كانت دائما \"شريان حياة\" لعائلتها المكونة من ثمانية أفراد، ولا سيما بعد تشرين الأول/أكتوبر 2023.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/2026/10/13-10-2026-FAO-Gaza-farming.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145540",
+      "title": "\"بؤرة الاحتياجات الإنسانية\" - إقليم شرق المتوسط بين إنجازات وتحديات في مجال الصحة",
+      "url": "https://news.un.org/ar/story/2026/10/1145540",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-14T12:00:00+00:00",
+      "excerpt": "قال المدير العام لمنظمة الصحة العالمية إن إقليم شرق المتوسط ​​قد أثبت ما يمكن تحقيقه عندما تتولى البلدان زمام القيادة، وتتضافر جهود الشركاء، وتظل الصحة أولوية سياسية، إلا أن الإقليم لا يزال يواجه تحديات جمة باعتباره \"بؤرة الاحتياجات الإنسانية العالمية\"، إذ يحتاج أكثر من",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/14-10-2026_WHO_EMRO_Tedros.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145541",
+      "title": "اليمن - تصاعد القتال يحرم 800 ألف شخص من مساعدات منقذة للحياة، معظمهم في تعز",
+      "url": "https://news.un.org/ar/story/2026/10/1145541",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-14T12:00:00+00:00",
+      "excerpt": "حذر برنامج الأغذية العالمي من أن تصاعد القتال في اليمن أدى إلى انقطاع المساعدات المنقذة للحياة عن 800 ألف شخص، وسط تحرك خطوط المواجهة وإغلاق الطرق، وتزايد انعدام الأمن.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/14-10-2026_WFP_Yemen_Food_Distribution_Centre.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145530",
+      "title": "لبنان - عائلات تعود إلى منازلها، لكن البقاء على قيد الحياة يوميا لا يزال صعبا",
+      "url": "https://news.un.org/ar/story/2026/10/1145530",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-13T12:00:00+00:00",
+      "excerpt": "خلال خمس جلسات تشاورية مع أكثر من 40 رئيس بلدية وخمسة رؤساء لاتحادات البلديات، استمع المنسق المقيم ومنسق الشؤون الإنسانية للأمم المتحدة في لبنان عمران ريزا، وفريقه إلى احتياجات المجتمعات المحلية، وحددوا بالتعاون مع الشركاء، سبلا عملية للمساعدة في استعادة الخدمات الأساسي",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Production%20Library/2026/10/12-10-2026_RC_HC_Lebanon_Mayfadoun.jpg/image560x340cropped.jpg"
+    },
+    {
+      "id": "1145535",
+      "title": "قلق أممي بالغ إزاء استمرار التصعيد في اليمن والمملكة العربية السعودية",
+      "url": "https://news.un.org/ar/story/2026/10/1145535",
+      "source": "أخبار الأمم المتحدة",
+      "section": "region",
+      "published_at": "2026-10-13T12:00:00+00:00",
+      "excerpt": "ذكرت الأمم المتحدة أنها لا تزال تشعر بقلق بالغ إزاء استمرار التصعيد العسكري في اليمن والمملكة العربية السعودية. كما أبدت المنظمة قلقا إزاء تصاعد الأعمال العدائية على جبهات قتال عديدة، ولا سيما في محافظة تعز، وما يترتب عليها من عواقب إنسانية مدمّرة على المدنيين.",
+      "image": "https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Libraries/Production%20Library/28-08-2024_UN_Spokesperson_Dujarric.png/image560x340cropped.jpg"
+    },
+    {
+      "id": "7738bc1cc49180",
+      "title": "الاتحاد البرتغالي يفتح تحقيقاً عاجلاً بحق رونالدو ويقرر إيقافه مؤقتاً",
+      "url": "https://arabic.euronews.com/2026/10/10/cristiano-ronaldo-portugal-suspension-disciplinary-investigation",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-10T20:00:26+00:00",
+      "excerpt": "كما كان متوقعاً، فتح مجلس الانضباط في الاتحاد البرتغالي لكرة القدم تحقيقاً تأديبياً بحق قائد المنتخب الوطني كريستيانو رونالدو، وقرر إيقافه مؤقتاً، وذلك على خلفية مغادرته معسكر الفريق في العاصمة الدنماركية كوبنهاغن.",
+      "image": "https://images.euronews.com/articles/stories/09/94/72/81/696x392_cmsv2_2641c392-d2ad-5368-be6d-6e68d76b49ad-9947281.jpg"
+    },
+    {
+      "id": "967dd8fa7aad1d",
+      "title": "دموع ومشاعر جياشة.. ميسي يسدل الستار على رحلته مع منتخب الأرجنتين",
+      "url": "https://arabic.euronews.com/2026/10/07/messi-bids-farewell-to-argentina-with-win-over-benin",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-07T09:00:41+00:00",
+      "excerpt": "خاض أسطورة كرة القدم ليونيل ميسي، الثلاثاء، مباراته الأخيرة بقميص منتخب الأرجنتين، مختتماً مسيرة دولية استثنائية امتدت 21 عاماً، بعدما سجل هدفاً وصنع آخرين في الفوز الودي على بنين بثلاثية نظيفة.",
+      "image": "https://images.euronews.com/articles/stories/09/94/21/22/696x392_cmsv2_fe75b002-d055-5349-9624-fa8a999234fb-9942122.jpg"
+    },
+    {
+      "id": "e2700aae8db564",
+      "title": "رونالدو يخرج عن صمته ويكشف كواليس خلافه مع مدرب البرتغال: أخلّ بوعده معي لذلك غادرت المعسكر",
+      "url": "https://arabic.euronews.com/2026/10/06/ronaldo-breaks-his-silence-and-reveals-the-details-behind-his-dispute-with-the-portugal-co",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-06T19:39:15+00:00",
+      "excerpt": "في رسالة مكتوبة يعتذر فيها للجماهير وزملائه، كشف كريستيانو رونالدو عن أسباب مغادرته معسكر المنتخب وأكد أنه ما زال متاحا \"كالعادة\" من أجل \"المنافسة والفوز\" مع منتخب البرتغال.",
+      "image": "https://images.euronews.com/articles/stories/09/94/18/99/696x392_cmsv2_1cd72361-0003-5f2e-a617-c9049df3207a-9941899.jpg"
+    },
+    {
+      "id": "1d70cdadcbfa35",
+      "title": "حادثة \"فلاي دبي\" تشعل مواجهة قبل مباراة إيرلندا وإسرائيل.. مؤتمر صحفي ينتهي بسجال حاد",
+      "url": "https://arabic.euronews.com/2026/10/04/irish-fa-ends-coach-press-conference-israeli-journalists-clash",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-04T10:00:26+00:00",
+      "excerpt": "بدأ السجال عندما سألت صحفية إسرائيلية المدرب الإيرلندي هيمير هالغريمسون عن موقف بلاده من أشخاص زعمت أنهم حاولوا \"قتل 170 شخصًا كانوا على متن طائرة تابعة لشركة فلاي دبي، بينهم 27 طفلًا\".",
+      "image": "https://images.euronews.com/articles/stories/09/93/84/28/696x392_cmsv2_4e32e039-2752-5644-9336-b2375a7bfa9c-9938428.jpg"
+    },
+    {
+      "id": "4bb6d7c512f981",
+      "title": "مانشستر سيتي يطعن في قرار إدانته بارتكاب 115 مخالفة مالية.. أزمة تهدد عرش بطل إنجلترا",
+      "url": "https://arabic.euronews.com/2026/10/02/manchester-city-financial-violations-premier-league-appeal-abu-dhabi-etihad-airways",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-02T17:00:17+00:00",
+      "excerpt": "بحسب لوائح رابطة الدوري الانجليزي الممتاز، فإن العقوبات المحتملة ضد نادي مانشستر سيتي تتضمن التوبيخ أوالغرامة المالية أوالإيقاف أوخصم النقاط، أو حتى الطرد من البطولة في أسوء الحالات. ولم يسبق لأي نادٍ أن استُبعد من الدرجة الأولى لكرة القدم الإنجليزية.",
+      "image": "https://images.euronews.com/articles/stories/09/93/70/66/696x392_cmsv2_45ac2d81-edf6-5405-a933-86ecf3388244-9937066.jpg"
+    },
+    {
+      "id": "de9fe0b0ad07bf",
+      "title": "تعثر في التصفيات وخلافات في المعسكر.. أزمات متلاحقة تربك المنتخب التونسي بعد خيبة المونديال",
+      "url": "https://arabic.euronews.com/2026/10/01/qualifying-setbacks-and-training-camp-disputes-mounting-crises-unsettle-tunisias-nationa",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-10-01T20:00:59+00:00",
+      "excerpt": "تراكمت هذه التطورات بعد بداية مخيبة في تصفيات كأس أمم إفريقيا 2027، اكتفى خلالها \"نسور قرطاج\" بتعادلين أمام أوغندا وبوتسوانا، لتنتقل التساؤلات من الأداء على أرض الملعب إلى إدارة المنتخب، والانضباط داخل المجموعة، ووضوح القرارات.",
+      "image": "https://images.euronews.com/articles/stories/09/93/60/40/696x392_cmsv2_14df9041-f788-5ab4-b3b7-735cb26df1e3-9936040.jpg"
+    },
+    {
+      "id": "2245b3925ad0b9",
+      "title": "\"سأخبر شعب البرتغال بالحقيقة\".. رونالدو يغادر معسكر المنتخب ويثير التساؤلات بشأن مستقبله الدولي",
+      "url": "https://arabic.euronews.com/2026/09/30/ill-tell-the-portuguese-people-the-truth-ronaldo-leaves-the-national-team-camp-raisi",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-09-30T20:26:02+00:00",
+      "excerpt": "غادر قائد المنتخب البرتغالي كريستيانو رونالدو معسكر منتخب بلاده وسط خلاف مع المدرب جورجي جيسوس، متعهّداً بكشف أسباب قراره لاحقاً.",
+      "image": "https://images.euronews.com/articles/stories/09/93/43/81/696x392_cmsv2_510c825e-c19f-5b4a-905f-cbd05aac2515-9934381.jpg"
+    },
+    {
+      "id": "a2fe2716398d0b",
+      "title": "القضاء البريطاني يمنع محمد صلاح من القيادة 6 أشهر على خلفية مخالفة سرعة بسيارة مملوكة له",
+      "url": "https://arabic.euronews.com/2026/09/21/british-court-bans-mohamed-salah-from-driving-for-six-months-over-a-speeding-offence-invol",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-09-21T17:00:26+00:00",
+      "excerpt": "وقعت المخالفة بعد يومين من إعلان صلاح بصورة مفاجئة عزمه مغادرة ليفربول مع نهاية الموسم الماضي، قبل انتقاله لاحقًا إلى صفوف طرابزون سبور التركي.",
+      "image": "https://images.euronews.com/articles/stories/09/92/17/64/696x392_cmsv2_346d42c3-3637-5f9f-9b0b-4c8b7eb4d9f2-9921764.jpg"
+    },
+    {
+      "id": "e9d221b0c9107b",
+      "title": "رغم الضغوط والجدل بشأن خطة الاستثمار.. \"فيفا\" يؤكد ترشّح إنفانتينو لولاية جديدة",
+      "url": "https://arabic.euronews.com/2026/09/06/infantino-confirms-new-fifa-president-term",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-09-06T18:00:28+00:00",
+      "excerpt": "أكد \"فيفا\"، في بيان نقلته عدة وسائل إعلام، تمسّك إنفانتينو بخوض الانتخابات، قائلًا: \"أعلن رئيس فيفا في نيسان/أبريل أنه سيترشح لإعادة انتخابه عام 2027، وبالطبع لم يتغير شيء. السيد إنفانتينو سيترشح لولاية جديدة\".",
+      "image": "https://images.euronews.com/articles/stories/09/90/31/75/696x392_cmsv2_1889ba9b-dc53-5753-81d2-bed25755be27-9903175.jpg"
+    },
+    {
+      "id": "a3f1e2104ef7fb",
+      "title": "من برنامج مسابقات وحلم إلى دوري أبطال أوروبا: رحلة نادي صباح الأذربيجاني",
+      "url": "https://arabic.euronews.com/2026/09/02/how-a-quiz-show-and-a-dream-took-azerbaijans-sabah-to-the-champions-league",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-09-02T15:57:16+00:00",
+      "excerpt": "ضمن نادي \"سباح\" الأذربيجاني لكرة القدم تأهلا مفاجئا إلى دوري أبطال أوروبا، في إنجاز يعد من الأكثر تاريخية في مسيرته حتى الآن.",
+      "image": "https://images.euronews.com/articles/stories/09/89/28/52/696x392_cmsv2_c3f64f87-3658-5890-be36-0d1cf20b6719-9892852.jpg"
+    },
+    {
+      "id": "a4ac8d72dff149",
+      "title": "بعد مسيرة حافلة بالألقاب.. أسطورة كرة القدم ليونيل ميسي يعلن اعتزاله اللعب دولياً",
+      "url": "https://arabic.euronews.com/2026/08/31/lionel-messi-argentina-retirement-world-cup-football",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-31T18:00:49+00:00",
+      "excerpt": "أعلن نجم كرة القدم ليونيل ميسي، الاثنين، اعتزاله اللعب مع منتخب الأرجنتين عن 39 عاماً، بعد أكثر من عقدين فاز حلالهما بكأس العالم عام 2022، وبلقبي كوبا أمريكا عامي 2021 و2024، قبل أن يخوض مباراته الأخيرة في نهائي مونديال 2026 أمام إسبانيا.",
+      "image": "https://images.euronews.com/articles/stories/09/89/60/91/696x392_cmsv2_f81d025c-41bf-5e54-85fe-d3f19d68a6cb-9896091.jpg"
+    },
+    {
+      "id": "6347bfaaa9b39a",
+      "title": "عقوبات قاسية على الأرجنتين بعد مونديال 2026.. إيقاف تاريخي لباريديس وغرامات بالجملة",
+      "url": "https://arabic.euronews.com/2026/08/22/fifa-has-handed-argentinas-paredes-a-10-match-ban-over-the-world-cup-final-brawl",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-22T19:00:18+00:00",
+      "excerpt": "فرضت اللجنة التأديبية بالاتحاد الدولي لكرة القدم (فيفا) مجموعة من العقوبات على الاتحاد الأرجنتيني لكرة القدم وعدد من لاعبي وإداريي المنتخب، على خلفية مخالفات شهدتها مباريات مختلفة خلال كأس العالم 2026،",
+      "image": "https://images.euronews.com/articles/stories/09/88/41/64/696x392_cmsv2_19e05a0a-a61f-59d6-a1c0-851cd733f320-9884164.jpg"
+    },
+    {
+      "id": "a6a9b33b5cbec2",
+      "title": "ميسي يودع والده بكلمات صادمة: \"لدي شكوك كبيرة في أن أواصل\"",
+      "url": "https://arabic.euronews.com/2026/08/13/i-have-quite-a-few-doubts-that-i-will-continue-said-messi-in-the-harsh-words-during-his-fa",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-13T08:40:07+00:00",
+      "excerpt": "نشر لاعب كرة القدم الأرجنتيني رسالة مفتوحة يودّع فيها والده وممثله خورخي ميسي، الذي توفي في روزاريو في ثمانية أغسطس بعد معاناة طويلة مع المرض. واعترف قائد منتخب الأرجنتين فيها بأنه يشك في استمراره في كرة القدم.",
+      "image": "https://images.euronews.com/articles/stories/09/87/27/42/696x392_cmsv2_e1d02ca3-35b5-5bfa-a244-777a87d84244-9872742.jpg"
+    },
+    {
+      "id": "217ea904e69911",
+      "title": "بعد وفاة والده.. هل يفكر ميسي جدياً في اعتزال كرة القدم؟",
+      "url": "https://arabic.euronews.com/2026/08/12/lionel-messi-argentina-football-jorge-world-cup-career",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-12T18:00:58+00:00",
+      "excerpt": "بعد مسيرة امتدت لأكثر من عقدين، كشف نجم كرة القدم الأرجنتيني ليونيل ميسي أنه يدرس احتمال إنهاء مشواره الكروي، وذلك بعد وفاة والده خورخي الأسبوع الماضي.",
+      "image": "https://images.euronews.com/articles/stories/09/87/21/07/696x392_cmsv2_ca87c3fb-ea62-5d24-bb9a-3c773a5eebbc-9872107.jpg"
+    },
+    {
+      "id": "ec259fe8b411dc",
+      "title": "وسط مطالب بتنحّيه عن رئاسة \"فيفا\".. ترامب: استبدال إنفانتينو سيكون خطأً فادحًا",
+      "url": "https://arabic.euronews.com/2026/08/11/trump-defends-infantino-warns-replacement-huge-mistake",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-11T16:00:21+00:00",
+      "excerpt": "دافع الرئيس الأميركي دونالد ترامب عن جياني إنفانتينو، وسط مطالب بإقالته من رئاسة \"فيفا\" بسبب خطته لبيع حصة من كأس العالم.",
+      "image": "https://images.euronews.com/articles/stories/09/87/03/88/696x392_cmsv2_1a3cdc7d-2226-5738-87c4-64adb1e0e27d-9870388.jpg"
+    },
+    {
+      "id": "73b07f3294a001",
+      "title": "ثلاثة اتحادات قارية تتهم إنفانتينو بإساءة إدارة \"فيفا\" والإخلال بالثقة بسبب خطة كأس العالم",
+      "url": "https://arabic.euronews.com/2026/08/10/fifa-gianni-infantino-world-cup-uefa-concacaf-afc-investment-funds-breach-of-trust",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-10T20:00:56+00:00",
+      "excerpt": "كان الاتحاد الأوروبي لكرة القدم \"UEFA\" قد هدد في وقت سابق بمقاطعة كأس العالم ومسابقات أخرى ينظمها \"فيفا\"، فيما دعت اتحادات وطنية أوروبية، من بينها الاتحاد النرويجي لكرة القدم، إلى استقالة إنفانتينو.",
+      "image": "https://images.euronews.com/articles/stories/09/86/88/01/696x392_cmsv2_7e38d3e4-da5b-5166-bfa6-69525bbb48ae-9868801.jpg"
+    },
+    {
+      "id": "724cc57c7cefb4",
+      "title": "\"فيفا\" يدافع عن إنفانتينو بعد الكشف عن دفع \"يويفا\" تسوية مالية لعشيقته المزعومة",
+      "url": "https://arabic.euronews.com/2026/08/09/fifa-defends-infantino-after-revelations-that-his-alleged-lover-was-paid-off-by-uefa",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-09T10:15:50+00:00",
+      "excerpt": "دافع الاتحاد الدولي لكرة القدم \"فيفا\" عن رئيسه جياني إنفانتينو، بعد الكشف عن تسوية مالية دفعها \"يويفا\" لموظفة يُزعم أنها كانت على علاقة عاطفية به.",
+      "image": "https://images.euronews.com/articles/stories/09/86/76/24/696x392_cmsv2_b0cac95b-e5bb-5da1-b4f3-dd9a7eb24b88-9867624.jpg"
+    },
+    {
+      "id": "82238da6ef5f68",
+      "title": "رحيل الرجل الذي آمن بـ\"البرغوث\" أولاً.. والد ميسي يودع الحياة عن 68 عاماً",
+      "url": "https://arabic.euronews.com/2026/08/08/jorge-messi-father-and-agent-of-lionel-messi-dies-at-68",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-08T18:00:06+00:00",
+      "excerpt": "توفي خورخي هوراسيو ميسي، والد أسطورة كرة القدم ليونيل ميسي، فجر السبت في مصحة \"سنترو\" بمدينة روساريو الأرجنتينية، عن عمر يناهز 68 عاماً، بعد صراع طويل مع المرض.",
+      "image": "https://images.euronews.com/articles/stories/09/86/73/35/696x392_cmsv2_d3118d13-ca0b-557c-a24b-c62f1e147e4d-9867335.jpg"
+    },
+    {
+      "id": "94cf347ad9c941",
+      "title": "صفقة تتجاوز كرة القدم.. محمد صلاح في طرابزون سبور ينعش السياحة والاقتصاد في تركيا",
+      "url": "https://arabic.euronews.com/2026/08/07/turkey-mohamed-salah-trabzon-football-transfer",
+      "source": "يورونيوز العربية",
+      "section": "sports",
+      "published_at": "2026-08-07T13:30:06+00:00",
+      "excerpt": "مع انتقال محمد صلاح إلى نادي طرابزون سبور، تتوقع المدينة التركية توافد أعداد كبيرة من الزوار، خصوصاً من الجماهير المصرية والعربية الراغبة في متابعة نشاط اللاعب، ما قد يعزز مكانة طرابزون كوجهة تجمع بين السياحة والرياضة.",
+      "image": "https://images.euronews.com/articles/stories/09/86/64/86/696x392_cmsv2_c433df74-f19b-5b72-a765-ce805ec7bcad-9866486.jpg"
     }
   ]
 }
