@@ -181,3 +181,58 @@
  .ad-orbit{width:64%;left:16%;top:14%}
 }
 @media(prefers-reduced-motion:reduce){.ad-orbit,.ad-pulse{animation:none}}
+
+
+/* OFUQ editorial portal: compact banner above a real video campaign and photo-rich news. */
+.hero.layout{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:16px!important;padding-top:26px!important;padding-bottom:30px!important}
+.hero-copy{width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 30px}
+.hero-copy .mini-heading{width:100%;font-size:10px;margin:0}
+.hero-copy h1{font-size:clamp(24px,3.1vw,40px)!important;line-height:1.3!important;letter-spacing:0!important;margin:0!important}
+.hero-copy p{font-size:13px!important;line-height:1.7!important;margin:0!important;flex:1 1 260px}
+.hero-copy .hero-actions{margin:0}
+.hero-graphic.hero-tv-screen.hero-ad-screen{display:block!important;align-self:center!important;width:min(100%,960px)!important;min-height:0!important;height:clamp(260px,39vw,415px)!important;max-height:415px!important;aspect-ratio:16/9!important;overflow:hidden!important}
+.hero-ad-screen .ad-video{object-fit:cover;width:100%;height:100%}
+.hero-ad-screen .ad-message{right:7%;left:7%;bottom:16%;top:24%}
+.hero-ad-screen .ad-identity{z-index:6}
+.news-section{padding:34px 0 55px;background:#081d2c;border-top:1px solid #244e61}
+.news-section .section-heading{margin-bottom:18px}
+.news-section .section-heading h2{font-size:clamp(25px,3vw,39px)}
+.news-section .filters{align-items:flex-start;gap:12px;margin:12px 0 18px}
+.filter-buttons{gap:7px;display:flex;flex-wrap:wrap}
+.filter-buttons button{font-size:12px;padding:7px 13px;border-radius:4px;white-space:nowrap}
+.news-summary{font-size:12px;color:#a7c6d6;margin:0 0 13px}
+.news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.news-card{display:flex;flex-direction:column;min-height:0;padding:0;gap:0;overflow:hidden;border:1px solid #2b5468;background:#0d2739;border-radius:7px;box-shadow:0 5px 20px #0002;transition:transform .2s,border-color .2s}
+.news-card:hover{transform:translateY(-2px);border-color:#63ceda}
+.news-photo{width:100%;aspect-ratio:16/9;position:relative;background:radial-gradient(circle at 37% 36%,#21758b,#0b3c57 55%,#061c2d);overflow:hidden;flex:none}
+.news-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+.news-card:hover .news-photo img{transform:scale(1.04)}
+.news-photo.no-photo:before{content:"";position:absolute;inset:15% 30%;border:2px solid #73dce57b;border-radius:50%;box-shadow:inset 0 0 36px #8df8e329;transform:rotate(-19deg) scaleX(.72)}
+.news-photo.no-photo:after{content:"OFUQ TV";position:absolute;inset:0;display:grid;place-items:center;color:#b4edf3;font:800 16px Arial;letter-spacing:3px;text-shadow:0 3px 15px #04121e}
+.image-source{position:absolute;z-index:2;right:9px;bottom:8px;background:#061d2bbc;color:#e0f9ff;border-radius:3px;font-size:9px;padding:2px 8px;white-space:nowrap}
+.news-content{padding:16px;display:flex;flex-direction:column;gap:9px;flex:1}
+.news-card .tag{font-weight:800;font-size:11px;color:#65e0e6}
+.news-card h3{font-size:clamp(15px,1.65vw,19px);line-height:1.65;margin:0;flex:initial;color:#fff}
+.news-excerpt{font-size:12px;color:#b5cfdc;line-height:1.8;margin:0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.news-card .date{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:auto;padding-top:12px;border-top:1px solid #285064;font-size:10px;color:#a3c5d4}
+.news-actions{text-align:center;margin-top:23px}
+.news-actions button{background:#173e53;color:#e6faff;border:1px solid #4e8b9b;padding:10px 24px;border-radius:4px;cursor:pointer;font-weight:800}
+.news-actions button:hover{border-color:var(--teal);background:#20536a}
+.channels-bg{padding:42px 0 55px}
+@media(max-width:960px){
+ .hero.layout{display:flex!important}
+ .hero-graphic.hero-tv-screen.hero-ad-screen{display:block!important;height:clamp(235px,49vw,380px)!important}
+ .news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:630px){
+ .hero.layout{padding:16px 0 22px!important}
+ .hero-copy{gap:8px}
+ .hero-copy h1{font-size:26px!important}
+ .hero-copy .hero-actions{width:100%;gap:13px}
+ .hero-graphic.hero-tv-screen.hero-ad-screen{width:100%!important;height:255px!important;min-height:255px!important}
+ .news-section{padding-top:25px}
+ .news-grid{grid-template-columns:1fr}
+ .news-card h3{font-size:18px}
+ .filter-buttons button{padding:7px 11px}
+ .hero-ad-screen .ad-message h2{font-size:clamp(22px,6vw,29px)}
+}
