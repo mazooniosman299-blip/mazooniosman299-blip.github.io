@@ -58,14 +58,6 @@
       ]
     },
     {
-      "name": "يورونيوز العربية",
-      "section": "articles",
-      "url": "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=green",
-      "hosts": [
-        "arabic.euronews.com"
-      ]
-    },
-    {
       "name": "BBC عربي",
       "section": "world",
       "url": "https://feeds.bbci.co.uk/arabic/rss.xml",
