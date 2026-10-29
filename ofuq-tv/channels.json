@@ -56,7 +56,9 @@
       "publisher": "الحدث",
       "sourceType": "hls",
       "streams": [
+        "https://shls-hadath-prod-dub.shahid.net/out/v1/0e1a306399c346faac4226aa0858f99b/index.m3u8",
         "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-hadath/2ff87ec4c2f3ede35295a20637d9f8fd/index.m3u8",
+        "https://live.alarabiya.net/alarabiapublish/alhadath.smil/playlist.m3u8",
         "https://av.alarabiya.net/alarabiapublish/alhadath.smil/playlist.m3u8"
       ]
     },
@@ -103,6 +105,8 @@
       "publisher": "BBC عربي",
       "sourceType": "hls",
       "streams": [
+        "https://vs-hls-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.m3u8",
+        "https://vs-hls-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/mobile_wifi_main_hd_abr_v2.m3u8",
         "https://vs-hls-pushb-ww.live.cf.md.bbci.co.uk/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.m3u8"
       ]
     },
@@ -148,6 +152,7 @@
       "publisher": "الإخبارية السعودية",
       "sourceType": "hls",
       "streams": [
+        "https://cdn-globecast.akamaized.net/live/eds/al_ekhbariya/hls_roku/index.m3u8",
         "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-al-ekhbaria/297b3ef1cd0633ad9cfba7473a686a06/index.m3u8"
       ]
     },
@@ -195,6 +200,7 @@
       "publisher": "الميادين",
       "sourceType": "hls",
       "streams": [
+        "https://lmdstrm.cdn.octivid.com/mayadeen-live/smil:mayadeen.smil/playlist.m3u8",
         "https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8"
       ]
     },
@@ -217,6 +223,8 @@
       "publisher": "DW News",
       "sourceType": "hls",
       "streams": [
+        "https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/master.m3u8",
+        "https://amg01644-amg01644c1-amgplt0343.playout.now3.amagi.tv/ts-eu-w1-n2/playlist/amg01644-amg01644c1-amgplt0343/playlist.m3u8",
         "https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8"
       ]
     },
