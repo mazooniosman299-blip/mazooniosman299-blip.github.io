@@ -1,0 +1,35 @@
+{
+  "note": "Official publisher YouTube embeds only. Never restream or remove provider branding; embedding may be blocked or interrupted. Do not label live without playback verification.",
+  "channels": [
+    {
+      "id": "aljazeera",
+      "title": "الجزيرة",
+      "category": "إخبارية عربية",
+      "country": "قطر",
+      "videoId": "bNyUyrR0PHo",
+      "publisher": "AlJazeera Arabic",
+      "verified_at": "2026-10-30",
+      "note": "مشغل فيديو من الحساب الرسمي؛ البث المباشر الفعلي والتضمين يخضعان لصاحب القناة."
+    },
+    {
+      "id": "alhadath",
+      "title": "الحدث",
+      "category": "إخبارية عربية",
+      "country": "السعودية",
+      "videoId": "2_edgF4cIpQ",
+      "publisher": "AlHadath الحدث",
+      "verified_at": "2026-10-30",
+      "note": "صفحة بث منشورة من حساب الحدث الرسمي؛ حالة اتصال البث يحددها الناشر."
+    },
+    {
+      "id": "france24",
+      "title": "فرانس 24 العربية",
+      "category": "إخبارية دولية",
+      "country": "فرنسا",
+      "videoId": "3ursYA8HMeo",
+      "publisher": "FRANCE 24 Arabic",
+      "verified_at": "2026-10-30",
+      "note": "صفحة بث منشورة من حساب فرانس 24 العربي الرسمي؛ قد تتغير إمكانية التضمين."
+    }
+  ]
+}
