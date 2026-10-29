@@ -44,7 +44,12 @@ for(const f of fs.readdirSync(dir).filter(x=>x.endsWith('.js'))){
   const r=spawnSync('node',['--check',path.join(dir,f)],{encoding:'utf8'});
   check(r.status===0,'JS syntax '+f+': '+(r.stderr||'').slice(0,500));
 }
+const ads=json('ads.json');
+check(Array.isArray(ads.ads)&&ads.ads.length>0,'No advertising videos defined');
+for(const ad of ads.ads||[]){check(typeof ad.title==='string'&&ad.title.length>2,'Ad title missing');check(typeof ad.video==='string'&&/^ads\/[a-z0-9-]+\.mp4$/i.test(ad.video),'Invalid first-party video URL');const full=path.resolve(dir,ad.video||'');check(full.startsWith(dir+path.sep)&&fs.existsSync(full)&&fs.statSync(full).size>10000,'Missing playable MP4: '+(ad.video||''));}
 const homepage=fs.readFileSync(path.join(dir,'index.html'),'utf8');
+check(homepage.includes('id="adVideo"'),'Native video advertising player missing');
+check(homepage.includes('id="breakingStrip"'),'Breaking strip missing');
 check(homepage.includes('id="channelCount"'),'Channel count element missing');
 check(homepage.includes('id="newsGrid"'),'News grid missing');
 check(fs.readFileSync(path.join(dir,'portal.js'),'utf8').includes('story.html?id='),'Dynamic story reader route missing');
