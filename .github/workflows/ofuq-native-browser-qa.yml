@@ -4,6 +4,8 @@ on:
     paths:
       - 'ofuq-tv/**'
       - 'scripts/check_ofuq_portal.mjs'
+      - 'scripts/check_ofuq_news_sitemap.py'
+      - 'scripts/update_ofuq_news.py'
       - 'scripts/test_ofuq_native_browser.mjs'
   push:
     branches:
@@ -23,6 +25,11 @@ jobs:
           node-version: '24'
       - name: Validate OFUQ site references and news metadata
         run: node scripts/check_ofuq_portal.mjs
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Validate modern article sitemap and RSS script syntax
+        run: python scripts/check_ofuq_news_sitemap.py
       - name: Install chromium for actual video decoding
         run: |
           npm install --no-save playwright@1.64.1
