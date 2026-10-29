@@ -1,0 +1,61 @@
+name: Verify OFUQ native player
+on:
+  pull_request:
+    paths:
+      - 'ofuq-tv/**'
+      - 'scripts/check_ofuq_portal.mjs'
+      - 'scripts/check_ofuq_streams.mjs'
+      - 'scripts/test_ofuq_browser.mjs'
+      - '.github/workflows/verify-ofuq-native-hls.yml'
+  push:
+    branches:
+      - main
+      - ofuq-native-hls-20261030
+    paths:
+      - 'ofuq-tv/**'
+      - 'scripts/check_ofuq_portal.mjs'
+      - '.github/workflows/verify-ofuq-native-hls.yml'
+permissions:
+  contents: write
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install FFmpeg encoder
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+      - name: Generate and save original advertisement video
+        run: |
+          python3 -m pip install --break-system-packages Pillow==11.3.0
+          python3 scripts/generate_ofuq_ad_video.py
+          test -s ofuq-tv/ads/ofuq-promo.mp4
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ofuq-tv/ads/ofuq-promo.mp4
+          if ! git diff --cached --quiet; then
+            git commit -m 'Add OFUQ promotional video for advertising screen'
+            git push origin HEAD:${{ github.head_ref || github.ref_name }}
+          fi
+      - name: Validate OFUQ HTML, channels, news and JavaScript
+        run: node scripts/check_ofuq_portal.mjs
+      - name: Probe direct HLS manifests and CORS (read-only)
+        run: node scripts/check_ofuq_streams.mjs
+      - name: Install Playwright Chromium for real HLS browser playback QA
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Verify actual video playback in browser
+        run: node scripts/test_ofuq_browser.mjs
+      - name: Verify no YouTube embeds in the live page
+        run: |
+          if grep -nEi 'youtube[.]com/iframe_api|youtube-nocookie[.]com/embed|new YT[.]Player' ofuq-tv/portal.js ofuq-tv/index.html; then
+            echo "YouTube player API or iframe was found"
+            exit 1
+          fi

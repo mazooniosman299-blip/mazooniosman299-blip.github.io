@@ -12,7 +12,7 @@ check(fs.readFileSync(path.join(dir,'index.html'),'utf8').includes('id="breaking
 check(fs.readFileSync(path.join(dir,'portal.js'),'utf8').includes('verifyBreaking'),'No breaking news verification logic');
 const ids=new Set();
 for(const ch of channels.channels||[]){
-  check(/^[A-Za-z0-9_-]{11}$/.test(ch.videoId||''),'Invalid YouTube ID '+ch.id);
+  check(ch.sourceType==='hls'&&Array.isArray(ch.streams)&&ch.streams.length>0,'Missing direct HLS sources '+ch.id);for(const src of ch.streams||[]){let valid=false;try{const url=new URL(src);valid=url.protocol==='https:'&&url.pathname.endsWith('.m3u8')}catch{}check(valid,'Invalid HLS URL '+ch.id)}
   check(!ids.has(ch.id),'Duplicate channel '+ch.id);
   ids.add(ch.id);
   check(typeof ch.publisher==='string'&&ch.publisher.length>1,'Missing source/publisher '+ch.id);
@@ -44,8 +44,8 @@ for(const f of fs.readdirSync(dir).filter(x=>x.endsWith('.js'))){
   const r=spawnSync('node',['--check',path.join(dir,f)],{encoding:'utf8'});
   check(r.status===0,'JS syntax '+f+': '+(r.stderr||'').slice(0,500));
 }
-const homepage=fs.readFileSync(path.join(dir,'index.html'),'utf8');
-check(homepage.includes('id="channelCount"'),'Channel count element missing');
+const homepage=fs.readFileSync(path.join(dir,'index.html'),'utf8');const playerCode=fs.readFileSync(path.join(dir,'portal.js'),'utf8');
+check(homepage.includes('id="channelCount"'),'Channel count element missing');check(homepage.includes('id="nativePlayer"'),'Missing native OFUQ video element');check(!homepage.includes('id="youtubeStage"'),'YouTube iframe stage must be absent');check(!/youtube\.com\/iframe_api|youtube-nocookie\.com\/embed|new YT\.Player/.test(playerCode),'YouTube player calls remain');check(playerCode.includes('new Hls('),'Adaptive HLS player missing');
 check(homepage.includes('id="newsGrid"'),'News grid missing');
 check(fs.readFileSync(path.join(dir,'portal.js'),'utf8').includes('story.html?id='),'Dynamic story reader route missing');
 check(!/\b3 قنوات\b/.test(homepage),'Hardcoded misleading channel count');
