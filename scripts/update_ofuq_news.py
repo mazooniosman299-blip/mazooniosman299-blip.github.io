@@ -62,7 +62,7 @@ def main():
             continue
         seen.add(key)
         out.append(item)
-        if len(out) >= 12:
+        if len(out) >= 24:
             break
     if not out:
         print("No verified source records: preserve existing file.")

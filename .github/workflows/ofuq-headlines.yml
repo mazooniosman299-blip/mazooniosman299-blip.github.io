@@ -1,11 +1,11 @@
-name: Refresh Ofuq TV attributed headlines
+name: Hourly Ofuq TV source news refresh
 on:
   push:
     paths:
       - '.github/workflows/ofuq-headlines.yml'
       - 'scripts/update_ofuq_news.py'
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
