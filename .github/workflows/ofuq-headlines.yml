@@ -1,0 +1,34 @@
+name: Refresh Ofuq TV attributed headlines
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: ofuq-news
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Update public headline links from official feeds
+        run: python scripts/update_ofuq_news.py
+      - name: Commit updated headlines when changed
+        run: |
+          if git diff --quiet -- ofuq-tv/news.json; then
+            echo "No new headlines"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ofuq-tv/news.json
+          git commit -m "Refresh attributed Ofuq headlines"
+          git push
