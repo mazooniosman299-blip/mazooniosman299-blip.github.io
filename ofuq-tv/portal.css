@@ -75,3 +75,36 @@
 .hero-graphic.hero-tv-screen{display:block!important;overflow:hidden;min-height:290px}
 @media(max-width:960px){.hero-graphic.hero-tv-screen{display:block!important}}
 @media(max-width:650px){.hero-graphic.hero-tv-screen{display:block!important;min-height:290px;max-width:100%}}
+
+/* OFUQ unified television: large top-screen, one player, native adaptive HLS when licensed */
+[hidden]{display:none!important}
+.brand{gap:7px;font-size:22px}.brand img{width:33px;height:33px}.brand small{display:none!important}
+.hero.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(260px,.67fr);gap:25px;align-items:center;padding-block:30px 52px}
+.hero-copy{min-width:0}.hero-copy h1{font-size:clamp(29px,3.35vw,47px)}
+.hero-player{width:100%;min-width:0;background:#051321;border:1px solid #3e7082;box-shadow:0 22px 50px #0005;overflow:hidden}
+.hero-player .player-head{height:48px;background:#0a1c2e;display:flex;justify-content:space-between;align-items:center;padding-inline:14px}
+.hero-player .player-name{display:flex;gap:9px;align-items:center;min-width:0}
+.hero-player .tv-brand{font-size:15px;color:#76e4ed;border-left:1px solid #346073;padding-left:9px;white-space:nowrap}
+.hero-player .player-name b{font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:12px}
+.top-full{background:#14364a;color:white;border:1px solid #38677d;padding:5px 9px;font-size:11px;white-space:nowrap}
+.hero-player .video-stage{position:relative;aspect-ratio:16/9;isolation:isolate;overflow:hidden;background:#051827}
+.hero-player .youtube-host,.hero-player .native-player{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+.hero-player .youtube-host iframe{display:block;width:100%;height:100%;border:0}
+.hero-player .native-player{display:block;background:black;object-fit:contain}
+.hero-player .idle{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 45% 47%,#14516b,#09273c 55%,#03131f);overflow:hidden}
+.hero-player .idle:before{content:'';position:absolute;inset:0;background-image:linear-gradient(#d4ffff0a 1px,transparent 1px),linear-gradient(90deg,#d4ffff0a 1px,transparent 1px);background-size:43px 43px}
+.startup-globe{position:absolute;top:7%;left:17%;width:50%;aspect-ratio:1;border:2px solid #7ad8de66;border-radius:50%;pointer-events:none;animation:ofuqOrb 22s ease-in-out infinite alternate}
+.startup-globe:before,.startup-globe:after,.startup-globe i{content:'';position:absolute;inset:0;border:2px solid #99fffa88;border-radius:50%;transform:rotate(30deg) scaleX(.45)}
+.startup-globe:after{transform:rotate(-45deg) scaleX(.7)}.startup-globe i:nth-child(1){transform:rotate(65deg) scaleX(.3)}.startup-globe i:nth-child(2){inset:25% 0;transform:rotate(0)}.startup-globe i:nth-child(3){inset:43% 0;transform:rotate(0)}
+.startup-inner{z-index:2;display:flex;align-items:center;flex-direction:column;gap:12px;color:#eefbff;font-size:clamp(19px,3vw,37px);font-weight:900;text-shadow:0 3px 22px #0009}
+.startup-progress{height:3px;width:115px;background:linear-gradient(90deg,#052c3c,#54e0ea,#052c3c);background-size:200% 100%;animation:ofuqProgress 2s linear infinite}
+@keyframes ofuqOrb{to{transform:rotate(12deg)}}@keyframes ofuqProgress{to{background-position:200% 0}}
+.hero-player .player-foot{height:39px;background:#0a1d2e;padding:0 13px;display:flex;align-items:center;justify-content:space-between}
+.player-status{color:#b9d9e5;font-size:11px}.player-meta{color:#91bbca;font:10px Arial;white-space:nowrap}
+.channel-directory{padding:15px 17px}.channel-directory .channel-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:9px}.channel-directory .channel{height:66px}
+.channel-directory .channel-search{margin-top:0}
+.hero-player:fullscreen{height:100vh;width:100vw;display:flex;flex-direction:column;background:#020d17}
+.hero-player:fullscreen .video-stage{flex:1;aspect-ratio:auto;min-height:0}
+@media(max-width:1080px){.hero.layout{grid-template-columns:1fr}.hero-player{grid-row:1}.hero-copy{grid-row:2}.hero-copy h1{font-size:38px}.channel-directory .channel-list{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}}
+@media(max-width:630px){.hero.layout{display:grid;grid-template-columns:1fr;padding-block:14px 26px;gap:19px}.hero-player .player-head{height:40px;padding-inline:8px}.hero-player .tv-brand{font-size:11px}.hero-player .player-name{gap:5px}.hero-player .player-name img{width:19px;height:19px}.hero-player .player-name b{font-size:10px}.top-full{font-size:10px;padding:4px 6px}.hero-player .player-foot{height:32px}.player-status{font-size:9px}.hero-copy h1{font-size:30px}.hero-copy p{font-size:12px}.channel-directory .channel-list{grid-template-columns:repeat(2,minmax(0,1fr))}.channel-directory .channel{padding:8px;gap:7px}.channel-directory .channel b{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.startup-globe,.startup-progress{animation:none}}
