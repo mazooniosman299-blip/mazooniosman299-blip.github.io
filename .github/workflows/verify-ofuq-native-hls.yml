@@ -5,6 +5,7 @@ on:
       - 'ofuq-tv/**'
       - 'scripts/check_ofuq_portal.mjs'
       - 'scripts/check_ofuq_streams.mjs'
+      - 'scripts/test_ofuq_browser.mjs'
       - '.github/workflows/verify-ofuq-native-hls.yml'
   push:
     branches:
@@ -26,6 +27,12 @@ jobs:
         run: node scripts/check_ofuq_portal.mjs
       - name: Probe direct HLS manifests and CORS (read-only)
         run: node scripts/check_ofuq_streams.mjs
+      - name: Install Playwright Chromium for real HLS browser playback QA
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Verify actual video playback in browser
+        run: node scripts/test_ofuq_browser.mjs
       - name: Verify no YouTube embeds in the live page
         run: |
           if grep -nEi 'youtube[.]com/iframe_api|youtube-nocookie[.]com/embed|new YT[.]Player' ofuq-tv/portal.js ofuq-tv/index.html; then
