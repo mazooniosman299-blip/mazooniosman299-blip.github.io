@@ -1,1 +1,18 @@
-{"name":"أفق TV — قناة رقمية","short_name":"أفق TV","start_url":"./","scope":"./","display":"standalone","theme_color":"#090f1a","background_color":"#090f1a","icons":[{"src":"icon.svg","type":"image/svg+xml","sizes":"any","purpose":"any maskable"}]}
+{
+  "name": "أُفُق TV — شاشة عربية رقمية",
+  "short_name": "أُفُق TV",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0c1320",
+  "theme_color": "#0c1320",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
