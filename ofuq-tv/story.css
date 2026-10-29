@@ -7,3 +7,25 @@
 .article-photo img{display:block;width:100%;max-height:455px;object-fit:cover;border-radius:6px}
 .article-photo figcaption{font-size:11px;color:#a6c5d1;margin:7px 0}
 .attribution .source-link{display:inline-block;margin-top:12px;border:1px solid #4c95a4;padding:8px 15px;border-radius:4px;color:#dffaff;font-weight:800}
+
+
+/* Wider 2026 on-site reader with contextual in-site coverage; no invented full articles. */
+.article{max-width:1020px!important;padding:32px 0 50px!important}
+.article h1{max-width:1000px!important;font-size:clamp(27px,3.5vw,44px)!important;line-height:1.62}
+.article .article-photo{margin:8px 0 26px}
+.article .article-photo img{max-height:580px;width:100%;object-fit:cover;border-radius:7px}
+.article .intro{max-width:100%;font-size:clamp(18px,1.8vw,23px);line-height:2.15}
+.article .body-copy{max-width:100%}
+.article .body-copy p{font-size:clamp(17px,1.6vw,21px);line-height:2.25}
+.article-more{margin:36px 0 18px;padding:25px 0;border-top:1px solid #346479}
+.article-more h2{font-size:clamp(20px,2.5vw,27px);margin:0 0 17px}
+.article-more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.article-more-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid #33566b;background:#0e2b3f;border-radius:7px;text-decoration:none;color:#f2fdff}
+.article-more-card:hover{border-color:#69d8df}
+.article-more-card img{width:100%;height:170px;object-fit:cover}
+.article-more-card>div{padding:14px}
+.article-more-card h3{font-size:clamp(15px,1.6vw,19px);line-height:1.6;margin:0 0 8px}
+.article-more-card p{font-size:12px;line-height:1.9;color:#b7d5df;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.article-source{font-size:12px;margin:20px 0 10px}
+.article-source a{text-decoration:underline;text-underline-offset:4px;color:#b9d8e1}
+@media(max-width:650px){.article-more-grid{grid-template-columns:1fr}.article-more-card img{height:180px}.article{padding-top:20px!important}}
