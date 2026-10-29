@@ -236,3 +236,29 @@
  .filter-buttons button{padding:7px 11px}
  .hero-ad-screen .ad-message h2{font-size:clamp(22px,6vw,29px)}
 }
+
+
+/* 2026 editorial opening: video billboard on the LEFT, headline on the RIGHT (RTL). */
+.hero.layout{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:clamp(20px,3vw,45px)!important;padding-block:28px 30px!important}
+.hero.layout .hero-copy{width:auto!important;flex:1 1 41%!important;min-width:0!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;gap:14px!important;text-align:right!important}
+.hero.layout .hero-copy .mini-heading{width:auto!important;margin:0!important}
+.hero.layout .hero-copy h1{font-size:clamp(30px,4vw,55px)!important;font-weight:900;line-height:1.32!important;margin:0!important;max-width:100%}
+.hero.layout .hero-copy p{font-size:clamp(12px,1.18vw,16px)!important;line-height:1.9!important;margin:0!important;flex:none!important;max-width:480px}
+.hero.layout .hero-copy .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-self:flex-start}
+.hero.layout .hero-graphic.hero-tv-screen.hero-ad-screen{position:relative!important;flex:0 1 55%!important;align-self:center!important;width:55%!important;max-width:680px!important;min-height:0!important;max-height:none!important;height:auto!important;aspect-ratio:16/9!important;overflow:hidden!important;border:5px solid #173d55!important;outline:1px solid #5b9caf;border-radius:7px!important;box-shadow:0 12px 30px #010d19bb,0 0 0 4px #071521!important}
+.hero.layout .hero-graphic.hero-ad-screen .ad-overlay{background:linear-gradient(90deg,#031a2930,#031a2915 45%,#031a2988),linear-gradient(0deg,#021b28ce,transparent 27%,transparent 88%,#021b2844)}
+.hero.layout .hero-graphic.hero-ad-screen .ad-video{height:100%;width:100%;object-fit:cover}
+.hero.layout .hero-graphic.hero-ad-screen .ad-message{right:7%;left:6%;top:27%;bottom:15%}
+.channels-bg{padding:27px 0 38px!important}
+@media(max-width:850px){
+ .hero.layout{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:18px!important;padding-block:19px 26px!important}
+ .hero.layout .hero-copy{width:100%!important;flex:none!important;gap:8px!important}
+ .hero.layout .hero-copy h1{font-size:clamp(27px,5vw,38px)!important}
+ .hero.layout .hero-graphic.hero-tv-screen.hero-ad-screen{width:100%!important;max-width:650px!important;align-self:center!important;flex:none!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:16/9!important}
+}
+@media(max-width:630px){
+ .hero.layout .hero-copy .hero-actions{width:100%;justify-content:flex-start}
+ .hero.layout .hero-graphic.hero-tv-screen.hero-ad-screen{height:auto!important;min-height:0!important}
+ .hero.layout .hero-graphic.hero-ad-screen .ad-message h2{font-size:clamp(20px,5.4vw,28px)}
+ .hero.layout .hero-graphic.hero-ad-screen .ad-message p{font-size:11px}
+}
