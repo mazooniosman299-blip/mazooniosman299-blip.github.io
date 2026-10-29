@@ -1,9 +1,15 @@
-# أُفُق TV — بوابة أخبار ومشاهدة
+# أُفُق TV — بوابة الأخبار والمشاهدة
 
-تم نشر بوابة جديدة تسمح بقراءة الأخبار داخل الموقع، والتنقل بين المشغلات الرسمية لقنوات الجزيرة والحدث وفرانس 24 العربية.
+الموقع العام: https://mazooniosman299-blip.github.io/ofuq-tv/
 
-## تقنية التشغيل
-- الأخبار: JSON headlines from UN official RSS, updated via GitHub Actions at best-effort 6-hour schedule; original on-site short briefs in news-briefs.json; generic factual-only fallback when newer headlines have not yet been written.
-- Channels: publisher-owned official YouTube embeds; not IPTV restreams. Actual playback must be verified in the iframe. Some viewers can face geo-blocks or embedding restrictions. Embedded player may show publisher-controlled external links.
-- No claim of 24/7 uptime or ownership of third-party video; site's revenue cannot be guaranteed and no ad network is currently active.
-- Automated new headlines should not be represented as original reporting without editorial verification.
+## ما هو متاح الآن
+- **القنوات**: الجزيرة العربية، باستخدام مشغل يوتيوب المملوك للناشر؛ تحققنا من تقدّم الفيديو على الكمبيوتر والهاتف بتاريخ 30 أكتوبر 2026. لا تعني نتيجة اختبار واحدة ضمان التوفر الدائم أو السماح بالتضمين بكل بلد.
+- **الأخبار**: عناوين مصدرية تُجلب آلياً من RSS الأمم المتحدة وتُعرض داخل أُفُق بموجزات أصلية أو معلومات محدودة بوضوح، مع التاريخ واسم المصدر.
+- **الأرشيف**: `news-archive.json` يحتفظ بما يصل إلى 500 خبر حتى لا تتحول روابط القراءة القديمة إلى صفحات فارغة عندما تتغير الأخبار الأخيرة.
+- **الفحوص**: `scripts/check_ofuq_portal.mjs` ومهمة GitHub Actions `Verify Ofuq TV website` تفحص الروابط المحلية والبيانات وصياغة JavaScript. هي ليست بديلاً عن اختبار تشغيل الفيديو بشرياً.
+
+## حدود تقنية وحقوق
+- لا توجد قناة فضائية خاصة بأُفُق أو بث مملوك لها؛ المشاهد يرى محتوى الناشر نفسه ضمن إطار رسمي.
+- مشغّل طرف ثالث قد يحظر الفيديو أو يظهر روابط خارجية يتحكم فيها الناشر. لا نحاول إخفاء هويته أو تجاوز قيود التضمين.
+- لا نُدرج مقاطع الحدث وفرانس 24 غير المتاحة في الدليل العام حتى نتحقق من تشغيل نسخة جديدة.
+- لا توجد شبكة إعلانات مفعّلة ولا دخل مضمون. تتطلب الأرباح موقعاً مؤهلاً وجمهوراً حقيقياً وموافقة الجهة الإعلانية.
