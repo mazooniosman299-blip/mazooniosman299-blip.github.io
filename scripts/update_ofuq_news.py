@@ -161,8 +161,13 @@ def main():
     by_url = {}
     for item in collected:
         older = by_url.get(item["url"])
-        if older is None or (not older.get("image") and item.get("image")):
+        # Prefer specific editorial categories over generic world for the same URL.
+        specialized = item["section"] in {"sports", "technology", "arts", "variety", "articles", "region"}
+        existing_generic = older is not None and older.get("section") == "world"
+        if older is None or (existing_generic and specialized):
             by_url[item["url"]] = item
+        elif not older.get("image") and item.get("image"):
+            older["image"] = item["image"]
     recent = sorted(by_url.values(), key=lambda x: x["published_at"], reverse=True)
     # Balanced editorial feed: cap items per publisher, not just by section, so no network dominates.
     chosen, seen = [], set()
