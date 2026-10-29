@@ -1,38 +1,277 @@
 {
-  "note": "Only publisher-controlled embeds with observed video playback are listed. The independent browser test does not guarantee permanent worldwide availability.",
+  "notes": "Public direct-origin HLS URLs collected from third-party indexes. Availability, browser CORS, and rights to embed remain broadcaster-controlled; no stream is proxied or redistributed. No YouTube feed used.",
   "channels": [
     {
       "id": "aljazeera",
       "title": "الجزيرة",
-      "category": "إخبارية عربية",
-      "country": "قطر",
-      "videoId": "bNyUyrR0PHo",
-      "publisher": "AlJazeera Arabic",
-      "verified_at": "2026-10-30",
-      "note": "مشغل فيديو من الحساب الرسمي؛ البث المباشر الفعلي والتضمين يخضعان لصاحب القناة.",
-      "initial": "AJ"
+      "initial": "AJ",
+      "category": "عربية • قطر",
+      "publisher": "الجزيرة",
+      "sourceType": "hls",
+      "streams": [
+        "https://live-hls-web-aja.getaj.net/AJA/index.m3u8",
+        "https://live-hls-v3-aja.getaj.net/AJA-V3/index.m3u8"
+      ]
+    },
+    {
+      "id": "ajm",
+      "title": "الجزيرة مباشر",
+      "initial": "AJM",
+      "category": "عربية • قطر",
+      "publisher": "الجزيرة مباشر",
+      "sourceType": "hls",
+      "streams": [
+        "https://live-hls-web-ajm.getaj.net/AJM/index.m3u8",
+        "https://live-hls-apps-ajm-fa.getaj.net/AJM/index.m3u8"
+      ]
+    },
+    {
+      "id": "alarabiya",
+      "title": "العربية",
+      "initial": "AR",
+      "category": "عربية • الإمارات",
+      "publisher": "العربية",
+      "sourceType": "hls",
+      "streams": [
+        "https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "alhadath",
+      "title": "الحدث",
+      "initial": "HD",
+      "category": "عربية • السعودية",
+      "publisher": "الحدث",
+      "sourceType": "hls",
+      "streams": [
+        "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-hadath/2ff87ec4c2f3ede35295a20637d9f8fd/index.m3u8",
+        "https://av.alarabiya.net/alarabiapublish/alhadath.smil/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "sky",
+      "title": "سكاي نيوز عربية",
+      "initial": "SKY",
+      "category": "عربية • الإمارات",
+      "publisher": "سكاي نيوز عربية",
+      "sourceType": "hls",
+      "streams": [
+        "https://stream.skynewsarabia.com/ott/ott.m3u8",
+        "https://live-stream.skynewsarabia.com/c-horizontal-channel/horizontal-stream/index.m3u8"
+      ]
+    },
+    {
+      "id": "asharq",
+      "title": "الشرق للأخبار",
+      "initial": "SH",
+      "category": "عربية • السعودية",
+      "publisher": "الشرق للأخبار",
+      "sourceType": "hls",
+      "streams": [
+        "https://bcovlive-a.akamaihd.net/0b75ef0a49e24704a4ca023d3a82c2df/ap-south-1/6203311941001/playlist.m3u8"
+      ]
     },
     {
       "id": "france24",
       "title": "فرانس 24 العربية",
-      "category": "إخبارية دولية",
-      "country": "فرنسا",
-      "videoId": "93g513Uth98",
-      "publisher": "FRANCE 24 Arabic",
-      "verified_at": "2026-10-30",
-      "note": "أثبت اختبار فيديو فعلي تقدّم 2.504 ثانية داخل iframe؛ استمرار البث المباشر وحقوق التضمين مسؤولية الناشر.",
-      "initial": "F24"
+      "initial": "F24",
+      "category": "عربية • فرنسا",
+      "publisher": "فرانس 24 العربية",
+      "sourceType": "hls",
+      "streams": [
+        "https://live.france24.com/hls/live/2037222-b/F24_AR_HI_HLS/master_5000.m3u8",
+        "https://live.france24.com/hls/live/2037222/F24_AR_HI_HLS/master_5000.m3u8"
+      ]
     },
     {
-      "id": "skynewsarabia",
-      "title": "سكاي نيوز عربية",
-      "category": "إخبارية عربية",
-      "country": "الإمارات",
-      "videoId": "ppgTP8xQQsM",
-      "publisher": "Sky News Arabia",
-      "verified_at": "2026-10-30",
-      "note": "فحص متصفح مستقل: فيديو 1280 عرضاً و readyState 4 وتقدّم أكثر من ثانيتين بعد الضغط على تشغيل. لا ضمان لإتاحة مستمرة.",
-      "initial": "SKY"
+      "id": "dw",
+      "title": "DW عربية",
+      "initial": "DW",
+      "category": "عربية • ألمانيا",
+      "publisher": "DW عربية",
+      "sourceType": "hls",
+      "streams": [
+        "https://dwamdstream103.akamaized.net/hls/live/2015526/dwstream103/master.m3u8",
+        "https://dwamdstream103.akamaized.net/hls/live/2015526/dwstream103/index.m3u8"
+      ]
+    },
+    {
+      "id": "trt",
+      "title": "TRT عربي",
+      "initial": "TRT",
+      "category": "عربية • تركيا",
+      "publisher": "TRT عربي",
+      "sourceType": "hls",
+      "streams": [
+        "https://tv-trtarabi.medya.trt.com.tr/master.m3u8"
+      ]
+    },
+    {
+      "id": "bbc",
+      "title": "BBC عربي",
+      "initial": "BBC",
+      "category": "عربية • بريطانيا",
+      "publisher": "BBC عربي",
+      "sourceType": "hls",
+      "streams": [
+        "https://vs-hls-pushb-ww.live.cf.md.bbci.co.uk/x=4/i=urn:bbc:pips:service:bbc_arabic_tv/pc_hd_abr_v2.m3u8"
+      ]
+    },
+    {
+      "id": "cnbc",
+      "title": "CNBC عربية",
+      "initial": "CNBC",
+      "category": "اقتصاد • الإمارات",
+      "publisher": "CNBC عربية",
+      "sourceType": "hls",
+      "streams": [
+        "https://cnbc-live.akamaized.net/cnbc/master.m3u8"
+      ]
+    },
+    {
+      "id": "alaraby",
+      "title": "التلفزيون العربي",
+      "initial": "AT",
+      "category": "عربية • قطر",
+      "publisher": "التلفزيون العربي",
+      "sourceType": "hls",
+      "streams": [
+        "https://live.kwikmotion.com/alaraby1live/alaraby_abr/playlist.m3u8",
+        "https://alaraby.cdn.octivid.com/alaraby/smil:alaraby.stream.smil/chunklist.m3u8"
+      ]
+    },
+    {
+      "id": "alghad",
+      "title": "الغد",
+      "initial": "GH",
+      "category": "عربية • مصر",
+      "publisher": "الغد",
+      "sourceType": "hls",
+      "streams": [
+        "https://eazyvwqssi.erbvr.com/alghadtv/alghadtv.m3u8"
+      ]
+    },
+    {
+      "id": "alekhbariya",
+      "title": "الإخبارية السعودية",
+      "initial": "EKH",
+      "category": "عربية • السعودية",
+      "publisher": "الإخبارية السعودية",
+      "sourceType": "hls",
+      "streams": [
+        "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-al-ekhbaria/297b3ef1cd0633ad9cfba7473a686a06/index.m3u8"
+      ]
+    },
+    {
+      "id": "alqahera",
+      "title": "القاهرة الإخبارية",
+      "initial": "QAH",
+      "category": "عربية • مصر",
+      "publisher": "القاهرة الإخبارية",
+      "sourceType": "hls",
+      "streams": [
+        "https://bcovlive-a.akamaihd.net/d30cbb3350af4cb7a6e05b9eb1bfd850/eu-west-1/6057955906001/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "cgtn",
+      "title": "CGTN العربية",
+      "initial": "CGTN",
+      "category": "عربية • الصين",
+      "publisher": "CGTN العربية",
+      "sourceType": "hls",
+      "streams": [
+        "https://arabic-livews.cgtn.com/hls/LSveq57bErWLinBnxosqjisZ220802LSTefTAS9zc9mpU08y3np9TH220802cd/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "al24",
+      "title": "AL24 News",
+      "initial": "AL24",
+      "category": "عربية • الجزائر",
+      "publisher": "AL24 News",
+      "sourceType": "hls",
+      "streams": [
+        "https://cdn.live.easybroadcast.io/abr_corp/66_al24_u4yga6h/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "rtarabic",
+      "title": "RT عربية",
+      "initial": "RT",
+      "category": "عربية • روسيا",
+      "publisher": "RT عربية",
+      "sourceType": "hls",
+      "streams": [
+        "https://rt-arb.rttv.com/live/rtarab/playlist.m3u8",
+        "https://rt-arb.rttv.com/dvr/rtarab/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "almayadeen",
+      "title": "الميادين",
+      "initial": "MDN",
+      "category": "عربية • لبنان",
+      "publisher": "الميادين",
+      "sourceType": "hls",
+      "streams": [
+        "https://mdnlv.cdn.octivid.com/almdn/smil:mpegts.stream.smil/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "france24en",
+      "title": "France 24 English",
+      "initial": "F24",
+      "category": "English • France",
+      "publisher": "France 24 English",
+      "sourceType": "hls",
+      "streams": [
+        "https://live.france24.com/hls/live/2037218/F24_EN_HI_HLS/master_5000.m3u8"
+      ]
+    },
+    {
+      "id": "dwenglish",
+      "title": "DW News",
+      "initial": "DW",
+      "category": "English • Germany",
+      "publisher": "DW News",
+      "sourceType": "hls",
+      "streams": [
+        "https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8"
+      ]
+    },
+    {
+      "id": "aljazeeraen",
+      "title": "Al Jazeera English",
+      "initial": "AJE",
+      "category": "English • Qatar",
+      "publisher": "Al Jazeera English",
+      "sourceType": "hls",
+      "streams": [
+        "https://live-hls-web-aje.getaj.net/AJE/index.m3u8"
+      ]
+    },
+    {
+      "id": "france24fr",
+      "title": "France 24 Français",
+      "initial": "F24",
+      "category": "Français • France",
+      "publisher": "France 24 Français",
+      "sourceType": "hls",
+      "streams": [
+        "https://live.france24.com/hls/live/2037179/F24_FR_HI_HLS/master_5000.m3u8"
+      ]
+    },
+    {
+      "id": "france24es",
+      "title": "France 24 Español",
+      "initial": "F24",
+      "category": "Español • France",
+      "publisher": "France 24 Español",
+      "sourceType": "hls",
+      "streams": [
+        "https://live.france24.com/hls/live/2037220/F24_ES_HI_HLS/master_5000.m3u8"
+      ]
     }
   ]
 }
