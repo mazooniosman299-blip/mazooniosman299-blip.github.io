@@ -93,22 +93,46 @@ async function refreshChannels(){
 refreshChannels();
 setInterval(()=>{if(!document.hidden)refreshChannels()},300000);
 window.addEventListener('pagehide',()=>{stopStream()});
-let featuredIndex=0,featuredTimer=null;
-function updateFeatured(){
-  const title=$('idleTitle'),lead=$('idleDescription'),categoryEl=$('idleCategory'),counter=$('idleSlide'),link=$('upperRead');
-  if(!title||!allNews.length)return;
-  const items=allNews.filter(n=>typeof n.title==='string'&&n.title&&typeof n.url==='string').slice(0,12);
-  if(!items.length)return;
-  const article=items[featuredIndex%items.length];
-  const id=String(article.url||'').split('/').pop().match(/^[0-9]{5,12}$/)?.[0];
-  title.textContent=article.title;
-  categoryEl.textContent=category(article.title)==='sudan'?'أخبار السودان':category(article.title)==='region'?'أخبار المنطقة':'أخبار العالم';
-  lead.textContent='';
-  link.href=id?'story.html?id='+encodeURIComponent(id):'#news';
-  counter.textContent=String(featuredIndex%items.length+1).padStart(2,'0')+' / '+String(items.length).padStart(2,'0');
-  featuredIndex++;
+/* First-party advertising video playlist; refreshes automatically when ads.json changes. */
+const adVideo=$('adVideo');
+let ads=[],adIndex=0,adCurrent='',adStatus='idle';
+function validAd(ad){
+ if(!ad||typeof ad!=='object'||typeof ad.video!=='string'||typeof ad.title!=='string')return false;
+ try{const u=new URL(ad.video,location.href);return u.origin===location.origin&&u.pathname.includes('/ofuq-tv/ads/')&&u.pathname.toLowerCase().endsWith('.mp4')}catch{return false}
 }
-function startFeatured(){if(featuredTimer)clearInterval(featuredTimer);updateFeatured();featuredTimer=setInterval(()=>{if(!document.hidden)updateFeatured()},8500)}
+function applyAdText(ad){
+ $('adTitle').textContent=ad.title;
+ $('adDescription').textContent=typeof ad.description==='string'?ad.description:'';
+ $('adEyebrow').textContent=typeof ad.eyebrow==='string'?ad.eyebrow:'OFUQ TV · VIDEO ADVERTISING';
+ $('adNumber').textContent=String(adIndex+1).padStart(2,'0')+' / '+String(ads.length).padStart(2,'0');
+}
+function showAd(index){
+ if(!ads.length)return;
+ adIndex=((index%ads.length)+ads.length)%ads.length;
+ const ad=ads[adIndex];adCurrent=ad.video;adStatus='loading';
+ applyAdText(ad);adVideo.classList.remove('is-playing');
+ adVideo.pause();adVideo.muted=true;adVideo.setAttribute('playsinline','');adVideo.src=ad.video;adVideo.load();
+ adVideo.play().catch(()=>{adStatus='waiting';}); // Silent autoplay is allowed on most modern browsers.
+}
+adVideo.addEventListener('playing',()=>{adStatus='playing';adVideo.classList.add('is-playing')});
+adVideo.addEventListener('pause',()=>{if(!adVideo.ended)adVideo.classList.remove('is-playing')});
+adVideo.addEventListener('ended',()=>showAd(adIndex+1));
+adVideo.addEventListener('error',()=>{adStatus='unavailable';adVideo.classList.remove('is-playing');if(ads.length>1){const failed=adIndex;const next=(adIndex+1)%ads.length;if(next!==failed)showAd(next)}});
+async function refreshAds(){
+ try{
+  const res=await fetch('ads.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'});
+  if(!res.ok)throw Error('ads unavailable');
+  const data=await res.json();const next=Array.isArray(data.ads)?data.ads.filter(validAd):[];
+  if(!next.length)return;
+  const current=next.findIndex(a=>a.video===adCurrent);
+  ads=next;
+  if(!adCurrent||adStatus==='unavailable')showAd(0);
+  else {adIndex=Math.max(0,current);applyAdText(ads[adIndex])}
+ }catch{if(!ads.length){ads=[{video:'ads/ofuq-promo.mp4',title:'إعلانك على شاشة أُفُق',description:'مساحة إعلانية بالفيديو تلفت الأنظار وتظهر لجمهورك.'}];showAd(0)}}
+}
+refreshAds();
+setInterval(()=>{if(!document.hidden)refreshAds()},180000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&adVideo.paused&&!adVideo.ended&&adStatus!=='unavailable')adVideo.play().catch(()=>{})});
 const heroClockFmt=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',hour:'2-digit',minute:'2-digit',hour12:false});
 function updateHeroClock(){if($('upperClock'))$('upperClock').textContent=heroClockFmt.format(new Date())+' · مسقط'}
 updateHeroClock();setInterval(updateHeroClock,60000);
