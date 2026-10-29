@@ -66,7 +66,7 @@ function startSource(ch,token){
   video.src=source;startPlayback();return;
  }
  if(!window.Hls?.isSupported()){fallback();return}
- const controller=new Hls({enableWorker:true,startLevel:-1,capLevelToPlayerSize:true,capLevelOnFPSDrop:true,maxBufferLength:28,lowLatencyMode:true});
+ const controller=new Hls({enableWorker:true,startLevel:-1,abrEwmaDefaultEstimate:5_500_000,abrBandWidthFactor:0.85,abrBandWidthUpFactor:0.75,capLevelToPlayerSize:false,capLevelOnFPSDrop:true,maxBufferLength:28,lowLatencyMode:true});
  hlsController=controller;
  controller.on(Hls.Events.ERROR,(_event,data)=>{
   if(!valid()||hlsController!==controller||!data.fatal)return;
@@ -162,9 +162,8 @@ function renderNews(){
   const title=document.createElement('h3');title.textContent=n.title;
   const excerpt=document.createElement('p');excerpt.className='news-excerpt';excerpt.textContent=n.excerpt||'اطّلع على موجز الخبر ومصدره وتاريخ النشر.';
   const meta=document.createElement('div');meta.className='date';
-  const source=document.createElement('span');source.textContent=n.source||'المصدر';
   const time=document.createElement('span');try{time.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{time.textContent=''}
-  meta.append(source,time);body.append(label,title,excerpt,meta);link.append(photo,body);host.append(link);
+  meta.append(time);body.append(label,title,excerpt,meta);link.append(photo,body);host.append(link);
  }
  $('moreNews').hidden=selection.length<=visibleNews;
 }
