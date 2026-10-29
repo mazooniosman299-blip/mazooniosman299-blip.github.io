@@ -26,8 +26,7 @@ const archiveSet=new Set((archive.items||[]).map(x=>x.url));
 const storyIds=new Set((archive.items||[]).map(x=>String(x.id||(String(x.url||'').match(/\/(\d{5,12})(?:[/?#]|$)/)||[])[1]||'')));
 for(const item of news.items||[]){
   check(archiveSet.has(item.url),'News URL not in archive: '+item.url);
-  const sourceConfig=json('news-sources.json');
-  const matched=(sourceConfig.sources||[]).filter(x=>x.name===item.source);
+  const matched=(registeredSources.sources||[]).filter(x=>x.name===item.source);
   let validOrigin=false;
   try{const host=new URL(item.url).hostname;validOrigin=matched.some(x=>(x.hosts||[]).some(h=>host===h||host.endsWith('.'+h)))}catch{}
   check(validOrigin,'Unsupported source domain '+item.url);check(/^(?:[a-f0-9]{14}|[0-9]{5,12})$/.test(String(item.id||'')),'Invalid story ID '+item.url);
