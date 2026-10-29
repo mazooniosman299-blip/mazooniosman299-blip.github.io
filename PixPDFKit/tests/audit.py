@@ -6,7 +6,7 @@ import re
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
-ORIGIN = "https://mazooniosman299-blip.github.io/PixPDFKit/"
+ORIGIN = "https://mazooniosman299-blip-github-io.pages.dev/"
 PRIMARY = "https://mazooniosman299-blip-github-io.pages.dev/"
 
 class DocumentParser(HTMLParser):
