@@ -1,0 +1,31 @@
+name: Verify OFUQ native player
+on:
+  pull_request:
+    paths:
+      - 'ofuq-tv/**'
+      - 'scripts/check_ofuq_portal.mjs'
+      - '.github/workflows/verify-ofuq-native-hls.yml'
+  push:
+    branches:
+      - main
+      - ofuq-native-hls-20261030
+    paths:
+      - 'ofuq-tv/**'
+      - 'scripts/check_ofuq_portal.mjs'
+      - '.github/workflows/verify-ofuq-native-hls.yml'
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate OFUQ HTML, channels, news and JavaScript
+        run: node scripts/check_ofuq_portal.mjs
+      - name: Verify no YouTube embeds in the live page
+        run: |
+          if grep -nEi 'youtube[.]com/iframe_api|youtube-nocookie[.]com/embed|new YT[.]Player' ofuq-tv/portal.js ofuq-tv/index.html; then
+            echo "YouTube player API or iframe was found"
+            exit 1
+          fi
