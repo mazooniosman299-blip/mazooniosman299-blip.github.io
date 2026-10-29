@@ -33,6 +33,7 @@ function stopStream(){
 function switchChannel(ch){
  if(!validChannel(ch))return;
  stopStream();selected=ch;currentSourceIndex=0;levelRecovery=0;
+ notify('', 'neutral');
  $('playingChannel').textContent=ch.title;
  renderChannels();startSource(ch,streamToken);
 }
