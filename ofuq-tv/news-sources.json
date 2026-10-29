@@ -1,0 +1,178 @@
+{
+  "description": "قائمة مصادر RSS عربية متنوعة قابلة للتوسعة؛ تُنشر العناوين والملخصات المتاحة فقط، ولا تُنسخ المقالات الكاملة.",
+  "sources": [
+    {
+      "name": "أخبار الأمم المتحدة",
+      "section": "world",
+      "url": "https://news.un.org/feed/subscribe/ar/news/all/rss.xml",
+      "hosts": [
+        "news.un.org"
+      ]
+    },
+    {
+      "name": "أخبار الأمم المتحدة",
+      "section": "region",
+      "url": "https://news.un.org/feed/subscribe/ar/news/region/middle-east/feed/rss.xml",
+      "hosts": [
+        "news.un.org"
+      ]
+    },
+    {
+      "name": "يورونيوز العربية",
+      "section": "world",
+      "url": "https://arabic.euronews.com/rss?format=mrss&level=theme&name=news",
+      "hosts": [
+        "arabic.euronews.com"
+      ]
+    },
+    {
+      "name": "يورونيوز العربية",
+      "section": "sports",
+      "url": "https://arabic.euronews.com/rss?format=mrss&level=theme&name=sport",
+      "hosts": [
+        "arabic.euronews.com"
+      ]
+    },
+    {
+      "name": "يورونيوز العربية",
+      "section": "technology",
+      "url": "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=next",
+      "hosts": [
+        "arabic.euronews.com"
+      ]
+    },
+    {
+      "name": "يورونيوز العربية",
+      "section": "arts",
+      "url": "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=culture",
+      "hosts": [
+        "arabic.euronews.com"
+      ]
+    },
+    {
+      "name": "يورونيوز العربية",
+      "section": "variety",
+      "url": "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=travel",
+      "hosts": [
+        "arabic.euronews.com"
+      ]
+    },
+    {
+      "name": "يورونيوز العربية",
+      "section": "articles",
+      "url": "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=green",
+      "hosts": [
+        "arabic.euronews.com"
+      ]
+    },
+    {
+      "name": "BBC عربي",
+      "section": "world",
+      "url": "https://feeds.bbci.co.uk/arabic/rss.xml",
+      "hosts": [
+        "bbc.com",
+        "bbc.co.uk",
+        "bbci.co.uk",
+        "bbc.co.uk"
+      ]
+    },
+    {
+      "name": "BBC عربي",
+      "section": "region",
+      "url": "https://feeds.bbci.co.uk/arabic/middleeast/rss.xml",
+      "hosts": [
+        "bbc.com",
+        "bbc.co.uk",
+        "bbci.co.uk"
+      ]
+    },
+    {
+      "name": "سكاي نيوز عربية",
+      "section": "world",
+      "url": "https://www.skynewsarabia.com/rss.xml",
+      "hosts": [
+        "skynewsarabia.com"
+      ]
+    },
+    {
+      "name": "الجزيرة نت",
+      "section": "world",
+      "url": "https://www.aljazeera.net/rss",
+      "hosts": [
+        "aljazeera.net"
+      ]
+    },
+    {
+      "name": "CNN بالعربية",
+      "section": "world",
+      "url": "https://arabic.cnn.com/api/v1/rss/rss.xml",
+      "hosts": [
+        "arabic.cnn.com"
+      ]
+    },
+    {
+      "name": "CNN بالعربية",
+      "section": "region",
+      "url": "https://arabic.cnn.com/api/v1/rss/middle_east/rss.xml",
+      "hosts": [
+        "arabic.cnn.com"
+      ]
+    },
+    {
+      "name": "CNN بالعربية",
+      "section": "variety",
+      "url": "https://arabic.cnn.com/api/v1/rss/entertainment/rss.xml",
+      "hosts": [
+        "arabic.cnn.com"
+      ]
+    },
+    {
+      "name": "RT عربي",
+      "section": "world",
+      "url": "https://arabic.rt.com/rss/",
+      "hosts": [
+        "arabic.rt.com"
+      ]
+    },
+    {
+      "name": "سبوتنيك عربي",
+      "section": "world",
+      "url": "https://arabic.sputniknews.com/export/rss2/archive/index.xml",
+      "hosts": [
+        "arabic.sputniknews.com"
+      ]
+    },
+    {
+      "name": "العربي الجديد",
+      "section": "world",
+      "url": "https://www.alaraby.co.uk/feeds",
+      "hosts": [
+        "alaraby.co.uk"
+      ]
+    },
+    {
+      "name": "فرانس 24 العربية",
+      "section": "world",
+      "url": "https://www.france24.com/ar/rss",
+      "hosts": [
+        "france24.com"
+      ]
+    },
+    {
+      "name": "DW عربية",
+      "section": "world",
+      "url": "https://rss.dw.com/rdf/rss-ar-all",
+      "hosts": [
+        "dw.com"
+      ]
+    },
+    {
+      "name": "البوابة العربية للأخبار التقنية",
+      "section": "technology",
+      "url": "https://aitnews.com/feed/",
+      "hosts": [
+        "aitnews.com"
+      ]
+    }
+  ]
+}
