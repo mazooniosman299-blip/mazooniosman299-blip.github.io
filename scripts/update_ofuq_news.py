@@ -28,6 +28,10 @@ def collect(source, address):
         title = html.unescape(" ".join((node.findtext("title") or "").split()))[:180]
         url = (node.findtext("link") or "").strip()
         parsed = urllib.parse.urlparse(url)
+        if parsed.path.startswith("/feed/view/ar/story/"):
+            canonical_path = parsed.path.replace("/feed/view/ar/story/", "/ar/story/", 1)
+            url = urllib.parse.urlunparse(parsed._replace(path=canonical_path))
+            parsed = urllib.parse.urlparse(url)
         if not title or parsed.scheme != "https" or parsed.hostname not in {"news.un.org", "www.news.un.org"}:
             continue
         raw_date = node.findtext("pubDate") or ""
