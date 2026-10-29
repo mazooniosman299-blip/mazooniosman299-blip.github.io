@@ -99,7 +99,7 @@ const adVideo=$('adVideo');
 let ads=[],adIndex=0,adCurrent='',adStatus='idle';
 function validAd(ad){
  if(!ad||typeof ad!=='object'||typeof ad.video!=='string'||typeof ad.title!=='string')return false;
- try{const u=new URL(ad.video,location.href);return u.origin===location.origin&&u.pathname.includes('/ofuq-tv/ads/')&&u.pathname.toLowerCase().endsWith('.mp4')}catch{return false}
+ try{const u=new URL(ad.video,location.href);const base=new URL('ads/',location.href);return u.origin===location.origin&&u.pathname.startsWith(base.pathname)&&u.pathname.toLowerCase().endsWith('.mp4')}catch{return false}
 }
 function applyAdText(ad){
  $('adTitle').textContent=ad.title;
