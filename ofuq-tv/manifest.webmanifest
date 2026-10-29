@@ -1,18 +1,1 @@
-{
-  "name": "أُفُق TV — شاشة عربية رقمية",
-  "short_name": "أُفُق TV",
-  "lang": "ar",
-  "dir": "rtl",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#0c1320",
-  "theme_color": "#0c1320",
-  "icons": [
-    {
-      "src": "logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
-}
+{"name":"أُفُق TV — شبكة إعلامية رقمية","short_name":"أُفُق TV","start_url":"./","scope":"./","display":"standalone","background_color":"#061626","theme_color":"#061626","icons":[{"src":"assets/ofuq-mark.svg","type":"image/svg+xml","sizes":"any","purpose":"any maskable"}]}
