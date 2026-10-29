@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+<defs><radialGradient id="g" cx="32%" cy="26%" r="72%"><stop stop-color="#2d6377"/><stop offset=".38" stop-color="#183f57"/><stop offset=".72" stop-color="#102a40"/><stop offset="1" stop-color="#060f1d"/></radialGradient><clipPath id="cl"><circle cx="450" cy="450" r="348"/></clipPath></defs>
+<circle cx="450" cy="450" r="350" fill="url(#g)" stroke="#64d4c6" stroke-opacity=".37" stroke-width="3"/>
+<g clip-path="url(#cl)" fill="none" stroke="#8fd1cd" stroke-width="2" opacity=".42"><ellipse cx="450" cy="450" rx="110" ry="348"/><ellipse cx="450" cy="450" rx="245" ry="348"/><path d="M102 450h696M145 310h610M145 590h610M228 190h444M228 710h444"/><ellipse cx="450" cy="450" rx="348" ry="110"/><ellipse cx="450" cy="450" rx="348" ry="245"/></g>
+<g clip-path="url(#cl)" fill="#73baba" opacity=".26"><path d="M212 270 258 210 326 205 370 248 395 322 369 378 312 390 300 450 259 472 222 425 196 348Z"/><path d="M410 455 465 420 527 447 565 513 531 580 490 666 446 627 421 537Z"/><path d="M562 222 622 196 725 242 786 318 758 380 683 392 624 348 591 394 560 361 591 298Z"/><path d="M666 546 722 536 776 587 748 635 684 631Z"/></g>
+<circle cx="450" cy="450" r="350" fill="none" stroke="#a8f6e4" stroke-width="1" opacity=".4"/>
+<ellipse cx="450" cy="450" rx="405" ry="290" fill="none" stroke="#fa5d55" stroke-opacity=".65" stroke-width="4" transform="rotate(-25 450 450)"/>
+<ellipse cx="450" cy="450" rx="422" ry="308" fill="none" stroke="#8bd4e0" stroke-opacity=".31" stroke-width="2" transform="rotate(27 450 450)"/>
+</svg>
