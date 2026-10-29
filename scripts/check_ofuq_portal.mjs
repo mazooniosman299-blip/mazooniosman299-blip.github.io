@@ -44,7 +44,7 @@ for(const f of fs.readdirSync(dir).filter(x=>x.endsWith('.js'))){
 const homepage=fs.readFileSync(path.join(dir,'index.html'),'utf8');
 check(homepage.includes('id="channelCount"'),'Channel count element missing');
 check(homepage.includes('id="newsGrid"'),'News grid missing');
-check(homepage.includes('story.html'),'Dynamic story reader route missing');
+check(fs.readFileSync(path.join(dir,'portal.js'),'utf8').includes('story.html?id='),'Dynamic story reader route missing');
 check(!/\b3 قنوات\b/.test(homepage),'Hardcoded misleading channel count');
 check(fs.readFileSync(path.join(dir,'story.js'),'utf8').includes('news-archive.json'),'Story archive fallback not used');
 console.log('OFUQ QA: '+checks+' checks; '+errors.length+' failures.');
