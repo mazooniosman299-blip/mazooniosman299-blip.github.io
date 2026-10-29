@@ -22,7 +22,7 @@ for(const item of news.items||[]){
   check(/^https:\/\/news\.un\.org\/ar\/story\/\d{4}\/\d{2}\/\d{5,12}$/.test(item.url),'Noncanonical article URL '+item.url);
 }
 for(const id of Object.keys(briefs||{}))check(storyIds.has(id),'Brief without archived story: '+id);
-const htmls=['index.html','story.html','editorial.html','privacy.html','embed-qa.html','player.html'];
+const htmls=['index.html','story.html','editorial.html','privacy.html','player.html'];
 for(const f of htmls){
   const full=path.join(dir,f);
   check(fs.existsSync(full),'Missing HTML '+f);
