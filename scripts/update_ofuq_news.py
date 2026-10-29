@@ -88,9 +88,10 @@ def fetch(source, section, url):
             except ValueError:
                 date = ""
         description = clean(node.findtext("description") or node.findtext("{http://www.w3.org/2005/Atom}summary"), 270)
+        news_section = "articles" if section=="world" and re.match(r"^(دراسة|تقرير|تحليل|رأي|كيف |لماذا |هل |ماذا |كل ما|تعرف)",title) else section
         items.append({
             "id": item_id(link), "title": title, "url": link, "source": source,
-            "section": section, "published_at": date, "excerpt": description,
+            "section": news_section, "published_at": date, "excerpt": description,
             "image": image_url(node)
         })
     return items
