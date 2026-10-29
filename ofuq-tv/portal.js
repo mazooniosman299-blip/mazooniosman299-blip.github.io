@@ -161,7 +161,7 @@ async function refreshNews(){try{
  const fresh=(data.items||[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');if(!fresh.length)throw Error('No news');
  const changed=fresh.length!==allNews.length||fresh.some((n,i)=>n.url!==allNews[i]?.url);
  allNews=fresh;briefs=info||{};
- if(changed||!featuredTimer){renderNews();startFeatured()}
+ if(changed){renderNews()}
  }catch{if(!allNews.length){const host=$('newsGrid');host.replaceChildren();const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';host.append(p)}}
 }
 refreshNews();
