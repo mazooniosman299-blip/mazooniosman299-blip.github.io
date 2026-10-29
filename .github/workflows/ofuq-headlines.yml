@@ -27,12 +27,12 @@ jobs:
         run: python scripts/update_ofuq_news.py
       - name: Commit updated headlines when changed
         run: |
-          if git diff --quiet -- ofuq-tv/news.json; then
+          if git diff --quiet -- ofuq-tv/news.json ofuq-tv/news-archive.json && [ -z "$(git ls-files --others --exclude-standard ofuq-tv/news-archive.json)" ]; then
             echo "No new headlines"
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add ofuq-tv/news.json
+          git add ofuq-tv/news.json ofuq-tv/news-archive.json
           git commit -m "Refresh attributed Ofuq headlines"
           git push

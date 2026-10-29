@@ -13,6 +13,7 @@ from email.utils import parsedate_to_datetime
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DEST = ROOT / "ofuq-tv" / "news.json"
+ARCHIVE = ROOT / "ofuq-tv" / "news-archive.json"
 FEEDS = [
     ("أخبار الأمم المتحدة", "https://news.un.org/feed/subscribe/ar/news/all/rss.xml"),
     ("أخبار الأمم المتحدة — الشرق الأوسط", "https://news.un.org/feed/subscribe/ar/news/region/middle-east/feed/rss.xml"),
@@ -72,12 +73,37 @@ def main():
             old = json.loads(DEST.read_text(encoding="utf8"))
         except (OSError, ValueError):
             pass
-    if old.get("items") == out:
-        print("No changes; skip commit.")
-        return
-    result = {"source_note": "عناوين وروابط كما نشرها المصدر؛ ليست نشرة أُفُق المحررة.", "updated_at": datetime.now(timezone.utc).isoformat(), "items": out}
-    DEST.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf8")
-    print(f"Updated {DEST}: {len(out)} headlines")
+    old_archive = {}
+    if ARCHIVE.exists():
+        try:
+            old_archive = json.loads(ARCHIVE.read_text(encoding="utf8"))
+        except (OSError, ValueError):
+            pass
+    # Preserve permanent story links when items rotate out of the 12 latest.
+    combined = out + old_archive.get("items", []) + old.get("items", [])
+    archive = []
+    visited = set()
+    for item in sorted(combined, key=lambda d: d.get("published_at", ""), reverse=True):
+        if not isinstance(item, dict):
+            continue
+        key = item.get("url")
+        if not isinstance(key, str) or key in visited:
+            continue
+        visited.add(key)
+        archive.append(item)
+        if len(archive) >= 500:
+            break
+    note = "عناوين وروابط كما نشرها المصدر؛ ليست نشرة أُفُق المحررة."
+    if old.get("items") != out:
+        result = {"source_note": note, "updated_at": datetime.now(timezone.utc).isoformat(), "items": out}
+        DEST.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf8")
+        print(f"Updated {DEST}: {len(out)} headlines")
+    if old_archive.get("items") != archive:
+        archived = {"source_note": note, "updated_at": datetime.now(timezone.utc).isoformat(), "items": archive}
+        ARCHIVE.write_text(json.dumps(archived, ensure_ascii=False, indent=2) + "\n", encoding="utf8")
+        print(f"Updated {ARCHIVE}: {len(archive)} retained stories")
+    if old.get("items") == out and old_archive.get("items") == archive:
+        print("No news changes; skip commit.")
 
 if __name__ == "__main__":
     main()
