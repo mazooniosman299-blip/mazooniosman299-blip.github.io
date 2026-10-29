@@ -1,0 +1,31 @@
+name: Verify OFUQ TV native live player and news
+on:
+  pull_request:
+    paths:
+      - 'ofuq-tv/**'
+      - 'scripts/check_ofuq_portal.mjs'
+      - 'scripts/test_ofuq_native_browser.mjs'
+  push:
+    branches:
+      - ofuq-visual-news-native-fix-20261030
+      - main
+    paths:
+      - 'ofuq-tv/**'
+      - 'scripts/check_ofuq_portal.mjs'
+      - 'scripts/test_ofuq_native_browser.mjs'
+jobs:
+  native-browser-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate OFUQ site references and news metadata
+        run: node scripts/check_ofuq_portal.mjs
+      - name: Install chromium for actual video decoding
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Test actual native HLS playback, channel change, and looping ad film
+        run: node scripts/test_ofuq_native_browser.mjs
