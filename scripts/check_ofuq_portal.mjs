@@ -5,8 +5,11 @@ const root=process.cwd(), dir=path.join(root,'ofuq-tv');
 let errors=[], checks=0;
 function check(test,msg){checks++;if(!test)errors.push(msg)}
 function json(f){try{return JSON.parse(fs.readFileSync(path.join(dir,f),'utf8'))}catch(e){errors.push(f+': JSON invalid ('+e.message+')');return{}}}
-const channels=json('channels.json'),news=json('news.json'),archive=json('news-archive.json'),briefs=json('news-briefs.json');
+const breaking=json('breaking.json'),channels=json('channels.json'),news=json('news.json'),archive=json('news-archive.json'),briefs=json('news-briefs.json');
 check(Array.isArray(channels.channels)&&channels.channels.length>0,'No channels configured');
+check(Array.isArray(breaking.items),'Missing breaking news array');
+check(fs.readFileSync(path.join(dir,'index.html'),'utf8').includes('id="breakingStrip"'),'Missing visible breaking ticker container');
+check(fs.readFileSync(path.join(dir,'portal.js'),'utf8').includes('verifyBreaking'),'No breaking news verification logic');
 const ids=new Set();
 for(const ch of channels.channels||[]){
   check(/^[A-Za-z0-9_-]{11}$/.test(ch.videoId||''),'Invalid YouTube ID '+ch.id);

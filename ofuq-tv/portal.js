@@ -17,7 +17,7 @@ function attachPlayer(){if(!ytApiReady||!frame||!window.YT?.Player||currentPlaye
 function switchChannel(ch){if(!safeId(ch.videoId))return;selected=ch;mediaActive=false;destroyPlayer();$('playingChannel').textContent=ch.title;$('idle').hidden=true;$('youtubeStage').hidden=false;$('retry').disabled=false;notify('جارٍ فتح المشغّل الرسمي…');const iframe=document.createElement('iframe');frame=iframe;iframe.title='البث المنشور من '+ch.publisher;iframe.loading='eager';iframe.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';iframe.referrerPolicy='strict-origin-when-cross-origin';iframe.allowFullscreen=true;iframe.src='https://www.youtube-nocookie.com/embed/'+ch.videoId+'?rel=0&playsinline=1&enablejsapi=1&autoplay=1&mute=1&origin='+encodeURIComponent(location.origin);iframe.addEventListener('load',()=>{if(!mediaActive&&selected?.id===ch.id)notify('تم فتح إطار المشغل. لم يُثبت تشغيل الفيديو بعد؛ اضغط تشغيل.')});iframeTimeout=setTimeout(()=>{if(!mediaActive&&selected?.id===ch.id)notify('لم يتم تأكيد تشغيل الفيديو؛ جرّب التشغيل داخل المشغل أو اختر قناة أخرى.','error')},25000);$('youtubeStage').append(iframe);renderChannels();initApi()}
 $('retry').addEventListener('click',()=>{if(selected)switchChannel(selected)});
 $('channelSearch').addEventListener('input',e=>{channelSearch=e.target.value.trim().toLocaleLowerCase('ar');renderChannels()});
-$('full').addEventListener('click',()=>{if(document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});else $('videoStage').requestFullscreen?.().catch(()=>notify('ملء الشاشة غير مدعوم في هذا المتصفح.','error'))});
+$('full').addEventListener('click',()=>{if(document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});else document.querySelector('.player').requestFullscreen?.().catch(()=>notify('ملء الشاشة غير مدعوم في هذا المتصفح.','error'))});
 fetch('channels.json?v=20261030-r3&ts='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('channels:'+r.status);return r.json()}).then(data=>{channels=(Array.isArray(data.channels)?data.channels:[]).filter(c=>safeId(c.videoId)&&typeof c.title==='string');if(!channels.length)throw Error('empty');renderChannels()}).catch(()=>{$('channelList').textContent='تعذّر تحميل قائمة القنوات. أعد تحميل الصفحة.';$('channelCount').textContent='غير متاحة حالياً'});
 let allNews=[], briefs={}, group='all',search='';
 let featuredIndex=0, featuredTimer=null;
@@ -25,9 +25,36 @@ function updateFeatured(){const title=$('idleTitle'),description=$('idleDescript
 function startFeatured(){if(featuredTimer)clearInterval(featuredTimer);updateFeatured();featuredTimer=setInterval(()=>{if(!document.hidden&&!selected)updateFeatured()},9000)}
 
 function category(title){if(/سودان|الفاشر|الأبيض/.test(title))return 'sudan';if(/اليمن|أفغانستان|الشرق الأوسط/.test(title))return 'region';return 'global'}
-function renderNews(){const host=$('newsGrid');host.replaceChildren();const selection=allNews.filter(x=>(group==='all'||category(x.title)===group)&&(!search||[x.title,x.source||''].join(' ').toLocaleLowerCase().includes(search)));if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='ما في أخبار تطابق البحث الحالي. غيّر كلمات البحث أو اختر «الكل».';host.append(p);return}for(const n of selection){const id=(n.url.match(/\/(\d{5,12})(?:[/?#]|$)/)||[])[1];if(!id)continue;const a=document.createElement('a');a.className='news-card';a.href='story.html?id='+encodeURIComponent(id);const source=document.createElement('span');source.className='tag';source.textContent=(n.source||'مصدر رسمي')+' · '+(category(n.title)==='sudan'?'السودان':category(n.title)==='region'?'المنطقة':'العالم');const title=document.createElement('h3');title.textContent=n.title;const meta=document.createElement('div');meta.className='date';const date=document.createElement('span');try{date.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{date.textContent='تاريخ النشر لدى المصدر'}const read=document.createElement('span');read.textContent='اقرأ في أُفُق';meta.append(date,read);const more=document.createElement('span');more.className='more';more.textContent=briefs[id]?.paragraphs?.length>1?'تقرير موجز موثق داخل الموقع':'موجز الخبر داخل الموقع';a.append(source,title,meta,more);host.append(a)}}
+function renderNews(){const host=$('newsGrid');host.replaceChildren();const selection=allNews.filter(x=>(group==='all'||category(x.title)===group)&&(!search||[x.title,x.source||''].join(' ').toLocaleLowerCase().includes(search)));if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='ما في أخبار تطابق البحث الحالي. غيّر كلمات البحث أو اختر «الكل».';host.append(p);return}for(const n of selection){const id=String(n.url).split('/').pop().match(/^[0-9]{5,12}$/)?.[0];title.textContent=n.title;const meta=document.createElement('div');meta.className='date';const date=document.createElement('span');try{date.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{date.textContent='تاريخ النشر لدى المصدر'}const read=document.createElement('span');read.textContent='اقرأ في أُفُق';meta.append(date,read);const more=document.createElement('span');more.className='more';more.textContent=briefs[id]?.paragraphs?.length>1?'تقرير موجز موثق داخل الموقع':'موجز الخبر داخل الموقع';a.append(source,title,meta,more);host.append(a)}}
 Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?v=20261030-r3',{cache:'no-store'}).then(r=>r.ok?r.json():{})]).then(([data,b])=>{allNews=(data.items||[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');briefs=b||{};if(!allNews.length)throw Error('empty news');renderNews();startFeatured();}).catch(()=>{$('newsGrid').innerHTML='';const p=document.createElement('p');p.className='empty-news';p.textContent='تعذّر تحميل الأخبار حالياً. يمكن إعادة تحميل الصفحة بعد قليل.';$('newsGrid').append(p)});
 $('newsSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase();renderNews()});document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.group;document.querySelectorAll('[data-group]').forEach(el=>el.classList.toggle('active',el===b));renderNews()}));
+const BREAKING_ALLOW_HOSTS=new Set(['news.un.org','www.news.un.org','www.ungeneva.org']);
+let lastBreakingId='';
+function verifyBreaking(item){
+  if(!item||typeof item!=='object'||typeof item.headline!=='string'||item.headline.trim().length<8||item.headline.length>210)return false;
+  if(item.signal!=='explicit_official_alert'&&item.signal!=='editor_approved')return false;
+  let u;try{u=new URL(item.source_url)}catch{return false}
+  if(u.protocol!=='https:'||!BREAKING_ALLOW_HOSTS.has(u.hostname))return false;
+  const issued=Date.parse(item.published_at),expires=Date.parse(item.expires_at),now=Date.now();
+  return Number.isFinite(issued)&&Number.isFinite(expires)&&issued<=now+60000&&expires>now&&expires-issued<=4*3600000&&now-issued<=4*3600000;
+}
+async function refreshBreaking(){
+  try{
+    const r=await fetch('breaking.json?refresh='+Math.floor(Date.now()/60000),{cache:'no-store'});
+    if(!r.ok)throw Error('HTTP '+r.status);
+    const d=await r.json(),items=Array.isArray(d.items)?d.items:[];
+    const x=items.find(verifyBreaking),bar=$('breakingStrip');
+    if(!x){bar.hidden=true;lastBreakingId='';return}
+    const identity=x.source_url+':'+x.published_at;
+    if(identity!==lastBreakingId){$('breakingText').textContent=x.headline.trim();lastBreakingId=identity}
+    bar.hidden=false;
+  }catch{
+    $('breakingStrip').hidden=true;lastBreakingId='';
+  }
+}
+refreshBreaking();
+setInterval(()=>{if(!document.hidden)refreshBreaking()},60000);
+
 })();
 
 if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.getRegistrations().then(regs=>Promise.all(regs.filter(r=>new URL(r.scope).pathname.startsWith('/ofuq-tv/')).map(r=>r.unregister()))).catch(()=>{});if('caches'in window)caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('ofuq-')).map(k=>caches.delete(k)))).catch(()=>{});}

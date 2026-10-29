@@ -1,5 +1,5 @@
 {
-  "note": "Only verified working embeds are listed. Other networks are withheld until a real playback test confirms a working authorized embed.",
+  "note": "Only publisher-controlled embeds with observed video playback are listed. The independent browser test does not guarantee permanent worldwide availability.",
   "channels": [
     {
       "id": "aljazeera",
@@ -22,6 +22,17 @@
       "verified_at": "2026-10-30",
       "note": "أثبت اختبار فيديو فعلي تقدّم 2.504 ثانية داخل iframe؛ استمرار البث المباشر وحقوق التضمين مسؤولية الناشر.",
       "initial": "F24"
+    },
+    {
+      "id": "skynewsarabia",
+      "title": "سكاي نيوز عربية",
+      "category": "إخبارية عربية",
+      "country": "الإمارات",
+      "videoId": "ppgTP8xQQsM",
+      "publisher": "Sky News Arabia",
+      "verified_at": "2026-10-30",
+      "note": "فحص متصفح مستقل: فيديو 1280 عرضاً و readyState 4 وتقدّم أكثر من ثانيتين بعد الضغط على تشغيل. لا ضمان لإتاحة مستمرة.",
+      "initial": "SKY"
     }
   ]
 }
