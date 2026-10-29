@@ -46,10 +46,17 @@ for(const f of fs.readdirSync(dir).filter(x=>x.endsWith('.js'))){
   check(r.status===0,'JS syntax '+f+': '+(r.stderr||'').slice(0,500));
 }
 const ads=json('ads.json');
+check(ads.network?.type==='vast','VAST ad integration not configured');
+check(ads.network?.enabled===false||typeof ads.network?.adTagUrl==='string'&&ads.network.adTagUrl.startsWith('https://'),'Approved network requires an HTTPS VAST ad tag');
+check(fs.existsSync(path.join(dir,'ad-network.js')),'Network VAST integration JS is missing');
+
 check(Array.isArray(ads.ads)&&ads.ads.length>0,'No advertising videos defined');
 for(const ad of ads.ads||[]){check(typeof ad.title==='string'&&ad.title.length>2,'Ad title missing');check(typeof ad.video==='string'&&/^ads\/[a-z0-9-]+\.mp4$/i.test(ad.video),'Invalid first-party video URL');const full=path.resolve(dir,ad.video||'');check(full.startsWith(dir+path.sep)&&fs.existsSync(full)&&fs.statSync(full).size>10000,'Missing playable MP4: '+(ad.video||''));}
 const homepage=fs.readFileSync(path.join(dir,'index.html'),'utf8');
 check(homepage.includes('id="adVideo"'),'Native video advertising player missing');
+check(homepage.includes('id="networkAdOverlay"'),'Paid video ad stage is missing');
+check(homepage.includes('ad-network.js'),'Approved advertiser network adapter is not linked');
+
 check(homepage.includes('id="breakingStrip"'),'Breaking strip missing');
 check(homepage.includes('id="channelCount"'),'Channel count element missing');check(homepage.includes('id="nativePlayer"'),'Native TV player absent');check(!homepage.includes('id="youtubeStage"'),'Old YouTube stage remains');check(!/youtube-nocookie[.]com\/embed|youtube[.]com\/iframe_api|new YT[.]Player/.test(fs.readFileSync(path.join(dir,'portal.js'),'utf8')),'YouTube still present in player code');
 check(homepage.includes('id="newsGrid"'),'News grid missing');
