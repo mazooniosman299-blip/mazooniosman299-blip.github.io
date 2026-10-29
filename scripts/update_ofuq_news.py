@@ -13,6 +13,7 @@ import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 ROOT = pathlib.Path(__file__).resolve().parents[1] / "ofuq-tv"
 DEST = ROOT / "news.json"
@@ -140,14 +141,18 @@ def update_sitemap(items):
 def main():
     collected = []
     counts = {}
-    for source, section, url, hosts in configured_feeds():
-        try:
-            records = fetch(source, section, url, hosts)
-            counts[section] = counts.get(section, 0) + len(records)
-            collected.extend(records)
-            print(f"{section}: {len(records)} from {source}")
-        except Exception as exc:
-            print(f"RSS unavailable [{section}] {type(exc).__name__}: {str(exc)[:150]}")
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        pending = {executor.submit(fetch, source, section, url, hosts): (source, section)
+                   for source, section, url, hosts in configured_feeds()}
+        for future in as_completed(pending):
+            source, section = pending[future]
+            try:
+                records = future.result()
+                counts[section] = counts.get(section, 0) + len(records)
+                collected.extend(records)
+                print(f"{section}: {len(records)} from {source}", flush=True)
+            except Exception as exc:
+                print(f"RSS unavailable [{section}] {source} {type(exc).__name__}: {str(exc)[:120]}", flush=True)
     previous = load(DEST)
     archived = load(ARCHIVE)
     if len(collected) < 10:
