@@ -4,6 +4,7 @@ on:
     paths:
       - 'ofuq-tv/**'
       - 'scripts/check_ofuq_portal.mjs'
+      - 'scripts/check_ofuq_streams.mjs'
       - '.github/workflows/verify-ofuq-native-hls.yml'
   push:
     branches:
@@ -23,6 +24,8 @@ jobs:
           node-version: '22'
       - name: Validate OFUQ HTML, channels, news and JavaScript
         run: node scripts/check_ofuq_portal.mjs
+      - name: Probe direct HLS manifests and CORS (read-only)
+        run: node scripts/check_ofuq_streams.mjs
       - name: Verify no YouTube embeds in the live page
         run: |
           if grep -nEi 'youtube[.]com/iframe_api|youtube-nocookie[.]com/embed|new YT[.]Player' ofuq-tv/portal.js ofuq-tv/index.html; then
