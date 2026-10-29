@@ -21,6 +21,10 @@ try{
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded',timeout:30000});
  if(await page.locator('iframe[src*="youtube"]').count()||await page.locator('#youtubeStage').count())throw Error('YouTube player must not exist');
  if(!(await page.locator('#adVideo').count()))throw Error('Top advertising video missing');
+ const desktopLayout=await page.evaluate(()=>{const hero=document.querySelector('.hero'),copy=document.querySelector('.hero-copy'),ad=document.querySelector('#adScreen'),channels=document.querySelector('#channels'),news=document.querySelector('#news');const a=ad.getBoundingClientRect(),c=copy.getBoundingClientRect();return {direction:getComputedStyle(hero).direction,layout:getComputedStyle(hero).flexDirection,adX:a.x,copyX:c.x,adW:a.width,adH:a.height,liveY:channels.getBoundingClientRect().top,newsY:news.getBoundingClientRect().top}});
+ console.log('DESKTOP LAYOUT '+JSON.stringify(desktopLayout));
+ if(!(desktopLayout.adX<desktopLayout.copyX&&desktopLayout.liveY<desktopLayout.newsY&&desktopLayout.adW<740&&desktopLayout.adW>250))throw Error('Incorrect ad-left, title-right, or channels-first layout');
+
  await page.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>10,{timeout:18000});
  console.log('CHANNEL BUTTONS '+await page.locator('#channelList .channel').count());
  console.log('CODEC SUPPORT '+JSON.stringify(await page.evaluate(()=>({userAgent:navigator.userAgent,mp4:MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E"'),mp3:MediaSource.isTypeSupported('audio/mp4; codecs="mp4a.40.2"')}))));
@@ -36,6 +40,11 @@ try{
  const ad=await page.locator('#adVideo').evaluate(v=>({time:v.currentTime,width:v.videoWidth,height:v.videoHeight,src:v.currentSrc,paused:v.paused,error:v.error?.code||null}));
  console.log('AD STATE '+JSON.stringify(ad));
  if(ad.width<100||ad.time<1)throw Error('Upper advertising MP4 did not play');
+ await page.setViewportSize({width:390,height:844});
+ const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#adScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
+ console.log('MOBILE LAYOUT '+JSON.stringify(mobile));
+ if(!(mobile.copyY<mobile.adY&&mobile.adWidth<=mobile.viewport&&mobile.scrollWidth<=mobile.viewport+2))throw Error('Mobile layout overflow or wrong stacked order');
+ if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
  if(errs.length)throw Error('Unexpected page errors: '+errs.slice(0,4).join(' | '));
  console.log('OFUQ BROWSER SMOKE TEST PASS');
 }finally{await browser?.close();server.kill()}

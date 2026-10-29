@@ -17,6 +17,8 @@ from email.utils import parsedate_to_datetime
 ROOT = pathlib.Path(__file__).resolve().parents[1] / "ofuq-tv"
 DEST = ROOT / "news.json"
 ARCHIVE = ROOT / "news-archive.json"
+SITEMAP = ROOT / "sitemap.xml"
+BASE = "https://mazooniosman299-blip.github.io/ofuq-tv/"
 MRSS = "{http://search.yahoo.com/mrss/}"
 FEEDS = [
     ("أخبار الأمم المتحدة", "world", "https://news.un.org/feed/subscribe/ar/news/all/rss.xml"),
@@ -102,6 +104,30 @@ def load(path):
     except (OSError, ValueError):
         return {}
 
+def update_sitemap(items):
+    """Rebuild the index from real archived article IDs, not stale hardcoded URLs."""
+    pages = [("", ""), ("editorial.html", ""), ("privacy.html", "")]
+    seen_ids = set()
+    for story in items:
+        ident = str(story.get("id") or item_id(story.get("url", "")))
+        if not re.fullmatch(r"[a-f0-9]{14}|[0-9]{5,12}", ident) or ident in seen_ids:
+            continue
+        seen_ids.add(ident)
+        updated = (story.get("published_at") or "")[:10]
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", updated):
+            updated = ""
+        pages.append(("story.html?id=" + ident, updated))
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for route, lastmod in pages:
+        lines.append("  <url><loc>" + BASE + route + "</loc>" +
+                     ("<lastmod>" + lastmod + "</lastmod>" if lastmod else "") + "</url>")
+    lines.append("</urlset>")
+    xml = "\n".join(lines) + "\n"
+    if not SITEMAP.exists() or SITEMAP.read_text(encoding="utf-8") != xml:
+        SITEMAP.write_text(xml, encoding="utf-8")
+        print(f"SITEMAP SAVED: {len(pages)} real URLs")
+
 def main():
     collected = []
     counts = {}
@@ -155,5 +181,6 @@ def main():
     if archived.get("items") != archive:
         ARCHIVE.write_text(json.dumps({**payload,"items":archive},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         print(f"ARCHIVE SAVED: {len(archive)}")
+    update_sitemap(archive)
 if __name__=="__main__":
     main()
