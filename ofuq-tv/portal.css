@@ -267,3 +267,20 @@
 .ad-network-overlay{position:absolute;inset:0;z-index:30;width:100%;height:100%;background:#051a2b}
 .ad-network-overlay[hidden]{display:none!important}
 .ad-network-overlay iframe{display:block;max-width:100%;max-height:100%;border:0}
+
+
+/* Keep the channel picker at the same visual height as the live player, with internal scrolling. */
+.player-grid{align-items:start}
+.channel-directory{box-sizing:border-box;display:flex;flex-direction:column;min-height:0;max-height:clamp(350px,47vw,610px);overflow:hidden}
+.channel-directory .channel-search{flex:0 0 auto}
+.channel-directory .channel-list{display:flex!important;flex-direction:column!important;gap:8px!important;min-height:0;max-height:none;flex:1 1 auto;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#498296 #092435;padding-inline:2px 6px;padding-bottom:7px}
+.channel-directory .channel{flex:0 0 auto;min-height:60px}
+@media(max-width:960px){
+ .channel-directory{max-height:300px}
+ .channel-directory .channel-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;align-content:start;gap:8px!important}
+}
+@media(max-width:600px){
+ .channel-directory{max-height:258px}
+ .channel-directory .channel-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .channel-directory .channel{min-width:0;min-height:58px}
+}
