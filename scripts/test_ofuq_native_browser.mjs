@@ -1,0 +1,38 @@
+import {chromium} from 'playwright';
+import {spawn} from 'node:child_process';
+const server=spawn('python3',['-m','http.server','8765','--bind','127.0.0.1','--directory','ofuq-tv'],{stdio:'ignore'});
+let browser;
+const sleep=t=>new Promise(resolve=>setTimeout(resolve,t));
+const details=page=>page.locator('#nativePlayer').evaluate(v=>({time:v.currentTime,paused:v.paused,ready:v.readyState,network:v.networkState,width:v.videoWidth,height:v.videoHeight,error:v.error?.code||null,src:v.currentSrc?.slice(0,140)}));
+async function videoProgress(page,label){
+ try{
+  await page.waitForFunction(()=>{const v=document.getElementById('nativePlayer');return v&&!v.paused&&v.readyState>=2&&v.videoWidth>0&&v.currentTime>2.0},null,{timeout:45000});
+  const state=await details(page);
+  console.log('VIDEO WORKING: '+label+' '+JSON.stringify(state));
+  return true;
+ }catch(e){console.log('PLAYBACK FAILED '+label+' '+JSON.stringify(await details(page))+' Hls='+String(await page.evaluate(()=>Boolean(window.Hls?.isSupported?.()))));return false}
+}
+try{
+ await sleep(1100);
+ browser=await chromium.launch({headless:true,args:['--no-sandbox','--autoplay-policy=no-user-gesture-required']});
+ const page=await browser.newPage({viewport:{width:1366,height:900}});
+ const errs=[];page.on('pageerror',e=>{errs.push(e.message);console.log('PAGE ERROR '+e.message)});
+ page.on('console',msg=>{if(msg.type()==='error')console.log('CONSOLE ERROR '+msg.text().slice(0,250))});
+ await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded',timeout:30000});
+ if(await page.locator('iframe[src*="youtube"]').count()||await page.locator('#youtubeStage').count())throw Error('YouTube player must not exist');
+ if(!(await page.locator('#adVideo').count()))throw Error('Top advertising video missing');
+ await page.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>10,{timeout:18000});
+ console.log('CHANNEL BUTTONS '+await page.locator('#channelList .channel').count());
+ const first=await videoProgress(page,'first autoplay channel');
+ if(!first) {
+   await page.getByRole('button',{name:/العربية/}).first().click();
+   if(!await videoProgress(page,'alternate channel'))throw Error('No native channel decoded any video frames');
+ }
+ await page.getByRole('button',{name:/فرانس 24 العربية/}).first().click();
+ if(!await videoProgress(page,'France 24 Arabic'))throw Error('France 24 native channel could not play');
+ const ad=await page.locator('#adVideo').evaluate(v=>({time:v.currentTime,width:v.videoWidth,height:v.videoHeight,src:v.currentSrc,paused:v.paused,error:v.error?.code||null}));
+ console.log('AD STATE '+JSON.stringify(ad));
+ if(ad.width<100||ad.time<1)throw Error('Upper advertising MP4 did not play');
+ if(errs.length)throw Error('Unexpected page errors: '+errs.slice(0,4).join(' | '));
+ console.log('OFUQ BROWSER SMOKE TEST PASS');
+}finally{await browser?.close();server.kill()}
