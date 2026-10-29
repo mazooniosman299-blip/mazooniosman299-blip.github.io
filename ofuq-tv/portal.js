@@ -112,27 +112,52 @@ const heroClockFmt=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',hour:
 function updateHeroClock(){if($('upperClock'))$('upperClock').textContent=heroClockFmt.format(new Date())+' · مسقط'}
 updateHeroClock();setInterval(updateHeroClock,60000);
 
-let allNews=[], briefs={}, group='all',search='';
-function category(title){if(/سودان|الفاشر|الأبيض/.test(title))return 'sudan';if(/اليمن|أفغانستان|الشرق الأوسط/.test(title))return 'region';return 'global'}
+let allNews=[],briefs={},group='all',search='',visibleNews=12;
+const SECTION_NAMES={world:'العالم',region:'المنطقة',sudan:'السودان',sports:'رياضة',technology:'تكنولوجيا',arts:'فنون',variety:'منوعات',articles:'مقالات'};
+function category(item){
+ const title=typeof item==='string'?item:item?.title||'';
+ if(/السودان|الفاشر|الأبيض|الخرطوم|دارفور/.test(title))return 'sudan';
+ return typeof item==='object'&&SECTION_NAMES[item.section]?item.section:'world';
+}
+function newsId(item){return typeof item.id==='string'&&/^[a-z0-9]{5,20}$/i.test(item.id)?item.id:(String(item.url||'').match(/\/(\d{5,12})(?:[/?#]|$)/)||[])[1]||''}
+function safeImage(url){try{const parsed=new URL(url);return parsed.protocol==='https:'&&Boolean(parsed.hostname)}catch{return false}}
 function renderNews(){
  const host=$('newsGrid');host.replaceChildren();
- const selection=allNews.filter(x=>(group==='all'||category(x.title)===group)&&(!search||[x.title,x.source||''].join(' ').toLocaleLowerCase().includes(search)));
- if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار تطابق البحث الحالي. جرّب كلمات أخرى أو اختر الكل.';host.append(p);return}
- for(const n of selection){
-  const id=String(n.url||'').split('/').pop().match(/^[0-9]{5,12}$/)?.[0];if(!id)continue;
-  const a=document.createElement('a');a.className='news-card';a.href='story.html?id='+encodeURIComponent(id);
-  const source=document.createElement('span');source.className='tag';source.textContent=(n.source||'مصدر رسمي')+' · '+(category(n.title)==='sudan'?'السودان':category(n.title)==='region'?'المنطقة':'العالم');
+ const selection=allNews.filter(n=>(group==='all'||category(n)===group)&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
+ $('newsSummary').textContent=selection.length?'عدد المواد: '+selection.length+' · آخر تحديث من المصادر الرسمية':'';
+ if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار لهذا القسم حالياً. اختر قسماً آخر.';host.append(p)}
+ for(const n of selection.slice(0,visibleNews)){
+  const id=newsId(n);if(!id)continue;
+  const link=document.createElement('a');link.className='news-card';link.href='story.html?id='+encodeURIComponent(id);
+  const photo=document.createElement('div');photo.className='news-photo';
+  if(safeImage(n.image)){const img=document.createElement('img');img.src=n.image;img.alt='صورة الخبر من '+(n.source||'المصدر');img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.onerror=()=>{img.remove();photo.classList.add('no-photo')};photo.append(img)}
+  else photo.classList.add('no-photo');
+  const watermark=document.createElement('span');watermark.className='image-source';watermark.textContent=n.image?(n.source||'صورة المصدر'):'أُفُق TV';photo.append(watermark);
+  const body=document.createElement('div');body.className='news-content';
+  const label=document.createElement('span');label.className='tag';label.textContent=SECTION_NAMES[category(n)]||'العالم';
   const title=document.createElement('h3');title.textContent=n.title;
+  const excerpt=document.createElement('p');excerpt.className='news-excerpt';excerpt.textContent=n.excerpt||'اطّلع على موجز الخبر ومصدره وتاريخ النشر.';
   const meta=document.createElement('div');meta.className='date';
-  const date=document.createElement('span');
-  try{date.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{date.textContent='تاريخ النشر لدى المصدر'}
-  const read=document.createElement('span');read.textContent='اقرأ داخل أُفُق';meta.append(date,read);
-  const more=document.createElement('span');more.className='more';more.textContent='قراءة الخبر داخل الموقع';a.append(source,title,meta,more);host.append(a);
+  const source=document.createElement('span');source.textContent=n.source||'المصدر';
+  const time=document.createElement('span');try{time.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{time.textContent=''}
+  meta.append(source,time);body.append(label,title,excerpt,meta);link.append(photo,body);host.append(link);
  }
+ $('moreNews').hidden=selection.length<=visibleNews;
 }
-
-Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?v=20261030-r3',{cache:'no-store'}).then(r=>r.ok?r.json():{})]).then(([data,b])=>{allNews=(data.items||[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');briefs=b||{};if(!allNews.length)throw Error('empty news');renderNews();}).catch(()=>{$('newsGrid').innerHTML='';const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)});
-$('newsSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase();renderNews()});document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.group;document.querySelectorAll('[data-group]').forEach(el=>el.classList.toggle('active',el===b));renderNews()}));
+async function refreshNews(){
+ try{
+  const [data,b]=await Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?ts='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():{})]);
+  const next=(Array.isArray(data.items)?data.items:[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');
+  if(!next.length)throw Error('news empty');
+  const changed=next.length!==allNews.length||next.some((n,i)=>n.url!==allNews[i]?.url);
+  allNews=next;briefs=b||{};if(changed||!$('newsGrid').querySelector('.news-card'))renderNews();
+ }catch{if(!allNews.length){$('newsGrid').replaceChildren();const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)}}
+}
+refreshNews();
+setInterval(()=>{if(!document.hidden)refreshNews()},180000);
+$('newsSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase();visibleNews=12;renderNews()});
+document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.group;visibleNews=12;document.querySelectorAll('[data-group]').forEach(el=>el.classList.toggle('active',el===b));renderNews()}));
+$('moreNews').addEventListener('click',()=>{visibleNews+=12;renderNews()});
 const BREAKING_ALLOW_HOSTS=new Set(['news.un.org','www.news.un.org','www.ungeneva.org']);
 let lastBreakingId='';
 function verifyBreaking(item){
