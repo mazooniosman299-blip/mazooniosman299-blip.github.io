@@ -18,12 +18,19 @@ for(const ch of channels.channels||[]){
   ids.add(ch.id);
   check(typeof ch.publisher==='string'&&ch.publisher.length>1,'Missing source/publisher '+ch.id);
 }
+const registeredSources=json('news-sources.json');
+check(Array.isArray(registeredSources.sources)&&registeredSources.sources.length>=12,'Worldwide source directory must have at least 12 RSS sources');
+check(new Set((registeredSources.sources||[]).map(x=>x.name)).size>=8,'Not enough independent worldwide publishers');
 check(Array.isArray(news.items)&&news.items.length>0,'No news items');check(fs.readFileSync(path.join(dir,'index.html'),'utf8').includes('data-group="sports"'),'Missing sports news filter');check(fs.readFileSync(path.join(dir,'portal.js'),'utf8').includes('news-photo'),'Missing news image renderer');
 const archiveSet=new Set((archive.items||[]).map(x=>x.url));
 const storyIds=new Set((archive.items||[]).map(x=>String(x.id||(String(x.url||'').match(/\/(\d{5,12})(?:[/?#]|$)/)||[])[1]||'')));
 for(const item of news.items||[]){
   check(archiveSet.has(item.url),'News URL not in archive: '+item.url);
-  check(/^https:\/\/(?:news\.un\.org|arabic\.euronews\.com)\//.test(item.url),'Unsupported news source '+item.url);check(/^(?:[a-f0-9]{14}|[0-9]{5,12})$/.test(String(item.id||'')),'Invalid story ID '+item.url);
+  const sourceConfig=json('news-sources.json');
+  const matched=(sourceConfig.sources||[]).filter(x=>x.name===item.source);
+  let validOrigin=false;
+  try{const host=new URL(item.url).hostname;validOrigin=matched.some(x=>(x.hosts||[]).some(h=>host===h||host.endsWith('.'+h)))}catch{}
+  check(validOrigin,'Unsupported source domain '+item.url);check(/^(?:[a-f0-9]{14}|[0-9]{5,12})$/.test(String(item.id||'')),'Invalid story ID '+item.url);
 }
 for(const id of Object.keys(briefs||{}))check(storyIds.has(id),'Brief without archived story: '+id);
 const htmls=['index.html','story.html','editorial.html','privacy.html','player.html'];
