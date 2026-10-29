@@ -6,6 +6,7 @@ on:
       - 'scripts/check_ofuq_portal.mjs'
       - 'scripts/check_ofuq_news_sitemap.py'
       - 'scripts/update_ofuq_news.py'
+      - 'ofuq-tv/news-sources.json'
       - 'scripts/test_ofuq_native_browser.mjs'
   push:
     branches:
@@ -28,6 +29,11 @@ jobs:
       - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.13'
+      - name: Verify actual multi-source RSS update with a diverse set of publishers
+        run: |
+          python scripts/update_ofuq_news.py
+          python -c "import json; d=json.load(open('ofuq-tv/news.json', encoding='utf8')); sources={x['source'] for x in d['items']}; print('ACTIVE PUBLISHERS:', len(sources), sorted(sources)); assert len(sources)>=4, 'Insufficient independent world news sources'"
+          node scripts/check_ofuq_portal.mjs
       - name: Validate modern article sitemap and RSS script syntax
         run: python scripts/check_ofuq_news_sitemap.py
       - name: Install chromium for actual video decoding
