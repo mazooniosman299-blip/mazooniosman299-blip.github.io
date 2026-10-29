@@ -6,13 +6,14 @@ let errors=[], checks=0;
 function check(test,msg){checks++;if(!test)errors.push(msg)}
 function json(f){try{return JSON.parse(fs.readFileSync(path.join(dir,f),'utf8'))}catch(e){errors.push(f+': JSON invalid ('+e.message+')');return{}}}
 const breaking=json('breaking.json'),channels=json('channels.json'),news=json('news.json'),archive=json('news-archive.json'),briefs=json('news-briefs.json');
-check(Array.isArray(channels.channels)&&channels.channels.length>0,'No channels configured');
+check(Array.isArray(channels.channels)&&channels.channels.length>=10,'Expected expanded native channel guide');
 check(Array.isArray(breaking.items),'Missing breaking news array');
 check(fs.readFileSync(path.join(dir,'index.html'),'utf8').includes('id="breakingStrip"'),'Missing visible breaking ticker container');
 check(fs.readFileSync(path.join(dir,'portal.js'),'utf8').includes('verifyBreaking'),'No breaking news verification logic');
 const ids=new Set();
 for(const ch of channels.channels||[]){
-  check(/^[A-Za-z0-9_-]{11}$/.test(ch.videoId||''),'Invalid YouTube ID '+ch.id);
+  check(ch.sourceType==='hls'&&Array.isArray(ch.streams)&&ch.streams.length>0,'Missing direct HLS stream '+ch.id);
+  for(const u of ch.streams||[]){let valid=false;try{const parsed=new URL(u);valid=parsed.protocol==='https:'&&parsed.pathname.endsWith('.m3u8')}catch{}check(valid,'Invalid stream '+ch.id)}
   check(!ids.has(ch.id),'Duplicate channel '+ch.id);
   ids.add(ch.id);
   check(typeof ch.publisher==='string'&&ch.publisher.length>1,'Missing source/publisher '+ch.id);
@@ -50,7 +51,7 @@ for(const ad of ads.ads||[]){check(typeof ad.title==='string'&&ad.title.length>2
 const homepage=fs.readFileSync(path.join(dir,'index.html'),'utf8');
 check(homepage.includes('id="adVideo"'),'Native video advertising player missing');
 check(homepage.includes('id="breakingStrip"'),'Breaking strip missing');
-check(homepage.includes('id="channelCount"'),'Channel count element missing');
+check(homepage.includes('id="channelCount"'),'Channel count element missing');check(homepage.includes('id="nativePlayer"'),'Native TV player absent');check(!homepage.includes('id="youtubeStage"'),'Old YouTube stage remains');check(!/youtube-nocookie[.]com\/embed|youtube[.]com\/iframe_api|new YT[.]Player/.test(fs.readFileSync(path.join(dir,'portal.js'),'utf8')),'YouTube still present in player code');
 check(homepage.includes('id="newsGrid"'),'News grid missing');
 check(fs.readFileSync(path.join(dir,'portal.js'),'utf8').includes('story.html?id='),'Dynamic story reader route missing');
 check(!/\b3 قنوات\b/.test(homepage),'Hardcoded misleading channel count');
