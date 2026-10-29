@@ -1,1 +1,17 @@
-{"name":"أُفُق TV — شبكة إعلامية رقمية","short_name":"أُفُق TV","start_url":"./","scope":"./","display":"standalone","background_color":"#061626","theme_color":"#061626","icons":[{"src":"assets/ofuq-mark.svg","type":"image/svg+xml","sizes":"any","purpose":"any maskable"}]}
+{
+  "name": "أُفُق TV — منصة أخبار عربية",
+  "short_name": "أُفُق TV",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071929",
+  "theme_color": "#071929",
+  "icons": [
+    {
+      "src": "assets/ofuq-mark.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}

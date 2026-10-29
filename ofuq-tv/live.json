@@ -1,5 +1,1 @@
-{
-  "mode": "demo",
-  "hlsUrl": "",
-  "note": "قناة مستقلة عبر الويب: عند توفر خادم بث HLS فعلي غيّر mode إلى hls واضبط hlsUrl. لا تضع مفاتيح RTMP أو بيانات اعتماد في هذا الملف."
-}
+{"mode":"offline","hlsUrl":"","note":"Public config only. For a real authorized HTTPS HLS source set mode to hls and hlsUrl to its .m3u8 playback URL. Never store stream keys or passwords here."}
