@@ -49,6 +49,14 @@ try{
  console.log('MOBILE LAYOUT '+JSON.stringify(mobile));
  if(!(mobile.copyY<mobile.adY&&mobile.adWidth<=mobile.viewport&&mobile.scrollWidth<=mobile.viewport+2))throw Error('Mobile layout overflow or wrong stacked order');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
+ const articles=await page.evaluate(async()=>{const r=await fetch('news.json');const d=await r.json();return d.items.slice(0,3).map(x=>x.id)});
+ await page.goto('http://127.0.0.1:8765/story.html?id='+articles[0],{waitUntil:'domcontentloaded'});
+ await page.locator('#article h1').waitFor({timeout:18000});
+ await page.waitForFunction(()=>document.querySelectorAll('#article .article-more-card').length>=1,{timeout:12000});
+ const body=await page.locator('#article').innerText();
+ for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
+ if(!await page.locator('#article .article-source a').count())throw Error('Original reference missing');
+ console.log('ON-SITE STORY PASS with '+await page.locator('#article .article-more-card').count()+' connected articles');
  if(errs.length)throw Error('Unexpected page errors: '+errs.slice(0,4).join(' | '));
  console.log('OFUQ BROWSER SMOKE TEST PASS');
 }finally{await browser?.close();server.kill()}
