@@ -19,7 +19,7 @@ try{
   await button.click();
   const started=Date.now();
   let ok=false;
-  while(Date.now()-started<(ch.id==='alhadath'?55000:22000)){
+  while(Date.now()-started<Math.min(110000,26000*ch.streams.length+5000)){
    await sleep(750);
    const state=await page.locator('#nativePlayer').evaluate(v=>({time:v.currentTime,width:v.videoWidth,height:v.videoHeight,paused:v.paused,error:v.error?.code||null}));
    if(state.time>1.5&&state.width>0&&!state.paused){ok=true;outcomes.push({id:ch.id,ok:true,video:state.width+'x'+state.height,seconds:Number(state.time.toFixed(1))});break}
