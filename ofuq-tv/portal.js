@@ -21,13 +21,50 @@ $('full').addEventListener('click',()=>{if(document.fullscreenElement)document.e
 fetch('channels.json?v=20261030-r3&ts='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('channels:'+r.status);return r.json()}).then(data=>{channels=(Array.isArray(data.channels)?data.channels:[]).filter(c=>(safeId(c.videoId)||validHls(c))&&typeof c.title==='string');if(!channels.length)throw Error('empty');renderChannels();switchChannel(channels[0])}).catch(()=>{$('channelList').textContent='تعذّر تحميل قائمة القنوات. أعد تحميل الصفحة.';$('channelCount').textContent='غير متاحة حالياً'});
 
 // Licensed source HLS via a first-party HTML5 video element. Non-HLS channels retain publisher-controlled embeds.
-let hlsController=null;
-function disposeHls(){if(hlsController){try{hlsController.destroy()}catch{}hlsController=null}const v=$('nativePlayer');v.pause();v.removeAttribute('src');v.load();v.hidden=true}
-function validHls(c){if(c?.sourceType!=='hls'||c?.embedPermission!==true||typeof c.hlsUrl!=='string')return false;try{const u=new URL(c.hlsUrl);return u.protocol==='https:'&&u.pathname.toLowerCase().endsWith('.m3u8')}catch{return false}}
-async function startHls(ch){const v=$('nativePlayer');v.hidden=false;$('idle').hidden=true;$('youtubeStage').hidden=true;v.muted=true;v.playsInline=true;v.onerror=()=>notify('البث غير متاح الآن','error');v.onplaying=()=>notify('تشاهد الآن: '+ch.title,'playing');v.onwaiting=()=>notify('', 'neutral');
-if(v.canPlayType('application/vnd.apple.mpegurl'))v.src=ch.hlsUrl;
-else{if(!window.Hls){const lib=document.createElement('script');lib.src='https://cdn.jsdelivr.net/npm/hls.js@1.6.12/dist/hls.min.js';await new Promise((resolve,reject)=>{lib.onload=resolve;lib.onerror=reject;document.head.append(lib)})}if(!window.Hls?.isSupported())throw Error('HLS browser support unavailable');hlsController=new Hls({enableWorker:true,capLevelToPlayerSize:true,capLevelOnFPSDrop:true,startLevel:-1});hlsController.attachMedia(v);hlsController.loadSource(ch.hlsUrl);hlsController.on(Hls.Events.ERROR,(_evt,data)=>{if(data.fatal)notify('البث غير متاح الآن','error')})}
-try{await v.play()}catch{notify('اضغط تشغيل الفيديو','neutral')}
+let hlsController=null,hlsToken=0;
+function disposeHls(){
+ hlsToken++;
+ if(hlsController){try{hlsController.destroy()}catch{}hlsController=null}
+ const v=$('nativePlayer');
+ v.pause();v.onerror=null;v.onplaying=null;v.ontimeupdate=null;v.onwaiting=null;v.onstalled=null;
+ v.removeAttribute('src');v.load();v.hidden=true;
+}
+function validHls(c){
+ if(c?.sourceType!=='hls'||c?.embedPermission!==true||typeof c.hlsUrl!=='string')return false;
+ try{const u=new URL(c.hlsUrl);return u.protocol==='https:'&&u.pathname.toLowerCase().endsWith('.m3u8')}catch{return false}
+}
+async function startHls(ch){
+ const v=$('nativePlayer'),token=++hlsToken;
+ v.hidden=false;$('idle').hidden=true;$('youtubeStage').hidden=true;v.muted=true;v.playsInline=true;v.preload='auto';
+ let previous=null,progress=0;
+ const active=()=>token===hlsToken&&selected?.id===ch.id;
+ v.onerror=()=>{if(active()){mediaActive=false;notify('البث غير متاح الآن','error')}};
+ v.onplaying=()=>{if(active()&&!mediaActive)notify('','neutral')};
+ v.ontimeupdate=()=>{
+   if(!active()||v.paused||v.readyState<2)return;
+   if(previous!==null&&v.currentTime>previous+.2)progress++;
+   previous=v.currentTime;
+   if(progress>=2&&!mediaActive){mediaActive=true;notify('تشاهد الآن: '+ch.title,'playing')}
+ };
+ v.onwaiting=()=>{if(active()&&mediaActive)notify('','neutral')};
+ v.onstalled=()=>{if(active()){mediaActive=false;progress=0;notify('','neutral')}};
+ try{
+  if(v.canPlayType('application/vnd.apple.mpegurl'))v.src=ch.hlsUrl;
+  else{
+   if(!window.Hls){
+     const lib=document.createElement('script');
+     lib.src='https://cdn.jsdelivr.net/npm/hls.js@1.6.12/dist/hls.min.js';
+     await new Promise((resolve,reject)=>{lib.onload=resolve;lib.onerror=reject;document.head.append(lib)});
+   }
+   if(!active())return;
+   if(!window.Hls?.isSupported())throw Error('HLS unavailable');
+   hlsController=new Hls({enableWorker:true,capLevelToPlayerSize:true,capLevelOnFPSDrop:true,startLevel:-1,maxBufferLength:30});
+   hlsController.on(Hls.Events.ERROR,(_event,data)=>{if(data.fatal&&active()){mediaActive=false;notify('البث غير متاح الآن','error')}});
+   hlsController.attachMedia(v);hlsController.loadSource(ch.hlsUrl);
+  }
+  if(!active())return;
+  await v.play().catch(()=>{if(active())notify('','neutral')});
+ }catch{if(active())notify('البث غير متاح الآن','error')}
 }
 
 let allNews=[], briefs={}, group='all',search='';
