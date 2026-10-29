@@ -68,9 +68,7 @@ function startSource(ch,token){
  if(!window.Hls?.isSupported()){fallback();return}
  const controller=new Hls({enableWorker:true,startLevel:-1,capLevelToPlayerSize:true,capLevelOnFPSDrop:true,maxBufferLength:28,lowLatencyMode:true});
  hlsController=controller;
- controller.on(Hls.Events.MEDIA_ATTACHED,()=>{if(location.hostname==='127.0.0.1')console.info('HLS MEDIA ATTACHED '+ch.id)});
- controller.on(Hls.Events.MANIFEST_PARSED,(_event,data)=>{if(location.hostname==='127.0.0.1')console.info('HLS MANIFEST PARSED '+ch.id+' levels='+data.levels?.length)});
- controller.on(Hls.Events.ERROR,(_event,data)=>{if(location.hostname==='127.0.0.1')console.info('HLS ERROR '+ch.id+' type='+data.type+' details='+data.details+' fatal='+data.fatal+' code='+data.response?.code);
+ controller.on(Hls.Events.ERROR,(_event,data)=>{
   if(!valid()||hlsController!==controller||!data.fatal)return;
   if(data.type===Hls.ErrorTypes.MEDIA_ERROR&&levelRecovery<1){levelRecovery++;controller.recoverMediaError()}
   else fallback();
