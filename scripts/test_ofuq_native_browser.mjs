@@ -106,7 +106,7 @@ try{
  const verifiedClips=await page.evaluate(async()=>{const j=await fetch('report-clips.json').then(r=>r.json());return j.clips});
  const videoCredit=await page.evaluate(()=>({source:document.getElementById('reportSource')?.href,license:document.getElementById('reportLicense')?.href,title:document.getElementById('reportLicense')?.textContent}));
  const currentClip=verifiedClips[window.ofuqReportInfo().index];
- if(videoCredit.source!==currentClip.source_page||videoCredit.license!==currentClip.license_url||!videoCredit.title.includes(currentClip.license))throw Error('Real video source and explicit CC license links missing '+JSON.stringify(videoCredit));
+ if(videoCredit.source!==new URL(currentClip.source_page).href||videoCredit.license!==new URL(currentClip.license_url).href||!videoCredit.title.includes(currentClip.license))throw Error('Real video source and explicit CC license links missing '+JSON.stringify(videoCredit));
  console.log('RIGHTS ATTRIBUTION VERIFIED '+JSON.stringify(videoCredit));
  if(verifiedClips.length!==3||verifiedClips.some(x=>!x.date.startsWith('2026-')))throw Error('Old videos remain in the 2026 media playlist');
  console.log('THREE 2026 FOOTAGE TEST PASS');
