@@ -438,62 +438,6 @@
       "streams": [
         "https://hls.dabangasudan.org/hls/stream.m3u8"
       ]
-    },
-    {
-      "id": "qatar-kass-1",
-      "title": "الكأس 1",
-      "initial": "KA",
-      "country": "قطر",
-      "category": "قطر • رياضة",
-      "publisher": "قنوات الكأس",
-      "sourceType": "hls",
-      "candidate": true,
-      "licenseVerified": false,
-      "streams": [
-        "https://liveakgr.alkassdigital.net/hls/live/2097037/Alkass1mhu/master.m3u8"
-      ]
-    },
-    {
-      "id": "qatar-kass-2",
-      "title": "الكأس 2",
-      "initial": "KA",
-      "country": "قطر",
-      "category": "قطر • رياضة",
-      "publisher": "قنوات الكأس",
-      "sourceType": "hls",
-      "candidate": true,
-      "licenseVerified": false,
-      "streams": [
-        "https://streamer3.qna.org.qa/148164528_live/148164528_296.sdp/playlist.m3u8"
-      ]
-    },
-    {
-      "id": "qatar-kass-3",
-      "title": "الكأس 3",
-      "initial": "KA",
-      "country": "قطر",
-      "category": "قطر • رياضة",
-      "publisher": "قنوات الكأس",
-      "sourceType": "hls",
-      "candidate": true,
-      "licenseVerified": false,
-      "streams": [
-        "https://streamer2.qna.org.qa/148161470_live/148161470_296.sdp/playlist.m3u8"
-      ]
-    },
-    {
-      "id": "qatar-kass-4",
-      "title": "الكأس 4",
-      "initial": "KA",
-      "country": "قطر",
-      "category": "قطر • رياضة",
-      "publisher": "قنوات الكأس",
-      "sourceType": "hls",
-      "candidate": true,
-      "licenseVerified": false,
-      "streams": [
-        "https://streamer3.qna.org.qa/148164621_live/148164621_296.sdp/playlist.m3u8"
-      ]
     }
   ]
 }
