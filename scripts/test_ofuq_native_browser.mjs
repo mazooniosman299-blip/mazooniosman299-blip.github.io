@@ -112,7 +112,10 @@ try{
  if(!columns.editorialColor?.includes('255, 255, 255'))throw Error('Editorial link is not white');
  if((await page.locator('body').innerText()).includes('تغطية متجددة مع أقسام متخصصة'))throw Error('Unwanted news description persists');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
- const articles=await page.evaluate(async()=>{const r=await fetch('news.json');const d=await r.json();return d.items.slice(0,3).map(x=>x.id)});
+ // Every short-only RSS story must open the original source, never a tiny in-site excerpt.
+ const newsLinks=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(a=>({full:!!a.querySelector('.full-news-tag'),href:a.getAttribute('href')})));
+ if(newsLinks.some(x=>(x.full&&!x.href.startsWith('story.html?id='))||(!x.full&&!x.href.startsWith('https://'))))throw Error('Short summaries still navigate to abbreviated reader');
+ const articles=await page.evaluate(async()=>{const d=await (await fetch('news.json')).json();return d.items.filter(x=>x.full_article).slice(0,3).map(x=>x.id)});
  await page.goto('http://127.0.0.1:8765/story.html?id='+articles[0],{waitUntil:'domcontentloaded'});
  await page.locator('#article h1').waitFor({timeout:18000});
  await page.waitForFunction(()=>document.querySelectorAll('#article .article-more-card').length>=1,{timeout:12000});
