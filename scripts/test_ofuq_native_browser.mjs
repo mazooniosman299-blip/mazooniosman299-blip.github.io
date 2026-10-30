@@ -83,7 +83,7 @@ try{
  const columns=await page.evaluate(()=>{const watch=document.querySelector('.watch-column').getBoundingClientRect(),list=document.querySelector('.channel-directory').getBoundingClientRect();const grid=getComputedStyle(document.querySelector('.player-grid'));const editorial=document.querySelector('.about-policy');const date=document.querySelector('.news-card .date');return {watchX:watch.x,watchW:watch.width,listX:list.x,listW:list.width,grid: grid.gridTemplateColumns,dateColor:date?getComputedStyle(date).color:null,dateSize:date?parseFloat(getComputedStyle(date).fontSize):null,editorialColor:editorial?getComputedStyle(editorial).color:null}});
  console.log('MOBILE CHANNELS / NEWS STYLE '+JSON.stringify(columns));
  if(!(columns.watchW>100&&columns.listW>80&&Math.abs(columns.watchX-columns.listX)>70))throw Error('Channel guide is not beside the video on mobile');
- if(!columns.dateColor?.includes('255, 255, 255')||columns.dateSize>10)throw Error('News date is not small and white');
+ if(!columns.dateColor?.includes('255, 255, 255')||columns.dateSize<14)throw Error('News date must be readable at 14px or larger in white');
  if(!columns.editorialColor?.includes('255, 255, 255'))throw Error('Editorial link is not white');
  if((await page.locator('body').innerText()).includes('تغطية متجددة مع أقسام متخصصة'))throw Error('Unwanted news description persists');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
