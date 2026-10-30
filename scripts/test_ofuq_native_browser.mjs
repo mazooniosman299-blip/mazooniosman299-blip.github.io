@@ -156,12 +156,23 @@ if(!await page.locator('#article .article-credits a, #article .licensed-byline a
  if(articleVisual.hasIllustration||(!articleVisual.hasPhoto&&!articleVisual.noSourcePhoto))throw Error('Article shows stock illustration or empty photo slot');
 
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
- await page.getByRole('button',{name:'مقالات كاملة'}).click();
+ await page.getByRole('button',{name:'مقالات',exact:true}).click();
  await page.waitForFunction(()=>document.querySelectorAll('#newsGrid .news-card').length>=10,{timeout:10000});
  if(await page.locator('#newsGrid .news-card').count()<10)throw Error('Licensed complete reports missing from dedicated newsroom filter');
- const fullRecords=await page.evaluate(async()=>{const d=await fetch('full-articles.json').then(r=>r.json());return Object.entries(d).map(([id,x])=>({id,expected:x.word_count}))});
- if(fullRecords.length<10)throw Error('Not enough verified complete licensed articles available');
- for(const article of fullRecords){
+ const fullRecords=await page.evaluate(async()=>{const d=await fetch('full-articles.json').then(r=>r.json());return Object.entries(d).map(([id,x])=>({id,expected:x.word_count,section:x.section}))});
+ if(fullRecords.length<500)throw Error('Licensed archive expansion too small: '+fullRecords.length);
+ // Verify every archived body structurally in Python; exercise the same browser
+ // rendering path across category representatives and archive positions.
+ const tested=new Map();
+ for(const topic of ['sudan','world','region','sports','technology','arts','variety']){
+  const candidates=fullRecords.filter(x=>x.section===topic);
+  for(const a of candidates.slice(0,3))tested.set(a.id,a);
+ }
+ for(const i of [0,25,75,150,250,350,450,550,650,750]){
+  const a=fullRecords[i];if(a)tested.set(a.id,a);
+ }
+ console.log('ARTICLE BROWSER SAMPLE:',tested.size,'of',fullRecords.length);
+ for(const article of tested.values()){
   await page.goto('http://127.0.0.1:8765/story.html?id='+article.id,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelectorAll('#article .complete-article p,#article .complete-article h2,#article .complete-article h3').length>=5,{timeout:12000});
   const text=await page.locator('#article .complete-article').innerText();
