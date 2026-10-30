@@ -29,3 +29,16 @@
 .article-source{font-size:12px;margin:20px 0 10px}
 .article-source a{text-decoration:underline;text-underline-offset:4px;color:#b9d8e1}
 @media(max-width:650px){.article-more-grid{grid-template-columns:1fr}.article-more-card img{height:180px}.article{padding-top:20px!important}}
+
+/* Real licensed full stories, with visible author and Creative Commons attribution. */
+.complete-article{max-width:100%;padding-top:12px}
+.complete-article p{font-size:clamp(17px,1.55vw,21px);line-height:2.28;margin:0 0 20px;color:#e2f1f6;text-align:right}
+.complete-article h2{font-size:clamp(22px,2.35vw,29px);line-height:1.7;margin:30px 0 12px;color:#fff}
+.complete-article h3{font-size:clamp(18px,1.95vw,24px);line-height:1.7;margin:24px 0 12px;color:#e5faff}
+.licensed-byline{font-size:13px;color:#b8d9e3;line-height:2;margin:9px 0 18px}
+.licensed-byline a,.license-credit a{color:#8eeef0;text-decoration:underline;text-underline-offset:4px}
+.license-credit{font-size:12px;line-height:2;color:#b4d0dc;padding:15px;margin:32px 0;border:1px solid #285369;border-radius:5px;background:#0b2639}
+.article-credits{display:block;margin:18px 0;color:#c4dce4;font-size:12px}
+.article-credits summary{cursor:pointer}.article-credits a{display:inline-block;padding:10px;color:#94e5e7}
+.related-report-note{font-size:12px;line-height:2;color:#a4c1cc;margin-top:20px}
+.news-card .full-news-tag{display:inline-block;padding:3px 7px;background:#0d5759;color:#fff;border-radius:4px;font-size:11px}
