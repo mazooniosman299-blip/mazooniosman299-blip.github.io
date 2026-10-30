@@ -1,9 +1,5 @@
 name: Manual OFUQ headline recovery (primary refresh runs every 15 min)
 on:
-  push:
-    paths:
-      - '.github/workflows/ofuq-headlines.yml'
-      - 'scripts/update_ofuq_news.py'
   workflow_dispatch:
 permissions:
   contents: write
