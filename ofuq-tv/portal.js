@@ -265,7 +265,10 @@ async function refreshNews(){
   const [data,b]=await Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?ts='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():{})]);
   const next=(Array.isArray(data.items)?data.items:[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');
   if(!next.length)throw Error('news empty');
-  const changed=next.length!==allNews.length||next.some((n,i)=>n.url!==allNews[i]?.url);
+  // An article can be updated in place: changes to its section, image, title,
+  // excerpt or full-text status must refresh the currently selected topic too.
+  const signature=item=>[item.id,item.url,item.title,item.section,item.image,item.excerpt,item.published_at,item.full_article].join('\u001f');
+  const changed=next.length!==allNews.length||next.some((n,i)=>signature(n)!==signature(allNews[i]||{}));
   allNews=next;briefs=b||{};if(changed||!$('newsGrid').querySelector('.news-card'))renderNews();
  }catch{if(!allNews.length){$('newsGrid').replaceChildren();const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)}}
 }
