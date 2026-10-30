@@ -102,6 +102,8 @@ def section_for(title):
     if re.search(r"تكنولوجيا|الإنترنت|الذكاء الاصطناعي|الرقمي|رقمية|تقنية|البيانات", title): return "technology"
     if re.search(r"الفنان|فنانة|موسيقى|سينما|الثقافة|الأدب|الشاعر|المسرح|الفني|فيلم|تراث", title): return "arts"
     if re.search(r"سودان|دارفور|الخرطوم|الفاشر", title): return "sudan"
+    if re.search(r"سوريا|لبنان|فلسطين|تونس|العراق|اليمن|مصر|ليبيا|الأردن|الجزائر|السعودية|إيران|الإمارات|المغرب", title): return "region"
+    if re.search(r"البطاريق|الحيوانات|الحياة البرية|السياحة|السفر|المطبخ|الطبخ|العلاج|الصحة", title): return "variety"
     return "world"
 
 def import_articles():
