@@ -2,13 +2,14 @@ name: Update OFUQ Arabic news and image feed
 on:
   push:
     branches:
-      - ofuq-2026-modernization-oct30
+      - ofuq-global-news-sources-20261030
       - main
     paths:
       - 'scripts/update_ofuq_news.py'
+      - 'ofuq-tv/news-sources.json'
       - '.github/workflows/ofuq-arabic-news-refresh.yml'
   schedule:
-    - cron: '17 * * * *'
+    - cron: '17,47 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -22,7 +23,7 @@ jobs:
       - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.13'
-      - name: Fetch Arabic source RSS metadata and original thumbnail URLs
+      - name: Fetch multi-publisher Arabic world news RSS metadata and images
         run: python scripts/update_ofuq_news.py
       - name: Validate published news and links
         run: node scripts/check_ofuq_portal.mjs

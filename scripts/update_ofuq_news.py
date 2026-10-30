@@ -13,6 +13,7 @@ import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 ROOT = pathlib.Path(__file__).resolve().parents[1] / "ofuq-tv"
 DEST = ROOT / "news.json"
@@ -20,17 +21,26 @@ ARCHIVE = ROOT / "news-archive.json"
 SITEMAP = ROOT / "sitemap.xml"
 BASE = "https://mazooniosman299-blip.github.io/ofuq-tv/"
 MRSS = "{http://search.yahoo.com/mrss/}"
-FEEDS = [
-    ("أخبار الأمم المتحدة", "world", "https://news.un.org/feed/subscribe/ar/news/all/rss.xml"),
-    ("أخبار الأمم المتحدة", "region", "https://news.un.org/feed/subscribe/ar/news/region/middle-east/feed/rss.xml"),
-    ("يورونيوز العربية", "world", "https://arabic.euronews.com/rss?format=mrss&level=theme&name=news"),
-    ("يورونيوز العربية", "sports", "https://arabic.euronews.com/rss?format=mrss&level=theme&name=sport"),
-    ("يورونيوز العربية", "technology", "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=next"),
-    ("يورونيوز العربية", "arts", "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=culture"),
-    ("يورونيوز العربية", "variety", "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=travel"),
-    ("يورونيوز العربية", "articles", "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=green"),
-]
-ALLOWED = {"news.un.org", "www.news.un.org", "arabic.euronews.com"}
+SOURCE_CONFIG = ROOT / "news-sources.json"
+SOURCE_WHITELIST = {"world", "region", "sports", "technology", "arts", "variety", "articles", "sudan"}
+def configured_feeds():
+    """Every feed is independently allowlisted and can fail without stopping others."""
+    data = json.loads(SOURCE_CONFIG.read_text(encoding="utf-8"))
+    feeds = []
+    for config in data.get("sources", []):
+        if config.get("enabled") is False or (config.get("requiresCommercialLicense") and not config.get("commercialLicenseApproved")):
+            continue
+        url = config.get("url", "")
+        parsed = urllib.parse.urlparse(url)
+        hosts = [h.lower() for h in config.get("hosts", []) if isinstance(h, str)]
+        if (parsed.scheme != "https" or not parsed.hostname or
+                config.get("section") not in SOURCE_WHITELIST or not hosts or
+                not isinstance(config.get("name"), str)):
+            print("Skipped invalid RSS source entry")
+            continue
+        feeds.append((config["name"], config["section"], url, hosts))
+    return feeds
+
 HTML_TAGS = re.compile(r"<[^>]+>")
 UN_ID = re.compile(r"/(\d{5,12})(?:[/?#]|$)")
 
@@ -60,7 +70,7 @@ def image_url(node):
             pass
     return ""
 
-def fetch(source, section, url):
+def fetch(source, section, url, allowed_hosts):
     req = urllib.request.Request(url, headers={"User-Agent": "OFUQ-NewsReader/2.0 (+source attribution)", "Accept": "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.5"})
     with urllib.request.urlopen(req, timeout=24) as response:
         raw = response.read(2_500_000)
@@ -68,10 +78,12 @@ def fetch(source, section, url):
     nodes = tree.findall(".//channel/item")
     if not nodes:
         nodes = tree.findall(".//{http://www.w3.org/2005/Atom}entry")
+    if not nodes:
+        nodes = tree.findall(".//{http://purl.org/rss/1.0/}item")
     items = []
     for node in nodes[:45]:
-        title = clean(node.findtext("title") or node.findtext("{http://www.w3.org/2005/Atom}title"), 190)
-        link = (node.findtext("link") or "").strip()
+        title = clean(node.findtext("title") or node.findtext("{http://www.w3.org/2005/Atom}title") or node.findtext("{http://purl.org/rss/1.0/}title"), 190)
+        link = (node.findtext("link") or node.findtext("{http://purl.org/rss/1.0/}link") or "").strip()
         if not link:
             element = node.find("{http://www.w3.org/2005/Atom}link")
             link = (element.get("href", "") if element is not None else "").strip()
@@ -79,7 +91,7 @@ def fetch(source, section, url):
         if parsed.path.startswith("/feed/view/ar/story/"):
             link = urllib.parse.urlunparse(parsed._replace(path=parsed.path.replace("/feed/view/ar/story/", "/ar/story/", 1)))
             parsed = urllib.parse.urlparse(link)
-        if not title or parsed.scheme != "https" or parsed.hostname not in ALLOWED:
+        if not title or parsed.scheme != "https" or not parsed.hostname or not any(parsed.hostname == h or parsed.hostname.endswith("." + h) for h in allowed_hosts):
             continue
         raw_date = node.findtext("pubDate") or node.findtext("{http://www.w3.org/2005/Atom}updated") or ""
         try:
@@ -89,7 +101,7 @@ def fetch(source, section, url):
                 date = datetime.fromisoformat(raw_date.replace("Z", "+00:00")).astimezone(timezone.utc).isoformat()
             except ValueError:
                 date = ""
-        description = clean(node.findtext("description") or node.findtext("{http://www.w3.org/2005/Atom}summary"), 270)
+        description = clean(node.findtext("description") or node.findtext("{http://www.w3.org/2005/Atom}summary") or node.findtext("{http://purl.org/rss/1.0/}description"), 270)
         news_section = "articles" if section=="world" and re.match(r"^(دراسة|تقرير|تحليل|رأي|كيف |لماذا |هل |ماذا |كل ما|تعرف)",title) else section
         items.append({
             "id": item_id(link), "title": title, "url": link, "source": source,
@@ -131,38 +143,62 @@ def update_sitemap(items):
 def main():
     collected = []
     counts = {}
-    for source, section, url in FEEDS:
-        try:
-            records = fetch(source, section, url)
-            counts[section] = counts.get(section, 0) + len(records)
-            collected.extend(records)
-            print(f"{section}: {len(records)} from {source}")
-        except Exception as exc:
-            print(f"RSS unavailable [{section}] {type(exc).__name__}: {str(exc)[:150]}")
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        pending = {executor.submit(fetch, source, section, url, hosts): (source, section)
+                   for source, section, url, hosts in configured_feeds()}
+        for future in as_completed(pending):
+            source, section = pending[future]
+            try:
+                records = future.result()
+                counts[section] = counts.get(section, 0) + len(records)
+                collected.extend(records)
+                print(f"{section}: {len(records)} from {source}", flush=True)
+            except Exception as exc:
+                print(f"RSS unavailable [{section}] {source} {type(exc).__name__}: {str(exc)[:120]}", flush=True)
     previous = load(DEST)
     archived = load(ARCHIVE)
-    if not collected:
-        print("No source data succeeded: keep published news unchanged.")
+    if len(collected) < 10:
+        print("Insufficient fresh RSS records: keep published news unchanged.")
         return
     by_url = {}
     for item in collected:
         older = by_url.get(item["url"])
-        if older is None or (not older.get("image") and item.get("image")):
+        # Prefer specific editorial categories over generic world for the same URL.
+        specialized = item["section"] in {"sports", "technology", "arts", "variety", "articles", "region"}
+        existing_generic = older is not None and older.get("section") == "world"
+        if older is None or (existing_generic and specialized):
             by_url[item["url"]] = item
+        elif not older.get("image") and item.get("image"):
+            older["image"] = item["image"]
     recent = sorted(by_url.values(), key=lambda x: x["published_at"], reverse=True)
-    # Preserve a balanced set so sports, tech, arts and variety never disappear behind world news.
-    chosen = []
-    seen = set()
-    for section in ["world", "region", "sports", "technology", "arts", "variety", "articles"]:
-        for item in (x for x in recent if x["section"] == section):
-            if item["url"] in seen: continue
-            chosen.append(item); seen.add(item["url"])
-            if sum(x["section"] == section for x in chosen) >= 24: break
+    # Balanced editorial feed: cap items per publisher, not just by section, so no network dominates.
+    chosen, seen = [], set()
+    per_section, per_publisher = {}, {}
+    def include(item):
+        url, source, section = item["url"], item["source"], item["section"]
+        if url in seen or per_section.get(section, 0) >= 36 or per_publisher.get(source, 0) >= 26:
+            return False
+        chosen.append(item); seen.add(url)
+        per_section[section] = per_section.get(section, 0) + 1
+        per_publisher[source] = per_publisher.get(source, 0) + 1
+        return True
+    for section in ["world", "region", "sports", "technology", "arts", "variety", "articles", "sudan"]:
+        matching = [x for x in recent if x["section"] == section]
+        # First take distinct publishers within each section.
+        source_seen = set()
+        for item in matching:
+            if item["source"] not in source_seen and include(item):
+                source_seen.add(item["source"])
+        for item in matching:
+            if sum(x["section"] == section for x in chosen) >= 24:
+                break
+            include(item)
     for item in recent:
-        if len(chosen) >= 144: break
-        if item["url"] not in seen: chosen.append(item);seen.add(item["url"])
+        if len(chosen) >= 200:
+            break
+        include(item)
     # Preserve old UN material in the archive, and never fabricate missing topic coverage.
-    history = sorted(chosen + archived.get("items", []) + previous.get("items", []), key=lambda x:x.get("published_at", ""), reverse=True)
+    history = sorted((x for x in chosen + archived.get("items", []) + previous.get("items", []) if x.get("source") not in {"BBC عربي"}), key=lambda x:x.get("published_at", ""), reverse=True)
     archive, seen_archive = [], set()
     for item in history:
         if not isinstance(item, dict) or not isinstance(item.get("url"), str): continue
@@ -173,7 +209,7 @@ def main():
         item.setdefault("image", "")
         item.setdefault("excerpt", "")
         archive.append(item)
-        if len(archive) >= 800:break
+        if len(archive) >= 1000:break
     payload = {"source_note":"روابط وعناوين وصور مصغّرة من خلاصات الناشرين؛ المحتوى الكامل لدى المصدر.", "updated_at":datetime.now(timezone.utc).isoformat(),"items":chosen}
     if previous.get("items") != chosen:
         DEST.write_text(json.dumps(payload, ensure_ascii=False, indent=2)+"\n",encoding="utf-8")

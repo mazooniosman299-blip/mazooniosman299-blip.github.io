@@ -29,3 +29,19 @@
 .article-source{font-size:12px;margin:20px 0 10px}
 .article-source a{text-decoration:underline;text-underline-offset:4px;color:#b9d8e1}
 @media(max-width:650px){.article-more-grid{grid-template-columns:1fr}.article-more-card img{height:180px}.article{padding-top:20px!important}}
+
+
+/* Verified multi-source development inside OFUQ, with unobtrusive click-to-view provenance. */
+.topic-updates{padding:24px 0;margin:25px 0;border-top:1px solid #376174}
+.topic-updates h2{font-size:clamp(20px,2.3vw,28px);line-height:1.7;margin:0 0 16px}
+.topic-update{padding:13px 17px;border-right:3px solid #4cbdc9;background:#0b2538;margin:0 0 12px;border-radius:2px}
+.topic-update time{display:block;color:#9ebcc7;font-size:12px;line-height:1.7}
+.topic-update>a{display:block;font-size:clamp(16px,1.5vw,20px);color:#edfaff;text-decoration:none;font-weight:800;line-height:1.75;margin:4px 0}
+.topic-update>a:hover{color:#81e6ed;text-decoration:underline}
+.topic-excerpt{font-size:clamp(13px,1.3vw,16px);line-height:2;color:#c1d7de;margin:6px 0 0}
+.article-credits{border:1px solid #2c5266;background:#10293b;padding:10px 15px;margin:22px 0;border-radius:4px;max-width:640px;font-size:12px;color:#c3dce4}
+.article-credits summary{cursor:pointer;font-size:12px;font-weight:700;color:#cfe7ee}
+.article-credits>div{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:12px 2px 3px}
+.article-credits a{color:#b9f0f0;text-decoration:underline;text-underline-offset:3px}
+.original-report h2{font-size:clamp(21px,2.4vw,30px);margin:26px 0 13px}
+.original-report p{font-size:clamp(17px,1.7vw,21px);line-height:2.25}

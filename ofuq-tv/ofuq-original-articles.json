@@ -1,0 +1,4 @@
+{
+  "description": "Original complete OFUQ-authored articles or licensed full articles only. Map article ID to {approved:true, paragraphs:[{type:'p'|'h2',text:'...'}], rights:'original|licensed', byline:'...', verified_at:'YYYY-MM-DD'}. No copied RSS article bodies; permission must be recorded before approval.",
+  "rights_policy": "Only publish full text authored for OFUQ or covered by explicit redistribution permission. Publisher RSS excerpts alone are not a republication license."
+}
