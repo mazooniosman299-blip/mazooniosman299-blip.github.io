@@ -21,15 +21,18 @@ ROOT = pathlib.Path(__file__).resolve().parents[1] / "ofuq-tv"
 FULL = ROOT / "full-articles.json"
 NEWS = ROOT / "news.json"
 ARCHIVE = ROOT / "news-archive.json"
+ARTICLE_FILES = ROOT / "article-data"
 # Distinct independently verified paginated CC-BY full-text RSS pages.
+# Source has 80 separately tested pages, including 2026 Sudan / arts / variety reporting.
+# Keep the full body and original publication timestamp; never invent fresh dates.
 FEEDS = ("https://ar.globalvoices.org/feed/",) + tuple(
-    f"https://ar.globalvoices.org/feed/?paged={p}" for p in range(2, 13)
+    f"https://ar.globalvoices.org/feed/?paged={p}" for p in range(2, 81)
 )
 LINK_HOST = "ar.globalvoices.org"
 LICENCE = "https://creativecommons.org/licenses/by/3.0/"
 CONTENT_NS = "{http://purl.org/rss/1.0/modules/content/}"
 DC_NS = "{http://purl.org/dc/elements/1.1/}"
-MAX_ARTICLES = 180
+MAX_ARTICLES = 900
 MIN_WORDS = 220
 MIN_PARAGRAPHS = 5
 
@@ -109,11 +112,17 @@ def section_for(title):
 def import_articles():
     data = []
     seen_urls = set()
-    for url in FEEDS:
+    def safe_feed(url):
         try:
-            root = get_feed(url)
+            return url, get_feed(url)
         except (OSError, ValueError, ET.ParseError) as exc:
             print(f'Licensed archive page unavailable [{url}]: {type(exc).__name__}', flush=True)
+            return url, None
+    # Preserve page order for deterministic duplicates; fetch remote feeds in parallel.
+    with ThreadPoolExecutor(max_workers=8) as fetch_pool:
+        pages = list(fetch_pool.map(safe_feed, FEEDS))
+    for url, root in pages:
+        if root is None:
             continue
         entries = root.findall(".//channel/item")
         print(f"Licensed Arabic feed: {url}; {len(entries)} entries", flush=True)
@@ -158,9 +167,21 @@ def import_articles():
     # Never fabricate story photographs. Use only the source article's own
     # Open Graph social-preview image, discovered via the publisher page.
     from update_ofuq_news import recover_publisher_image
-    with ThreadPoolExecutor(max_workers=7) as pool:
+    cached = load(FULL)
+    pending = []
+    for item,article in data:
+        old = cached.get(item["id"], {})
+        # Preserve previously discovered URL without hammering publisher every 15 minutes.
+        if isinstance(old,dict) and old.get("original_url")==item["url"] and old.get("image"):
+            item["image"] = article["image"] = old["image"]
+            article["image_credit"] = old.get("image_credit", "رابط صورة الناشر")
+            for k in ("image_creator","image_license_url","image_rights"):
+                if old.get(k):article[k]=old[k]
+        else:
+            pending.append((item, article))
+    with ThreadPoolExecutor(max_workers=12) as pool:
         futures = {pool.submit(recover_publisher_image,item,{LINK_HOST}): (item,article)
-                   for item,article in data}
+                   for item,article in pending}
         for future in as_completed(futures):
             item,article = futures[future]
             try: image = future.result()
@@ -203,8 +224,20 @@ def main():
             seen.add(ident)
             merged.append(item)
         return sorted(merged, key=lambda x: x.get("published_at", ""), reverse=True)[:limit]
-    current = merge(existing_news.get("items", []), 350)
-    archive = merge(existing_archive.get("items", []), 1200)
+    current = merge(existing_news.get("items", []), 1200)
+    archive = merge(existing_archive.get("items", []), 1800)
+    ARTICLE_FILES.mkdir(parents=True, exist_ok=True)
+    valid_files = set()
+    for sid, article in new_full.items():
+        if not re.fullmatch(r"[a-f0-9]{14}",sid):continue
+        target = ARTICLE_FILES / (sid + ".json")
+        value = json.dumps(article, ensure_ascii=False, separators=(",", ":"))+"\n"
+        if not target.exists() or target.read_text(encoding="utf-8") != value:
+            target.write_text(value, encoding="utf-8")
+        valid_files.add(target.name)
+    for stale in ARTICLE_FILES.glob("*.json"):
+        if stale.name not in valid_files:
+            stale.unlink()
     for path, data in ((FULL, new_full),
                        (NEWS, {**existing_news, "items": current}),
                        (ARCHIVE, {**existing_archive, "items": archive})):
