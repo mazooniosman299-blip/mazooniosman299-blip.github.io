@@ -440,3 +440,8 @@
 .about-strip .about-policy{font-size:14px!important;font-weight:800!important}
 .news-card .news-excerpt{font-family:"Noto Naskh Arabic",Tahoma,serif!important;font-size:16px!important;font-weight:500!important;line-height:2!important}
 @media(max-width:630px){.eyebar #clock{font-size:13px!important;padding:0!important}}
+
+/* Soft newsroom video cuts keep the genuine footage visible while the next source loads. */
+.hero-video-report .report-video{transition:opacity .28s ease!important}
+.hero-video-report.is-switching .report-video{opacity:.10!important}
+@media(prefers-reduced-motion:reduce){.hero-video-report .report-video{transition:none!important}}
