@@ -182,6 +182,10 @@ function reportLoad(index){
  $('reportDate').textContent=c.date;
  reportSource.textContent='المصدر: '+c.source+' · '+c.license;
  reportSource.href=c.source_page;
+ const licenseLink=$('reportLicense');
+ licenseLink.href=c.license_url;
+ licenseLink.textContent='الترخيص: '+c.license;
+ licenseLink.title='فيديو أصلي بدون تعديل، حقوق صاحبه وفق هذا الترخيص';
  reportScreen.setAttribute('data-report-id',String(reportIndex));
  reportLoading.textContent='جارٍ تحميل الفيديو الحقيقي…';
  reportLoading.hidden=false;
