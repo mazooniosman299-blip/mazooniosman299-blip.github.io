@@ -127,18 +127,26 @@ def import_articles():
             if not date:
                 continue
             sid = article_id(link)
+            # Article-specific publisher OG thumbnail, not a stock image and never rehosted.
+            # The source page may be temporarily unavailable; keep the article anyway.
+            try:
+                from update_ofuq_news import recover_publisher_image
+                image = recover_publisher_image({"url": link}, {LINK_HOST})
+            except (OSError, ValueError, TimeoutError):
+                image = ""
             article = {
                 "id": sid, "title": title, "author": author, "source": "الأصوات العالمية",
                 "original_url": link, "license": "CC BY 3.0", "license_url": LICENCE,
                 "rights": "licensed", "approved": True,
                 "transformation": "حُوّلت تنسيقات HTML إلى فقرات نصية وحُذفت الصور والتضمينات؛ لم يضف نص تحريري جديد.",
-                "published_at": date, "paragraphs": blocks, "word_count": words(plain)
+                "published_at": date, "paragraphs": blocks, "word_count": words(plain),
+                "image": image, "image_credit": "صورة أصلية من صفحة الناشر" if image else ""
             }
             item = {
                 "id": sid, "title": title, "url": link, "source": "الأصوات العالمية",
                 "section": section_for(title), "published_at": date,
                 "excerpt": next((b["text"][:260] for b in blocks if b["type"] == "p"), ""),
-                "image": "", "full_article": True
+                "image": image, "full_article": True
             }
             data.append((item, article))
     return data

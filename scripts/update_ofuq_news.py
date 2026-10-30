@@ -228,7 +228,7 @@ def licensed_cards():
             "id": sid, "title": article.get("title", ""), "url": url,
             "source": "الأصوات العالمية", "section": "articles",
             "published_at": article.get("published_at", ""),
-            "excerpt": intro[:260], "image": "", "full_article": True
+            "excerpt": intro[:260], "image": article.get("image", ""), "full_article": True
         })
     return out
 
@@ -303,6 +303,7 @@ def main():
     # RSS may omit older long-form reports. Keep the CC BY complete stories
     # discoverable even when newer short headlines replace the feed window.
     full_items = licensed_cards()
+    backfill_photos(full_items, chosen + archived.get("items", []) + previous.get("items", []))
     by_story = {x["url"]: x for x in chosen}
     for article in full_items:
         by_story[article["url"]] = article
