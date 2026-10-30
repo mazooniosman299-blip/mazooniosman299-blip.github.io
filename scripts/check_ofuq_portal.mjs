@@ -65,18 +65,21 @@ for(const f of fs.readdirSync(dir).filter(x=>x.endsWith('.js'))){
   const r=spawnSync('node',['--check',path.join(dir,f)],{encoding:'utf8'});
   check(r.status===0,'JS syntax '+f+': '+(r.stderr||'').slice(0,500));
 }
-const ads=json('ads.json');
-check(ads.network?.type==='vast','VAST ad integration not configured');
-check(ads.network?.enabled===false||typeof ads.network?.adTagUrl==='string'&&ads.network.adTagUrl.startsWith('https://'),'Approved network requires an HTTPS VAST ad tag');
-check(fs.existsSync(path.join(dir,'ad-network.js')),'Network VAST integration JS is missing');
-
-check(Array.isArray(ads.ads)&&ads.ads.length>0,'No advertising videos defined');
-for(const ad of ads.ads||[]){check(typeof ad.title==='string'&&ad.title.length>2,'Ad title missing');check(typeof ad.video==='string'&&/^ads\/[a-z0-9-]+\.mp4$/i.test(ad.video),'Invalid first-party video URL');const full=path.resolve(dir,ad.video||'');check(full.startsWith(dir+path.sep)&&fs.existsSync(full)&&fs.statSync(full).size>10000,'Missing playable MP4: '+(ad.video||''));}
-const homepage=fs.readFileSync(path.join(dir,'index.html'),'utf8');
-check(homepage.includes('id="adVideo"'),'Native video advertising player missing');
-check(homepage.includes('id="networkAdOverlay"'),'Paid video ad stage is missing');
-check(homepage.includes('ad-network.js'),'Approved advertiser network adapter is not linked');
-
+const home=fs.readFileSync(path.join(dir,'index.html'),'utf8');
+const reports=json('report-clips.json');
+check(home.includes('id="reportVideo"'),'Missing genuine recorded report player');
+check(home.includes('id="reportSound"'),'Missing human source audio control');
+check(!/id="adVideo"|id="adScreen"|id="newsPromo"|id="networkAdOverlay"/.test(home),'Advertising or text-only news panels survived');
+check(!home.includes('ad-network.js'),'Advertising SDK script must not load');
+check(Array.isArray(reports.clips)&&reports.clips.length>=2,'Insufficient original verified recorded reports');
+for(const clip of reports.clips||[]){
+ check(/^\d{4}-\d{2}-\d{2}$/.test(clip.date),'Archival clip missing true date');
+ check(clip.license==='CC BY 3.0'&&/^https:\/\/commons.wikimedia.org\/wiki\/File:/.test(clip.source_page),'Unlicensed report video '+clip.title);
+ check(clip.filename.endsWith('.webm'),'Unsafe clip filename '+clip.title);
+}
+check(!portal.includes('speechSynthesis'),'Generated speech must never replace actual reporter voice');
+check(!portal.includes('ads.json'),'Ad playlist still loaded in real report player');
+const homepage=home;
 check(homepage.includes('id="breakingStrip"'),'Breaking strip missing');
 check(homepage.includes('id="channelCount"'),'Channel count element missing');check(homepage.includes('id="nativePlayer"'),'Native TV player absent');check(!homepage.includes('id="youtubeStage"'),'Old YouTube stage remains');check(!/youtube-nocookie[.]com\/embed|youtube[.]com\/iframe_api|new YT[.]Player/.test(fs.readFileSync(path.join(dir,'portal.js'),'utf8')),'YouTube still present in player code');
 check(homepage.includes('id="newsGrid"'),'News grid missing');
