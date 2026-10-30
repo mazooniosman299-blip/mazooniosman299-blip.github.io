@@ -10,6 +10,7 @@ import pathlib
 import re
 import urllib.request
 import urllib.parse
+from html.parser import HTMLParser
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -70,6 +71,69 @@ def image_url(node):
         except ValueError:
             pass
     return ""
+
+class SocialImageParser(HTMLParser):
+    """Read photo URL from a publisher's own article link-preview metadata."""
+    def __init__(self):
+        super().__init__()
+        self.urls = []
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() != "meta": return
+        values = dict((k.lower(), v or "") for k, v in attrs if k)
+        kind = (values.get("property") or values.get("name") or "").lower()
+        if kind in ("og:image", "og:image:url", "twitter:image"):
+            self.urls.append(values.get("content", ""))
+
+def recover_publisher_image(item, trusted_hosts):
+    """Enhance feed thumbnails without taking or hosting any publisher image."""
+    try:
+        url = item["url"]
+        parsed = urllib.parse.urlparse(url)
+        if parsed.scheme != "https" or not any(parsed.hostname == h or parsed.hostname.endswith("." + h) for h in trusted_hosts):
+            return ""
+        request = urllib.request.Request(url, headers={
+            "User-Agent":"Mozilla/5.0 (compatible; OFUQ-NewsLinkPreview/1.0)",
+            "Accept":"text/html,application/xhtml+xml"})
+        with urllib.request.urlopen(request, timeout=9) as response:
+            final = urllib.parse.urlparse(response.geturl())
+            if final.scheme != "https" or not any(final.hostname == h or final.hostname.endswith("." + h) for h in trusted_hosts):
+                return ""
+            if "html" not in response.headers.get("Content-Type","").lower():
+                return ""
+            page = response.read(380_000).decode("utf-8","replace")
+        parser = SocialImageParser()
+        parser.feed(page)
+        for image in parser.urls:
+            absolute = urllib.parse.urljoin(url, html.unescape(image))
+            image_url = urllib.parse.urlparse(absolute)
+            if image_url.scheme == "https" and image_url.hostname and not image_url.username and not image_url.password:
+                return absolute
+    except (OSError, ValueError, UnicodeError, TimeoutError):
+        pass
+    return ""
+
+def backfill_photos(items, earlier_items):
+    """Try the official article's og:image for stories with empty RSS image."""
+    saved = {x.get("url"):x.get("image") for x in earlier_items if isinstance(x,dict) and x.get("image")}
+    trusted = set()
+    for _,_,_,hosts in configured_feeds():
+        trusted.update(hosts)
+    missing = []
+    for item in items:
+        if not item.get("image") and saved.get(item.get("url")):
+            item["image"] = saved[item["url"]]
+        if not item.get("image") and item.get("url","").startswith("https:"):
+            missing.append(item)
+    if not missing:return
+    fetched = 0
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        jobs = {pool.submit(recover_publisher_image,item,trusted):item for item in missing[:72]}
+        for job in as_completed(jobs):
+            image = job.result()
+            if image:
+                jobs[job]["image"] = image
+                fetched += 1
+    print(f"PUBLISHER IMAGE RECOVERY: {fetched}/{min(len(missing),72)} social preview URLs",flush=True)
 
 def fetch(source, section, url, allowed_hosts):
     req = urllib.request.Request(url, headers={"User-Agent": "OFUQ-NewsReader/2.0 (+source attribution)", "Accept": "application/rss+xml,application/xml,text/xml;q=0.9,*/*;q=0.5"})
@@ -198,6 +262,11 @@ def main():
             by_url[item["url"]] = item
         elif not older.get("image") and item.get("image"):
             older["image"] = item["image"]
+    # Feeds such as Darfur24 omit media:thumbnail while their articles expose
+    # actual per-story og:image. Recover those rather than a generic site logo.
+    previous = load(DEST)
+    archived = load(ARCHIVE)
+    backfill_photos(list(by_url.values()),previous.get("items",[])+archived.get("items",[]))
     recent = sorted(by_url.values(), key=lambda x: x["published_at"], reverse=True)
     # Global Arabic news plus dedicated Sudan coverage, preserving country-only reports.
     # Classified by evidence in titles/topics; no fabricated location tags.

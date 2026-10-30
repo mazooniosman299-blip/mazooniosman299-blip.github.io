@@ -45,3 +45,16 @@
 
 .article .meta,.article .meta time{font-size:15px!important;color:#fff!important;line-height:1.8!important;font-weight:700!important}
 .article .licensed-byline{color:#e8f6fd}
+
+/* Tighter related-news links: independent heights, no stretched empty cards. */
+.related{align-items:start;grid-auto-rows:min-content;gap:9px}
+.related a{align-self:start;min-height:0;height:auto;padding:8px 11px;line-height:1.55;font-size:14px}
+@media(max-width:640px){.related{gap:7px}.related a{padding:8px 10px}}
+
+.article-photo .ofuq-editorial-visual,.related-visual .ofuq-editorial-visual{display:block;width:100%;height:auto}
+.article-photo .ofuq-editorial-visual{max-height:455px;aspect-ratio:16/9}
+.related-visual{height:170px;overflow:hidden}
+.related-visual img,.related-visual svg{width:100%;height:100%;object-fit:cover}
+@media(max-width:650px){.related-visual{height:160px}}
+
+.article-full-source-link{display:inline-flex;margin:10px 0 25px;padding:10px 16px;background:#0b4754;color:white;border:1px solid #5fdbe4;font-size:16px;font-weight:800;border-radius:4px}

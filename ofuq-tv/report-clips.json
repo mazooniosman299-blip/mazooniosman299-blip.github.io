@@ -1,0 +1,38 @@
+{
+  "updated_at": "2026-10-30",
+  "original_audio_only": true,
+  "synthetic_narration": false,
+  "archival_notice": "المقاطع أرشيفية موثقة وليست تغطية آنية؛ صوت الفيديو الأصلي فقط ولا يوجد صوت ذكاء اصطناعي.",
+  "clips": [
+    {
+      "title": "تصوير ميداني من درعا بعد غارة على مدينة إنخل",
+      "date": "2015-11-21",
+      "source": "وكالة قاسيون للأنباء",
+      "filename": "Qasioun news - Daraa - heavy airstrike on Inkhil city nearby Qasioun reporter 21-11-2015.webm",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Qasioun_news_-_Daraa_-_heavy_airstrike_on_Inkhil_city_nearby_Qasioun_reporter_21-11-2015.webm",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "note": "تغطية ميدانية أرشيفية، ليست خبرًا وقع اليوم"
+    },
+    {
+      "title": "تقرير مروى السيد: احتجاجات متقاعدين عسكريين في عدن",
+      "date": "2017-03-30",
+      "source": "قناة بلقيس الفضائية",
+      "filename": "احتجاجات للمتقاعدين العسكريين أمام مكتب البريد في عدن للمطالبة برواتبهم تقرير مروى السيد.webm",
+      "source_page": "https://commons.wikimedia.org/wiki/File:احتجاجات_للمتقاعدين_العسكريين_أمام_مكتب_البريد_في_عدن_للمطالبة_برواتبهم_تقرير_مروى_السيد.webm",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "note": "تقرير تلفزيوني بصوت بشري أصلي من أرشيف مارس 2017"
+    },
+    {
+      "title": "جلسة حقوق الإنسان بشأن التقرير الدوري المقدم من الكويت",
+      "date": "2025-12-03",
+      "source": "وكالة أنباء الشرق الأوسط",
+      "filename": "لجنة الميثاق العربي لحقوق الإنسان تناقش التقرير الدوري الثاني المقدم من الكويت.webm",
+      "source_page": "https://commons.wikimedia.org/wiki/File:لجنة_الميثاق_العربي_لحقوق_الإنسان_تناقش_التقرير_الدوري_الثاني_المقدم_من_الكويت.webm",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "note": "تقرير مصور بأصوات بشرية من المادة الأصلية. مراجعة الترخيص البشرية الإضافية معلقة في Commons"
+    }
+  ]
+}
