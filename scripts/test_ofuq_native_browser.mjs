@@ -117,7 +117,15 @@ try{
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
  // Every short-only RSS story must open the original source, never a tiny in-site excerpt.
  const newsLinks=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(a=>({full:!!a.querySelector('.full-news-tag'),href:a.getAttribute('href')})));
- if(newsLinks.some(x=>(x.full&&!x.href.startsWith('story.html?id='))||(!x.full&&!x.href.startsWith('https://'))))throw Error('Short summaries still navigate to abbreviated reader');
+ if(newsLinks.some(x=>!x.href.startsWith('story.html?id=')))throw Error('An OFUQ news item still navigates outside the website');
+ if(newsLinks.filter(x=>x.full).length<15)throw Error('Default news cards do not prioritize complete on-site licensed articles');
+ const briefId=await page.evaluate(async()=>{const d=await (await fetch('news.json')).json();return d.items.find(x=>x.full_article!==true)?.id});
+ if(briefId){
+  await page.goto('http://127.0.0.1:8765/story.html?id='+briefId,{waitUntil:'domcontentloaded'});
+  await page.locator('#article h1').waitFor({timeout:16000});
+  if(!page.url().includes('/story.html?id='))throw Error('RSS brief illegally redirected reader outside OFUQ');
+  if(!(await page.locator('#article').innerText()).includes('موجز إخباري موثق'))throw Error('Unlicensed summary pretends to be full article');
+ }
  const articles=await page.evaluate(async()=>{const d=await (await fetch('news.json')).json();return d.items.filter(x=>x.full_article).slice(0,3).map(x=>x.id)});
  await page.goto('http://127.0.0.1:8765/story.html?id='+articles[0],{waitUntil:'domcontentloaded'});
  await page.locator('#article h1').waitFor({timeout:18000});
