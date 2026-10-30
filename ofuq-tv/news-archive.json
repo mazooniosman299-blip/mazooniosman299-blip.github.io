@@ -1,7 +1,27 @@
 {
   "source_note": "روابط وعناوين وصور مصغّرة من خلاصات الناشرين؛ المحتوى الكامل لدى المصدر.",
-  "updated_at": "2026-10-29T23:58:14.496521+00:00",
+  "updated_at": "2026-10-30T00:04:34.721245+00:00",
   "items": [
+    {
+      "id": "eb2fbce49d053b",
+      "title": "مصادر: تجديد وديعة سعودية لمصر بـ5.3 مليارات دولار",
+      "url": "https://www.alaraby.co.uk/economy/%D9%85%D8%B5%D8%A7%D8%AF%D8%B1-%D8%AA%D8%AC%D8%AF%D9%8A%D8%AF-%D9%88%D8%AF%D9%8A%D8%B9%D8%A9-%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-%D9%84%D9%85%D8%B5%D8%B1-%D8%A8%D9%8053-%D9%85%D9%84%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA-%D8%AF%D9%88%D9%84%D8%A7%D8%B1",
+      "source": "العربي الجديد",
+      "section": "world",
+      "published_at": "2026-10-30T00:00:03+00:00",
+      "excerpt": "جددت السعودية وديعتها لمصر بقيمة 5.3 مليارات دولار، ورغم تخفيف القرار ضغوط الصرف الفورية، إلا أن الجنيه يواجه تحديات مع استمرار نزوح الأموال الساخنة",
+      "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/GettyImages-1250748156%20%281%29.jpg?h=cb315b18&itok=0hoIbH8Q"
+    },
+    {
+      "id": "a1cbebc1aba949",
+      "title": "ترامب يحضر اجتماعا عن \"حصار إيران\"",
+      "url": "https://www.skynewsarabia.com/middle-east/1901472-%D8%AA%D8%B1%D8%A7%D9%85%D8%A8-%D9%8A%D8%AD%D8%B6%D8%B1-%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D8%A7-%D8%AD%D8%B5%D8%A7%D8%B1-%D8%A5%D9%8A%D8%B1%D8%A7%D9%86",
+      "source": "سكاي نيوز عربية",
+      "section": "world",
+      "published_at": "2026-10-29T23:57:50+00:00",
+      "excerpt": "تلقى الرئيس الأميركي دونالد ترامب، الخميس، تحديثا عن مستجدات الصراع مع إيران، من قائد القيادة الوسطى الأميركية (سنتكوم) براد كوبر، في اجتماع حضره مسؤولون بارزون.",
+      "image": "https://images.skynewsarabia.com/images/v1/2026/10/30/1901471/95/53/1-1901471.jpg"
+    },
     {
       "id": "d0900c9de10c9b",
       "title": "هيئة البث: واشنطن تنقل 10 طائرات لإسرائيل استعدادا للهجوم على إيران",
@@ -153,16 +173,6 @@
       "image": "https://www.alaraby.co.uk/sites/default/files/styles/meduim_16_9/public/2026-10/-1%20%288%29_0.jpg?h=7e3e2fcb&itok=eeqEIjJJ"
     },
     {
-      "id": "4e2d2cbd2febfa",
-      "title": "الحوثيون يعلنون استهداف مطارات ومصافٍ نفطية سعودية والتحالف يعترض صاروخين فوق الرياض",
-      "url": "https://www.bbc.com/arabic/articles/cw4g1vz4dxgzo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-29T22:55:08+00:00",
-      "excerpt": "أعلنت السعودية تدمير صاروخين أُطلقوا باتجاه الرياض، فيما قال مصدر في شرطة عدن بأن صاروخاً حوثياً سقط في مطار المدينة قبل إصدار الحوثيين دعوة إلى إخلائه.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/98ce/live/95d7a590-d3c2-11f1-a62f-fd53d503ac8d.jpg"
-    },
-    {
       "id": "21baa538af0501",
       "title": "جوجل تحسّن قدرات Gemini لتحرير المستندات مباشرةً عبر الهواتف والويب",
       "url": "https://aitnews.com/2026/10/30/%d8%ac%d9%88%d8%ac%d9%84-%d8%aa%d8%ad%d8%b3%d9%91%d9%86-%d9%82%d8%af%d8%b1%d8%a7%d8%aa-gemini-%d9%84%d8%aa%d8%ad%d8%b1%d9%8a%d8%b1-%d8%a7%d9%84%d9%85%d8%b3%d8%aa%d9%86%d8%af%d8%a7%d8%aa-%d9%85%d8%a8/",
@@ -171,16 +181,6 @@
       "published_at": "2026-10-29T22:54:53+00:00",
       "excerpt": "أعلنت جوجل توسيع قدرات مساعد الذكاء الاصطناعي Gemini في إنشاء المستندات وتحريرها، مع إتاحة معاينات تفاعلية للملفات على الهواتف والويب، بما يتيح للمستخدمين مراجعة المحتوى وتعديله عبر طلبات مباشرة دون الحاجة إلى الانتقال بين التطبيقات. وأوضحت الشركة في بيانٍ لها عبر موقعه",
       "image": ""
-    },
-    {
-      "id": "b55e78099fcaa0",
-      "title": "ترامب يعلق على رسالة فانس لإيران وتقارير عن خيارات عسكرية جديدة وسط توتر في هرمز",
-      "url": "https://www.bbc.com/arabic/articles/cm4g14554xzlo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-29T22:53:38+00:00",
-      "excerpt": "حذرت إيران من أنها سترد بشكل أوسع في حال وقوع أي هجوم جديد، وهدد رضائي باستهداف بنية تحتية مرتبطة بالولايات المتحدة.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/da67/live/0bf06f00-d3af-11f1-8d02-39b68eca6add.jpg"
     },
     {
       "id": "ac937366905daf",
@@ -423,6 +423,16 @@
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/30/images/348459.jpg"
     },
     {
+      "id": "076c10afe0f15e",
+      "title": "في قلب المدن الكبرى ارتقبوا الناطحات الخضراء",
+      "url": "https://www.aljazeera.net/opinions/2026/10/30/%d9%81%d9%8a-%d9%82%d9%84%d8%a8-%d8%a7%d9%84%d9%85%d8%af%d9%86-%d8%a7%d9%84%d9%83%d8%a8%d8%b1%d9%89-%d8%a7%d8%b1%d8%aa%d9%82%d8%a8%d9%88%d8%a7-%d8%a7%d9%84%d9%86%d8%a7%d8%b7%d8%ad%d8%a7%d8%aa?traffic_source=rss",
+      "source": "الجزيرة نت",
+      "section": "world",
+      "published_at": "2026-10-29T20:55:02+00:00",
+      "excerpt": "تتيح الزراعة الحضرية العمودية إنتاج خضراوات طازجة قرب المستهلكين، مع توفير المياه والأراضي وخفض تكاليف النقل. ورغم تحديات الطاقة ومحدودية المحاصيل، فإنها تمثل خيارا واعدا للأمن الغذائي.",
+      "image": ""
+    },
+    {
       "id": "732158c3df686f",
       "title": "معضلة أنثروبيك المالية.. نمو بلا توقف أو خسائر فادحة",
       "url": "https://aitnews.com/2026/10/30/%d9%85%d8%b9%d8%b6%d9%84%d8%a9-%d8%a3%d9%86%d8%ab%d8%b1%d9%88%d8%a8%d9%8a%d9%83-%d8%a7%d9%84%d9%85%d8%a7%d9%84%d9%8a%d8%a9-%d9%86%d9%85%d9%88-%d8%a8%d9%84%d8%a7-%d8%aa%d9%88%d9%82%d9%81-%d8%a3%d9%88/",
@@ -553,16 +563,6 @@
       "image": "https://images.euronews.com/articles/stories/09/97/25/15/696x392_cmsv2_5fc3ebc9-f7b6-513e-80a1-e8a4cefbea17-9972515.jpg"
     },
     {
-      "id": "35c7826a6de382",
-      "title": "منازل بأسعار أقل إذا أردت \"العيش مع شبح\" في اليابان",
-      "url": "https://www.bbc.com/arabic/articles/c8r4y191367ro?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-29T17:44:38+00:00",
-      "excerpt": "قد تشهد العقارات التي توفي فيها شخص في ظروف مأساوية انخفاضاً كبيراً في أسعارها في اليابان بسبب الثقافة المحلية.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/e19a/live/79bf7e60-d385-11f1-93e1-3b657b665bcf.jpg"
-    },
-    {
       "id": "f2fdea7edf9d9a",
       "title": "\"بحضور السيسي\".. علاء مبارك يعلّق على تصريحات بوتين عن والده الراحل",
       "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/putins-remarks-about-mubarak-alaas-comment",
@@ -631,16 +631,6 @@
       "published_at": "2026-10-29T16:30:01+00:00",
       "excerpt": "حذّر وزير الخارجية الأمريكي الأسبق، جون كيري، من أن شن ضربات عسكرية جديدة على طهران عقب انتخابات التجديد النصفي الأمريكية سيكون خطأً فادحًا، وقد يدفع الإيرانيين إلى الابتعاد عن المفاوضات بدلًا من العودة إليها.",
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_40,w_3204,h_1802,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348432.jpg"
-    },
-    {
-      "id": "7f7eb0123232e2",
-      "title": "هل الاستقلال حرية أم مسؤولية؟",
-      "url": "https://www.bbc.com/arabic/watch/cwdr8m8576dpo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "articles",
-      "published_at": "2026-10-29T16:03:32+00:00",
-      "excerpt": "من أول وظيفة وأول راتب إلى العيش بعيدا عن الأهل واتخاذ القرارات مصيرية، كيف يخوض الشباب خطواتهم الأولى نحو الاستقلالية في ظل الضغوط الاقتصادية والمعيشية والاجتماعية؟",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/b179/live/0af39110-d3b2-11f1-b441-2b33b063138f.jpg"
     },
     {
       "id": "c0676b288dad1d",
@@ -773,26 +763,6 @@
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_183,w_5992,h_3370,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348426.jpg"
     },
     {
-      "id": "5dcf0230c2c282",
-      "title": "فلافيو بولسونارو يصل الولايات المتحدة، ويقول إنه \"غادر من أجل البرازيل\"",
-      "url": "https://www.bbc.com/arabic/articles/cm9wzq2250d4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-29T13:28:20+00:00",
-      "excerpt": "يدّعي المرشح البرازيلي المهزوم أنه ضحية لانقلاب واضطهاد سياسي، مُعيداً طرح مزاعم لا أساس لها حول وقوع \"تزوير انتخابي\".",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/1e77/live/30f94cd0-d38d-11f1-b31d-29088a2dcf13.jpg"
-    },
-    {
-      "id": "1e2f37f0fe86c3",
-      "title": "لماذا يتصارع الجميع على مدينة تعز اليمنية؟",
-      "url": "https://www.bbc.com/arabic/articles/ckly06vp2l33o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "articles",
-      "published_at": "2026-10-29T13:14:54+00:00",
-      "excerpt": "مدينة تعز أصبحت ساحة نزاع رئيسية في اليمن، وتصدرت المشهد بصورة متسارعة كأهم جبهة للقتال في الحرب التي تأججت نارها مجدداً، بين حركة أنصار الله الحوثية المدعومة من إيران والحكومة المعترف بها دولياً المدعومة من تحالف تقوده السعودية، فما أهمية هذه المدينة اليمنية؟",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/ba5a/live/b12e61e0-d399-11f1-93e1-3b657b665bcf.jpg"
-    },
-    {
       "id": "87d6b38ad2f30c",
       "title": "الإمارات.. السجن المؤبد لـ8 متهمين بقضية \"توريد أسلحة للجيش السوداني وغسل الأموال\"",
       "url": "https://arabic.cnn.com/middle-east/article/2026/10/29/uae-8-case-involving-arming-sudanese-army-money-laundering",
@@ -853,16 +823,6 @@
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348420.jpg"
     },
     {
-      "id": "60ead467f2bc6d",
-      "title": "نتنياهو فقد تفويضه وقد يفقد السلطة أيضاً - الغارديان",
-      "url": "https://www.bbc.com/arabic/articles/cwe8rlm2z9n7o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-29T12:05:24+00:00",
-      "excerpt": "تابعت صحف بريطانية تغطية الانتخابات الإسرائيلية وما قد تفرزه نتائجها على مستوى السلطة، وعرضت صحيفة تلغراف نقاشاً حول موجة العنف التي ميزت الاحتجاجات الأخيرة وتبريرها. ونشرت صحيفة الإندبندنت دراسة حول قيمة العناق لدى البشر.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/54e4/live/6d2a5270-d384-11f1-b441-2b33b063138f.jpg"
-    },
-    {
       "id": "0a7b60d2b5e2d2",
       "title": "هرمز يعود إلى الواجهة.. انفجارات تطال 3 ناقلات وتحذيرات أمريكية من تجدد الحرب",
       "url": "https://arabic.euronews.com/2026/10/29/hormuz-back-in-focus-tanker-explosions-us-warnings-war-resumption",
@@ -921,16 +881,6 @@
       "published_at": "2026-10-29T11:56:52+00:00",
       "excerpt": "خلال فعالية \"CNN Global Perspectives\" التي تُقام في الدوحة، علق بريت ماكغورك، أحد كبار مستشاري البيت الأبيض السابقين الذي كان في قلب بعض من أكثر مفاوضات أمريكا تعقيداً في الشرق الأوسط، على دخول بعض حلفاء أمريكا في \"حلف مكة\" وما ينطوي عليه، معربًا عن قلقه من \"إدخال تنافس",
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348405.jpg"
-    },
-    {
-      "id": "77b05f5e6426f4",
-      "title": "رئيس وزراء العراق يزور مقام السيدة زينب في دمشق، فما حكاية هذا المقام والمنطقة المحيطة به؟",
-      "url": "https://www.bbc.com/arabic/articles/c8rx375k717o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-29T11:43:55+00:00",
-      "excerpt": "أثارت زيارة رئيس الوزراء العراقي، علي الزيدي، لمقام السيدة زينب في دمشق وتبرعه السخي بملايين الدولارات لصالح المرقد المقدس اهتماماً وتفاعلاً عبر الإنترنت، فماذا نعرف عن هذا المقام والحي الذي يقع به.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/47a6/live/1066e610-a033-11ef-a983-61fc4f1ba624.jpg"
     },
     {
       "id": "fded263b0432d1",
@@ -1023,16 +973,6 @@
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/29/images/348395.jpg"
     },
     {
-      "id": "80c5fc3b86563f",
-      "title": "\"مخضبون بالدماء، مذهولون، وغاضبون\": هكذا تحولت رحلة ركاب عبر القطار إلى كارثة في إسبانيا",
-      "url": "https://www.bbc.com/arabic/articles/ck79pj52pwz0o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-29T09:22:41+00:00",
-      "excerpt": "تحدّث ناجون من حادث قطار في إسبانيا عن شعورهم بالصدمة والذعر والغضب إزاء الحادث الذي وقع في مقاطعة طليطلة يوم الأربعاء.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/8cdf/live/48bcf420-d360-11f1-bf17-db0635e21017.jpg"
-    },
-    {
       "id": "6cab66ebe14e47",
       "title": "أمريكا.. الشرطة تغلق التحقيق في وفاة الممثلة هايدن بانيتير",
       "url": "https://arabic.cnn.com/entertainment/article/2026/10/29/us-police-close-investigation-into-the-death-of-actress-hayden-panettiere",
@@ -1103,16 +1043,6 @@
       "image": "https://images.euronews.com/articles/stories/09/96/47/22/696x392_cmsv2_0ec4f7de-d0af-5590-8b8a-80292fdb15ed-9964722.jpg"
     },
     {
-      "id": "fda68816077549",
-      "title": "هجوم الكرك: كيف تواجه العائلات ألم الفقد وأسئلة العدالة؟",
-      "url": "https://www.bbc.com/arabic/articles/c3zxj1j2xjeko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-29T07:13:14+00:00",
-      "excerpt": "وبين المطالبة بالعدالة ومحاولة التعايش مع الخسارة، تستعيد العائلات ذكريات من رحلوا، وتتحدث عن حياة تغيّرت إلى الأبد، فيما تتمسك برسالة مفادها أن ما حدث \"لن يفرّق بين أبناء المجتمع الواحد\"",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/e3ff/live/a8bcc2a0-d2c1-11f1-bd17-fbcee4e93744.jpg"
-    },
-    {
       "id": "3462b4fd84f52d",
       "title": "تأخر الرحلات الجوية؟ أفضل وأسوأ شركات الطيران الأوروبية للمطالبة بالتعويض",
       "url": "https://arabic.euronews.com/2026/10/29/flight-delay-these-are-the-best-and-worst-european-airlines-for-making-a-compensation-clai",
@@ -1141,16 +1071,6 @@
       "published_at": "2026-10-29T06:00:06+00:00",
       "excerpt": "من مغامرات التزلج إلى مشاهدة الشفق القطبي والاستمتاع بالأجواء الاحتفالية لأسواق عيد الميلاد، ما هي أبرز الوجهات الأوروبية والتجارب الأكثر رواجاً هذا الشتاء؟",
       "image": "https://images.euronews.com/articles/stories/09/97/04/92/696x392_cmsv2_b35aef6c-8a01-5551-bc3c-074e7b58d082-9970492.jpg"
-    },
-    {
-      "id": "b26fe6d0b9dbbf",
-      "title": "ماذا نعرف عن مجموعة \"حنظلة\"، وأهم عملياتها في مجال القرصنة السيبرانية، وما حقيقة صلتها بالمخابرات الإيرانية؟",
-      "url": "https://www.bbc.com/arabic/articles/cqy431yymx0xo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "articles",
-      "published_at": "2026-10-29T02:07:25+00:00",
-      "excerpt": "مجموعة حنظلة، المعروفة كذلك باسم \"فريق قرصنة حنظلة\"، تُعرّف عن نفسها بأنها مجموعة قرصنة داعمة للفلسطينيين، ومن ثمّ فهي تستهدف إسرائيل وحلفاءها.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/2c7d/live/e6687b60-d2fa-11f1-8091-57f2713cabe8.png"
     },
     {
       "id": "610acf8ae4e288",
@@ -1563,16 +1483,6 @@
       "image": "https://images.euronews.com/articles/stories/09/96/92/66/696x392_cmsv2_67b6dfd7-88ef-5418-b1da-8d54496e1e79-9969266.jpg"
     },
     {
-      "id": "c5074e3d9b5ac7",
-      "title": "ما الذي يحدث بين سوريا والأردن؟",
-      "url": "https://www.bbc.com/arabic/articles/cmy0r31rl5xdo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-27T15:00:21+00:00",
-      "excerpt": "بينما قال وزير الاتصال الحكومي الأردني إن الغارات الجوية على جنوب سوريا أسفرت عن \"خسائر كبيرة في صفوف التنظيم، تُقدّر بأكثر من 20 عنصراً\"، وتدمير مستودع أسلحة ضخم\"، أعلنت الحكومة السورية أن \"ضحايا مدنيين\" قُتلوا في الغارات.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/9409/live/724ae360-d216-11f1-8f84-ebd3099fed63.jpg"
-    },
-    {
       "id": "31cb9f42237647",
       "title": "نيل يونغ يرفع دعوى على اللجنة السياسية لترامب بسبب انتهاك حقوق النشر مجددا",
       "url": "https://arabic.euronews.com/2026/10/27/neil-young-sues-donald-trumps-political-committee-for-copyright-infringement-once-again",
@@ -1773,16 +1683,6 @@
       "image": "https://images.euronews.com/articles/stories/09/96/86/36/696x392_cmsv2_8a74ca30-c44b-5559-8193-9f4518ea4f26-9968636.jpg"
     },
     {
-      "id": "bd049f01eb2e13",
-      "title": "داخل عالم التخريب الروسي المناهض لبوتين",
-      "url": "https://www.bbc.com/arabic/articles/cv62ygn5jldko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-27T08:51:23+00:00",
-      "excerpt": "قدّم رجلان روسيان يعملان سراً لصالح المخابرات الأوكرانية روايات نادرة عن عمليات يزعمان مشاركتهما فيها، استهدفت أصولاً عسكرية وأفراداً داخل روسيا.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/2d08/live/62e1e9b0-d1e3-11f1-93e1-3b657b665bcf.jpg"
-    },
-    {
       "id": "9b8fc81aea1a02",
       "title": "وفاة والتر كوينغ ممثل شخصية بافل تشيخوف في \"ستار تريك\" عن 90 عاما",
       "url": "https://arabic.euronews.com/2026/10/27/star-trek-actor-walter-koenig-who-played-pavel-chekov-dies-aged-90",
@@ -1911,16 +1811,6 @@
       "published_at": "2026-10-26T12:30:11+00:00",
       "excerpt": "قد تواجه شركة \"أنثروبيك\" للذكاء الاصطناعي مطالبات بتعويضات تتجاوز 40 مليون دولار، على خلفية اتهامات باستخدام مجموعة أغاني النجم الراحل إلفيس بريسلي دون الحصول على إذن.",
       "image": "https://images.euronews.com/articles/stories/09/96/71/83/696x392_cmsv2_f0ab5348-64c9-5f6e-aa37-68fddbb0dca1-9967183.jpg"
-    },
-    {
-      "id": "ff229a468d2a88",
-      "title": "كاميرات مراقبة الأطفال في السيارة: بث مباشر وتقنيات حديثة",
-      "url": "https://www.bbc.com/arabic/articles/cj75pe6nyr7lo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-26T12:22:15+00:00",
-      "excerpt": "كاميرات مراقبة الأطفال في السيارة: بث مباشر وتقنيات حديثة",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/a6a1/live/ab271df0-d137-11f1-93e1-3b657b665bcf.jpg"
     },
     {
       "id": "4e38b64496f07b",
@@ -2103,16 +1993,6 @@
       "image": "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/x_0,y_0,w_5004,h_2815,c_crop/w_1920,h_1080,c_fill,q_auto,g_center/cnnarabic/2026/10/25/images/348009.jpg"
     },
     {
-      "id": "9243c1f66b4994",
-      "title": "كيف ودع الأردنيون ضحايا هجوم الكنيسة؟",
-      "url": "https://www.bbc.com/arabic/articles/cwp9gj7p8dx4o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "articles",
-      "published_at": "2026-10-25T14:35:06+00:00",
-      "excerpt": "تجمع آلاف الأردنيين في قرية حمود في الكرك، جنوبي الأردن، لتشييع جثامين الضحايا الذين وقعوا إثر الهجوم المسلح الذي وقع يوم الجمعة في كنيسة الروم الأرثوذوكس في الكرك.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/e8f1/live/236b7700-d081-11f1-a701-fddedf244c16.jpg"
-    },
-    {
       "id": "6e782e5d4fd860",
       "title": "سياحة المقابر: لماذا تتحول مقابر أوروبا إلى وجهات مفضلة في الهالوين",
       "url": "https://arabic.euronews.com/2026/10/25/graveyard-tourism-why-europes-cemeteries-are-on-the-must-visit-list-for-halloween",
@@ -2133,16 +2013,6 @@
       "image": "https://images.euronews.com/articles/stories/09/96/52/56/696x392_cmsv2_fc172790-b1c4-5d9a-bc06-5aed848c17e6-9965256.jpg"
     },
     {
-      "id": "4f4eaf831a8098",
-      "title": "حين أرسل عبد الناصر الجيش المصري إلى اليمن لمواجهة قوات تدعمها السعودية",
-      "url": "https://www.bbc.com/arabic/articles/ck1l38q5m815o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-24T04:56:21+00:00",
-      "excerpt": "بعد إعلان الرئيس المصري عبد الفتاح السيسي استعداد بلاده للتدخل عسكرياً دفاعاً عن السعودية في مواجهة الحوثيين، نستعيد تجربة الجيش المصري في اليمن خلال الستينيات، حين خاض حرباً ضد الملكيين المدعومين من الرياض.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/512b/live/fa1f0560-cc6b-11f1-baeb-8d65d4bcd7ab.jpg"
-    },
-    {
       "id": "838c80714656d2",
       "title": "من فيلات فوق المياه إلى السباحة مع الدلافين.. أسبوع في جزر المالديف يكشف وجها آخر للجنة الاستوائية",
       "url": "https://arabic.euronews.com/2026/10/23/sun-sand-and-snorkelling-a-week-in-the-maldives-on-two-stunning-resort-islands",
@@ -2151,16 +2021,6 @@
       "published_at": "2026-10-23T21:30:01+00:00",
       "excerpt": "على مياه المالديف الفيروزية وشواطئها الرملية، استكشفت فخرية م. سليمان جزيرتين منتجعيتين، ووضعت برنامجا لأسبوع حافل بالغوص السطحي وتجارب الطعام وقليل من الاستجمام.",
       "image": "https://images.euronews.com/articles/stories/09/96/01/53/696x392_cmsv2_ecc9f47f-ba07-5b15-9c17-be4618b1e54b-9960153.jpg"
-    },
-    {
-      "id": "74256423e5d8e3",
-      "title": "من هم المسيحيون الأردنيون؟ وماذا نعرف عن تاريخهم؟",
-      "url": "https://www.bbc.com/arabic/articles/crd6dx7vqx62o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "region",
-      "published_at": "2026-10-23T20:28:44+00:00",
-      "excerpt": "أعاد الهجوم المسلح الذي استهدف كنيسة للروم الأرثوذكس في محافظة الكرك جنوبي الأردن، خلال مراسم تشييع جنازة، تسليط الضوء على المسيحيين في المملكة، الذين يعود وجودهم في المنطقة إلى قرون سبقت تأسيس الدولة الأردنية الحديثة.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/9699/live/0e9a7200-cf1d-11f1-9796-954775b3a434.jpg"
     },
     {
       "id": "1c21061348f234",
@@ -2231,26 +2091,6 @@
       "published_at": "2026-10-23T07:34:42+00:00",
       "excerpt": "قد تنتهي جولات العربات التي تجرها الخيول في \"سنترال بارك\" في يونيو 2028، بعد سنوات من الجدل حول رعاية الحيوانات وسلامة الجمهور.",
       "image": "https://images.euronews.com/articles/stories/09/96/42/28/696x392_cmsv2_5b4d055f-b729-5b59-afb4-77cfbc5da017-9964228.jpg"
-    },
-    {
-      "id": "c10ca527f77ed0",
-      "title": "لماذا قد لا تُسفر انتخابات إسرائيل عن فائز واضح؟",
-      "url": "https://www.bbc.com/arabic/articles/c699z3lp577mo?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "articles",
-      "published_at": "2026-10-23T05:46:10+00:00",
-      "excerpt": "في حين يسعى نتنياهو إلى تقديم نفسه بوصفه قائداً قادراً على التعامل مع التحديات الأمنية والإقليمية، يحاول خصومه إقناع الناخبين بأن استمرار حكمه يعني استمرار الانقسامات والأزمات السياسية.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/1af8/live/0ebd10b0-ce16-11f1-9a39-31b474234113.png"
-    },
-    {
-      "id": "e0b0de2a9f70f7",
-      "title": "هل تبحث دول الخليج عن مظلة أمنية بديلة عن الضمانات الغربية؟",
-      "url": "https://www.bbc.com/arabic/articles/cmd93k4yknxko?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "articles",
-      "published_at": "2026-10-22T18:07:16+00:00",
-      "excerpt": "شهدت منطقة الخليج في الآونة الأخيرة تحركات ديبلوماسية متسارعة نحو بناء تحالفات أمنية ووضع ترتيبات دفاعية جديدة.",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/8f4f/live/7dd9ae10-ce41-11f1-a64c-550be9e3c66b.jpg"
     },
     {
       "id": "3902175da5cf0a",
@@ -2381,16 +2221,6 @@
       "published_at": "2026-10-19T21:00:01+00:00",
       "excerpt": "عاقب الاتحاد البرتغالي رونالدو بالإيقاف 30 يوماً وغرامة مالية لمغادرته معسكر المنتخب دون إخطار مسبق، على أن يعود قبل مباراتَي نوفمبر.",
       "image": "https://images.euronews.com/articles/stories/09/95/90/47/696x392_cmsv2_845e8f4e-72a2-5aab-bd9d-09c6d5d7470c-9959047.jpg"
-    },
-    {
-      "id": "6f5b4a82114af6",
-      "title": "كيف تتحول احتجاجات جيل زد إلى \"كرة ثلج\" تهز الحكومات؟",
-      "url": "https://www.bbc.com/arabic/articles/c3kgq2wz4nj5o?at_medium=RSS&at_campaign=rss",
-      "source": "BBC عربي",
-      "section": "articles",
-      "published_at": "2026-10-19T19:30:49+00:00",
-      "excerpt": "شهدت دول عدة احتجاجات قادها شباب من جيل زد، بدأت بمطالب تتعلق بالتعليم والخدمات والوظائف، قبل أن تتسع في بعض البلدان إلى المطالبة برحيل الحكومات، فكيف أثّرت هذه الاحتجاجات وما التغييرات التي أحدثتها؟",
-      "image": "https://ichef.bbci.co.uk/ace/ws/240/cpsprodpb/5341/live/644815a0-cbde-11f1-b139-f77a8b036d06.jpg"
     },
     {
       "id": "553592ba89e619",
