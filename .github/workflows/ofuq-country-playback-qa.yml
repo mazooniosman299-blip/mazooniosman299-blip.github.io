@@ -1,0 +1,30 @@
+name: Decode Oman Qatar Sudan TV video in Chrome
+on:
+  pull_request:
+    paths:
+      - 'ofuq-tv/channels.json'
+      - 'scripts/test_ofuq_country_channels.mjs'
+      - '.github/workflows/ofuq-country-playback-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  country-playback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    strategy:
+      fail-fast: false
+      matrix:
+        country: [om,qa,sd]
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - run: |
+          npm install --no-save playwright@1.64.1
+          npx playwright install --with-deps chromium
+      - name: Decode TV frames for every staged broadcaster candidate
+        env:
+          COUNTRY: ${{ matrix.country }}
+        run: node scripts/test_ofuq_country_channels.mjs
