@@ -79,18 +79,23 @@ try{
  if(!initialReport.muted||!/wikimedia.org/i.test(initialReport.src))throw Error('Source archival report must start playing silently');
  await page.locator('#reportSound').click();
  const audible=await page.locator('#reportVideo').evaluate(v=>({muted:v.muted,paused:v.paused,time:v.currentTime,webkitAudioDecodedByteCount:v.webkitAudioDecodedByteCount??null}));
- if(audible.muted)throw Error('User cannot unmute original report audio');
+ if(audible.muted||audible.webkitAudioDecodedByteCount===0)throw Error('Original report audio did not decode after enabling human source sound');
  console.log('HUMAN SOURCE SOUND ACTIVATED '+JSON.stringify(audible));
  const first=await page.locator('#reportTitle').innerText();
  await page.locator('#reportNext').click();
  await page.waitForFunction(prev=>document.getElementById('reportTitle').textContent!==prev,first,{timeout:14000});
  await page.waitForFunction(()=>document.getElementById('reportVideo').videoWidth>0&&document.getElementById('reportVideo').currentTime>1.1,null,{timeout:55000});
  console.log('SECOND AUTHENTIC REPORT PLAY PASS '+await page.locator('#reportTitle').innerText());
+ await page.locator('#reportNext').click();
+ await page.waitForFunction(()=>window.ofuqReportInfo?.().index===2,null,{timeout:8000});
+ await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.videoWidth>=600&&v.currentTime>1&&!v.paused},null,{timeout:55000});
+ console.log('THIRD AUTHENTIC REPORT PLAY PASS '+await page.locator('#reportTitle').innerText());
+
 
  await page.setViewportSize({width:390,height:844});
  const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#reportScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
  console.log('MOBILE LAYOUT '+JSON.stringify(mobile));
- if(!(mobile.copyY<mobile.adY&&mobile.adWidth<=mobile.viewport&&mobile.scrollWidth<=mobile.viewport+2))throw Error('Mobile layout overflow or wrong stacked order');
+ if(!(mobile.adY<mobile.copyY&&mobile.adWidth<=mobile.viewport&&mobile.scrollWidth<=mobile.viewport+2))throw Error('Mobile video must appear before intro, with no horizontal overflow');
  const columns=await page.evaluate(()=>{const watch=document.querySelector('.watch-column').getBoundingClientRect(),list=document.querySelector('.channel-directory').getBoundingClientRect();const grid=getComputedStyle(document.querySelector('.player-grid'));const editorial=document.querySelector('.about-policy');const date=document.querySelector('.news-card .date');return {watchX:watch.x,watchW:watch.width,listX:list.x,listW:list.width,grid: grid.gridTemplateColumns,dateColor:date?getComputedStyle(date).color:null,dateSize:date?parseFloat(getComputedStyle(date).fontSize):null,editorialColor:editorial?getComputedStyle(editorial).color:null}});
  console.log('MOBILE CHANNELS / NEWS STYLE '+JSON.stringify(columns));
  if(!(columns.watchW>100&&columns.listW>80&&Math.abs(columns.watchX-columns.listX)>70))throw Error('Channel guide is not beside the video on mobile');
