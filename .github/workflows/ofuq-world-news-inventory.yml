@@ -1,0 +1,32 @@
+name: Read-only worldwide OFUQ news channel discovery
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_ofuq_worldwide_candidates.mjs'
+      - '.github/workflows/ofuq-world-news-inventory.yml'
+  push:
+    branches:
+      - ofuq-worldwide-channel-audit-20261030
+    paths:
+      - 'scripts/audit_ofuq_worldwide_candidates.mjs'
+      - '.github/workflows/ofuq-world-news-inventory.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - name: Audit worldwide news channel candidates, do NOT publish
+        run: node scripts/audit_ofuq_worldwide_candidates.mjs
+      - name: Preserve read-only inventory, not a public channel list
+        uses: actions/upload-artifact@v4
+        with:
+          name: ofuq-world-news-audit
+          path: audit-output/world-news-candidates.json
+          retention-days: 7
