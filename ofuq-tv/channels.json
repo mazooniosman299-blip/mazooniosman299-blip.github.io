@@ -23,7 +23,8 @@
       "streams": [
         "https://live-hls-web-aja.getaj.net/AJA/index.m3u8",
         "https://live-hls-v3-aja.getaj.net/AJA-V3/index.m3u8"
-      ]
+      ],
+      "country": "قطر"
     },
     {
       "id": "ajm",
@@ -35,7 +36,8 @@
       "streams": [
         "https://live-hls-web-ajm.getaj.net/AJM/index.m3u8",
         "https://live-hls-apps-ajm-fa.getaj.net/AJM/index.m3u8"
-      ]
+      ],
+      "country": "قطر"
     },
     {
       "id": "alarabiya",
@@ -230,7 +232,8 @@
       "streams": [
         "https://live-hls-apps-aje-fa.getaj.net/AJE/index.m3u8",
         "https://live-hls-web-aje.getaj.net/AJE/index.m3u8"
-      ]
+      ],
+      "country": "قطر"
     },
     {
       "id": "france24fr",
