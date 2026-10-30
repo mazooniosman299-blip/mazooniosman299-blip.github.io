@@ -56,3 +56,5 @@
 .related-visual{height:170px;overflow:hidden}
 .related-visual img,.related-visual svg{width:100%;height:100%;object-fit:cover}
 @media(max-width:650px){.related-visual{height:160px}}
+
+.article-full-source-link{display:inline-flex;margin:10px 0 25px;padding:10px 16px;background:#0b4754;color:white;border:1px solid #5fdbe4;font-size:16px;font-weight:800;border-radius:4px}
