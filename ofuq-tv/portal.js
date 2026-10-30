@@ -148,7 +148,7 @@ function safeImage(url){try{const parsed=new URL(url);return parsed.protocol==='
 function renderNews(){
  const host=$('newsGrid');host.replaceChildren();
  const selection=allNews.filter(n=>(group==='all'||category(n)===group)&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
- $('newsSummary').textContent=selection.length?'عدد المواد: '+selection.length+' · آخر تحديث من المصادر الرسمية':'';
+
  if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار لهذا القسم حالياً. اختر قسماً آخر.';host.append(p)}
  for(const n of selection.slice(0,visibleNews)){
   const id=newsId(n);if(!id)continue;
