@@ -61,6 +61,16 @@ try{
  if(second.src===first.src||second.state.headline===first.state.headline)throw Error('News video promos are not rotating');
  if(!list.includes(second.state.headline))throw Error('Second news promo is not a genuine news item');
  if(await page.locator('#nativePlayer').evaluate(v=>v.paused))throw Error('Lower native news channel was interrupted by the film promo');
+ const allClips=await page.evaluate(async()=> (await (await fetch('news-reels.json')).json()).clips.map(c=>c.video));
+ if(allClips.length<4)throw Error('Not enough original video news promo footage');
+ let previous=second.src;
+ for(let index=2;index<allClips.length;index++){
+  await page.locator('#adVideo').evaluate(v=>{if(v.duration>4)v.currentTime=Math.min(v.duration-.2,9.3)});
+  await page.waitForFunction(({previous,expected})=>{const v=document.getElementById('adVideo');return v.currentSrc!==previous&&v.currentSrc===expected&&v.videoWidth>320&&v.currentTime>.35},{previous,expected:allClips[index]},{timeout:35000});
+  const status=await page.evaluate(()=>({src:document.getElementById('adVideo').currentSrc,width:document.getElementById('adVideo').videoWidth,time:document.getElementById('adVideo').currentTime}));
+  console.log('REAL LICENSED NEWS VIDEO '+(index+1)+' '+JSON.stringify(status));
+  previous=status.src;
+ }
  console.log('REAL FOOTAGE NEWS BUMPERS PASS');
  await page.setViewportSize({width:390,height:844});
  const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#newsReelScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
@@ -78,7 +88,7 @@ try{
  await page.locator('#article h1').waitFor({timeout:18000});
  await page.waitForFunction(()=>document.querySelectorAll('#article .article-more-card').length>=1,{timeout:12000});
  const body=await page.locator('#article').innerText();
- for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
+ for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:','المعلومات المتاحة لهذا العنوان محدودة'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
 if(!await page.locator('#article .article-credits a, #article .licensed-byline a').count())throw Error('Original source documentation absent');
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
  await page.getByRole('button',{name:'مقالات كاملة'}).click();
