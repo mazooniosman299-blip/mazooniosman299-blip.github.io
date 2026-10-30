@@ -10,7 +10,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: ofuq-breaking-news
+  group: ofuq-news
   cancel-in-progress: false
 jobs:
   refresh:
