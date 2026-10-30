@@ -27,6 +27,17 @@ try{
  if(!(desktopLayout.adX<desktopLayout.copyX&&desktopLayout.liveY<desktopLayout.newsY&&desktopLayout.adW<740&&desktopLayout.adW>250))throw Error('Incorrect ad-left, title-right, or channels-first layout');
 
  await page.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>10,{timeout:18000});
+ await page.locator('#channelCountry').selectOption('عُمان');
+ await page.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>=5,{timeout:5000});
+ const countryTitles=await page.locator('#channelList .channel b').allTextContents();
+ if(countryTitles.length!==5||!countryTitles.includes('عُمان الرياضية'))throw Error('Oman country filter unavailable');
+ await page.locator('#channelCountry').selectOption('قطر');
+ if(await page.locator('#channelList .channel').count()<6)throw Error('Qatar country channels missing');
+ await page.locator('#channelCountry').selectOption('السودان');
+ if(await page.locator('#channelList .channel').count()<2)throw Error('Sudan country channels missing');
+ await page.locator('#channelCountry').selectOption('all');
+ console.log('COUNTRY SELECTOR OM/QA/SD PASS');
+
  console.log('CHANNEL BUTTONS '+await page.locator('#channelList .channel').count());
  console.log('CODEC SUPPORT '+JSON.stringify(await page.evaluate(()=>({userAgent:navigator.userAgent,mp4:MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E"'),mp3:MediaSource.isTypeSupported('audio/mp4; codecs="mp4a.40.2"')}))));
  const passed=[];
@@ -103,6 +114,9 @@ if(!await page.locator('#article .article-credits a, #article .licensed-byline a
   const count=text.trim().split(/\s+/).length;
   if(count<220||count<article.expected*.8)throw Error('Incomplete article '+article.id+': expected '+article.expected+' words, got '+count);
   if(!await page.locator('#article .licensed-byline a').count()||!await page.locator('#article .license-credit a').count())throw Error('Missing author/source/license in '+article.id);
+  const cover=await page.locator('#article .article-photo img').evaluate(img=>({width:img.naturalWidth,height:img.naturalHeight,src:img.currentSrc,loaded:img.complete}));
+  if(!cover.loaded||cover.width<200||cover.height<100)throw Error('Article has blank or broken visual '+article.id);
+  console.log('ARTICLE IMAGE VERIFIED '+article.id+' '+JSON.stringify(cover));
   console.log('COMPLETE STORY VERIFIED '+article.id+': '+count+' words');
  }
  const licensed=fullRecords[0].id;
