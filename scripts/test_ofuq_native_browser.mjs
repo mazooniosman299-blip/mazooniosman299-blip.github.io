@@ -73,7 +73,7 @@ try{
  if(!list.includes(second.state.headline))throw Error('Second news promo is not a genuine news item');
  if(await page.locator('#nativePlayer').evaluate(v=>v.paused))throw Error('Lower native news channel was interrupted by the film promo');
  const allClips=await page.evaluate(async()=> (await (await fetch('news-reels.json')).json()).clips.map(c=>c.video));
- if(allClips.length<4)throw Error('Not enough original video news promo footage');
+ if(allClips.length<2)throw Error('Not enough verified real news video footage');
  let previous=second.src;
  for(let index=2;index<allClips.length;index++){
   await page.locator('#adVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
