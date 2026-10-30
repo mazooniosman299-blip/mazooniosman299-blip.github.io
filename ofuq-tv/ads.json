@@ -1,20 +1,11 @@
 {
   "updated_at": "2026-10-30",
-  "notes": "الشاشة تعرض فيديو أُفُق الترويجي تلقائياً ما لم تتوفر إعلانات VAST حقيقية من حساب ناشر معتمد. SDK لا يقدم إعلانات بدون adTagUrl خاص بالناشر.",
-  "ads": [
-    {
-      "id": "ofuq-promo",
-      "video": "ads/ofuq-promo.mp4",
-      "title": "إعلانك على شاشة أُفُق",
-      "description": "فرصة لتقديم علامتك التجارية بإعلان فيديو احترافي يصل للمشاهدين.",
-      "eyebrow": "OFUQ TV · VIDEO ADVERTISING"
-    }
-  ],
+  "notes": "Legal/compliance hold: no videos, promos or external ad requests are authorized for this public deployment.",
+  "ads": [],
   "network": {
     "type": "vast",
     "enabled": false,
-    "provider": "publisher-approved-network",
-    "adTagUrl": "",
-    "instructions": "لا تفعّلها إلا بعد استلام رابط VAST خاص بالموقع من شبكة إعلانات وافقت على الناشر، مثل Adsterra أو Google Ad Manager. لا تستخدم روابط أمثلة تجريبية للإعلانات في الإنتاج."
+    "provider": "unconfigured",
+    "adTagUrl": ""
   }
 }

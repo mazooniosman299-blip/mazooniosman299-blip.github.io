@@ -1,11 +1,11 @@
 {
-  "name": "أُفُق TV — منصة أخبار عربية",
+  "name": "أُفُق TV — النشر متوقف مؤقتاً",
   "short_name": "أُفُق TV",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#071929",
-  "theme_color": "#071929",
+  "background_color": "#0b1721",
+  "theme_color": "#0b1721",
   "icons": [
     {
       "src": "assets/ofuq-mark.svg",

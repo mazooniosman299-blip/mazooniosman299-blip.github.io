@@ -1,15 +1,15 @@
-name: Verify Ofuq TV website
+name: Verify OFUQ compliance hold
 on:
   push:
     paths:
       - 'ofuq-tv/**'
-      - 'scripts/check_ofuq_portal.mjs'
+      - 'scripts/check_ofuq_paused.mjs'
       - '.github/workflows/ofuq-quality.yml'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  site-qa:
+  compliance-gate:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -17,5 +17,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check HTML paths, news archive, channels and scripts
-        run: node scripts/check_ofuq_portal.mjs
+      - name: Verify all public editorial media are suspended pending licensing
+        run: node scripts/check_ofuq_paused.mjs

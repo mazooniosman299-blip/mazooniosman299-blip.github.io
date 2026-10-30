@@ -1,50 +1,24 @@
-name: Verify OFUQ TV native live player and news
+name: Verify OFUQ public media suspension
 on:
-  pull_request:
-    paths:
-      - 'ofuq-tv/**'
-      - 'scripts/check_ofuq_portal.mjs'
-      - 'scripts/check_ofuq_news_sitemap.py'
-      - 'scripts/update_ofuq_news.py'
-      - 'scripts/test_ofuq_native_browser.mjs'
-      - 'scripts/update_ofuq_full_articles.py'
-      - 'ofuq-tv/full-articles.json'
   push:
     branches:
-      - ofuq-verified-parts-20261030
-      - ofuq-licensed-full-news-20261030
       - main
     paths:
       - 'ofuq-tv/**'
-      - 'scripts/check_ofuq_portal.mjs'
-      - 'scripts/test_ofuq_native_browser.mjs'
+      - 'scripts/check_ofuq_paused.mjs'
+  pull_request:
+    paths:
+      - 'ofuq-tv/**'
+permissions:
+  contents: read
 jobs:
-  native-browser-qa:
+  compliance-gate:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7.0.1
-      - uses: actions/setup-node@v7.1.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '24'
-      - uses: actions/setup-python@v7.1.0
-        with:
-          python-version: '3.13'
-      - name: Fetch complete legally reusable Arabic articles
-        run: |
-          python scripts/update_ofuq_full_articles.py
-          python -c "import json; f=json.load(open('ofuq-tv/full-articles.json',encoding='utf8')); assert len(f)>0, 'No complete licensed Arabic articles received'; print('VERIFIED LICENSED FULL STORIES:',len(f)); assert all(a['word_count']>=220 and len(a['paragraphs'])>=5 and a['author'] for a in f.values())"
-          python -c "import json; f=json.load(open('ofuq-tv/full-articles.json',encoding='utf8')); photos=sum(bool(x.get('image')) for x in f.values()); print('BATCH FULL ARTICLE COVERAGE',len(f),'REAL SOURCE PHOTOS',photos); assert len(f)>=70 and photos>=55, 'Do not release incomplete source expansion or unverified photos'"
-          python -c "import json; a=json.load(open('ofuq-tv/full-articles.json',encoding='utf8')); pictures=[(v['title'][:36],v.get('image','')) for v in a.values() if v.get('image')]; print('REAL GLOBAL VOICES ARTICLE IMAGES', len(pictures), 'OF', len(a)); print(*pictures[:12],sep='\\n')"
-      - name: Validate OFUQ site references and news metadata
-        run: node scripts/check_ofuq_portal.mjs
-      - uses: actions/setup-python@v7.1.0
-        with:
-          python-version: '3.13'
-      - name: Validate modern article sitemap and RSS script syntax
-        run: python scripts/check_ofuq_news_sitemap.py
-      - name: Install chromium for actual video decoding
-        run: |
-          npm install --no-save playwright@1.64.1
-          npx playwright install --with-deps chromium
-      - name: Test actual native HLS playback, channel change, and looping ad film
-        run: node scripts/test_ofuq_verified_license_ui.mjs
+          node-version: '22'
+      - name: Verify all public editorial media are suspended pending licensing
+        run: node scripts/check_ofuq_paused.mjs
