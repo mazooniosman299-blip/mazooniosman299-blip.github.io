@@ -1,0 +1,25 @@
+name: Read-only Oman Qatar Sudan channel candidate audit
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_ofuq_country_channels.mjs'
+      - '.github/workflows/ofuq-country-channel-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-country-channels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - name: Probe all Oman Qatar and Sudan candidate HLS URLs, no publication
+        run: node scripts/audit_ofuq_country_channels.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: country-candidate-only-report
+          path: audit-output/ofuq-country-candidates.json
+          retention-days: 7
