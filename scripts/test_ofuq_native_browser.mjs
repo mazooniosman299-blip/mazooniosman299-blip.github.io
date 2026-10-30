@@ -39,9 +39,28 @@ try{
  if(await videoProgress(page,'autoplay initial channel'))passed.push('autoplay');
  const firstQuality=await page.evaluate(()=>({played:document.getElementById('nativePlayer').videoHeight,options:[...document.getElementById('qualitySelect').options].map(x=>({name:x.textContent,value:x.value})),hlsLevels:typeof hlsController==='undefined'?[]:hlsController?.levels?.map(x=>({height:x.height,bitrate:x.bitrate}))||[],startEstimate:typeof hlsController==='undefined'?0:hlsController?.config?.abrEwmaDefaultEstimate||0,testBandwidth:typeof hlsController==='undefined'?null:hlsController?.config?.testBandwidth}));
  console.log('FIRST CHANNEL QUALITY '+JSON.stringify(firstQuality));
- if(firstQuality.testBandwidth!==false)throw Error('HLS still probes lowest quality at startup');
- if(firstQuality.hlsLevels.length>1&&firstQuality.options.length<2)throw Error('Missing manual quality levels');
- if(firstQuality.hlsLevels.length&&firstQuality.played===0)throw Error('No decoded first channel resolution');
+ // Some Chrome/Safari configurations use the browser's native HLS pipeline.
+ // In that case hls.js settings are deliberately not active and the video element handles ABR.
+ if(firstQuality.hlsLevels.length&&firstQuality.testBandwidth!==false)throw Error('HLS.js is still probing lowest quality at startup');
+ if(firstQuality.hlsLevels.length>1&&firstQuality.options.length<2)throw Error('HLS.js available manual levels are missing');
+ if(firstQuality.played===0)throw Error('No video frames decoded at startup');
+ const msePage=await browser.newPage({viewport:{width:1280,height:800}});
+ await msePage.addInitScript(()=>{
+   const original=HTMLMediaElement.prototype.canPlayType;
+   HTMLMediaElement.prototype.canPlayType=function(type){
+     if(typeof type==='string'&&/mpegurl/i.test(type))return '';
+     return original.call(this,type);
+   };
+ });
+ await msePage.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded',timeout:30000});
+ await msePage.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>=20,{timeout:15000});
+ if(!await videoProgress(msePage,'forced MSE HLS.js adaptive channel'))throw Error('HLS.js playback failed in MSE mode');
+ const mseQuality=await msePage.evaluate(()=>({nativeHls:document.getElementById('nativePlayer').canPlayType('application/vnd.apple.mpegurl'),options:[...document.getElementById('qualitySelect').options].map(x=>x.textContent),levels:hlsController?.levels?.map(x=>({height:x.height,bitrate:x.bitrate}))||[],automatic:hlsController?.autoLevelEnabled??null,testBandwidth:hlsController?.config?.testBandwidth??null,estimate:hlsController?.config?.abrEwmaDefaultEstimate||null,decoded:document.getElementById('nativePlayer').videoHeight}));
+ console.log('MSE HLS.JS QUALITY '+JSON.stringify(mseQuality));
+ if(mseQuality.testBandwidth!==false)throw Error('HLS.js low-level bandwidth probe is still enabled');
+ if(!mseQuality.automatic)throw Error('HLS.js ABR unexpectedly disabled by default');
+ if(mseQuality.levels.length>1&&mseQuality.options.length<2)throw Error('HLS.js manual quality menu did not populate');
+ await msePage.close();
 
  const attempts=[['الجزيرة','الجزيرة'],['سكاي نيوز عربية','سكاي نيوز عربية'],['العربية','العربية']];
  for(const [label,channel] of attempts){
