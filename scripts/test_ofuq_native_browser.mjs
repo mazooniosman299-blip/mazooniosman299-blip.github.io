@@ -55,7 +55,14 @@ try{
  await page.waitForFunction(()=>document.querySelectorAll('#article .article-more-card').length>=1,{timeout:12000});
  const body=await page.locator('#article').innerText();
  for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
- if(!await page.locator('#article .article-source a').count())throw Error('Original reference missing');
+ if(!await page.locator('#article .article-credits summary').count())throw Error('Publisher credits section missing');
+ if(body.includes('مرجع المعلومات'))throw Error('Old information-reference label is still visible');
+ await page.locator('#article .article-credits summary').click();
+ if(!await page.locator('#article .article-credits a').count())throw Error('Publisher source URL must remain available for rights compliance');
+ await page.route('**/ofuq-original-articles.json',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({[articles[0]]:{rights:'original',approved:true,paragraphs:[{type:'h2',text:'اختبار المقال الأصلي الكامل'},{type:'p',text:'فقرة تحريرية أصلية داخل الموقع لتأكيد عرض المحتوى المصرح به كاملاً.'}]}})}));
+ await page.reload({waitUntil:'domcontentloaded'});
+ await page.waitForFunction(()=>document.querySelector('.original-report')?.textContent?.includes('فقرة تحريرية أصلية'),null,{timeout:12000});
+ console.log('FULL ORIGINAL ARTICLE PASS: approved article body displayed without copying RSS publisher text');
  console.log('ON-SITE STORY PASS with '+await page.locator('#article .article-more-card').count()+' connected articles');
  if(errs.length)throw Error('Unexpected page errors: '+errs.slice(0,4).join(' | '));
  console.log('OFUQ BROWSER SMOKE TEST PASS');
