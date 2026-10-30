@@ -230,13 +230,11 @@ function newsId(item){return typeof item.id==='string'&&/^[a-z0-9]{5,20}$/i.test
 function safeImage(url){try{const parsed=new URL(url);return parsed.protocol==='https:'&&Boolean(parsed.hostname)}catch{return false}}
 function renderNews(){
  const host=$('newsGrid');host.replaceChildren();
- const matching=allNews.filter(n=>(group==='all'||((group==='full'||group==='articles')&&n.full_article===true)||(!['full','articles'].includes(group)&&category(n)===group))&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
+ const matching=allNews.filter(n=>n.full_article===true&&(group==='all'||group==='full'||group==='articles'||category(n)===group)&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
 // In the default newsroom, surface genuine authorized full-length reporting among
 // the newest headlines. Keep newest news first and avoid duplicate cards.
 // Put authorized complete articles first without removing any RSS headline.
-const complete=matching.filter(n=>n.full_article===true);
-const summaries=matching.filter(n=>n.full_article!==true);
-const selection=!search?[...complete,...summaries]:matching;
+const selection=matching; // Licensed long-form articles only; raw RSS briefs never rendered as complete news.
 
  if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار لهذا القسم حالياً. اختر قسماً آخر.';host.append(p)}
  for(const n of selection.slice(0,visibleNews)){
@@ -257,7 +255,7 @@ const selection=!search?[...complete,...summaries]:matching;
   const meta=document.createElement('div');meta.className='date';
   const time=document.createElement('span');try{time.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{time.textContent=''}
   meta.append(time);
-  if(n.full_article!==true){const sourceBadge=document.createElement('small');sourceBadge.className='full-at-source';sourceBadge.textContent='موجز من '+(n.source||'الناشر')+' · ليس مقالاً كاملاً';body.append(sourceBadge)}
+
   body.append(label,title,excerpt,meta);link.append(photo,body);host.append(link);
  }
  $('moreNews').hidden=selection.length<=visibleNews;
