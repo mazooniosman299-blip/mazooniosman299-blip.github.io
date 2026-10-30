@@ -17,20 +17,6 @@
       "creator": "German Korb",
       "type": "illustrative",
       "seconds": 10
-    },
-    {
-      "id": "traffic-03",
-      "video": "https://videos.pexels.com/video-files/5834623/5834623-hd_1920_1080_25fps.mp4",
-      "source": "https://www.pexels.com/video/5834623/",
-      "type": "illustrative",
-      "seconds": 8
-    },
-    {
-      "id": "city-04",
-      "video": "https://videos.pexels.com/video-files/857267/857267-hd_1920_1080_24fps.mp4",
-      "source": "https://www.pexels.com/video/857267/",
-      "type": "illustrative",
-      "seconds": 8
     }
   ]
 }
