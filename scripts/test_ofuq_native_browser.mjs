@@ -44,6 +44,32 @@ try{
  const ad=await page.locator('#adVideo').evaluate(v=>({time:v.currentTime,width:v.videoWidth,height:v.videoHeight,src:v.currentSrc,paused:v.paused,error:v.error?.code||null}));
  console.log('AD STATE '+JSON.stringify(ad));
  if(ad.width<100||ad.time<1)throw Error('Upper advertising MP4 did not play');
+
+ // Assert that the upper screen contains real time-rotating COUNTRY news rather
+ // than a static pasted headline or an unverified paid advertisement.
+ await page.waitForFunction(()=>window.ofuqBroadcastInfo?.().count>=4,null,{timeout:16000});
+ const promoCandidates=await page.evaluate(()=>window.ofuqBroadcastInfo());
+ if(promoCandidates.count<4)throw Error('Not enough distinct real country headlines in video billboard');
+ await page.waitForFunction(()=>window.ofuqBroadcastInfo?.().active===true,null,{timeout:30000});
+ const beforePromo=await page.evaluate(()=>({
+  country:document.getElementById('newsPromoCountry').textContent,
+  title:document.getElementById('newsPromoTitle').textContent,
+  source:document.getElementById('newsPromoSource').textContent,
+  videoTime:document.getElementById('adVideo').currentTime,
+  videoWidth:document.getElementById('adVideo').videoWidth,
+  adPaidShown:!document.getElementById('networkAdOverlay').hidden,
+  promoVisible:getComputedStyle(document.getElementById('newsPromo')).display!=='none',
+  nativePlaying:!document.getElementById('nativePlayer').paused
+ }));
+ const currentNews=await page.evaluate(async()=> (await (await fetch('news.json')).json()).items.map(x=>x.title));
+ if(!currentNews.includes(beforePromo.title)||!beforePromo.source.includes('المصدر:')||!beforePromo.promoVisible)throw Error('Promo is not a real attributed news headline');
+ if(beforePromo.adPaidShown)throw Error('Unapproved paid advertising overlay must remain dormant');
+ if(!beforePromo.nativePlaying||beforePromo.videoWidth<100)throw Error('News breaks interrupted TV or advertising video');
+ await page.waitForFunction(title=>window.ofuqBroadcastInfo?.().active && document.getElementById('newsPromoTitle').textContent!==title,beforePromo.title,{timeout:15000});
+ const secondPromo=await page.evaluate(()=>({country:document.getElementById('newsPromoCountry').textContent,title:document.getElementById('newsPromoTitle').textContent,step:window.ofuqBroadcastInfo().step,videoTime:document.getElementById('adVideo').currentTime}));
+ if(!currentNews.includes(secondPromo.title)||secondPromo.step<2)throw Error('News interlude is not rotating');
+ console.log('BROADCAST NEWS BREAK PASS '+JSON.stringify({first:beforePromo,second:secondPromo,countries:promoCandidates.count}));
+
  await page.setViewportSize({width:390,height:844});
  const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#adScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
  console.log('MOBILE LAYOUT '+JSON.stringify(mobile));
