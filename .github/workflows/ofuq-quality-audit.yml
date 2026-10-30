@@ -1,0 +1,31 @@
+name: Audit OFUQ quality for all news channels
+on:
+  pull_request:
+    paths:
+      - 'ofuq-tv/**'
+      - 'scripts/audit_ofuq_quality_all_channels.mjs'
+      - '.github/workflows/ofuq-quality-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  channel-quality-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        batch: [0,1,2,3]
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - name: Install actual Chrome browser for HLS video-decoding and resolution audit
+        run: |
+          npm install --no-save playwright@1.64.1
+          npx playwright install --with-deps chromium
+      - name: Test video frames and source maximum resolution for every channel
+        env:
+          BATCH: ${{ matrix.batch }}
+        run: node scripts/audit_ofuq_quality_all_channels.mjs
