@@ -375,3 +375,7 @@
 .hero-ad-screen .ad-sound{position:absolute;top:13px;left:13px;z-index:12;min-width:115px;padding:7px 12px;border:1px solid #a7edf4;color:#fff;background:#03192bd9;backdrop-filter:blur(8px);border-radius:6px;font-size:12px;font-weight:800;line-height:1.6;cursor:pointer}
 .hero-ad-screen .ad-sound:hover,.hero-ad-screen .ad-sound:focus-visible{background:#155167;border-color:#fff}
 @media(max-width:650px){.hero-ad-screen .ad-sound{top:9px;left:8px;min-width:auto;font-size:11px;padding:5px 8px}}
+
+/* Use publisher photography when available; fallback is visibly original illustration. */
+.news-photo .ofuq-editorial-visual{display:block;width:100%;height:100%;object-fit:cover}
+.news-photo.illustrated .image-source{background:#092638d9;color:#dbfaff}
