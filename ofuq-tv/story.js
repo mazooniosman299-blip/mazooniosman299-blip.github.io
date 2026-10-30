@@ -20,12 +20,9 @@ Promise.all([
  const brief=briefs[id]||{};
  const full=licensedArticles[id];
  const validFull=Boolean(full&&full.approved===true&&['original','licensed'].includes(full.rights)&&Array.isArray(full.paragraphs)&&full.paragraphs.length>=5&&full.paragraphs.some(p=>p.text?.length>70)&&full.original_url===story.url);
- // Never present a short publisher RSS excerpt as though it were a complete report.
- // Older deep links to an excerpt go straight to the authoritative publisher article.
- if(!validFull&&safe(story.url)){
-  location.replace(story.url);
-  return;
- }
+ // Keep every reader route in OFUQ. Do not copy full publisher texts
+ // from a short RSS feed unless their reuse rights have been verified.
+ // Non-licensed feeds are explicitly identified as briefs, never full reports.
  document.title=story.title+' | أُفُق TV';
  host.append(node('div','category',brief.category||CATEGORIES[story.section]||'الأخبار'));
  host.append(node('h1','',story.title));
@@ -59,6 +56,7 @@ Promise.all([
   rights.append(node('span','',' · نُسب النص إلى الكاتب والمصدر أعلاه. أُزيلت الصور والتضمينات، وأُعيد تنسيق الفقرات.'));
   host.append(rights);
  }else{
+  host.append(node('p','licensed-byline','موجز إخباري موثق — النص الكامل غير مرخص لإعادة النشر داخل أُفُق'));
   // A feed excerpt is NOT a full article nor a grant to copy the publisher's full work.
   // Keep it factually accurate; prioritize complete licensed reports elsewhere.
   const paragraphs=Array.isArray(brief.paragraphs)?brief.paragraphs.map(clean).filter(Boolean):[];
