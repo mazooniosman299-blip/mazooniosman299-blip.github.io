@@ -20,7 +20,7 @@ function sameTopic(a,b){
 }
 function paragraph(root,txt,cls){txt=clean(txt);if(txt)root.append(node('p',cls||'',txt))}
 function appendFullOriginal(host,original){
- if(!original||!Array.isArray(original.paragraphs)||!original.paragraphs.length||original.approved!==true)return false;
+ if(!original||!['original','licensed'].includes(original.rights)||!Array.isArray(original.paragraphs)||!original.paragraphs.length||original.approved!==true)return false;
  const section=node('section','original-report','');
  for(const block of original.paragraphs){
   if(typeof block==='string')paragraph(section,block);
