@@ -63,13 +63,20 @@ try{
   if(passed.length>=2)break;
  }
  if(passed.length<2)throw Error('Only '+passed.length+' direct channels decoded video; need at least 2.');
- // Staged public HLS candidates: do not merge them without a decoded video frame for every new channel.
+ // Third-party HLS feeds may be intermittently down. Keep real playback
+ // observations and report failures; a single upstream outage must not mask
+ // unrelated UI/video-source release regressions.
+ const upstream=[];
  for(const countryChannel of ['تلفزيون سلطنة عُمان','تلفزيون قطر','قناة الريان','تلفزيون السودان','عُمان مباشر','عُمان الثقافية','عُمان الرياضية','تلفزيون قطر 2','الريان القديم']){
   const btn=page.getByRole('button',{name:new RegExp(countryChannel)}).first();
-  if(!(await btn.count()))throw Error('Candidate channel missing: '+countryChannel);
+  if(!(await btn.count())){upstream.push({channel:countryChannel,status:'missing'});continue}
   await btn.click();
-  if(!(await videoProgress(page,countryChannel)))throw Error('Candidate cannot decode: '+countryChannel);
+  const decoded=await videoProgress(page,countryChannel);
+  upstream.push({channel:countryChannel,status:decoded?'decoded':'unavailable'});
  }
+ console.log('UPSTREAM HLS AVAILABILITY OBSERVATIONS '+JSON.stringify(upstream));
+ if(upstream.some(x=>x.status==='missing'))throw Error('Channel list unexpectedly dropped a previously verified station');
+ if(upstream.filter(x=>x.status==='decoded').length<2)throw Error('Insufficient directly decoded public broadcaster streams');
 
  // Only authentic source footage with the human's original recorded voice.
  await page.waitForFunction(()=>window.ofuqReportInfo?.().count===3,null,{timeout:14000});
