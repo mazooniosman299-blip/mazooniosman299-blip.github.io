@@ -8,6 +8,17 @@ if(portal.includes('عدد المواد:')||portal.includes('آخر تحديث �
 let errors=[], checks=0;
 function check(test,msg){checks++;if(!test)errors.push(msg)}
 function json(f){try{return JSON.parse(fs.readFileSync(path.join(dir,f),'utf8'))}catch(e){errors.push(f+': JSON invalid ('+e.message+')');return{}}}
+const full=json('full-articles.json');
+for(const [id, a] of Object.entries(full)){
+ check(a?.approved===true&&a?.rights==='licensed'&&a?.license==='CC BY 3.0','Invalid article reuse permission '+id);
+ check(a?.original_url?.startsWith('https://ar.globalvoices.org/'),'Invalid licensed article source '+id);
+ check(typeof a?.author==='string'&&a.author.length>=3,'Missing licensed article author '+id);
+ check(Array.isArray(a?.paragraphs)&&a.paragraphs.length>=5,'Incomplete imported article '+id);
+ check(a?.word_count>=220,'RSS excerpt incorrectly classified as complete article '+id);
+}
+const sourceDirectory=json('news-sources.json');
+check(Array.isArray(sourceDirectory.sources)&&sourceDirectory.sources.length>=20,'International RSS registry missing');
+check(sourceDirectory.sources.some(x=>x.section==='sudan'&&x.enabled!==false),'Sudan dedicated news feed absent');
 const breaking=json('breaking.json'),channels=json('channels.json'),news=json('news.json'),archive=json('news-archive.json'),briefs=json('news-briefs.json');
 check(Array.isArray(channels.channels)&&channels.channels.length>=10,'Expected expanded native channel guide');
 check(Array.isArray(breaking.items),'Missing breaking news array');
@@ -26,7 +37,13 @@ const archiveSet=new Set((archive.items||[]).map(x=>x.url));
 const storyIds=new Set((archive.items||[]).map(x=>String(x.id||(String(x.url||'').match(/\/(\d{5,12})(?:[/?#]|$)/)||[])[1]||'')));
 for(const item of news.items||[]){
   check(archiveSet.has(item.url),'News URL not in archive: '+item.url);
-  check(/^https:\/\/(?:news\.un\.org|arabic\.euronews\.com)\//.test(item.url),'Unsupported news source '+item.url);check(/^(?:[a-f0-9]{14}|[0-9]{5,12})$/.test(String(item.id||'')),'Invalid story ID '+item.url);
+  if(item.full_article===true)check(Boolean(full[item.id]),'Full article listed without licensed body: '+item.id);
+  let sourceValid=false;
+  try{
+   const u=new URL(item.url);
+   sourceValid=sourceDirectory.sources.some(x=>x.name===item.source&&x.enabled!==false&&(!x.requiresCommercialLicense||x.commercialLicenseApproved===true)&&u.protocol==='https:'&&(x.hosts||[]).some(host=>u.hostname===host||u.hostname.endsWith('.'+host)));
+  }catch{}
+  check(sourceValid,'Unsupported news source '+item.url);check(/^(?:[a-f0-9]{14}|[0-9]{5,12})$/.test(String(item.id||'')),'Invalid story ID '+item.url);
 }
 for(const id of Object.keys(briefs||{}))check(storyIds.has(id),'Brief without archived story: '+id);
 const htmls=['index.html','story.html','editorial.html','privacy.html','player.html'];
