@@ -73,9 +73,10 @@ check(!/id="adVideo"|id="adScreen"|id="newsPromo"|id="networkAdOverlay"/.test(ho
 check(!home.includes('ad-network.js'),'Advertising SDK script must not load');
 check(Array.isArray(reports.clips)&&reports.clips.length>=2,'Insufficient original verified recorded reports');
 for(const clip of reports.clips||[]){
- check(/^\d{4}-\d{2}-\d{2}$/.test(clip.date),'Archival clip missing true date');
- check(['CC BY 3.0','CC BY 4.0'].includes(clip.license)&&/^https:\/\/commons.wikimedia.org\/wiki\/File:/.test(clip.source_page),'Unlicensed report video '+clip.title);
- check(clip.license_url==='https://creativecommons.org/licenses/by/'+(clip.license==='CC BY 4.0'?'4.0':'3.0')+'/', 'Wrong Creative Commons attribution URL '+clip.title);
+ check(/^2026-\d{2}-\d{2}$/.test(clip.date),'Report is not filmed in 2026 '+clip.title);
+ check(['CC BY 4.0','CC BY-SA 4.0','CC0 1.0'].includes(clip.license)&&/^https:\/\/commons.wikimedia.org\/wiki\/File:/.test(clip.source_page),'Unknown source or license for 2026 report '+clip.title);
+ const expectedLicense={'CC BY 4.0':'https://creativecommons.org/licenses/by/4.0/','CC BY-SA 4.0':'https://creativecommons.org/licenses/by-sa/4.0/','CC0 1.0':'https://creativecommons.org/publicdomain/zero/1.0/'}[clip.license];
+ check(clip.license_url===expectedLicense,'Wrong source license page '+clip.title);
  check(clip.filename.endsWith('.webm'),'Unsafe clip filename '+clip.title);
 }
 check(!portal.includes('speechSynthesis'),'Generated speech must never replace actual reporter voice');
