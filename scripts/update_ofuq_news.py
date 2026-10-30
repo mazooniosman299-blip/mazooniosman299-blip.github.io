@@ -212,6 +212,14 @@ def licensed_cards():
     separately stored complete works that were explicitly approved and credited.
     """
     out = []
+    def classify(title):
+        if re.search(r"السودان|سوداني|دارفور|الخرطوم|الفاشر|كردفان|أم درمان|بورتسودان|نيالا", title):return "sudan"
+        if re.search(r"كرة القدم|كأس العالم|الملاعب|المباراة|المنتخب|بطولة|أولمبي", title):return "sports"
+        if re.search(r"تكنولوجيا|الإنترنت|الذكاء الاصطناعي|رقمي|رقمية|تقنية|البيانات|برمجيات", title):return "technology"
+        if re.search(r"فنان|فنّ|موسيقى|سينما|ثقافة|الأدب|الرواية|مسرح|فيلم|تراث", title):return "arts"
+        if re.search(r"سوريا|لبنان|فلسطين|تونس|العراق|اليمن|مصر|ليبيا|الأردن|الجزائر|السعودية|إيران|الإمارات|المغرب", title):return "region"
+        if re.search(r"الحيوانات|الحياة البرية|السياحة|السفر|الطبخ|الصحة|المطبخ", title):return "variety"
+        return "world"
     for sid, article in load(FULL).items():
         if not isinstance(article, dict) or article.get("approved") is not True:
             continue
@@ -226,109 +234,31 @@ def licensed_cards():
         intro = next((b.get("text", "") for b in blocks if isinstance(b, dict) and b.get("type") == "p"), "")
         out.append({
             "id": sid, "title": article.get("title", ""), "url": url,
-            "source": "الأصوات العالمية", "section": "articles",
+            "source": "الأصوات العالمية", "section": classify(article.get("title", "")),
             "published_at": article.get("published_at", ""),
             "excerpt": intro[:260], "image": article.get("image", ""), "full_article": True
         })
     return out
 
 def main():
-    collected = []
-    counts = {}
-    with ThreadPoolExecutor(max_workers=6) as executor:
-        pending = {executor.submit(fetch, source, section, url, hosts): (source, section)
-                   for source, section, url, hosts in configured_feeds()}
-        for future in as_completed(pending):
-            source, section = pending[future]
-            try:
-                records = future.result()
-                counts[section] = counts.get(section, 0) + len(records)
-                collected.extend(records)
-                print(f"{section}: {len(records)} from {source}", flush=True)
-            except Exception as exc:
-                print(f"RSS unavailable [{section}] {source} {type(exc).__name__}: {str(exc)[:120]}", flush=True)
-    previous = load(DEST)
-    archived = load(ARCHIVE)
-    if len(collected) < 10:
-        print("Insufficient fresh RSS records: keep published news unchanged.")
+    """Publish ONLY complete, credited, licensed bodies. Never ingest RSS excerpts."""
+    approved=licensed_cards()
+    if not approved:
+        print("BLOCKED: No legally complete approved works; preserve last published dataset.")
         return
-    by_url = {}
-    for item in collected:
-        older = by_url.get(item["url"])
-        # Prefer specific editorial categories over generic world for the same URL.
-        specialized = item["section"] in {"sports", "technology", "arts", "variety", "articles", "region"}
-        existing_generic = older is not None and older.get("section") == "world"
-        if older is None or (existing_generic and specialized):
-            by_url[item["url"]] = item
-        elif not older.get("image") and item.get("image"):
-            older["image"] = item["image"]
-    # Feeds such as Darfur24 omit media:thumbnail while their articles expose
-    # actual per-story og:image. Recover those rather than a generic site logo.
-    previous = load(DEST)
-    archived = load(ARCHIVE)
-    backfill_photos(list(by_url.values()),previous.get("items",[])+archived.get("items",[]))
-    recent = sorted(by_url.values(), key=lambda x: x["published_at"], reverse=True)
-    # Global Arabic news plus dedicated Sudan coverage, preserving country-only reports.
-    # Classified by evidence in titles/topics; no fabricated location tags.
-    sudan_terms = re.compile(r"السودان|سوداني|دارفور|الخرطوم|الفاشر|كردفان|أمدرمان|أم درمان|بورتسودان|نيالا|القضارف|عطبرة|سنار|نهر النيل|الجزيرة السودانية|الجنينة|الضعين|Sudan|Darfur|Khartoum|Kordofan|Omdurman|Nyala", re.I)
-    for item in recent:
-        if sudan_terms.search(item.get("title", "")) or item.get("source") in {"دارفور24","Sudan Tribune"}:
-            item["section"] = "sudan"
-    # Balanced editorial feed: cap items per publisher, not just by section, so no network dominates.
-    chosen, seen = [], set()
-    per_section, per_publisher = {}, {}
-    def include(item):
-        url, source, section = item["url"], item["source"], item["section"]
-        if url in seen or per_section.get(section, 0) >= 36 or per_publisher.get(source, 0) >= 26:
-            return False
-        chosen.append(item); seen.add(url)
-        per_section[section] = per_section.get(section, 0) + 1
-        per_publisher[source] = per_publisher.get(source, 0) + 1
-        return True
-    for section in ["sudan", "world", "region", "sports", "technology", "arts", "variety", "articles"]:
-        matching = [x for x in recent if x["section"] == section]
-        # First take distinct publishers within each section.
-        source_seen = set()
-        for item in matching:
-            if item["source"] not in source_seen and include(item):
-                source_seen.add(item["source"])
-        for item in matching:
-            if sum(x["section"] == section for x in chosen) >= 24:
-                break
-            include(item)
-    for item in recent:
-        if len(chosen) >= 240:
-            break
-        include(item)
-    # RSS may omit older long-form reports. Keep the CC BY complete stories
-    # discoverable even when newer short headlines replace the feed window.
-    full_items = licensed_cards()
-    backfill_photos(full_items, chosen + archived.get("items", []) + previous.get("items", []))
-    by_story = {x["url"]: x for x in chosen}
-    for article in full_items:
-        by_story[article["url"]] = article
-    chosen = sorted(by_story.values(), key=lambda x: x.get("published_at", ""), reverse=True)
-
-    # Preserve old UN material in the archive, and never fabricate missing topic coverage.
-    history = sorted((x for x in full_items + chosen + archived.get("items", []) + previous.get("items", []) if x.get("source") not in {"BBC عربي"}), key=lambda x:x.get("published_at", ""), reverse=True)
-    archive, seen_archive = [], set()
-    for item in history:
-        if not isinstance(item, dict) or not isinstance(item.get("url"), str): continue
-        if item["url"] in seen_archive:continue
-        seen_archive.add(item["url"])
-        item.setdefault("id", item_id(item["url"]))
-        item.setdefault("section", "world")
-        item.setdefault("image", "")
-        item.setdefault("excerpt", "")
-        archive.append(item)
-        if len(archive) >= 1200:break
-    payload = {"source_note":"روابط وعناوين وصور مصغّرة من خلاصات الناشرين؛ المحتوى الكامل لدى المصدر.", "updated_at":datetime.now(timezone.utc).isoformat(),"items":chosen}
-    if previous.get("items") != chosen:
-        DEST.write_text(json.dumps(payload, ensure_ascii=False, indent=2)+"\n",encoding="utf-8")
-        print(f"NEWS SAVED: {len(chosen)} stories; sections: {counts}; with images: {sum(bool(x.get('image')) for x in chosen)}")
-    if archived.get("items") != archive:
-        ARCHIVE.write_text(json.dumps({**payload,"items":archive},ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-        print(f"ARCHIVE SAVED: {len(archive)}")
-    update_sitemap(archive)
+    # Do not merge old RSS metadata into this list, including the archive.
+    approved=sorted(approved,key=lambda n:n.get("published_at",""),reverse=True)
+    ids={n["id"] for n in approved}
+    if len(ids)!=len(approved):
+        raise ValueError("duplicate licensed article ID")
+    previous=load(DEST)
+    archived=load(ARCHIVE)
+    payload={"source_note":"مقالات عربية كاملة مرخصة CC BY 3.0 مع إسناد الكاتب والمصدر؛ لا نعرض الموجزات غير المرخصة.",
+             "updated_at":datetime.now(timezone.utc).isoformat(),"items":approved}
+    for path,old in ((DEST,previous),(ARCHIVE,archived)):
+        if old.get("items")!=approved:
+            path.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+            print("LICENSED ONLY SAVED:",path.name,len(approved),"items")
+    update_sitemap(approved)
 if __name__=="__main__":
     main()
