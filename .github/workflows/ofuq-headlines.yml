@@ -1,16 +1,14 @@
-name: Hourly Ofuq TV source news refresh
+name: Manual OFUQ headline recovery (primary refresh runs every 15 min)
 on:
   push:
     paths:
       - '.github/workflows/ofuq-headlines.yml'
       - 'scripts/update_ofuq_news.py'
-  schedule:
-    - cron: "17 * * * *"
   workflow_dispatch:
 permissions:
   contents: write
 concurrency:
-  group: ofuq-news
+  group: ofuq-content-publisher
   cancel-in-progress: false
 jobs:
   refresh:
