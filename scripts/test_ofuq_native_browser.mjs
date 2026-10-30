@@ -30,10 +30,38 @@ try{
  if(!(desktopLayout.adX<desktopLayout.copyX&&desktopLayout.liveY<desktopLayout.newsY&&desktopLayout.adW<740&&desktopLayout.adW>250))throw Error('Incorrect ad-left, title-right, or channels-first layout');
 
  await page.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>10,{timeout:18000});
+ if(!await page.locator('#qualitySelect').count())throw Error('Quality selector is absent');
+ if((await page.locator('#qualitySelect').inputValue())!=='auto')throw Error('Automatic playback is not the default');
+
  console.log('CHANNEL BUTTONS '+await page.locator('#channelList .channel').count());
  console.log('CODEC SUPPORT '+JSON.stringify(await page.evaluate(()=>({userAgent:navigator.userAgent,mp4:MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E"'),mp3:MediaSource.isTypeSupported('audio/mp4; codecs="mp4a.40.2"')}))));
  const passed=[];
  if(await videoProgress(page,'autoplay initial channel'))passed.push('autoplay');
+ const firstQuality=await page.evaluate(()=>({...window.ofuqQualityInfo(),played:document.getElementById('nativePlayer').videoHeight,options:[...document.getElementById('qualitySelect').options].map(x=>({name:x.textContent,value:x.value})),hlsLevels:window.ofuqQualityInfo().levels}));
+ console.log('FIRST CHANNEL QUALITY '+JSON.stringify(firstQuality));
+ // Some Chrome/Safari configurations use the browser's native HLS pipeline.
+ // In that case hls.js settings are deliberately not active and the video element handles ABR.
+ if(firstQuality.hlsLevels.length&&firstQuality.testBandwidth!==false)throw Error('HLS.js is still probing lowest quality at startup');
+ if(firstQuality.hlsLevels.length>1&&firstQuality.options.length<2)throw Error('HLS.js available manual levels are missing');
+ if(firstQuality.played===0)throw Error('No video frames decoded at startup');
+ const msePage=await browser.newPage({viewport:{width:1280,height:800}});
+ await msePage.addInitScript(()=>{
+   const original=HTMLMediaElement.prototype.canPlayType;
+   HTMLMediaElement.prototype.canPlayType=function(type){
+     if(typeof type==='string'&&/mpegurl/i.test(type))return '';
+     return original.call(this,type);
+   };
+ });
+ await msePage.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded',timeout:30000});
+ await msePage.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>=20,{timeout:15000});
+ if(!await videoProgress(msePage,'forced MSE HLS.js adaptive channel'))throw Error('HLS.js playback failed in MSE mode');
+ const mseQuality=await msePage.evaluate(()=>({...window.ofuqQualityInfo(),nativeHls:document.getElementById('nativePlayer').canPlayType('application/vnd.apple.mpegurl'),options:[...document.getElementById('qualitySelect').options].map(x=>x.textContent)}));
+ console.log('MSE HLS.JS QUALITY '+JSON.stringify(mseQuality));
+ if(mseQuality.testBandwidth!==false)throw Error('HLS.js low-level bandwidth probe is still enabled');
+ if(mseQuality.engine!=='hls.js'||mseQuality.auto!==true)throw Error('HLS.js ABR unexpectedly unavailable by default');
+ if(mseQuality.levels.length>1&&mseQuality.options.length<2)throw Error('HLS.js manual quality menu did not populate');
+ await msePage.close();
+
  const attempts=[['الجزيرة','الجزيرة'],['سكاي نيوز عربية','سكاي نيوز عربية'],['العربية','العربية']];
  for(const [label,channel] of attempts){
   const btn=page.getByRole('button',{name:new RegExp(channel)}).first();if(!await btn.count())continue;
@@ -58,5 +86,6 @@ try{
  if(!await page.locator('#article .article-source a').count())throw Error('Original reference missing');
  console.log('ON-SITE STORY PASS with '+await page.locator('#article .article-more-card').count()+' connected articles');
  if(errs.length)throw Error('Unexpected page errors: '+errs.slice(0,4).join(' | '));
+ console.log('OFUQ QUALITY CHECK PASS');
  console.log('OFUQ BROWSER SMOKE TEST PASS');
 }finally{await browser?.close();server.kill()}
