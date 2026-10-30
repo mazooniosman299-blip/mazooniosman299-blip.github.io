@@ -10,6 +10,8 @@ clips=json.loads((ROOT/"report-clips.json").read_text(encoding="utf-8"))["clips"
 sections=("world","sudan","region","sports","technology","arts","variety","articles")
 totals=Counter(x.get("section") for x in news)
 complete=Counter(x.get("section") for x in news if x.get("full_article") and x.get("id") in full)
+# "articles" is a virtual site filter that includes all licensed full texts.
+complete["articles"]=sum(bool(x.get("full_article") and x.get("id") in full) for x in news)
 photos=Counter(x.get("section") for x in news if x.get("image"))
 print("SECTION AUDIT (total, legally complete, source-image URL)")
 for section in sections:
