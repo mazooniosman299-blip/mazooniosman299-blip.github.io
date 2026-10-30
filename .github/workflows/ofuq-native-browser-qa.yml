@@ -34,6 +34,18 @@ jobs:
       - name: Fetch complete legally reusable Arabic articles
         run: |
           python scripts/update_ofuq_full_articles.py
+          python - <<'PY'
+          import collections,json,pathlib
+          root=pathlib.Path('ofuq-tv')
+          articles=json.loads((root/'full-articles.json').read_text(encoding='utf8'))
+          counts=collections.Counter(x.get('section') for x in articles.values())
+          article_files=root/'article-data'
+          assert len(articles)>=500,(len(articles),'Too few licensed full reports')
+          assert all((article_files/(sid+'.json')).is_file() for sid in articles), 'Missing individual article file'
+          for section,min_count in {'sudan':2,'region':20,'sports':3,'technology':20,'arts':10,'variety':5}.items():
+              assert counts[section]>=min_count,(section,counts[section],min_count)
+          print('FULL ARCHIVE EXPANSION PASSED:',len(articles),'by topic:',dict(counts),flush=True)
+          PY
           python -c "import json; f=json.load(open('ofuq-tv/full-articles.json',encoding='utf8')); assert len(f)>0, 'No complete licensed Arabic articles received'; print('VERIFIED LICENSED FULL STORIES:',len(f)); assert all(a['word_count']>=220 and len(a['paragraphs'])>=5 and a['author'] for a in f.values())"
           python -c "import json; f=json.load(open('ofuq-tv/full-articles.json',encoding='utf8')); photos=sum(bool(x.get('image')) for x in f.values()); print('BATCH FULL ARTICLE COVERAGE',len(f),'REAL SOURCE PHOTOS',photos); assert len(f)>=70 and photos>=55, 'Do not release incomplete source expansion or unverified photos'"
           python -c "import json; a=json.load(open('ofuq-tv/full-articles.json',encoding='utf8')); pictures=[(v['title'][:36],v.get('image','')) for v in a.values() if v.get('image')]; print('REAL GLOBAL VOICES ARTICLE IMAGES', len(pictures), 'OF', len(a)); print(*pictures[:12],sep='\\n')"
