@@ -1,3 +1,4 @@
+/* CC-BY full-text source expansion probe runs only in the staging PR workflow. */
 import {chromium} from 'playwright';
 import {spawn} from 'node:child_process';
 const server=spawn('python3',['-m','http.server','8765','--bind','127.0.0.1','--directory','ofuq-tv'],{stdio:'ignore'});
