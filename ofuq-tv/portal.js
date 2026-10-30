@@ -136,6 +136,111 @@ const heroClockFmt=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',hour:
 function updateHeroClock(){if($('upperClock'))$('upperClock').textContent=heroClockFmt.format(new Date())+' · مسقط'}
 updateHeroClock();setInterval(updateHeroClock,60000);
 
+/* OFUQ broadcast-style country news interludes: real headlines, NOT paid advertisements.
+   Runs over the looping first-party video, never changes native channel streams.
+   Any paid VAST ad stays on top and takes precedence over this editorial overlay. */
+const promoScreen=$('adScreen'),promoPanel=$('newsPromo');
+const promoCountry=$('newsPromoCountry'),promoFlag=$('newsPromoFlag');
+const promoTitle=$('newsPromoTitle'),promoExcerpt=$('newsPromoExcerpt');
+const promoSource=$('newsPromoSource'),promoStep=$('newsPromoStep');
+const countryTopics=[
+ {label:'السودان',flag:'🇸🇩',match:/السودان|سوداني|دارفور|الخرطوم|الفاشر|كردفان|أم درمان|أمدرمان|بورتسودان|نيالا|القضارف|عطبرة/},
+ {label:'فلسطين',flag:'🇵🇸',match:/فلسطين|فلسطيني|غزة|الضفة الغربية|القدس/},
+ {label:'مصر',flag:'🇪🇬',match:/مصر|المصري|القاهرة|الإسكندرية|أسيوط/},
+ {label:'سوريا',flag:'🇸🇾',match:/سوريا|سورية|دمشق|حلب|درعا/},
+ {label:'اليمن',flag:'🇾🇪',match:/اليمن|صنعاء|تعز|الحديدة|عدن/},
+ {label:'لبنان',flag:'🇱🇧',match:/لبنان|بيروت|طرابلس اللبنانية/},
+ {label:'السعودية',flag:'🇸🇦',match:/السعودية|الرياض|جدة|مكة|المدينة المنورة/},
+ {label:'الولايات المتحدة',flag:'🇺🇸',match:/الولايات المتحدة|أمريكا|الأمريكي|واشنطن|نيويورك|ترامب/},
+ {label:'أوكرانيا',flag:'🇺🇦',match:/أوكرانيا|الأوكراني|كييف/},
+ {label:'روسيا',flag:'🇷🇺',match:/روسيا|الروسي|موسكو|الكرملين/},
+ {label:'الصين',flag:'🇨🇳',match:/الصين|الصيني|بكين/},
+ {label:'فرنسا',flag:'🇫🇷',match:/فرنسا|باريس|الفرنسي/},
+ {label:'تركيا',flag:'🇹🇷',match:/تركيا|أنقرة|إسطنبول|التركي/},
+ {label:'ألمانيا',flag:'🇩🇪',match:/ألمانيا|برلين|الألماني/}
+];
+let promoStories=[],promoPointer=0,promoPhase='commercial',promoDeadline=0,promoStart=0;
+const COMMERCIAL_DURATION=16000,NEWS_DURATION=7800,NEWS_PER_BREAK=4;
+let promoShown=0;
+function validPromoStory(story){
+ return story&&typeof story.title==='string'&&story.title.trim().length>18&&
+ typeof story.source==='string'&&story.source.trim()&&
+ typeof story.published_at==='string'&&Number.isFinite(Date.parse(story.published_at));
+}
+function selectPromos(stories){
+ const matches=(Array.isArray(stories)?stories:[]).filter(validPromoStory);
+ const selected=[],seenIds=new Set();
+ // One verified story per named country, prioritizing Sudan and diverse countries.
+ for(const topic of countryTopics){
+  const story=matches.find(item=>!seenIds.has(item.url||item.id)&&topic.match.test(item.title));
+  if(story){selected.push({...story,country:topic.label,flag:topic.flag});seenIds.add(story.url||story.id)}
+ }
+ // Always retain a general global-news story, without claiming a specific country.
+ for(const item of matches){
+  if(selected.length>=8)break;
+  if(seenIds.has(item.url||item.id))continue;
+  selected.push({...item,country:'حول العالم',flag:'🌍'});seenIds.add(item.url||item.id);
+ }
+ return selected;
+}
+function updatePromoSources(news){
+ const next=selectPromos(news);
+ if(next.length){
+  promoStories=next;
+  if(promoPointer>=next.length)promoPointer=0;
+  if(!promoDeadline)promoDeadline=Date.now()+COMMERCIAL_DURATION;
+ }
+}
+function stopPromo(){
+ promoPanel.hidden=true;
+ promoScreen.classList.remove('has-news-promo');
+ promoPhase='commercial';promoShown=0;
+ $('adFooterLabel').textContent='OFUQ TV · ADVERTISING';
+}
+function broadcastStory(){
+ if(!promoStories.length)return stopPromo();
+ const item=promoStories[promoPointer%promoStories.length];
+ promoPointer=(promoPointer+1)%promoStories.length;
+ promoCountry.textContent=item.country;
+ promoFlag.textContent=item.flag;
+ promoTitle.textContent=item.title;
+ promoExcerpt.textContent=String(item.excerpt||'').trim().slice(0,165);
+ promoExcerpt.hidden=!promoExcerpt.textContent;
+ promoSource.textContent='المصدر: '+item.source;
+ promoStep.textContent=String(promoShown+1).padStart(2,'0')+' / '+String(NEWS_PER_BREAK).padStart(2,'0');
+ $('adFooterLabel').textContent='OFUQ TV · NEWS BREAK';
+ promoScreen.classList.add('has-news-promo');
+ promoPanel.hidden=false;
+ promoPanel.classList.remove('promo-enter');
+ void promoPanel.offsetWidth;
+ promoPanel.classList.add('promo-enter');
+ promoPhase='news';promoShown++;
+}
+function tickPromo(){
+ if(!promoDeadline||!promoStories.length||document.hidden)return;
+ if(!$('networkAdOverlay').hidden){
+  if(!promoPanel.hidden)stopPromo();
+  promoDeadline=Date.now()+COMMERCIAL_DURATION;
+  return;
+ }
+ if(Date.now()<promoDeadline)return;
+ if(promoPhase==='commercial'){
+  promoShown=0;broadcastStory();promoDeadline=Date.now()+NEWS_DURATION;
+ }else if(promoShown<NEWS_PER_BREAK){
+  broadcastStory();promoDeadline=Date.now()+NEWS_DURATION;
+ }else{
+  stopPromo();promoDeadline=Date.now()+COMMERCIAL_DURATION;
+ }
+}
+setInterval(tickPromo,450);
+document.addEventListener('visibilitychange',()=>{
+ if(!document.hidden)promoDeadline=Date.now()+(promoPhase==='news'?NEWS_DURATION:COMMERCIAL_DURATION);
+});
+window.ofuqBroadcastInfo=()=>({
+ phase:promoPhase,active:!promoPanel.hidden,country:promoCountry.textContent,
+ count:promoStories.length,step:promoShown,headlines:promoStories.map(x=>x.title)
+});
+
 let allNews=[],briefs={},group='all',search='',visibleNews=24;
 const SECTION_NAMES={world:'العالم',region:'المنطقة',sudan:'السودان',sports:'رياضة',technology:'تكنولوجيا',arts:'فنون',variety:'منوعات',articles:'مقالات'};
 function category(item){
@@ -174,7 +279,7 @@ async function refreshNews(){
   const next=(Array.isArray(data.items)?data.items:[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');
   if(!next.length)throw Error('news empty');
   const changed=next.length!==allNews.length||next.some((n,i)=>n.url!==allNews[i]?.url);
-  allNews=next;briefs=b||{};if(changed||!$('newsGrid').querySelector('.news-card'))renderNews();
+  allNews=next;briefs=b||{};updatePromoSources(next);if(changed||!$('newsGrid').querySelector('.news-card'))renderNews();
  }catch{if(!allNews.length){$('newsGrid').replaceChildren();const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)}}
 }
 refreshNews();
