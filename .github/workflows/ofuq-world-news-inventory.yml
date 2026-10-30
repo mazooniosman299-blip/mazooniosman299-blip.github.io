@@ -1,5 +1,9 @@
 name: Read-only worldwide OFUQ news channel discovery
 on:
+  pull_request:
+    paths:
+      - 'scripts/audit_ofuq_worldwide_candidates.mjs'
+      - '.github/workflows/ofuq-world-news-inventory.yml'
   push:
     branches:
       - ofuq-worldwide-channel-audit-20261030
