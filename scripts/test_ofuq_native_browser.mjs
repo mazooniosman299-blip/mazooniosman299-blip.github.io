@@ -48,7 +48,7 @@ try{
  }
  if(passed.length<2)throw Error('Only '+passed.length+' direct channels decoded video; need at least 2.');
  // Staged public HLS candidates: do not merge them without a decoded video frame for every new channel.
- for(const countryChannel of ['تلفزيون سلطنة عُمان','تلفزيون قطر','قناة الريان','تلفزيون السودان']){
+ for(const countryChannel of ['تلفزيون سلطنة عُمان','تلفزيون قطر','قناة الريان','تلفزيون السودان','عُمان مباشر','عُمان الثقافية','عُمان الرياضية','تلفزيون قطر 2','الريان القديم']){
   const btn=page.getByRole('button',{name:new RegExp(countryChannel)}).first();
   if(!(await btn.count()))throw Error('Candidate channel missing: '+countryChannel);
   await btn.click();
