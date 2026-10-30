@@ -12,13 +12,19 @@ function addText(root,tag,cl,str){const text=clean(str);if(text)root.append(node
 Promise.all([
  fetch('news-archive.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('archive');return r.json()}).catch(()=>fetch('news.json',{cache:'no-store'}).then(r=>r.json())),
  fetch('news-briefs.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}),
- fetch('full-articles.json?ts='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({}))
-]).then(([data,briefs,licensedArticles])=>{
+ // Load one story, not an 800-article file on every article visit.
+ fetch(/^[a-f0-9]{14}$/.test(id||'')?'article-data/'+id+'.json':'article-data/none.json',{cache:'no-store'})
+   .then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(async ([data,briefs,licensedArticle])=>{
  const items=Array.isArray(data.items)?data.items:[];
  const story=items.find(n=>articleId(n)===id);host.replaceChildren();
  if(!story){host.append(node('h1','','الخبر غير متاح'),node('p','loading','الرجاء اختيار خبر آخر من القائمة.'));return}
  const brief=briefs[id]||{};
- const full=licensedArticles[id];
+ let full=licensedArticle?.id===id?licensedArticle:null;
+ // Backward compatible with previously published 120 story records until shards deploy.
+ if(story.full_article===true&&!full){
+   try{const previous=await fetch('full-articles.json',{cache:'no-store'});if(previous.ok){const older=await previous.json();full=older[id]||null}}catch{}
+ }
  const validFull=Boolean(full&&full.approved===true&&['original','licensed'].includes(full.rights)&&Array.isArray(full.paragraphs)&&full.paragraphs.length>=5&&full.paragraphs.some(p=>p.text?.length>70)&&full.original_url===story.url);
  // Keep every reader route in OFUQ. Do not copy full publisher texts
  // from a short RSS feed unless their reuse rights have been verified.
