@@ -39,8 +39,9 @@ try{
  if(!await page.locator('#qualitySelect').count())throw Error('Manual quality selector missing');
  // Mix the newest headlines with verifiably complete, licensed article cards.
  await page.waitForFunction(()=>document.querySelectorAll('#newsGrid .news-card').length>=12,{timeout:12000});
- const homeFull=await page.locator('#newsGrid .full-news-tag').count();
+ const homeFull=await page.locator('#newsGrid .news-card[data-full-article="true"]').count();
  if(homeFull<4)throw Error('Licensed full stories are not visible in the default newsroom: '+homeFull);
+ if((await page.locator('#newsGrid').innerText()).includes('مقال كامل'))throw Error('Unwanted full-article badge is still visible');
  await page.locator('#newsGrid').scrollIntoViewIfNeeded();
  await page.waitForTimeout(2500);
  const thumbs=await page.locator('#newsGrid .news-photo img').evaluateAll(images=>({total:images.length,loaded:images.filter(x=>x.complete&&x.naturalWidth>0).length,broken:images.filter(x=>x.complete&&x.naturalWidth===0).length,waiting:images.filter(x=>!x.complete).length}));
@@ -112,7 +113,7 @@ try{
  if((await page.locator('body').innerText()).includes('تغطية متجددة مع أقسام متخصصة'))throw Error('Unwanted news description persists');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
  // Every short-only RSS story must open the original source, never a tiny in-site excerpt.
- const newsLinks=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(a=>({full:!!a.querySelector('.full-news-tag'),href:a.getAttribute('href')})));
+ const newsLinks=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(a=>({full:a.dataset.fullArticle==='true',href:a.getAttribute('href')})));
  if(newsLinks.some(x=>!x.href.startsWith('story.html?id=')))throw Error('An OFUQ news item still navigates outside the website');
  if(newsLinks.filter(x=>x.full).length<15)throw Error('Default news cards do not prioritize complete on-site licensed articles');
  // The user needs an honest full-body audit of ALL visible topic filters.
@@ -122,7 +123,7 @@ try{
    await page.locator('[data-group="'+name+'"]').click();
    const results=await page.locator('#newsGrid .news-card').evaluateAll(cards=>({
      count:cards.length,
-     fullyLicensed:cards.filter(c=>!!c.querySelector('.full-news-tag')).length,
+     fullyLicensed:cards.filter(c=>c.dataset.fullArticle==='true').length,
      imageUrls:cards.filter(c=>!!c.querySelector('.news-photo img')).length,
      brokenPhotos:cards.filter(c=>{const img=c.querySelector('.news-photo img');return img&&img.complete&&img.naturalWidth===0}).length
    }));
