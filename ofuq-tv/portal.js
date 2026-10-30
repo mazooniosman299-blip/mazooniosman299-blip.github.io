@@ -358,8 +358,7 @@ const selection=featured.length?[...remaining.slice(0,6),...featured,...remainin
   const id=newsId(n);if(!id)continue;
   const link=document.createElement('a');link.className='news-card';link.href='story.html?id='+encodeURIComponent(id);
   const photo=document.createElement('div');photo.className='news-photo';
-  if(safeImage(n.image)){const img=document.createElement('img');img.src=n.image;img.alt='صورة الخبر من '+(n.source||'المصدر');img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.onerror=()=>{img.remove();photo.classList.add('no-photo')};photo.append(img)}
-  else photo.classList.add('no-photo');
+  window.OFUQVisual.media(photo,n);
   const watermark=document.createElement('span');watermark.className='image-source';watermark.textContent=n.image?(n.source||'صورة المصدر'):'أُفُق TV';photo.append(watermark);
   const body=document.createElement('div');body.className='news-content';
   const label=document.createElement('span');label.className='tag';label.textContent=SECTION_NAMES[category(n)]||'العالم';
