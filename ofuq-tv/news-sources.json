@@ -66,7 +66,10 @@
         "bbc.co.uk",
         "bbci.co.uk",
         "bbc.co.uk"
-      ]
+      ],
+      "enabled": false,
+      "requiresCommercialLicense": true,
+      "notice": "BBC terms require permission for commercial RSS metadata use. Disabled pending publisher authorization."
     },
     {
       "name": "BBC عربي",
@@ -76,7 +79,10 @@
         "bbc.com",
         "bbc.co.uk",
         "bbci.co.uk"
-      ]
+      ],
+      "enabled": false,
+      "requiresCommercialLicense": true,
+      "notice": "BBC terms require permission for commercial RSS metadata use. Disabled pending publisher authorization."
     },
     {
       "name": "سكاي نيوز عربية",
