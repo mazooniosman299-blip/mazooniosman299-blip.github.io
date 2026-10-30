@@ -32,10 +32,19 @@ Promise.all([
   link.href=full.original_url;link.target='_blank';link.rel='noopener noreferrer';
   byline.append(link);host.append(byline);
  }
- if(safe(story.image)){
+ {
   const figure=node('figure','article-photo','');
-  const img=document.createElement('img');img.src=story.image;img.alt='صورة مرتبطة بالخبر';img.loading='eager';img.decoding='async';img.referrerPolicy='no-referrer';img.onerror=()=>figure.remove();
-  figure.append(img);host.append(figure);
+  const img=document.createElement('img');
+  const caption=node('figcaption','article-image-credit',safe(story.image)?'الصورة من المصدر الناشر':'غلاف توضيحي من تصميم أُفُق — ليس صورة من موقع الحدث');
+  img.src=safe(story.image)?story.image:'assets/news-cover.svg';
+  img.alt=safe(story.image)?'صورة مرافقة للخبر من المصدر':'غلاف توضيحي عام لأخبار أُفُق';
+  img.loading='eager';img.decoding='async';img.referrerPolicy='no-referrer';
+  img.onerror=()=>{
+   if(img.src.includes('news-cover.svg'))return;
+   img.onerror=null;img.src='assets/news-cover.svg';img.alt='غلاف توضيحي عام لأخبار أُفُق';
+   caption.textContent='غلاف توضيحي من تصميم أُفُق — ليس صورة من موقع الحدث';
+  };
+  figure.append(img,caption);host.append(figure);
  }
  if(validFull){
   const content=node('div','body-copy complete-article','');
