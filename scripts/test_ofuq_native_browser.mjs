@@ -62,7 +62,22 @@ try{
  const body=await page.locator('#article').innerText();
  for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
 if(!await page.locator('#article .article-credits a, #article .licensed-byline a').count())throw Error('Original source documentation absent');
- const licensed=await page.evaluate(async()=>{const d=await fetch('full-articles.json').then(r=>r.json());return Object.keys(d)[0]});
+ await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
+ await page.getByRole('button',{name:'مقالات كاملة'}).click();
+ await page.waitForFunction(()=>document.querySelectorAll('#newsGrid .news-card').length>=10,{timeout:10000});
+ if(await page.locator('#newsGrid .news-card').count()<10)throw Error('Licensed complete reports missing from dedicated newsroom filter');
+ const fullRecords=await page.evaluate(async()=>{const d=await fetch('full-articles.json').then(r=>r.json());return Object.entries(d).map(([id,x])=>({id,expected:x.word_count}))});
+ if(fullRecords.length<10)throw Error('Not enough verified complete licensed articles available');
+ for(const article of fullRecords){
+  await page.goto('http://127.0.0.1:8765/story.html?id='+article.id,{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#article .complete-article p,#article .complete-article h2,#article .complete-article h3').length>=5,{timeout:12000});
+  const text=await page.locator('#article .complete-article').innerText();
+  const count=text.trim().split(/\s+/).length;
+  if(count<220||count<article.expected*.8)throw Error('Incomplete article '+article.id+': expected '+article.expected+' words, got '+count);
+  if(!await page.locator('#article .licensed-byline a').count()||!await page.locator('#article .license-credit a').count())throw Error('Missing author/source/license in '+article.id);
+  console.log('COMPLETE STORY VERIFIED '+article.id+': '+count+' words');
+ }
+ const licensed=fullRecords[0].id;
  if(!licensed)throw Error('No genuine complete CC BY article was ingested from the source');
  await page.goto('http://127.0.0.1:8765/story.html?id='+licensed,{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>document.querySelectorAll('#article .complete-article p').length>=5,{timeout:13000});
