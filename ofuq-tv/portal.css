@@ -284,3 +284,38 @@
  .channel-directory .channel-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}
  .channel-directory .channel{min-width:0;min-height:58px}
 }
+
+
+/* Latest reader styling: compact white timestamps and white editorial links. */
+.news-card .date{font-size:9px!important;line-height:1.5!important;color:#fff!important;font-weight:600!important;letter-spacing:0}
+.news-card .date *{color:#fff!important;font-size:9px!important}
+.about-strip a.about-policy,.about-strip a.about-policy:visited,.foot nav a[href="editorial.html"],.mast nav a[href="editorial.html"]{color:#fff!important}
+.about-strip a.about-policy{border-color:#e7f2f7!important;font-weight:800}
+.about-strip a.about-policy:hover,.foot nav a[href="editorial.html"]:hover{color:#fff!important;text-decoration:underline}
+/* Keep channel list visible BESIDE the player at desktop and mobile widths. */
+@media(max-width:960px){
+ .channels-bg .player-grid{display:grid!important;grid-template-columns:minmax(0,1fr) clamp(116px,30vw,230px)!important;align-items:start!important;gap:12px!important}
+ .channels-bg .channel-directory{max-height:clamp(230px,38vw,390px)!important;min-width:0;overflow:hidden}
+ .channels-bg .channel-directory .channel-list{display:flex!important;flex-direction:column!important;grid-template-columns:none!important;overflow-y:auto;overflow-x:hidden;min-height:0;gap:5px!important}
+ .channels-bg .channel-directory .channel{height:auto!important;min-height:54px!important;gap:6px!important;padding:7px!important}
+ .channels-bg .channel-directory .channel-search{margin-top:0;font-size:11px;padding:7px}
+ .channels-bg .channel-directory .channel b{font-size:11px;line-height:1.4}
+ .channels-bg .channel-directory .channel small{font-size:9px}
+ .channels-bg .channel-directory .initial{flex:0 0 auto;font-size:11px}
+}
+@media(max-width:600px){
+ .channels-bg .player-grid{grid-template-columns:minmax(0,1fr) clamp(105px,31vw,150px)!important;gap:7px!important}
+ .channels-bg .channel-directory{padding:5px!important;max-height:218px!important}
+ .channels-bg .channel-directory .channel-list{margin-top:6px!important}
+ .channels-bg .channel-directory .channel{padding:5px!important;min-height:48px!important}
+ .channels-bg .channel-directory .channel-search{padding:5px!important;font-size:10px!important}
+ .channels-bg .channel-directory .initial{display:none!important}
+ .channels-bg .channel-directory .channel b{font-size:10px!important;line-height:1.35!important}
+ .channels-bg .channel-directory .channel small{display:none!important}
+ .channels-bg .channel-player .player-head{height:37px!important;padding:0 6px!important}
+ .channels-bg .channel-player .player-name b{font-size:11px!important;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:160px}
+ .channels-bg .channel-player .player-hd{font-size:8px}
+ .channels-bg .channel-player .player-foot{padding:5px!important;gap:5px}
+ .channels-bg .channel-player .player-foot button{font-size:9px;padding:4px 7px}
+ .channels-bg .channel-player .video-stage{aspect-ratio:16/9}
+}
