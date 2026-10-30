@@ -45,3 +45,6 @@
 
 .article .meta,.article .meta time{font-size:10px!important;color:#fff!important;line-height:1.65!important}
 .article .licensed-byline{color:#e8f6fd}
+
+/* Editorial date: accessible, readable white text rather than tiny microtext. */
+.article .meta,.article .meta span,.article .meta time{font-size:13px!important;font-weight:700!important;color:#fff!important;line-height:1.8!important}
