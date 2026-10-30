@@ -34,6 +34,21 @@ jobs:
           python -c "import json; f=json.load(open('ofuq-tv/full-articles.json',encoding='utf8')); assert len(f)>0, 'No complete licensed Arabic articles received'; print('VERIFIED LICENSED FULL STORIES:',len(f)); assert all(a['word_count']>=220 and len(a['paragraphs'])>=5 and a['author'] for a in f.values())"
       - name: Validate OFUQ site references and news metadata
         run: node scripts/check_ofuq_portal.mjs
+      - name: Verify publisher-specific article image metadata
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          from scripts.update_ofuq_news import recover_publisher_image
+          news=json.loads(pathlib.Path('ofuq-tv/news.json').read_text(encoding='utf8'))
+          local=[x for x in news['items'] if x.get('source')=='دارفور24' and x.get('url','').startswith('https://darfur24.com/')]
+          assert local, 'No Darfur24 news stories to test'
+          recovered=[]
+          for item in local[:3]:
+              found=recover_publisher_image(item, {'darfur24.com'})
+              if found: recovered.append((item['id'],found))
+          print('REAL PUBLISHER OG PHOTO RECOVERY:',recovered)
+          assert recovered, 'Publisher photo unavailable; do not ship image claims'
+          PY
       - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.13'
