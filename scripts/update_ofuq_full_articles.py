@@ -15,17 +15,21 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 ROOT = pathlib.Path(__file__).resolve().parents[1] / "ofuq-tv"
 FULL = ROOT / "full-articles.json"
 NEWS = ROOT / "news.json"
 ARCHIVE = ROOT / "news-archive.json"
-FEEDS = ("https://ar.globalvoices.org/feed/",)
+# Distinct independently verified paginated CC-BY full-text RSS pages.
+FEEDS = ("https://ar.globalvoices.org/feed/",) + tuple(
+    f"https://ar.globalvoices.org/feed/?paged={p}" for p in range(2, 13)
+)
 LINK_HOST = "ar.globalvoices.org"
 LICENCE = "https://creativecommons.org/licenses/by/3.0/"
 CONTENT_NS = "{http://purl.org/rss/1.0/modules/content/}"
 DC_NS = "{http://purl.org/dc/elements/1.1/}"
-MAX_ARTICLES = 150
+MAX_ARTICLES = 180
 MIN_WORDS = 220
 MIN_PARAGRAPHS = 5
 
@@ -102,8 +106,13 @@ def section_for(title):
 
 def import_articles():
     data = []
+    seen_urls = set()
     for url in FEEDS:
-        root = get_feed(url)
+        try:
+            root = get_feed(url)
+        except (OSError, ValueError, ET.ParseError) as exc:
+            print(f'Licensed archive page unavailable [{url}]: {type(exc).__name__}', flush=True)
+            continue
         entries = root.findall(".//channel/item")
         print(f"Licensed Arabic feed: {url}; {len(entries)} entries", flush=True)
         for entry in entries[:35]:
@@ -111,7 +120,7 @@ def import_articles():
             link = (entry.findtext("link") or "").strip()
             author = " ".join((entry.findtext(DC_NS+"creator") or "").split())
             body = entry.findtext(CONTENT_NS+"encoded") or ""
-            if not title or not author or not valid_url(link) or len(body) < 1300:
+            if not title or not author or not valid_url(link) or len(body) < 1300 or link in seen_urls:
                 continue
             parser = TextBlocks()
             parser.feed(body)
@@ -126,14 +135,9 @@ def import_articles():
                 date = ""
             if not date:
                 continue
+            seen_urls.add(link)
             sid = article_id(link)
-            # Article-specific publisher OG thumbnail, not a stock image and never rehosted.
-            # The source page may be temporarily unavailable; keep the article anyway.
-            try:
-                from update_ofuq_news import recover_publisher_image
-                image = recover_publisher_image({"url": link}, {LINK_HOST})
-            except (OSError, ValueError, TimeoutError):
-                image = ""
+            image = ""  # batch publisher preview lookups below, not serial HTTP calls
             article = {
                 "id": sid, "title": title, "author": author, "source": "الأصوات العالمية",
                 "original_url": link, "license": "CC BY 3.0", "license_url": LICENCE,
@@ -149,6 +153,24 @@ def import_articles():
                 "image": image, "full_article": True
             }
             data.append((item, article))
+    # Never fabricate story photographs. Use only the source article's own
+    # Open Graph social-preview image, discovered via the publisher page.
+    from update_ofuq_news import recover_publisher_image
+    with ThreadPoolExecutor(max_workers=7) as pool:
+        futures = {pool.submit(recover_publisher_image,item,{LINK_HOST}): (item,article)
+                   for item,article in data}
+        for future in as_completed(futures):
+            item,article = futures[future]
+            try: image = future.result()
+            except (OSError, ValueError, TimeoutError): image = ""
+            if image:
+                article["image"] = image
+                article["image_credit"] = "صورة مقال الناشر الأصلية"
+                item["image"] = image
+    with_images = sum(bool(item["image"]) for item,_ in data)
+    print(f'LICENSED ARTICLE SOURCE PHOTOS: {with_images}/{len(data)}',flush=True)
+    # A licensed full article remains readable even if its image cannot be
+    # verified. Render it text-only; never substitute generic cartoons.
     return data
 
 def main():
@@ -179,8 +201,8 @@ def main():
             seen.add(ident)
             merged.append(item)
         return sorted(merged, key=lambda x: x.get("published_at", ""), reverse=True)[:limit]
-    current = merge(existing_news.get("items", []), 200)
-    archive = merge(existing_archive.get("items", []), 850)
+    current = merge(existing_news.get("items", []), 350)
+    archive = merge(existing_archive.get("items", []), 1200)
     for path, data in ((FULL, new_full),
                        (NEWS, {**existing_news, "items": current}),
                        (ARCHIVE, {**existing_archive, "items": archive})):
