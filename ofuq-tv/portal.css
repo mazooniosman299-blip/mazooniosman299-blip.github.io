@@ -361,3 +361,11 @@
  .news-promo-grid,.news-promo-orb,.news-promo.promo-enter .news-promo-body,.news-promo.promo-enter .news-promo-progress:before{animation:none!important}
  .news-promo.promo-enter .news-promo-progress:before{width:100%}
 }
+
+/* 2026 native adaptive HLS video controls: preserve safe ABR by default. */
+.player-foot .quality-tools{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:9px;min-width:0}
+.player-foot .quality-control{display:inline-flex;gap:5px;align-items:center;white-space:nowrap;color:#d5edf4;font-weight:600;font-size:11px}
+.player-foot .quality-control select{background:#0d3047;border:1px solid #50829a;border-radius:4px;color:#f2feff;min-width:100px;max-width:175px;height:30px;padding:3px 6px;font-size:11px;cursor:pointer}
+.player-foot .quality-control select:disabled{opacity:.58;cursor:not-allowed}
+.player-foot #qualityStatus{direction:ltr;display:inline-block;min-width:40px;line-height:1.4;text-align:center;font:700 11px Arial,sans-serif;color:#95e8ec}
+@media(max-width:630px){.player-foot .quality-tools{gap:6px}.player-foot .quality-control select{min-width:89px;max-width:125px;font-size:10px}.player-foot #qualityStatus{min-width:29px;font-size:10px}}
