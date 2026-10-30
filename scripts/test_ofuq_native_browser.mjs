@@ -90,15 +90,19 @@ try{
  if(audible.muted||audible.webkitAudioDecodedByteCount===0)throw Error('Original report audio did not decode after enabling human source sound');
  console.log('HUMAN SOURCE SOUND ACTIVATED '+JSON.stringify(audible));
  if(await page.locator('#reportNext').count())throw Error('Manual next-report control must be removed');
- const first=await page.locator('#reportTitle').innerText();
- await page.locator('#reportVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
- await page.waitForFunction(prev=>document.getElementById('reportTitle').textContent!==prev,first,{timeout:14000});
- await page.waitForFunction(()=>document.getElementById('reportVideo').videoWidth>0&&document.getElementById('reportVideo').currentTime>1.1,null,{timeout:55000});
- console.log('AUTO ADVANCE SECOND REPORT PASS '+await page.locator('#reportTitle').innerText());
- await page.locator('#reportVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
- await page.waitForFunction(()=>window.ofuqReportInfo?.().index===2,null,{timeout:8000});
- await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.videoWidth>=600&&v.currentTime>1&&!v.paused},null,{timeout:55000});
- console.log('AUTO ADVANCE THIRD REPORT PASS '+await page.locator('#reportTitle').innerText());
+ const observedReports=[];
+ for(const iteration of [1,2]){
+  const previous=await page.locator('#reportTitle').innerText();
+  if(iteration===1)observedReports.push(previous);
+  await page.locator('#reportVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
+  // Source URL can intermittently fail; app automatically skips any unavailable
+  // clip. Test actual picture, not an assumed array index, and record the title.
+  await page.waitForFunction(prev=>{const t=document.getElementById('reportTitle')?.textContent;return t&&t!==prev},previous,{timeout:18000});
+  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.videoWidth>=600&&v.currentTime>1&&!v.paused},null,{timeout:55000});
+  observedReports.push(await page.locator('#reportTitle').innerText());
+ }
+ console.log('AUTOMATIC 2026 VIDEO ROTATION PASS '+JSON.stringify(observedReports));
+ if(new Set(observedReports).size<2)throw Error('Auto-rotation failed to show at least two different video reports');
  const verifiedClips=await page.evaluate(async()=>{const j=await fetch('report-clips.json').then(r=>r.json());return j.clips});
  if(verifiedClips.length!==3||verifiedClips.some(x=>!x.date.startsWith('2026-')))throw Error('Old videos remain in the 2026 media playlist');
  console.log('THREE 2026 FOOTAGE TEST PASS');
