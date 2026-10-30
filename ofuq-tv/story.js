@@ -63,9 +63,6 @@ Promise.all([
   const body=node('div','body-copy','');
   for(const para of paragraphs)if(para!==lead)addText(body,'p','',para);
   host.append(body);
-  const context=node('div','related-report-note','');
-  context.append(node('span','','المعلومات المتاحة لهذا العنوان محدودة. المقالات الكاملة المسموح بنشرها تظهر ضمن أخبار أُفُق الأخرى.'));
-  host.append(context);
  }
  const more=items.filter(n=>articleId(n)!==id&&(n.section===story.section||n.section==='world')).slice(0,4);
  if(more.length){
