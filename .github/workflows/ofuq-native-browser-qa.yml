@@ -61,5 +61,7 @@ jobs:
         run: |
           npm install --no-save playwright@1.64.1
           npx playwright install --with-deps chromium
-      - name: Test actual native HLS playback, channel change, and looping ad film
+      - name: Test 2026 footage, article credits, desktop and mobile playback
         run: node scripts/test_ofuq_native_browser.mjs
+      - name: Strict release gate for all sections and individually authorized image rights
+        run: python scripts/audit_ofuq_release.py
