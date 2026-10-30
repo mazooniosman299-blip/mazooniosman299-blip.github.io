@@ -303,6 +303,7 @@ def main():
     # RSS may omit older long-form reports. Keep the CC BY complete stories
     # discoverable even when newer short headlines replace the feed window.
     full_items = licensed_cards()
+    backfill_photos(full_items, chosen + archived.get("items", []) + previous.get("items", []))
     by_story = {x["url"]: x for x in chosen}
     for article in full_items:
         by_story[article["url"]] = article
