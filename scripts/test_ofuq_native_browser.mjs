@@ -71,7 +71,7 @@ try{
  }
 
  // Only authentic source footage with the human's original recorded voice.
- await page.waitForFunction(()=>window.ofuqReportInfo?.().count===5,null,{timeout:14000});
+ await page.waitForFunction(()=>window.ofuqReportInfo?.().count===3,null,{timeout:14000});
  if(await page.evaluate(()=>document.body.innerText.includes('إعلانك على شاشة أُفُق')))throw Error('Old OFUQ advertising message remains');
  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.currentTime>1.5&&v.videoWidth>=600&&!v.paused},null,{timeout:55000});
  const initialReport=await page.locator('#reportVideo').evaluate(v=>({time:v.currentTime,videoWidth:v.videoWidth,videoHeight:v.videoHeight,muted:v.muted,src:v.currentSrc}));
@@ -91,18 +91,11 @@ try{
  await page.waitForFunction(()=>window.ofuqReportInfo?.().index===2,null,{timeout:8000});
  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.videoWidth>=600&&v.currentTime>1&&!v.paused},null,{timeout:55000});
  console.log('AUTO ADVANCE THIRD REPORT PASS '+await page.locator('#reportTitle').innerText());
- // Extra news footage must decode real motion and a real audio track before release.
- for(const target of [3,4]){
-  await page.locator('#reportVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
-  await page.waitForFunction(i=>window.ofuqReportInfo?.().index===i,target,{timeout:14000});
-  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v.videoWidth>320&&v.currentTime>1&&!v.paused},null,{timeout:60000});
-  const clip=await page.locator('#reportVideo').evaluate(v=>({title:document.getElementById('reportTitle').textContent,time:v.currentTime,width:v.videoWidth,height:v.videoHeight,muted:v.muted,audioBytes:v.webkitAudioDecodedByteCount??null}));
-  console.log('EXTRA AUTHENTIC EVENT VIDEO '+JSON.stringify(clip));
-  if(clip.audioBytes===0)throw Error('Extra footage lacks recorded human/ambient audio: '+clip.title);
- }
-
-
-
+ const verifiedClips=await page.evaluate(async()=>{const j=await fetch('report-clips.json').then(r=>r.json());return j.clips});
+ if(verifiedClips.length!==3||verifiedClips.some(x=>!x.date.startsWith('2026-')))throw Error('Old videos remain in 2026 playlist');
+ const thirdFilm=await page.locator('#reportVideo').evaluate(v=>({width:v.videoWidth,time:v.currentTime,audio:v.webkitAudioDecodedByteCount??null}));
+ if(thirdFilm.width<300||thirdFilm.time<1||thirdFilm.audio===0)throw Error('Third 2026 clip lacks actual video and original audio');
+ console.log('THREE 2026 FOOTAGE TEST PASS '+JSON.stringify(thirdFilm));
  await page.setViewportSize({width:390,height:844});
  const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#reportScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
  console.log('MOBILE LAYOUT '+JSON.stringify(mobile));
@@ -113,6 +106,9 @@ try{
 
  if(!columns.dateColor?.includes('255, 255, 255')||columns.dateSize<14)throw Error('News date must be readable at 14px or larger in white');
  if(!columns.editorialColor?.includes('255, 255, 255'))throw Error('Editorial link is not white');
+ const ui=await page.evaluate(()=>{const clock=document.getElementById('clock'),privacy=document.querySelector('footer a[href="privacy.html"]');return {clockText:clock?.textContent,clockSize:clock?parseFloat(getComputedStyle(clock).fontSize):0,clockColor:clock?getComputedStyle(clock).color:'',privacyColor:privacy?getComputedStyle(privacy).color:''}});
+ if(!/\\d{2}:\\d{2}:\\d{2}/.test(ui.clockText)||ui.clockSize<13||ui.clockColor!=='rgb(255, 255, 255)'||ui.privacyColor!=='rgb(255, 255, 255)')throw Error('Clock and privacy contrast failed '+JSON.stringify(ui));
+ console.log('VISIBLE CLOCK AND PRIVACY PASS '+JSON.stringify(ui));
  if((await page.locator('body').innerText()).includes('تغطية متجددة مع أقسام متخصصة'))throw Error('Unwanted news description persists');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
  // Every short-only RSS story must open the original source, never a tiny in-site excerpt.
@@ -151,6 +147,9 @@ if(!await page.locator('#article .article-credits a, #article .licensed-byline a
   const count=text.trim().split(/\s+/).length;
   if(count<220||count<article.expected*.8)throw Error('Incomplete article '+article.id+': expected '+article.expected+' words, got '+count);
   if(!await page.locator('#article .licensed-byline a').count()||!await page.locator('#article .license-credit a').count())throw Error('Missing author/source/license in '+article.id);
+   const credit=await page.locator('#article').innerText();
+   if(credit.includes('إعادة نشر بموجب ترخيص')||credit.includes('أُزيلت الصور والتضمينات'))throw Error('Old verbose licensing notice appears');
+   if(!credit.includes('المصدر:'))throw Error('Article is missing source line');
   console.log('COMPLETE STORY VERIFIED '+article.id+': '+count+' words');
  }
  const licensed=fullRecords[0].id;
