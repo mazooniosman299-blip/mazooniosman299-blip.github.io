@@ -198,7 +198,8 @@ reportSound.addEventListener('click',()=>{
  reportSound.textContent=reportSoundOn?'🔊 كتم الصوت':'🔇 تشغيل صوت التقرير';
  if(reportVideo.paused)reportVideo.play().catch(()=>{});
 });
-$('reportNext').addEventListener('click',()=>{clipErrorCount=0;reportLoad(reportIndex+1)});
+// Reports advance automatically at ended, and skip sources that fail playback.
+// No manual next button and no artificial talking-head or TTS overlay.
 reportVideo.addEventListener('loadeddata',()=>{reportLoading.hidden=true});
 reportVideo.addEventListener('playing',()=>{reportLoading.hidden=true;clipErrorCount=0});
 reportVideo.addEventListener('ended',()=>reportLoad(reportIndex+1));

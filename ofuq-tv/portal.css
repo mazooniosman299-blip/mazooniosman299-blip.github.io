@@ -400,3 +400,25 @@
 
 /* Layout is flex!important in the legacy stylesheet; grid-row cannot reorder it. */
 @media(max-width:970px){.hero.layout{flex-direction:column-reverse!important}.hero.layout .hero-graphic.hero-video-report{order:0!important}.hero.layout .hero-copy{order:0!important}}
+
+/* 2026 mobile fix: the older two-column !important rules clipped the TV player. */
+@media(max-width:700px){
+ .channels-bg .player-grid{display:flex!important;flex-direction:column!important;gap:14px!important;align-items:stretch!important;width:100%!important;min-width:0!important}
+ .channels-bg .watch-column{width:100%!important;min-width:0!important;max-width:100%!important;flex:none!important}
+ .channels-bg .channel-player{width:100%!important;min-width:0!important;overflow:visible!important}
+ .channels-bg .channel-player .video-stage{aspect-ratio:16/9!important;width:100%!important;min-height:0!important;overflow:hidden!important}
+ .channels-bg .channel-player .native-player{width:100%!important;height:100%!important;max-width:100%!important;object-fit:contain!important}
+ .channels-bg .channel-player .player-head{min-width:0!important;gap:6px!important}
+ .channels-bg .channel-player .player-name{min-width:0!important;overflow:hidden!important}
+ .channels-bg .channel-player .player-name b{max-width:calc(100vw - 120px)!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+ .channels-bg .channel-player .player-foot{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:space-between!important;height:auto!important;min-height:46px!important;gap:8px!important;padding:7px 9px!important;overflow:visible!important}
+ .channels-bg .channel-player .player-controls{display:flex!important;flex-wrap:wrap!important;gap:5px!important;min-width:0!important}
+ .channels-bg .channel-player .quality-tools{flex-wrap:wrap!important;min-width:0!important;justify-content:flex-start!important}
+ .channels-bg .channel-player .quality-control select{max-width:130px!important;min-width:80px!important}
+ .channels-bg .channel-directory{order:2!important;display:flex!important;width:100%!important;min-width:0!important;max-width:100%!important;max-height:300px!important;overflow:hidden!important;padding:11px!important}
+ .channels-bg .channel-directory .channel-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;overflow-y:auto!important;padding:3px!important}
+ .channels-bg .channel-directory .channel{min-width:0!important;padding:8px!important;min-height:51px!important}
+ .channels-bg .channel-directory .channel b{font-size:12px!important;line-height:1.45!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ .channels-bg .channel-directory .channel small{display:block!important;font-size:9px!important}
+}
+@media(max-width:360px){.channels-bg .channel-directory .channel-list{grid-template-columns:1fr!important}}
