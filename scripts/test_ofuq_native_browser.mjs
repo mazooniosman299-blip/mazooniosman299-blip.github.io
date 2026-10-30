@@ -107,7 +107,7 @@ try{
  if(!columns.dateColor?.includes('255, 255, 255')||columns.dateSize<14)throw Error('News date must be readable at 14px or larger in white');
  if(!columns.editorialColor?.includes('255, 255, 255'))throw Error('Editorial link is not white');
  const ui=await page.evaluate(()=>{const clock=document.getElementById('clock'),privacy=document.querySelector('footer a[href="privacy.html"]');return {clockText:clock?.textContent,clockSize:clock?parseFloat(getComputedStyle(clock).fontSize):0,clockColor:clock?getComputedStyle(clock).color:'',privacyColor:privacy?getComputedStyle(privacy).color:''}});
- if(!/\\d{2}:\\d{2}:\\d{2}/.test(ui.clockText)||ui.clockSize<13||ui.clockColor!=='rgb(255, 255, 255)'||ui.privacyColor!=='rgb(255, 255, 255)')throw Error('Clock and privacy contrast failed '+JSON.stringify(ui));
+ if(!/\d{2}:\d{2}:\d{2}/.test(ui.clockText)||ui.clockSize<13||ui.clockColor!=='rgb(255, 255, 255)'||ui.privacyColor!=='rgb(255, 255, 255)')throw Error('Clock and privacy contrast failed '+JSON.stringify(ui));
  console.log('VISIBLE CLOCK AND PRIVACY PASS '+JSON.stringify(ui));
  if((await page.locator('body').innerText()).includes('تغطية متجددة مع أقسام متخصصة'))throw Error('Unwanted news description persists');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
