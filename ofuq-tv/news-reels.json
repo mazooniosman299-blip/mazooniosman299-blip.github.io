@@ -1,0 +1,36 @@
+{
+  "description": "Original OFUQ news-promos: real illustrative Pexels MP4 footage, spoken original Arabic news summaries synthesized in browser after one user gesture. Stock footage is NOT event footage.",
+  "license": "https://www.pexels.com/legal-pages/license/",
+  "clips": [
+    {
+      "id": "traffic-01",
+      "video": "https://videos.pexels.com/video-files/10433645/10433645-hd_1920_1080_25fps.mp4",
+      "source": "https://www.pexels.com/video/night-traffic-on-junction-in-city-10433645/",
+      "creator": "Ming Z",
+      "type": "illustrative",
+      "seconds": 7
+    },
+    {
+      "id": "traffic-02",
+      "video": "https://videos.pexels.com/video-files/3727447/3727447-hd_1920_1080_30fps.mp4",
+      "source": "https://www.pexels.com/video/time-lapse-video-of-traffic-on-a-main-road-at-night-3727447/",
+      "creator": "German Korb",
+      "type": "illustrative",
+      "seconds": 10
+    },
+    {
+      "id": "traffic-03",
+      "video": "https://videos.pexels.com/video-files/5834623/5834623-hd_1920_1080_25fps.mp4",
+      "source": "https://www.pexels.com/video/5834623/",
+      "type": "illustrative",
+      "seconds": 8
+    },
+    {
+      "id": "city-04",
+      "video": "https://videos.pexels.com/video-files/857267/857267-hd_1920_1080_24fps.mp4",
+      "source": "https://www.pexels.com/video/857267/",
+      "type": "illustrative",
+      "seconds": 8
+    }
+  ]
+}
