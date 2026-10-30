@@ -15,6 +15,10 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+# Synchronize writes with the hourly headline refresher; never race the same feed files.
+concurrency:
+  group: ofuq-news
+  cancel-in-progress: false
 jobs:
   update-news:
     runs-on: ubuntu-latest
