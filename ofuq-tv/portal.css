@@ -401,3 +401,6 @@
  .news-reel-screen .reel-sound{bottom:28px;left:5px;font-size:9px;padding:4px}
  .reel-footage-note{display:none}
 }
+
+/* Legible news dates requested by reader. */
+.news-card .date,.news-card .date *{font-size:12px!important;line-height:1.7!important;font-weight:700!important;color:#fff!important}
