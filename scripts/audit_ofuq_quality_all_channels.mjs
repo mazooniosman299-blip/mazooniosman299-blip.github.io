@@ -28,7 +28,7 @@ try{
    await sleep(750);
    const state=await page.locator('#nativePlayer').evaluate(v=>({time:v.currentTime,width:v.videoWidth,height:v.videoHeight,paused:v.paused,error:v.error?.code||null}));
    if(state.time>1.5&&state.width>0&&!state.paused){ok=true;await sleep(1800);
-    const quality=await page.evaluate(()=>{const v=document.getElementById('nativePlayer');const h=typeof hlsController==='undefined'?null:hlsController;return {videoHeight:v.videoHeight,videoWidth:v.videoWidth,levels:h?.levels?.map(l=>({height:l.height,bitrate:l.bitrate}))||[],autoLevel:h?.autoLevelEnabled??null,selectedQuality:document.getElementById('qualitySelect')?.value||null,estBandwidth:h?.bandwidthEstimate||null,hasLowProbe:h?.config?.testBandwidth??null}});
+    const quality=await page.evaluate(()=>{const v=document.getElementById('nativePlayer');const q=window.ofuqQualityInfo?.()||{};return {videoHeight:v.videoHeight,videoWidth:v.videoWidth,levels:q.levels||[],autoLevel:q.auto??null,selectedQuality:q.selectedQuality||null,estBandwidth:q.estimate||null,hasLowProbe:q.testBandwidth??null,engine:q.engine||null}});
     const maxAdvertised=Math.max(0,...quality.levels.map(l=>l.height||0));
     outcomes.push({id:ch.id,ok:true,firstDecodedHeight:state.height,video:quality.videoWidth+'x'+quality.videoHeight,maxAdvertised,seconds:Number(state.time.toFixed(1)),autoLevel:quality.autoLevel,lowQualityProbe:quality.hasLowProbe,estimate:Math.round(quality.estBandwidth||0)});break}
    const no=await page.locator('#playState').textContent();
