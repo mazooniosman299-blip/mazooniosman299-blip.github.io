@@ -45,3 +45,11 @@
 
 .article .meta,.article .meta time{font-size:10px!important;color:#fff!important;line-height:1.65!important}
 .article .licensed-byline{color:#e8f6fd}
+
+/* Editorial date: accessible, readable white text rather than tiny microtext. */
+.article .meta,.article .meta span,.article .meta time{font-size:13px!important;font-weight:700!important;color:#fff!important;line-height:1.8!important}
+
+.article-photo{margin:18px 0 32px!important;max-width:100%;display:block}
+.article-photo img{display:block;width:100%;height:auto;min-height:220px;aspect-ratio:16/9;object-fit:cover;border:1px solid #285368;border-radius:6px}
+.article-photo .article-image-credit{font-size:11px;font-weight:600;color:#b8d4db;line-height:1.7;margin-top:6px;text-align:right}
+@media(max-width:600px){.article-photo img{min-height:160px}}

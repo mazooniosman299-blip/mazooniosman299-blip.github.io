@@ -7,7 +7,7 @@ $('year').textContent=String(new Date().getFullYear());
 $('menuButton').addEventListener('click',()=>{const nav=$('navigation');const open=nav.classList.toggle('open');$('menuButton').setAttribute('aria-expanded',String(open))});
 document.querySelectorAll('#navigation a').forEach(a=>a.addEventListener('click',()=>{$('navigation').classList.remove('open');$('menuButton').setAttribute('aria-expanded','false')}));
 /* Independent OFUQ HTML5/HLS player: no YouTube API, iframe or restream proxy. */
-let channelSearch='',channels=[],selected=null,hlsController=null,streamToken=0,mediaActive=false;
+let channelSearch='',channelCountry='all',channels=[],selected=null,hlsController=null,streamToken=0,mediaActive=false;
 let startupTimer=null,stallTimer=null,levelRecovery=0,currentSourceIndex=0;
 const video=$('nativePlayer'),idle=$('idle'),qualitySelect=$('qualitySelect'),qualityStatus=$('qualityStatus');
 function startingBandwidth(){
@@ -75,7 +75,7 @@ function validChannel(ch){return !!ch&&typeof ch.id==='string'&&typeof ch.title=
 function renderChannels(){
  const container=$('channelList');container.replaceChildren();
  $('channelCount').textContent=channels.length+' قناة';
- for(const ch of channels.filter(x=>(x.title+' '+(x.category||'')).toLocaleLowerCase().includes(channelSearch))){
+ for(const ch of channels.filter(x=>(channelCountry==='all'||(channelCountry==='other'&&!['عُمان','قطر','السودان'].includes(x.country))||x.country===channelCountry)&&(x.title+' '+(x.category||'')).toLocaleLowerCase().includes(channelSearch))){
   const b=document.createElement('button');b.type='button';b.className='channel'+(selected?.id===ch.id?' active':'');b.setAttribute('aria-pressed',String(selected?.id===ch.id));
   const icon=document.createElement('span');icon.className='initial';icon.textContent=ch.initial||'TV';
   const label=document.createElement('span');const name=document.createElement('b');name.textContent=ch.title;
@@ -149,6 +149,7 @@ function startSource(ch,token){
  controller.attachMedia(video);
 }
 $('channelSearch').addEventListener('input',e=>{channelSearch=e.target.value.trim().toLocaleLowerCase();renderChannels()});
+$('channelCountry').addEventListener('change',e=>{channelCountry=e.target.value;renderChannels()});
 $('full').addEventListener('click',()=>{const target=document.querySelector('.channel-player');if(document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});else target.requestFullscreen?.().catch(()=>{})});
 async function refreshChannels(){
  try{
@@ -163,153 +164,143 @@ async function refreshChannels(){
 refreshChannels();
 setInterval(()=>{if(!document.hidden)refreshChannels()},300000);
 window.addEventListener('pagehide',()=>{stopStream()});
-/* First-party advertising video playlist; refreshes automatically when ads.json changes. */
-const adVideo=$('adVideo');
-let ads=[],adIndex=0,adCurrent='',adStatus='idle';
-function validAd(ad){
- if(!ad||typeof ad!=='object'||typeof ad.video!=='string'||typeof ad.title!=='string')return false;
- try{const u=new URL(ad.video,location.href);const base=new URL('ads/',location.href);return u.origin===location.origin&&u.pathname.startsWith(base.pathname)&&u.pathname.toLowerCase().endsWith('.mp4')}catch{return false}
-}
-function applyAdText(ad){
- $('adTitle').textContent=ad.title;
- $('adDescription').textContent=typeof ad.description==='string'?ad.description:'';
- $('adEyebrow').textContent=typeof ad.eyebrow==='string'?ad.eyebrow:'OFUQ TV · VIDEO ADVERTISING';
- $('adNumber').textContent=String(adIndex+1).padStart(2,'0')+' / '+String(ads.length).padStart(2,'0');
-}
-function showAd(index){
- if(!ads.length)return;
- adIndex=((index%ads.length)+ads.length)%ads.length;
- const ad=ads[adIndex];adCurrent=ad.video;adStatus='loading';
- applyAdText(ad);adVideo.classList.remove('is-playing');
- adVideo.pause();adVideo.muted=true;adVideo.setAttribute('playsinline','');adVideo.src=ad.video;adVideo.load();
- adVideo.play().catch(()=>{adStatus='waiting';}); // Silent autoplay is allowed on most modern browsers.
-}
-adVideo.addEventListener('playing',()=>{adStatus='playing';adVideo.classList.add('is-playing')});
-adVideo.addEventListener('pause',()=>{if(!adVideo.ended)adVideo.classList.remove('is-playing')});
-adVideo.addEventListener('ended',()=>showAd(adIndex+1));
-adVideo.addEventListener('error',()=>{adStatus='unavailable';adVideo.classList.remove('is-playing');if(ads.length>1){const failed=adIndex;const next=(adIndex+1)%ads.length;if(next!==failed)showAd(next)}});
-async function refreshAds(){
- try{
-  const res=await fetch('ads.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'});
-  if(!res.ok)throw Error('ads unavailable');
-  const data=await res.json();const next=Array.isArray(data.ads)?data.ads.filter(validAd):[];
-  if(!next.length)return;
-  const current=next.findIndex(a=>a.video===adCurrent);
-  ads=next;
-  if(!adCurrent||adStatus==='unavailable')showAd(0);
-  else {adIndex=Math.max(0,current);applyAdText(ads[adIndex])}
- }catch{if(!ads.length){ads=[{video:'ads/ofuq-promo.mp4',title:'إعلانك على شاشة أُفُق',description:'مساحة إعلانية بالفيديو تلفت الأنظار وتظهر لجمهورك.'}];showAd(0)}}
-}
-refreshAds();
-setInterval(()=>{if(!document.hidden)refreshAds()},180000);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&adVideo.paused&&!adVideo.ended&&adStatus!=='unavailable')adVideo.play().catch(()=>{})});
-const heroClockFmt=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',hour:'2-digit',minute:'2-digit',hour12:false});
-function updateHeroClock(){if($('upperClock'))$('upperClock').textContent=heroClockFmt.format(new Date())+' · مسقط'}
-updateHeroClock();setInterval(updateHeroClock,60000);
-
-/* OFUQ broadcast-style country news interludes: real headlines, NOT paid advertisements.
-   Runs over the looping first-party video, never changes native channel streams.
-   Any paid VAST ad stays on top and takes precedence over this editorial overlay. */
-const promoScreen=$('adScreen'),promoPanel=$('newsPromo');
-const promoCountry=$('newsPromoCountry'),promoFlag=$('newsPromoFlag');
-const promoTitle=$('newsPromoTitle'),promoExcerpt=$('newsPromoExcerpt');
-const promoSource=$('newsPromoSource'),promoStep=$('newsPromoStep');
-const countryTopics=[
- {label:'السودان',flag:'🇸🇩',match:/السودان|سوداني|دارفور|الخرطوم|الفاشر|كردفان|أم درمان|أمدرمان|بورتسودان|نيالا|القضارف|عطبرة/},
- {label:'فلسطين',flag:'🇵🇸',match:/فلسطين|فلسطيني|غزة|الضفة الغربية|القدس/},
- {label:'مصر',flag:'🇪🇬',match:/مصر|المصري|القاهرة|الإسكندرية|أسيوط/},
- {label:'سوريا',flag:'🇸🇾',match:/سوريا|سورية|دمشق|حلب|درعا/},
- {label:'اليمن',flag:'🇾🇪',match:/اليمن|صنعاء|تعز|الحديدة|عدن/},
- {label:'لبنان',flag:'🇱🇧',match:/لبنان|بيروت|طرابلس اللبنانية/},
- {label:'السعودية',flag:'🇸🇦',match:/السعودية|الرياض|جدة|مكة|المدينة المنورة/},
- {label:'الولايات المتحدة',flag:'🇺🇸',match:/الولايات المتحدة|أمريكا|الأمريكي|واشنطن|نيويورك|ترامب/},
- {label:'أوكرانيا',flag:'🇺🇦',match:/أوكرانيا|الأوكراني|كييف/},
- {label:'روسيا',flag:'🇷🇺',match:/روسيا|الروسي|موسكو|الكرملين/},
- {label:'الصين',flag:'🇨🇳',match:/الصين|الصيني|بكين/},
- {label:'فرنسا',flag:'🇫🇷',match:/فرنسا|باريس|الفرنسي/},
- {label:'تركيا',flag:'🇹🇷',match:/تركيا|أنقرة|إسطنبول|التركي/},
- {label:'ألمانيا',flag:'🇩🇪',match:/ألمانيا|برلين|الألماني/}
+/* Short original OFUQ NEWS PROMOS: REAL stock footage + Arab-language narration.
+   NOT a news channel restream and NOT still-image headlines. Footage is illustrative
+   and labeled as such; it must never be represented as footage of a reported event.
+   Browsers require a user gesture before audible narration can start. */
+const reelVideo=$('adVideo'),reelHeadline=$('reelHeadline'),reelCountry=$('reelCountry'),
+ reelExcerpt=$('reelExcerpt'),reelSource=$('reelSource'),reelCounter=$('reelCounter'),
+ reelLoading=$('reelLoading'),reelSound=$('reelSound'),reelProgress=$('reelProgress');
+const locations=[
+ ['السودان','🇸🇩',/السودان|سوداني|دارفور|الخرطوم|الفاشر|كردفان|أم درمان|بورتسودان/],
+ ['فلسطين','🇵🇸',/فلسطين|غزة|الضفة|القدس/],
+ ['مصر','🇪🇬',/مصر|القاهرة|الإسكندرية/],
+ ['سوريا','🇸🇾',/سوريا|سورية|دمشق|حلب/],
+ ['السعودية','🇸🇦',/السعودية|الرياض|جدة|مكة/],
+ ['اليمن','🇾🇪',/اليمن|صنعاء|عدن/],
+ ['لبنان','🇱🇧',/لبنان|بيروت/],
+ ['الولايات المتحدة','🇺🇸',/الولايات المتحدة|أمريكا|واشنطن/],
+ ['روسيا','🇷🇺',/روسيا|موسكو/],
+ ['الصين','🇨🇳',/الصين|بكين/],
+ ['فرنسا','🇫🇷',/فرنسا|باريس/]
 ];
-let promoStories=[],promoPointer=0,promoPhase='commercial',promoDeadline=0,promoStart=0;
-const COMMERCIAL_DURATION=16000,NEWS_DURATION=7800,NEWS_PER_BREAK=4;
-let promoShown=0;
-function validPromoStory(story){
- return story&&typeof story.title==='string'&&story.title.trim().length>18&&
- typeof story.source==='string'&&story.source.trim()&&
- typeof story.published_at==='string'&&Number.isFinite(Date.parse(story.published_at));
+let reelClips=[],reelStories=[],reelPos=0,reelClipPos=0,reelSoundOn=false,
+    reelTicker=null,reelLastTick=0,reelClipFailures=0,reelVoice=null;
+const reelSpeaker=window.speechSynthesis;
+function reelNarrate(){
+ if(!reelSoundOn||!reelSpeaker||!window.SpeechSynthesisUtterance||!reelStories.length)return;
+ reelSpeaker.cancel();
+ const story=reelStories[reelPos%reelStories.length];
+ const text=[story.country,story.title,String(story.excerpt||'').slice(0,165)].filter(Boolean).join('، ');
+ const utterance=new SpeechSynthesisUtterance(text);
+ utterance.lang='ar-SA';utterance.rate=.94;utterance.pitch=1;utterance.volume=1;
+ const voices=reelSpeaker.getVoices();
+ const arabic=voices.filter(x=>x.lang?.toLowerCase().startsWith('ar'));
+ if(arabic.length)utterance.voice=arabic.find(x=>x.localService)||arabic[0];
+ reelVoice=utterance;reelSpeaker.speak(utterance);
 }
-function selectPromos(stories){
- const matches=(Array.isArray(stories)?stories:[]).filter(validPromoStory);
- const selected=[],seenIds=new Set();
- // One verified story per named country, prioritizing Sudan and diverse countries.
- for(const topic of countryTopics){
-  const story=matches.find(item=>!seenIds.has(item.url||item.id)&&topic.match.test(item.title));
-  if(story){selected.push({...story,country:topic.label,flag:topic.flag});seenIds.add(story.url||story.id)}
- }
- // Always retain a general global-news story, without claiming a specific country.
- for(const item of matches){
-  if(selected.length>=8)break;
-  if(seenIds.has(item.url||item.id))continue;
-  selected.push({...item,country:'حول العالم',flag:'🌍'});seenIds.add(item.url||item.id);
- }
- return selected;
+function reelShowStory(){
+ if(!reelStories.length)return;
+ const n=reelStories[reelPos%reelStories.length];
+ reelHeadline.textContent=n.title;
+ reelCountry.textContent=(n.flag||'🌍')+' '+n.country;
+ reelExcerpt.textContent=String(n.excerpt||'').slice(0,180);
+ reelSource.textContent='المصدر: '+n.source;
+ reelCounter.textContent=String(reelPos%reelStories.length+1).padStart(2,'0')+' / '+String(reelStories.length).padStart(2,'0');
+ reelProgress.style.animation='none';void reelProgress.offsetWidth;reelProgress.style.animation='';
+ if(reelSoundOn)reelNarrate();
 }
 function updatePromoSources(news){
- const next=selectPromos(news);
- if(next.length){
-  promoStories=next;
-  if(promoPointer>=next.length)promoPointer=0;
-  if(!promoDeadline)promoDeadline=Date.now()+COMMERCIAL_DURATION;
+ if(!Array.isArray(news))return;
+ const valid=news.filter(x=>typeof x.title==='string'&&x.title.length>15&&typeof x.source==='string'&&x.source&&Number.isFinite(Date.parse(x.published_at)));
+ const out=[],seen=new Set();
+ for(const [country,flag,pattern] of locations){
+  const item=valid.find(x=>!seen.has(x.url||x.id)&&pattern.test(x.title));
+  if(item){seen.add(item.url||item.id);out.push({...item,country,flag})}
+ }
+ for(const item of valid){
+  if(out.length>=12)break;
+  if(seen.has(item.url||item.id))continue;
+  seen.add(item.url||item.id);out.push({...item,country:'حول العالم',flag:'🌍'})
+ }
+ if(out.length){
+  const old=reelStories[reelPos%Math.max(reelStories.length,1)]?.url;
+  reelStories=out;
+  reelPos=Math.max(0,out.findIndex(x=>x.url===old));
+  reelShowStory();
  }
 }
-function stopPromo(){
- promoPanel.hidden=true;
- promoScreen.classList.remove('has-news-promo');
- promoPhase='commercial';promoShown=0;
- $('adFooterLabel').textContent='OFUQ TV · ADVERTISING';
+function reelNextStory(){
+ if(!reelStories.length)return;
+ reelPos=(reelPos+1)%reelStories.length;
+ reelShowStory();
 }
-function broadcastStory(){
- if(!promoStories.length)return stopPromo();
- const item=promoStories[promoPointer%promoStories.length];
- promoPointer=(promoPointer+1)%promoStories.length;
- promoCountry.textContent=item.country;
- promoFlag.textContent=item.flag;
- promoTitle.textContent=item.title;
- promoExcerpt.textContent=String(item.excerpt||'').trim().slice(0,165);
- promoExcerpt.hidden=!promoExcerpt.textContent;
- promoSource.textContent='المصدر: '+item.source;
- promoStep.textContent=String(promoShown+1).padStart(2,'0')+' / '+String(NEWS_PER_BREAK).padStart(2,'0');
- $('adFooterLabel').textContent='OFUQ TV · NEWS BREAK';
- promoScreen.classList.add('has-news-promo');
- promoPanel.hidden=false;
- promoPanel.classList.remove('promo-enter');
- void promoPanel.offsetWidth;
- promoPanel.classList.add('promo-enter');
- promoPhase='news';promoShown++;
+function reelStopTicker(){if(reelTicker)clearInterval(reelTicker);reelTicker=null}
+function reelPlayClip(){
+ if(!reelClips.length){reelLoading.hidden=false;reelLoading.textContent='لا تتوفر مقاطع مرخصة حالياً';return}
+ const clip=reelClips[reelClipPos%reelClips.length];
+ reelClipPos++;
+ reelVideo.pause();reelVideo.removeAttribute('src');
+ reelVideo.load();reelLoading.hidden=false;reelLoading.textContent='جارٍ تحميل الفاصل المصوّر…';
+ reelVideo.muted=true;reelVideo.playsInline=true;
+ reelVideo.src=clip.video;
+ reelVideo.play().catch(()=>{reelLoading.textContent='اضغط على الفيديو لتشغيل الموجز'});
+ reelLastTick=Date.now();
 }
-function tickPromo(){
- if(!promoDeadline||!promoStories.length||document.hidden)return;
- if(!$('networkAdOverlay').hidden){
-  if(!promoPanel.hidden)stopPromo();
-  promoDeadline=Date.now()+COMMERCIAL_DURATION;
-  return;
- }
- if(Date.now()<promoDeadline)return;
- if(promoPhase==='commercial'){
-  promoShown=0;broadcastStory();promoDeadline=Date.now()+NEWS_DURATION;
- }else if(promoShown<NEWS_PER_BREAK){
-  broadcastStory();promoDeadline=Date.now()+NEWS_DURATION;
- }else{
-  stopPromo();promoDeadline=Date.now()+COMMERCIAL_DURATION;
- }
+function reelAdvance(){
+ reelNextStory();
+ reelPlayClip();
 }
-setInterval(tickPromo,450);
-document.addEventListener('visibilitychange',()=>{
- if(!document.hidden)promoDeadline=Date.now()+(promoPhase==='news'?NEWS_DURATION:COMMERCIAL_DURATION);
+reelVideo.addEventListener('playing',()=>{reelLoading.hidden=true;reelLastTick=Date.now();});
+reelVideo.addEventListener('error',()=>{
+ if(reelClipFailures>=reelClips.length){reelLoading.hidden=false;reelLoading.textContent='تعذّر تحميل مقاطع الفيديو حالياً';reelStopTicker();return}
+ reelClipFailures++;reelPlayClip();
 });
-window.ofuqBroadcastInfo=()=>({
- phase:promoPhase,active:!promoPanel.hidden,country:promoCountry.textContent,
- count:promoStories.length,step:promoShown,headlines:promoStories.map(x=>x.title)
+reelVideo.addEventListener('timeupdate',()=>{
+ if(!reelVideo.videoWidth||reelVideo.readyState<2)return;
+ reelLastTick=Date.now();reelClipFailures=0;
+ const clip=reelClips[(reelClipPos-1+reelClips.length)%reelClips.length];
+ if(clip&&reelVideo.currentTime>=Math.min(clip.seconds||8,Math.max(3,reelVideo.duration-.3)))reelAdvance();
+});
+reelVideo.addEventListener('ended',reelAdvance);
+reelVideo.addEventListener('click',()=>reelVideo.play().catch(()=>{}));
+reelSound.addEventListener('click',()=>{
+ reelSoundOn=!reelSoundOn;
+ reelSound.setAttribute('aria-pressed',String(reelSoundOn));
+ reelSound.textContent=reelSoundOn?'🔇 إيقاف التعليق':'🔊 تشغيل التعليق الصوتي';
+ if(reelSoundOn){if(!video.muted)video.muted=true;reelNarrate()}
+ else reelSpeaker?.cancel();
+});
+video.addEventListener('volumechange',()=>{
+ if(!video.muted&&reelSoundOn){reelSoundOn=false;reelSound.textContent='🔊 تشغيل التعليق الصوتي';reelSound.setAttribute('aria-pressed','false');reelSpeaker?.cancel()}
+});
+reelTicker=setInterval(()=>{
+ if(document.hidden||!reelClips.length)return;
+ if(Date.now()-reelLastTick>15000)reelAdvance();
+},2000);
+document.addEventListener('visibilitychange',()=>{if(document.hidden){reelSpeaker?.cancel();reelVideo.pause()}else{reelLastTick=Date.now();reelVideo.play().catch(()=>{})}});
+window.addEventListener('pagehide',()=>{reelSpeaker?.cancel();reelStopTicker();reelVideo.pause()});
+async function initNewsReels(){
+ try{
+  const response=await fetch('news-reels.json',{cache:'no-store'});
+  if(!response.ok)throw Error('no reel manifest');
+  const data=await response.json();
+  reelClips=(Array.isArray(data.clips)?data.clips:[]).filter(clip=>{
+   try{const v=new URL(clip.video);const src=new URL(clip.source);
+    return v.protocol==='https:'&&v.hostname==='videos.pexels.com'&&v.pathname.endsWith('.mp4')&&src.hostname==='www.pexels.com'&&clip.type==='illustrative'
+   }catch{return false}
+  });
+  if(!reelClips.length)throw Error('No licensed clips');
+  reelPlayClip();
+ }catch{reelLoading.textContent='مقاطع الفيديو غير متاحة حالياً'}
+}
+initNewsReels();
+window.ofuqNewsReelInfo=()=>({
+ videoWidth:reelVideo.videoWidth,videoHeight:reelVideo.videoHeight,
+ playing:!reelVideo.paused,currentTime:reelVideo.currentTime,
+ clipCount:reelClips.length,storyCount:reelStories.length,
+ headline:reelHeadline.textContent,country:reelCountry.textContent,
+ soundEnabled:reelSoundOn,speechAvailable:!!reelSpeaker
 });
 
 let allNews=[],briefs={},group='all',search='',visibleNews=24;
@@ -330,9 +321,15 @@ function renderNews(){
   const id=newsId(n);if(!id)continue;
   const link=document.createElement('a');link.className='news-card';link.href='story.html?id='+encodeURIComponent(id);
   const photo=document.createElement('div');photo.className='news-photo';
-  if(safeImage(n.image)){const img=document.createElement('img');img.src=n.image;img.alt='صورة الخبر من '+(n.source||'المصدر');img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.onerror=()=>{img.remove();photo.classList.add('no-photo')};photo.append(img)}
-  else photo.classList.add('no-photo');
-  const watermark=document.createElement('span');watermark.className='image-source';watermark.textContent=n.image?(n.source||'صورة المصدر'):'أُفُق TV';photo.append(watermark);
+  const img=document.createElement('img');
+  img.src=safeImage(n.image)?n.image:'assets/news-cover.svg';
+  img.alt=safeImage(n.image)?'صورة الخبر من المصدر الناشر':'غلاف توضيحي لأخبار أُفُق';
+  img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';
+  img.onerror=()=>{img.onerror=null;img.src='assets/news-cover.svg';img.alt='غلاف توضيحي لأخبار أُفُق';photo.classList.add('no-photo')};
+  if(!safeImage(n.image))photo.classList.add('no-photo');
+  photo.append(img);
+  const watermark=document.createElement('span');watermark.className='image-source';
+  watermark.textContent=safeImage(n.image)?'صورة المصدر':'غلاف توضيحي';photo.append(watermark);
   const body=document.createElement('div');body.className='news-content';
   const label=document.createElement('span');label.className='tag';label.textContent=SECTION_NAMES[category(n)]||'العالم';
   if(n.full_article===true){const fullTag=document.createElement('span');fullTag.className='full-news-tag';fullTag.textContent='مقال كامل';body.append(fullTag)}

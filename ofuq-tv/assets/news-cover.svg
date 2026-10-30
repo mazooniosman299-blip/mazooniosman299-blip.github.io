@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="غلاف رسومي توضيحي للأخبار">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#04172a"/><stop offset=".48" stop-color="#123d52"/><stop offset="1" stop-color="#0a172c"/></linearGradient><radialGradient id="glow"><stop stop-color="#37b3c8" stop-opacity=".33"/><stop offset="1" stop-color="#37b3c8" stop-opacity="0"/></radialGradient><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#8eeaf4" stroke-opacity=".13" stroke-width="1"/></pattern><clipPath id="clip"><circle cx="440" cy="346" r="246"/></clipPath></defs>
+<path fill="url(#bg)" d="M0 0h1200v675H0z"/><path fill="url(#grid)" d="M0 0h1200v675H0z"/>
+<circle cx="435" cy="345" r="385" fill="url(#glow)"/><g fill="none" stroke="#75e8f1" opacity=".34">
+<circle cx="440" cy="346" r="245" stroke-width="3"/><ellipse cx="440" cy="346" rx="105" ry="245" stroke-width="2"/><ellipse cx="440" cy="346" rx="194" ry="245" stroke-width="2"/>
+<path d="M195 346h490M213 250h453M211 446h458M260 186h362M259 510h364" stroke-width="2"/></g>
+<g clip-path="url(#clip)" fill="#4cbec5" fill-opacity=".2"><path d="m300 174 56 19 14 48-27 26 12 52 54 19-17 71 39 27-3 66-34 59-63-43-15-77-58-32-37-81 15-55z"/><path d="m468 199 71-29 59 53-13 65 54 31-13 60-52 22-43-45-22 25-61-32 16-51-35-35z"/></g>
+<path d="M760 200h348M760 231h289M760 260h238" stroke="#8be8ed" stroke-opacity=".45" stroke-width="8" stroke-linecap="round"/>
+<path d="M759 420h381M759 453h296M759 484h335" stroke="#d0f4f8" stroke-opacity=".29" stroke-width="13" stroke-linecap="round"/>
+<path d="M0 622h1200" stroke="#6ce8ef" stroke-width="7"/><path d="M20 20h1160v635H20z" fill="none" stroke="#73d7e1" stroke-opacity=".32" stroke-width="2"/>
+<g font-family="Arial,Tahoma,sans-serif" font-weight="800" text-anchor="end"><text x="1100" y="128" fill="#e8fcff" font-size="42">OFUQ TV</text><text x="1100" y="168" fill="#7ee6ef" font-size="27">NEWS</text></g>
+</svg>

@@ -9,9 +9,10 @@ on:
       - 'scripts/test_ofuq_native_browser.mjs'
       - 'scripts/update_ofuq_full_articles.py'
       - 'ofuq-tv/full-articles.json'
+      - 'ofuq-tv/news-reels.json'
   push:
     branches:
-      - ofuq-licensed-full-news-20261030
+      - ofuq-editorial-newsreels-corrected-20261030
       - main
     paths:
       - 'ofuq-tv/**'
@@ -43,5 +44,5 @@ jobs:
         run: |
           npm install --no-save playwright@1.64.1
           npx playwright install --with-deps chromium
-      - name: Test actual native HLS playback, channel change, and looping ad film
+      - name: Verify real video news promos, Arabic narration activation, lower live-TV, mobile and complete articles
         run: node scripts/test_ofuq_native_browser.mjs

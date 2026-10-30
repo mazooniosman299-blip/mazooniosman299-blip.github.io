@@ -65,17 +65,20 @@ for(const f of fs.readdirSync(dir).filter(x=>x.endsWith('.js'))){
   const r=spawnSync('node',['--check',path.join(dir,f)],{encoding:'utf8'});
   check(r.status===0,'JS syntax '+f+': '+(r.stderr||'').slice(0,500));
 }
-const ads=json('ads.json');
-check(ads.network?.type==='vast','VAST ad integration not configured');
-check(ads.network?.enabled===false||typeof ads.network?.adTagUrl==='string'&&ads.network.adTagUrl.startsWith('https://'),'Approved network requires an HTTPS VAST ad tag');
-check(fs.existsSync(path.join(dir,'ad-network.js')),'Network VAST integration JS is missing');
-
-check(Array.isArray(ads.ads)&&ads.ads.length>0,'No advertising videos defined');
-for(const ad of ads.ads||[]){check(typeof ad.title==='string'&&ad.title.length>2,'Ad title missing');check(typeof ad.video==='string'&&/^ads\/[a-z0-9-]+\.mp4$/i.test(ad.video),'Invalid first-party video URL');const full=path.resolve(dir,ad.video||'');check(full.startsWith(dir+path.sep)&&fs.existsSync(full)&&fs.statSync(full).size>10000,'Missing playable MP4: '+(ad.video||''));}
+const reels=json('news-reels.json');
+check(Array.isArray(reels.clips)&&reels.clips.length>=2,'Fewer than 2 decoded original news clips');
+for(const clip of reels.clips||[]){
+ let valid=false;
+ try{const u=new URL(clip.video),source=new URL(clip.source);
+ valid=u.protocol==='https:'&&u.hostname==='videos.pexels.com'&&u.pathname.endsWith('.mp4')&&source.hostname==='www.pexels.com'&&clip.type==='illustrative'&&Number(clip.seconds)>=4;
+ }catch{}
+ check(valid,'Invalid illustrative editorial footage or license metadata: '+clip.id);
+}
 const homepage=fs.readFileSync(path.join(dir,'index.html'),'utf8');
-check(homepage.includes('id="adVideo"'),'Native video advertising player missing');
-check(homepage.includes('id="networkAdOverlay"'),'Paid video ad stage is missing');
-check(homepage.includes('ad-network.js'),'Approved advertiser network adapter is not linked');
+check(homepage.includes('id="adVideo"')&&homepage.includes('id="reelSound"')&&homepage.includes('id="reelHeadline"'),'Missing real-video news advert with audio button');
+check(!homepage.includes('id="newsPromo"')&&!homepage.includes('id="adTitle"')&&!homepage.includes('id="heroLiveVideo"'),'Old fake news promo or live-TV replacement still present');
+check(!homepage.includes('ad-network.js'),'No publisher advertising SDK should load inside editorial news break');
+check(portal.includes('SpeechSynthesisUtterance')&&portal.includes('news-reels.json'),'Original Arabic spoken news script is not loaded');
 
 check(homepage.includes('id="breakingStrip"'),'Breaking strip missing');
 check(homepage.includes('id="channelCount"'),'Channel count element missing');check(homepage.includes('id="nativePlayer"'),'Native TV player absent');check(!homepage.includes('id="youtubeStage"'),'Old YouTube stage remains');check(!/youtube-nocookie[.]com\/embed|youtube[.]com\/iframe_api|new YT[.]Player/.test(fs.readFileSync(path.join(dir,'portal.js'),'utf8')),'YouTube still present in player code');

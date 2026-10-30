@@ -20,16 +20,24 @@ try{
  page.on('console',msg=>{if(['error','warning','info'].includes(msg.type())&&/HLS-|HLS |m3u8|MEDIA|MANIFEST|CORS|error/i.test(msg.text()))console.log('CONSOLE '+msg.type()+' '+msg.text().slice(0,250))});
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded',timeout:30000});
  if(await page.locator('iframe[src*="youtube"]').count()||await page.locator('#youtubeStage').count())throw Error('YouTube player must not exist');
- if(!(await page.locator('#adVideo').count()))throw Error('Top advertising video missing');
- if(!(await page.locator('#networkAdOverlay').count()))throw Error('Network video slot missing');
- if(!(await page.locator('#networkAdOverlay').isHidden()))throw Error('Ad network overlay should be hidden when no approved VAST inventory is configured');
- if(await page.evaluate(()=>Boolean(window.google?.ima)))throw Error('External IMA SDK should not load without active publisher ad tag');
-
- const desktopLayout=await page.evaluate(()=>{const hero=document.querySelector('.hero'),copy=document.querySelector('.hero-copy'),ad=document.querySelector('#adScreen'),channels=document.querySelector('#channels'),news=document.querySelector('#news');const a=ad.getBoundingClientRect(),c=copy.getBoundingClientRect();return {direction:getComputedStyle(hero).direction,layout:getComputedStyle(hero).flexDirection,adX:a.x,copyX:c.x,adW:a.width,adH:a.height,liveY:channels.getBoundingClientRect().top,newsY:news.getBoundingClientRect().top}});
+ if(!(await page.locator('#adVideo').count()&&await page.locator('#reelSound').count()))throw Error('Real video news promo or sound button missing');
+ if(await page.locator('#newsPromo,#heroLiveVideo,#adTitle').count())throw Error('Disallowed fake static promo or live rebroadcast persists');
+ const desktopLayout=await page.evaluate(()=>{const hero=document.querySelector('.hero'),copy=document.querySelector('.hero-copy'),ad=document.querySelector('#newsReelScreen'),channels=document.querySelector('#channels'),news=document.querySelector('#news');const a=ad.getBoundingClientRect(),c=copy.getBoundingClientRect();return {direction:getComputedStyle(hero).direction,layout:getComputedStyle(hero).flexDirection,adX:a.x,copyX:c.x,adW:a.width,adH:a.height,liveY:channels.getBoundingClientRect().top,newsY:news.getBoundingClientRect().top}});
  console.log('DESKTOP LAYOUT '+JSON.stringify(desktopLayout));
  if(!(desktopLayout.adX<desktopLayout.copyX&&desktopLayout.liveY<desktopLayout.newsY&&desktopLayout.adW<740&&desktopLayout.adW>250))throw Error('Incorrect ad-left, title-right, or channels-first layout');
 
  await page.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>10,{timeout:18000});
+ await page.locator('#channelCountry').selectOption('عُمان');
+ await page.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>=5,{timeout:5000});
+ const countryTitles=await page.locator('#channelList .channel b').allTextContents();
+ if(countryTitles.length!==5||!countryTitles.includes('عُمان الرياضية'))throw Error('Oman country filter unavailable');
+ await page.locator('#channelCountry').selectOption('قطر');
+ if(await page.locator('#channelList .channel').count()<6)throw Error('Qatar country channels missing');
+ await page.locator('#channelCountry').selectOption('السودان');
+ if(await page.locator('#channelList .channel').count()<2)throw Error('Sudan country channels missing');
+ await page.locator('#channelCountry').selectOption('all');
+ console.log('COUNTRY SELECTOR OM/QA/SD PASS');
+
  console.log('CHANNEL BUTTONS '+await page.locator('#channelList .channel').count());
  console.log('CODEC SUPPORT '+JSON.stringify(await page.evaluate(()=>({userAgent:navigator.userAgent,mp4:MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E"'),mp3:MediaSource.isTypeSupported('audio/mp4; codecs="mp4a.40.2"')}))));
  const passed=[];
@@ -47,43 +55,42 @@ try{
   if(passed.length>=2)break;
  }
  if(passed.length<2)throw Error('Only '+passed.length+' direct channels decoded video; need at least 2.');
- const ad=await page.locator('#adVideo').evaluate(v=>({time:v.currentTime,width:v.videoWidth,height:v.videoHeight,src:v.currentSrc,paused:v.paused,error:v.error?.code||null}));
- console.log('AD STATE '+JSON.stringify(ad));
- if(ad.width<100||ad.time<1)throw Error('Upper advertising MP4 did not play');
-
- // Assert that the upper screen contains real time-rotating COUNTRY news rather
- // than a static pasted headline or an unverified paid advertisement.
- await page.waitForFunction(()=>window.ofuqBroadcastInfo?.().count>=4,null,{timeout:16000});
- const promoCandidates=await page.evaluate(()=>window.ofuqBroadcastInfo());
- if(promoCandidates.count<4)throw Error('Not enough distinct real country headlines in video billboard');
- await page.waitForFunction(()=>window.ofuqBroadcastInfo?.().active===true,null,{timeout:30000});
- const beforePromo=await page.evaluate(()=>({
-  country:document.getElementById('newsPromoCountry').textContent,
-  title:document.getElementById('newsPromoTitle').textContent,
-  source:document.getElementById('newsPromoSource').textContent,
-  videoTime:document.getElementById('adVideo').currentTime,
-  videoWidth:document.getElementById('adVideo').videoWidth,
-  adPaidShown:!document.getElementById('networkAdOverlay').hidden,
-  promoVisible:getComputedStyle(document.getElementById('newsPromo')).display!=='none',
-  nativePlaying:!document.getElementById('nativePlayer').paused
- }));
- const currentNews=await page.evaluate(async()=> (await (await fetch('news.json')).json()).items.map(x=>x.title));
- if(!currentNews.includes(beforePromo.title)||!beforePromo.source.includes('المصدر:')||!beforePromo.promoVisible)throw Error('Promo is not a real attributed news headline');
- if(beforePromo.adPaidShown)throw Error('Unapproved paid advertising overlay must remain dormant');
- if(!beforePromo.nativePlaying||beforePromo.videoWidth<100)throw Error('News breaks interrupted TV or advertising video');
- await page.waitForFunction(title=>window.ofuqBroadcastInfo?.().active && document.getElementById('newsPromoTitle').textContent!==title,beforePromo.title,{timeout:15000});
- const secondPromo=await page.evaluate(()=>({country:document.getElementById('newsPromoCountry').textContent,title:document.getElementById('newsPromoTitle').textContent,step:window.ofuqBroadcastInfo().step,videoTime:document.getElementById('adVideo').currentTime}));
- if(!currentNews.includes(secondPromo.title)||secondPromo.step<2)throw Error('News interlude is not rotating');
- console.log('BROADCAST NEWS BREAK PASS '+JSON.stringify({first:beforePromo,second:secondPromo,countries:promoCandidates.count}));
-
+ await page.waitForFunction(()=>window.ofuqNewsReelInfo?.().storyCount>=4,null,{timeout:18000});
+ await page.waitForFunction(()=>{const r=window.ofuqNewsReelInfo?.();return r&&r.videoWidth>=320&&r.currentTime>1.5&&r.playing},{timeout:40000});
+ const first=await page.evaluate(()=>({state:window.ofuqNewsReelInfo(),src:document.getElementById('adVideo').currentSrc}));
+ console.log('REAL NEWS VIDEO 1 '+JSON.stringify(first));
+ if(!first.src.includes('videos.pexels.com/video-files/'))throw Error('Actual stock footage MP4 did not load');
+ const list=await page.evaluate(async()=> (await (await fetch('news.json')).json()).items.map(x=>x.title));
+ if(!list.includes(first.state.headline))throw Error('News advertisement is not using a real current article title');
+ await page.getByRole('button',{name:/تشغيل التعليق الصوتي/}).click();
+ const voice=await page.evaluate(()=>window.ofuqNewsReelInfo());
+ if(!voice.soundEnabled||!voice.speechAvailable)throw Error('Narrated news audio could not be enabled');
+ console.log('NARRATED AUDIO BUTTON PASS '+JSON.stringify(voice));
+ await page.waitForFunction(src=>{const v=document.getElementById('adVideo');return v.currentSrc!==src&&v.videoWidth>320&&v.currentTime>1},first.src,{timeout:35000});
+ const second=await page.evaluate(()=>({state:window.ofuqNewsReelInfo(),src:document.getElementById('adVideo').currentSrc}));
+ console.log('REAL NEWS VIDEO 2 '+JSON.stringify(second));
+ if(second.src===first.src||second.state.headline===first.state.headline)throw Error('News video promos are not rotating');
+ if(!list.includes(second.state.headline))throw Error('Second news promo is not a genuine news item');
+ if(await page.locator('#nativePlayer').evaluate(v=>v.paused))throw Error('Lower native news channel was interrupted by the film promo');
+ const allClips=await page.evaluate(async()=> (await (await fetch('news-reels.json')).json()).clips.map(c=>c.video));
+ if(allClips.length<2)throw Error('Not enough verified real news video footage');
+ let previous=second.src;
+ for(let index=2;index<allClips.length;index++){
+  await page.locator('#adVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
+  await page.waitForFunction(({previous,expected})=>{const v=document.getElementById('adVideo');return v.currentSrc!==previous&&v.currentSrc===expected&&v.videoWidth>320&&v.currentTime>.35},{previous,expected:allClips[index]},{timeout:35000});
+  const status=await page.evaluate(()=>({src:document.getElementById('adVideo').currentSrc,width:document.getElementById('adVideo').videoWidth,time:document.getElementById('adVideo').currentTime}));
+  console.log('REAL LICENSED NEWS VIDEO '+(index+1)+' '+JSON.stringify(status));
+  previous=status.src;
+ }
+ console.log('REAL FOOTAGE NEWS BUMPERS PASS');
  await page.setViewportSize({width:390,height:844});
- const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#adScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
+ const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#newsReelScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
  console.log('MOBILE LAYOUT '+JSON.stringify(mobile));
  if(!(mobile.copyY<mobile.adY&&mobile.adWidth<=mobile.viewport&&mobile.scrollWidth<=mobile.viewport+2))throw Error('Mobile layout overflow or wrong stacked order');
  const columns=await page.evaluate(()=>{const watch=document.querySelector('.watch-column').getBoundingClientRect(),list=document.querySelector('.channel-directory').getBoundingClientRect();const grid=getComputedStyle(document.querySelector('.player-grid'));const editorial=document.querySelector('.about-policy');const date=document.querySelector('.news-card .date');return {watchX:watch.x,watchW:watch.width,listX:list.x,listW:list.width,grid: grid.gridTemplateColumns,dateColor:date?getComputedStyle(date).color:null,dateSize:date?parseFloat(getComputedStyle(date).fontSize):null,editorialColor:editorial?getComputedStyle(editorial).color:null}});
  console.log('MOBILE CHANNELS / NEWS STYLE '+JSON.stringify(columns));
  if(!(columns.watchW>100&&columns.listW>80&&Math.abs(columns.watchX-columns.listX)>70))throw Error('Channel guide is not beside the video on mobile');
- if(!columns.dateColor?.includes('255, 255, 255')||columns.dateSize>10)throw Error('News date is not small and white');
+ if(!columns.dateColor?.includes('255, 255, 255')||columns.dateSize<11||columns.dateSize>13)throw Error('News date should be legible 12px and white');
  if(!columns.editorialColor?.includes('255, 255, 255'))throw Error('Editorial link is not white');
  if((await page.locator('body').innerText()).includes('تغطية متجددة مع أقسام متخصصة'))throw Error('Unwanted news description persists');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
@@ -92,7 +99,7 @@ try{
  await page.locator('#article h1').waitFor({timeout:18000});
  await page.waitForFunction(()=>document.querySelectorAll('#article .article-more-card').length>=1,{timeout:12000});
  const body=await page.locator('#article').innerText();
- for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
+ for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:','المعلومات المتاحة لهذا العنوان محدودة'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
 if(!await page.locator('#article .article-credits a, #article .licensed-byline a').count())throw Error('Original source documentation absent');
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
  await page.getByRole('button',{name:'مقالات كاملة'}).click();
@@ -107,6 +114,9 @@ if(!await page.locator('#article .article-credits a, #article .licensed-byline a
   const count=text.trim().split(/\s+/).length;
   if(count<220||count<article.expected*.8)throw Error('Incomplete article '+article.id+': expected '+article.expected+' words, got '+count);
   if(!await page.locator('#article .licensed-byline a').count()||!await page.locator('#article .license-credit a').count())throw Error('Missing author/source/license in '+article.id);
+  const cover=await page.locator('#article .article-photo img').evaluate(img=>({width:img.naturalWidth,height:img.naturalHeight,src:img.currentSrc,loaded:img.complete}));
+  if(!cover.loaded||cover.width<200||cover.height<100)throw Error('Article has blank or broken visual '+article.id);
+  console.log('ARTICLE IMAGE VERIFIED '+article.id+' '+JSON.stringify(cover));
   console.log('COMPLETE STORY VERIFIED '+article.id+': '+count+' words');
  }
  const licensed=fullRecords[0].id;

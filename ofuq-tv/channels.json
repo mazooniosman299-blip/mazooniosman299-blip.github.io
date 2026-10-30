@@ -23,7 +23,8 @@
       "streams": [
         "https://live-hls-web-aja.getaj.net/AJA/index.m3u8",
         "https://live-hls-v3-aja.getaj.net/AJA-V3/index.m3u8"
-      ]
+      ],
+      "country": "قطر"
     },
     {
       "id": "ajm",
@@ -35,7 +36,8 @@
       "streams": [
         "https://live-hls-web-ajm.getaj.net/AJM/index.m3u8",
         "https://live-hls-apps-ajm-fa.getaj.net/AJM/index.m3u8"
-      ]
+      ],
+      "country": "قطر"
     },
     {
       "id": "alarabiya",
@@ -230,7 +232,8 @@
       "streams": [
         "https://live-hls-apps-aje-fa.getaj.net/AJE/index.m3u8",
         "https://live-hls-web-aje.getaj.net/AJE/index.m3u8"
-      ]
+      ],
+      "country": "قطر"
     },
     {
       "id": "france24fr",
@@ -252,6 +255,188 @@
       "sourceType": "hls",
       "streams": [
         "https://live.france24.com/hls/live/2037220/F24_ES_HI_HLS/master_5000.m3u8"
+      ]
+    },
+    {
+      "id": "oman-general",
+      "title": "تلفزيون سلطنة عُمان",
+      "initial": "OM",
+      "category": "عُمان • مباشر",
+      "country": "عُمان",
+      "publisher": "تلفزيون سلطنة عُمان",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://partneta.cdn.mgmlcdn.com/omantv/smil:omantv.stream.smil/chunklist.m3u8"
+      ]
+    },
+    {
+      "id": "oman-sports",
+      "title": "عُمان الرياضية",
+      "initial": "OM",
+      "category": "عُمان • مباشر",
+      "country": "عُمان",
+      "publisher": "عُمان الرياضية",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://partneta.cdn.mgmlcdn.com/omsport/smil:omsport.stream.smil/chunklist.m3u8"
+      ]
+    },
+    {
+      "id": "oman-cultural",
+      "title": "عُمان الثقافية",
+      "initial": "OM",
+      "category": "عُمان • مباشر",
+      "country": "عُمان",
+      "publisher": "عُمان الثقافية",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://partwota.cdn.mgmlcdn.com/omcultural/smil:omcultural.stream.smil/chunklist.m3u8"
+      ]
+    },
+    {
+      "id": "oman-live",
+      "title": "عُمان مباشر",
+      "initial": "OM",
+      "category": "عُمان • مباشر",
+      "country": "عُمان",
+      "publisher": "عُمان مباشر",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://partwota.cdn.mgmlcdn.com/omlive/smil:omlive.stream.smil/chunklist.m3u8"
+      ]
+    },
+    {
+      "id": "oman-istiqama",
+      "title": "قناة الاستقامة",
+      "initial": "OM",
+      "category": "عُمان • مباشر",
+      "country": "عُمان",
+      "publisher": "قناة الاستقامة",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://jmc-live.ercdn.net/alistiqama/alistiqama.m3u8"
+      ]
+    },
+    {
+      "id": "qatar-tv",
+      "title": "تلفزيون قطر",
+      "initial": "QA",
+      "category": "قطر • مباشر",
+      "country": "قطر",
+      "publisher": "تلفزيون قطر",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://live.kwikmotion.com/qtv1live/qtv1.smil/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "qatar-tv2",
+      "title": "تلفزيون قطر 2",
+      "initial": "QA",
+      "category": "قطر • مباشر",
+      "country": "قطر",
+      "publisher": "تلفزيون قطر 2",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://live.kwikmotion.com/qtv2live/qtv2.smil/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "qatar-quran",
+      "title": "تلفزيون قطر — القرآن الكريم",
+      "initial": "QA",
+      "category": "قطر • مباشر",
+      "country": "قطر",
+      "publisher": "تلفزيون قطر — القرآن الكريم",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://qatartv.akamaized.net/hls/live/20000612/qtvquran/master.m3u8"
+      ]
+    },
+    {
+      "id": "qatar-rayyan",
+      "title": "قناة الريان",
+      "initial": "QA",
+      "category": "قطر • مباشر",
+      "country": "قطر",
+      "publisher": "قناة الريان",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://alrayyancdn.vidgyor.com/pub-noalrayy3pwz0l/liveabr/playlist_dvr.m3u8"
+      ]
+    },
+    {
+      "id": "qatar-rayyan-old",
+      "title": "الريان القديم",
+      "initial": "QA",
+      "category": "قطر • مباشر",
+      "country": "قطر",
+      "publisher": "الريان القديم",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://alrayyancdn.vidgyor.com/pub-nooldraybinbdh/liveabr/playlist_dvr.m3u8"
+      ]
+    },
+    {
+      "id": "qatar-maaref",
+      "title": "قناة المعارف",
+      "initial": "QA",
+      "category": "قطر • مباشر",
+      "country": "قطر",
+      "publisher": "قناة المعارف",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://bucharest.zeuscdn724.com/lb0/CH-AL-MA/index.m3u8"
+      ]
+    },
+    {
+      "id": "sudan-tv",
+      "title": "تلفزيون السودان",
+      "initial": "SD",
+      "category": "السودان • مباشر",
+      "country": "السودان",
+      "publisher": "تلفزيون السودان",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://cdn-globecast.akamaized.net/live/eds/sudan_tv/hls_roku/index.m3u8"
+      ]
+    },
+    {
+      "id": "sudan-dabanga",
+      "title": "راديو دبنقا — تلفزيون",
+      "initial": "SD",
+      "category": "السودان • مباشر",
+      "country": "السودان",
+      "publisher": "راديو دبنقا — تلفزيون",
+      "sourceType": "hls",
+      "candidate": true,
+      "licenseVerified": false,
+      "streams": [
+        "https://hls.dabangasudan.org/hls/stream.m3u8"
       ]
     }
   ]

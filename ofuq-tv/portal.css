@@ -369,3 +369,47 @@
 .player-foot .quality-control select:disabled{opacity:.58;cursor:not-allowed}
 .player-foot #qualityStatus{direction:ltr;display:inline-block;min-width:40px;line-height:1.4;text-align:center;font:700 11px Arial,sans-serif;color:#95e8ec}
 @media(max-width:630px){.player-foot .quality-tools{gap:6px}.player-foot .quality-control select{min-width:89px;max-width:125px;font-size:10px}.player-foot #qualityStatus{min-width:29px;font-size:10px}}
+
+
+/* REAL footage-led, narrated news promos — not a live-TV rebroadcast or still-image graphic. */
+.hero.layout .hero-graphic.news-reel-screen{position:relative!important;background:#000!important;isolation:isolate;overflow:hidden}
+.news-reel-screen .news-reel-video{position:absolute;inset:0;width:100%!important;height:100%!important;object-fit:cover!important;background:#000;z-index:1}
+.news-reel-screen .reel-gradient{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(0deg,#031523ea 0%,#05253d88 39%,transparent 73%,#03152350 100%)}
+.news-reel-caption{position:absolute;inset:0 0 26px;z-index:3;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;gap:5px;color:#fff;direction:rtl;text-align:right;padding:clamp(10px,1.9vw,22px)}
+.news-reel-caption .reel-header{display:flex;justify-content:space-between;align-items:center;gap:9px}
+.reel-tag{background:#dc1425;color:white;font-size:clamp(9px,1vw,13px);padding:4px 10px;font-weight:800;border-inline-start:3px solid #fff}
+.reel-brand{font-size:clamp(12px,1.5vw,20px);text-shadow:0 2px 8px #000}.reel-brand em{font-family:Arial,sans-serif;color:#73e9f2}
+.reel-lower-third{margin-top:auto;margin-bottom:22px;max-width:92%}
+.reel-country{color:#7eeef4;font-size:clamp(10px,1vw,14px);font-weight:900;text-shadow:0 1px 5px #000}
+.reel-lower-third h2{font-size:clamp(17px,2.1vw,30px);line-height:1.55;color:#fff;font-weight:900;text-shadow:0 2px 10px #000;margin:5px 0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.reel-lower-third p{font-size:clamp(10px,1vw,13px);line-height:1.5;color:#e0eff4;max-width:600px;margin:3px 0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.reel-footer{display:flex;align-items:center;justify-content:space-between;gap:5px;font-size:clamp(7px,.7vw,10px);color:#e7faff;text-shadow:0 1px 5px #000}
+.reel-footage-note{opacity:.9}
+.news-reel-screen .reel-progress{position:absolute;left:0;right:0;bottom:0;height:4px;background:#48cde4;z-index:5}
+.news-reel-screen .reel-sound{position:absolute;z-index:6;bottom:32px;left:clamp(8px,1.2vw,15px);border:1px solid #9cd7dd;background:#051522dc;color:#fff;padding:6px 10px;font:800 clamp(9px,1vw,12px) Cairo,Tahoma,sans-serif;border-radius:5px;cursor:pointer}
+.news-reel-screen .reel-sound:focus-visible{outline:2px solid #fff}
+.news-reel-screen .reel-sound[aria-pressed="true"]{background:#0d5d66}
+.news-reel-screen .reel-loading{position:absolute;z-index:7;inset:0;display:flex;align-items:center;justify-content:center;background:#061626;color:#fff;text-align:center;font-size:clamp(11px,1.3vw,16px);padding:14px}
+.news-reel-screen .reel-loading[hidden]{display:none!important}
+.news-reel-screen .hero-breaking{z-index:8;bottom:70px}
+@media(max-width:650px){
+ .news-reel-caption{bottom:24px;padding:8px}
+ .reel-tag{padding:3px 6px}
+ .reel-lower-third{max-width:100%;margin-bottom:23px}
+ .reel-lower-third h2{font-size:clamp(13px,3vw,19px);line-height:1.35;margin:2px 0}
+ .reel-lower-third p{font-size:9px;line-height:1.35;-webkit-line-clamp:1}
+ .news-reel-screen .reel-sound{bottom:28px;left:5px;font-size:9px;padding:4px}
+ .reel-footage-note{display:none}
+}
+
+/* Legible news dates requested by reader. */
+.news-card .date,.news-card .date *{font-size:12px!important;line-height:1.7!important;font-weight:700!important;color:#fff!important}
+
+/* National channel collections: compact selector above existing side-by-side player guide. */
+.channel-directory .channel-country{display:block;width:100%;height:34px;min-width:0;background:#0c2b3d;color:#fff;border:1px solid #386778;border-radius:4px;padding:4px 8px;font:700 12px Cairo,Tahoma,sans-serif;cursor:pointer;margin-bottom:7px}
+.channel-directory .channel-country:focus-visible{outline:2px solid #72e5ed}
+@media(max-width:600px){.channel-directory .channel-country{height:30px;padding:2px 4px;font-size:10px;margin-bottom:4px}}
+
+/* Original editorial fallback covers already contain their own illustration; do not overlay old text placeholders. */
+.news-photo.no-photo:before,.news-photo.no-photo:after{display:none!important}
+.news-photo.no-photo img{display:block!important;width:100%;height:100%;object-fit:cover}
