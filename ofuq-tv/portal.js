@@ -236,7 +236,7 @@ function renderNews(){
 // Put authorized complete articles first without removing any RSS headline.
 const complete=matching.filter(n=>n.full_article===true);
 const summaries=matching.filter(n=>n.full_article!==true);
-const selection=group==='all'&&!search?[...complete,...summaries]:matching;
+const selection=!search?[...complete,...summaries]:matching;
 
  if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار لهذا القسم حالياً. اختر قسماً آخر.';host.append(p)}
  for(const n of selection.slice(0,visibleNews)){
