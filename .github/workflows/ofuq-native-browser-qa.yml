@@ -11,6 +11,7 @@ on:
       - 'ofuq-tv/full-articles.json'
   push:
     branches:
+      - ofuq-fix-five-review-only-20261030
       - ofuq-licensed-full-news-20261030
       - main
     paths:
