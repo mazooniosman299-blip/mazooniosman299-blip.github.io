@@ -65,7 +65,7 @@ try{
  if(allClips.length<4)throw Error('Not enough original video news promo footage');
  let previous=second.src;
  for(let index=2;index<allClips.length;index++){
-  await page.locator('#adVideo').evaluate(v=>{if(v.duration>4)v.currentTime=Math.min(v.duration-.2,9.3)});
+  await page.locator('#adVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
   await page.waitForFunction(({previous,expected})=>{const v=document.getElementById('adVideo');return v.currentSrc!==previous&&v.currentSrc===expected&&v.videoWidth>320&&v.currentTime>.35},{previous,expected:allClips[index]},{timeout:35000});
   const status=await page.evaluate(()=>({src:document.getElementById('adVideo').currentSrc,width:document.getElementById('adVideo').videoWidth,time:document.getElementById('adVideo').currentTime}));
   console.log('REAL LICENSED NEWS VIDEO '+(index+1)+' '+JSON.stringify(status));
