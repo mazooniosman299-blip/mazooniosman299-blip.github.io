@@ -168,7 +168,7 @@ window.addEventListener('pagehide',()=>{stopStream()});
    in the authorized source clip. Never synthesize speech or show advertising. */
 const reportVideo=$('reportVideo'),reportSound=$('reportSound'),reportSource=$('reportSource');
 const reportLoading=$('reportLoading'),reportScreen=$('reportScreen');
-let reportClips=[],reportIndex=0,reportSoundOn=false,reportToken=0,clipErrorCount=0;
+let reportClips=[],reportIndex=0,reportSoundOn=false,reportToken=0,clipErrorCount=0,reportTimer=null;
 function reportUrl(file){
  return 'https://commons.wikimedia.org/wiki/Special:Redirect/file/'+encodeURIComponent(file);
 }
@@ -177,6 +177,8 @@ function reportLoad(index){
  reportIndex=(index+reportClips.length)%reportClips.length;
  const c=reportClips[reportIndex];
  reportToken++;
+ if(reportTimer){clearTimeout(reportTimer);reportTimer=null}
+ reportScreen.classList.add('is-switching');
  $('reportTitle').textContent=c.title;
  $('reportKind').textContent='لقطات حقيقية · أرشيف '+c.date.slice(0,4);
  $('reportDate').textContent=c.date;
@@ -204,8 +206,14 @@ reportSound.addEventListener('click',()=>{
 });
 // Reports advance automatically at ended, and skip sources that fail playback.
 // No manual next button and no artificial talking-head or TTS overlay.
-reportVideo.addEventListener('loadeddata',()=>{reportLoading.hidden=true});
-reportVideo.addEventListener('playing',()=>{reportLoading.hidden=true;clipErrorCount=0});
+reportVideo.addEventListener('loadeddata',()=>{reportLoading.hidden=true;reportScreen.classList.remove('is-switching')});
+reportVideo.addEventListener('playing',()=>{
+ reportLoading.hidden=true;clipErrorCount=0;
+ if(reportTimer)clearTimeout(reportTimer);
+ const token=reportToken;
+ // News-style montage: bound each segment to 24 seconds without modifying footage.
+ reportTimer=setTimeout(()=>{if(token===reportToken&&reportClips.length>1)reportLoad(reportIndex+1)},24000);
+});
 reportVideo.addEventListener('ended',()=>reportLoad(reportIndex+1));
 reportVideo.addEventListener('error',()=>{
  const failed=reportIndex;
