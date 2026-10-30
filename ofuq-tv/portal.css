@@ -409,3 +409,7 @@
 .channel-directory .channel-country{display:block;width:100%;height:34px;min-width:0;background:#0c2b3d;color:#fff;border:1px solid #386778;border-radius:4px;padding:4px 8px;font:700 12px Cairo,Tahoma,sans-serif;cursor:pointer;margin-bottom:7px}
 .channel-directory .channel-country:focus-visible{outline:2px solid #72e5ed}
 @media(max-width:600px){.channel-directory .channel-country{height:30px;padding:2px 4px;font-size:10px;margin-bottom:4px}}
+
+/* Original editorial fallback covers already contain their own illustration; do not overlay old text placeholders. */
+.news-photo.no-photo:before,.news-photo.no-photo:after{display:none!important}
+.news-photo.no-photo img{display:block!important;width:100%;height:100%;object-fit:cover}
