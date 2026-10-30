@@ -11,13 +11,18 @@ let channelSearch='',channels=[],selected=null,hlsController=null,streamToken=0,
 let startupTimer=null,stallTimer=null,levelRecovery=0,currentSourceIndex=0;
 const video=$('nativePlayer'),idle=$('idle'),qualitySelect=$('qualitySelect'),qualityStatus=$('qualityStatus');
 function startingBandwidth(){
- // Use the browser's network hint if available; otherwise start optimistically on broadband.
- // ABR may still lower the level to avoid stalls once fragment throughput is measured.
+ // Prefer a clear opening picture on modern fast connections, but preserve data-saver
+ // and slow-connection behavior. ABR still reacts to measured segment throughput.
  const conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
  const downlink=Number(conn?.downlink);
- if(Number.isFinite(downlink)&&downlink>0)return Math.max(600_000,Math.min(14_000_000,downlink*850_000));
+ if(conn?.saveData)return Number.isFinite(downlink)&&downlink>0?Math.max(400_000,Math.min(1_200_000,downlink*800_000)):800_000;
  if(conn?.effectiveType==='slow-2g'||conn?.effectiveType==='2g')return 450_000;
- if(conn?.effectiveType==='3g')return 1_500_000;
+ if(conn?.effectiveType==='3g')return Math.max(800_000,Math.min(2_200_000,Number.isFinite(downlink)&&downlink>0?downlink*800_000:1_500_000));
+ if(Number.isFinite(downlink)&&downlink>0){
+  const hinted=downlink*900_000;
+  // A 4G estimate can be very conservative before first video fragments.
+  return Math.max(conn?.effectiveType==='4g'||conn?.type==='wifi'?3_800_000:1_200_000,Math.min(14_000_000,hinted));
+ }
  return 6_000_000;
 }
 function resetQuality(){
