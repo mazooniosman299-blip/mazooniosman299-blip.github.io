@@ -29,6 +29,8 @@ jobs:
       - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.13'
+      - name: Read-only audit of extra Creative Commons Arabic archives (never auto-publish)
+        run: PROBE_PAGES=80 python scripts/probe_ofuq_archive_coverage.py
       - name: Fetch complete legally reusable Arabic articles
         run: |
           python scripts/update_ofuq_full_articles.py
