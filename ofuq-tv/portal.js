@@ -163,7 +163,7 @@ async function refreshChannels(){
 refreshChannels();
 setInterval(()=>{if(!document.hidden)refreshChannels()},300000);
 window.addEventListener('pagehide',()=>{stopStream()});
-/* First-party advertising video playlist; refreshes automatically when ads.json changes. */
+/* Authentic, individually credited archival event reports. */
 /* Real editorial footage. Audio is the ORIGINAL human narration already recorded
    in the authorized source clip. Never synthesize speech or show advertising. */
 const reportVideo=$('reportVideo'),reportSound=$('reportSound'),reportSource=$('reportSource');
