@@ -397,3 +397,6 @@
 .hero-video-report .report-next{position:absolute;z-index:5;right:12px;top:12px;color:#fff;background:#061b2cda;border:1px solid #8ccbd6;border-radius:4px;padding:7px 10px;font-size:12px}
 @media(max-width:970px){.hero.layout .hero-graphic.hero-video-report{width:100%!important;max-width:650px!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important;grid-row:1!important}.hero-copy{grid-row:2}}
 @media(max-width:650px){.hero.layout .hero-graphic.hero-video-report{max-width:100%!important;min-height:205px!important}.hero-video-report .report-lower-third{padding:30px 10px 9px}.hero-video-report .report-lower-third h2{font-size:14px}.hero-video-report .report-kind{font-size:9px}.hero-video-report .report-line{font-size:9px}.hero-video-report .report-sound,.hero-video-report .report-next{top:7px;font-size:10px;padding:5px 7px}}
+
+/* Layout is flex!important in the legacy stylesheet; grid-row cannot reorder it. */
+@media(max-width:970px){.hero.layout{flex-direction:column-reverse!important}.hero.layout .hero-graphic.hero-video-report{order:0!important}.hero.layout .hero-copy{order:0!important}}
