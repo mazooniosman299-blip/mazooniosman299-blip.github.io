@@ -13,6 +13,10 @@ complete=Counter(x.get("section") for x in news if x.get("full_article") and x.g
 # "articles" is a virtual site filter that includes all licensed full texts.
 complete["articles"]=sum(bool(x.get("full_article") and x.get("id") in full) for x in news)
 photos=Counter(x.get("section") for x in news if x.get("image"))
+# Full-article filter spans other topical sections; don't undercount its source photos.
+article_filter=[x for x in news if x.get("full_article") or x.get("section")=="articles"]
+totals["articles"]=len(article_filter)
+photos["articles"]=sum(bool(x.get("image")) for x in article_filter)
 print("SECTION AUDIT (total, legally complete, source-image URL)")
 for section in sections:
     print(f"{section}: {totals[section]}, {complete[section]}, {photos[section]}")
