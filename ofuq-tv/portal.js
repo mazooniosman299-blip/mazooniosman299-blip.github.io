@@ -7,7 +7,7 @@ $('year').textContent=String(new Date().getFullYear());
 $('menuButton').addEventListener('click',()=>{const nav=$('navigation');const open=nav.classList.toggle('open');$('menuButton').setAttribute('aria-expanded',String(open))});
 document.querySelectorAll('#navigation a').forEach(a=>a.addEventListener('click',()=>{$('navigation').classList.remove('open');$('menuButton').setAttribute('aria-expanded','false')}));
 /* Independent OFUQ HTML5/HLS player: no YouTube API, iframe or restream proxy. */
-let channelSearch='',channels=[],selected=null,hlsController=null,streamToken=0,mediaActive=false;
+let channelSearch='',channelCountry='all',channels=[],selected=null,hlsController=null,streamToken=0,mediaActive=false;
 let startupTimer=null,stallTimer=null,levelRecovery=0,currentSourceIndex=0;
 const video=$('nativePlayer'),idle=$('idle'),qualitySelect=$('qualitySelect'),qualityStatus=$('qualityStatus');
 function startingBandwidth(){
@@ -75,7 +75,7 @@ function validChannel(ch){return !!ch&&typeof ch.id==='string'&&typeof ch.title=
 function renderChannels(){
  const container=$('channelList');container.replaceChildren();
  $('channelCount').textContent=channels.length+' قناة';
- for(const ch of channels.filter(x=>(x.title+' '+(x.category||'')).toLocaleLowerCase().includes(channelSearch))){
+ for(const ch of channels.filter(x=>(channelCountry==='all'||(channelCountry==='other'&&!['عُمان','قطر','السودان'].includes(x.country))||x.country===channelCountry)&&(x.title+' '+(x.category||'')).toLocaleLowerCase().includes(channelSearch))){
   const b=document.createElement('button');b.type='button';b.className='channel'+(selected?.id===ch.id?' active':'');b.setAttribute('aria-pressed',String(selected?.id===ch.id));
   const icon=document.createElement('span');icon.className='initial';icon.textContent=ch.initial||'TV';
   const label=document.createElement('span');const name=document.createElement('b');name.textContent=ch.title;
@@ -149,6 +149,7 @@ function startSource(ch,token){
  controller.attachMedia(video);
 }
 $('channelSearch').addEventListener('input',e=>{channelSearch=e.target.value.trim().toLocaleLowerCase();renderChannels()});
+$('channelCountry').addEventListener('change',e=>{channelCountry=e.target.value;renderChannels()});
 $('full').addEventListener('click',()=>{const target=document.querySelector('.channel-player');if(document.fullscreenElement)document.exitFullscreen?.().catch(()=>{});else target.requestFullscreen?.().catch(()=>{})});
 async function refreshChannels(){
  try{
