@@ -9,7 +9,54 @@ document.querySelectorAll('#navigation a').forEach(a=>a.addEventListener('click'
 /* Independent OFUQ HTML5/HLS player: no YouTube API, iframe or restream proxy. */
 let channelSearch='',channels=[],selected=null,hlsController=null,streamToken=0,mediaActive=false;
 let startupTimer=null,stallTimer=null,levelRecovery=0,currentSourceIndex=0;
-const video=$('nativePlayer'),idle=$('idle');
+const video=$('nativePlayer'),idle=$('idle'),qualitySelect=$('qualitySelect'),qualityStatus=$('qualityStatus');
+function startingBandwidth(){
+ // Use the browser's network hint if available; otherwise start optimistically on broadband.
+ // ABR may still lower the level to avoid stalls once fragment throughput is measured.
+ const conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+ const downlink=Number(conn?.downlink);
+ if(Number.isFinite(downlink)&&downlink>0)return Math.max(600_000,Math.min(14_000_000,downlink*850_000));
+ if(conn?.effectiveType==='slow-2g'||conn?.effectiveType==='2g')return 450_000;
+ if(conn?.effectiveType==='3g')return 1_500_000;
+ return 6_000_000;
+}
+function resetQuality(){
+ qualitySelect.replaceChildren();
+ const auto=document.createElement('option');auto.value='auto';auto.textContent='تلقائي (أنسب جودة)';qualitySelect.append(auto);
+ qualitySelect.value='auto';qualitySelect.disabled=true;qualityStatus.textContent='';
+}
+function updateQualityLabel(){
+ if(video.videoHeight>0)qualityStatus.textContent=video.videoHeight+'p';
+ else if(hlsController?.currentLevel>=0)qualityStatus.textContent=(hlsController.levels?.[hlsController.currentLevel]?.height||'')+'p';
+ else qualityStatus.textContent='';
+}
+function buildQualityMenu(controller,levels){
+ resetQuality();
+ if(!Array.isArray(levels)||!levels.length)return;
+ const byHeight=new Map();
+ levels.forEach((level,index)=>{
+  const h=Number(level.height),b=Number(level.bitrate||0);
+  if(h>0&&(!byHeight.has(h)||b>Number(levels[byHeight.get(h)].bitrate||0)))byHeight.set(h,index);
+ });
+ for(const [height,index] of [...byHeight].sort((a,b)=>b[0]-a[0])){
+  const option=document.createElement('option');option.value=String(index);option.textContent=height+'p';qualitySelect.append(option);
+ }
+ qualitySelect.disabled=byHeight.size<2;
+ if(byHeight.size===1)qualityStatus.textContent=[...byHeight.keys()][0]+'p (المصدر)';
+}
+qualitySelect.addEventListener('change',()=>{
+ const controller=hlsController;
+ if(!controller||!controller.levels?.length){qualitySelect.value='auto';return}
+ if(qualitySelect.value==='auto')controller.loadLevel=-1;
+ else{
+  const index=Number(qualitySelect.value);
+  if(!Number.isInteger(index)||index<0||index>=controller.levels.length){qualitySelect.value='auto';controller.loadLevel=-1;return}
+  // Smooth subsequent segment loading at user-selected resolution; no buffer flush.
+  controller.loadLevel=index;
+ }
+});
+video.addEventListener('resize',updateQualityLabel);
+resetQuality();
 const clearTimers=()=>{if(startupTimer)clearTimeout(startupTimer);if(stallTimer)clearTimeout(stallTimer);startupTimer=stallTimer=null};
 function validChannel(ch){return !!ch&&typeof ch.id==='string'&&typeof ch.title==='string'&&Array.isArray(ch.streams)&&ch.streams.length>0&&ch.streams.every(u=>{try{const v=new URL(u);return v.protocol==='https:'&&v.pathname.toLowerCase().endsWith('.m3u8')}catch{return false}})}
 function renderChannels(){
@@ -28,7 +75,7 @@ function stopStream(){
  ++streamToken;clearTimers();disposeHls();
  video.onplaying=video.onerror=video.onwaiting=video.onstalled=video.ontimeupdate=null;
  video.pause();video.removeAttribute('src');video.load();video.hidden=true;
- mediaActive=false;
+ mediaActive=false;resetQuality();
 }
 function switchChannel(ch){
  if(!validChannel(ch))return;
@@ -38,7 +85,7 @@ function switchChannel(ch){
 }
 function startSource(ch,token){
  if(streamToken!==token||selected?.id!==ch.id)return;
- clearTimers();disposeHls();mediaActive=false;
+ clearTimers();disposeHls();mediaActive=false;resetQuality();
  video.pause();video.removeAttribute('src');video.load();
  const source=ch.streams[currentSourceIndex];
  if(!source){video.hidden=true;idle.hidden=false;notify('البث غير متاح الآن','error');return}
@@ -66,7 +113,7 @@ function startSource(ch,token){
   video.src=source;startPlayback();return;
  }
  if(!window.Hls?.isSupported()){fallback();return}
- const controller=new Hls({enableWorker:true,startLevel:-1,abrEwmaDefaultEstimate:5_500_000,abrBandWidthFactor:0.85,abrBandWidthUpFactor:0.75,capLevelToPlayerSize:false,capLevelOnFPSDrop:true,maxBufferLength:28,lowLatencyMode:true});
+ const controller=new Hls({enableWorker:true,startLevel:-1,testBandwidth:false,abrEwmaDefaultEstimate:startingBandwidth(),abrBandWidthFactor:0.85,abrBandWidthUpFactor:0.75,capLevelToPlayerSize:false,capLevelOnFPSDrop:true,maxBufferLength:28,backBufferLength:30,lowLatencyMode:true});
  hlsController=controller;
  controller.on(Hls.Events.ERROR,(_event,data)=>{
   if(!valid()||hlsController!==controller||!data.fatal)return;
@@ -74,7 +121,8 @@ function startSource(ch,token){
   else fallback();
  });
  controller.on(Hls.Events.MEDIA_ATTACHED,()=>{if(valid()&&hlsController===controller)controller.loadSource(source)});
- controller.on(Hls.Events.MANIFEST_PARSED,()=>{if(valid())startPlayback()});
+ controller.on(Hls.Events.MANIFEST_PARSED,(_event,data)=>{if(valid()){buildQualityMenu(controller,data.levels);startPlayback()}});
+ controller.on(Hls.Events.LEVEL_SWITCHED,()=>{if(valid())updateQualityLabel()});
  controller.attachMedia(video);
 }
 $('channelSearch').addEventListener('input',e=>{channelSearch=e.target.value.trim().toLocaleLowerCase();renderChannels()});
