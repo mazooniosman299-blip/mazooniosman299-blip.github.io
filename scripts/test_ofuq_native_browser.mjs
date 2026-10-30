@@ -115,6 +115,26 @@ try{
  const newsLinks=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(a=>({full:!!a.querySelector('.full-news-tag'),href:a.getAttribute('href')})));
  if(newsLinks.some(x=>!x.href.startsWith('story.html?id=')))throw Error('An OFUQ news item still navigates outside the website');
  if(newsLinks.filter(x=>x.full).length<15)throw Error('Default news cards do not prioritize complete on-site licensed articles');
+ // The user needs an honest full-body audit of ALL visible topic filters.
+ const requiredTopics=['sudan','world','region','sports','technology','arts','variety','articles'];
+ const sectionResults=[];
+ for(const name of requiredTopics){
+   await page.locator('[data-group="'+name+'"]').click();
+   const results=await page.locator('#newsGrid .news-card').evaluateAll(cards=>({
+     count:cards.length,
+     fullyLicensed:cards.filter(c=>!!c.querySelector('.full-news-tag')).length,
+     imageUrls:cards.filter(c=>!!c.querySelector('.news-photo img')).length,
+     brokenPhotos:cards.filter(c=>{const img=c.querySelector('.news-photo img');return img&&img.complete&&img.naturalWidth===0}).length
+   }));
+   sectionResults.push({name,...results});
+ }
+ console.log('ALL NEWS SECTION QUALITY '+JSON.stringify(sectionResults));
+ if(sectionResults.some(x=>x.count===0))throw Error('Empty category: '+sectionResults.filter(x=>!x.count).map(x=>x.name).join(', '));
+ if(sectionResults.some(x=>x.count!==x.fullyLicensed))
+   throw Error('Some categories contain truncated RSS briefs: '+JSON.stringify(sectionResults.filter(x=>x.count!==x.fullyLicensed)));
+ if(sectionResults.some(x=>x.imageUrls!==x.count||x.brokenPhotos>0))
+   throw Error('Original story pictures missing or broken: '+JSON.stringify(sectionResults));
+ await page.locator('[data-group="all"]').click();
  const briefId=await page.evaluate(async()=>{const d=await (await fetch('news.json')).json();return d.items.find(x=>x.full_article!==true)?.id});
  if(briefId){
   await page.goto('http://127.0.0.1:8765/story.html?id='+briefId,{waitUntil:'domcontentloaded'});
