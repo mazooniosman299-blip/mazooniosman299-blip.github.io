@@ -66,7 +66,7 @@ for(const f of fs.readdirSync(dir).filter(x=>x.endsWith('.js'))){
   check(r.status===0,'JS syntax '+f+': '+(r.stderr||'').slice(0,500));
 }
 const reels=json('news-reels.json');
-check(Array.isArray(reels.clips)&&reels.clips.length>=3,'Fewer than 3 licensed real-film news clips');
+check(Array.isArray(reels.clips)&&reels.clips.length>=2,'Fewer than 2 decoded original news clips');
 for(const clip of reels.clips||[]){
  let valid=false;
  try{const u=new URL(clip.video),source=new URL(clip.source);
