@@ -16,10 +16,7 @@ for(const [id, a] of Object.entries(full)){
  check(Array.isArray(a?.paragraphs)&&a.paragraphs.length>=5,'Incomplete imported article '+id);
  check(a?.word_count>=220,'RSS excerpt incorrectly classified as complete article '+id);
 }
-const sourceDirectory=json('news-sources.json');
-check(Array.isArray(sourceDirectory.sources)&&sourceDirectory.sources.length>=20,'International RSS registry missing');
-check(sourceDirectory.sources.some(x=>x.section==='sudan'&&x.enabled!==false),'Sudan dedicated news feed absent');
-const breaking=json('breaking.json'),channels=json('channels.json'),news=json('news.json'),archive=json('news-archive.json'),briefs=json('news-briefs.json');
+const breaking=json('breaking.json'),channels=json('channels.json'),news=json('news.json'),archive=json('news-archive.json');
 check(Array.isArray(channels.channels)&&channels.channels.length>=10,'Expected expanded native channel guide');
 check(Array.isArray(breaking.items),'Missing breaking news array');
 check(fs.readFileSync(path.join(dir,'index.html'),'utf8').includes('id="breakingStrip"'),'Missing visible breaking ticker container');
@@ -37,15 +34,16 @@ const archiveSet=new Set((archive.items||[]).map(x=>x.url));
 const storyIds=new Set((archive.items||[]).map(x=>String(x.id||(String(x.url||'').match(/\/(\d{5,12})(?:[/?#]|$)/)||[])[1]||'')));
 for(const item of news.items||[]){
   check(archiveSet.has(item.url),'News URL not in archive: '+item.url);
-  if(item.full_article===true)check(Boolean(full[item.id]),'Full article listed without licensed body: '+item.id);
-  let sourceValid=false;
-  try{
-   const u=new URL(item.url);
-   sourceValid=sourceDirectory.sources.some(x=>x.name===item.source&&x.enabled!==false&&(!x.requiresCommercialLicense||x.commercialLicenseApproved===true)&&u.protocol==='https:'&&(x.hosts||[]).some(host=>u.hostname===host||u.hostname.endsWith('.'+host)));
-  }catch{}
-  check(sourceValid,'Unsupported news source '+item.url);check(/^(?:[a-f0-9]{14}|[0-9]{5,12})$/.test(String(item.id||'')),'Invalid story ID '+item.url);
+  const complete=full[item.id];
+  check(item.full_article===true&&!!complete,'RSS excerpt or missing complete licensed body '+item.id);
+  check(complete?.approved===true&&complete?.rights==='licensed'&&complete?.license==='CC BY 3.0'&&complete?.original_url===item.url,'Unlicensed full-story record '+item.id);
+  check(item.source==='الأصوات العالمية'&&/^https:\/\/ar\.globalvoices\.org\//.test(item.url||''),'Non-licensed publisher '+item.url);
+  check(/^[a-f0-9]{14}$/.test(String(item.id||'')),'Invalid licensed story ID '+item.url);
 }
-for(const id of Object.keys(briefs||{}))check(storyIds.has(id),'Brief without archived story: '+id);
+check(!fs.existsSync(path.join(dir,'news-briefs.json')),'Unlicensed RSS brief data must be deleted');
+check(!(archive.items||[]).some(x=>x.full_article!==true||!full[x.id]),'Archive contains an unlicensed excerpt');
+check(!fs.readFileSync(path.join(dir,'story.js'),'utf8').includes('موجز إخباري موثق'),'The removed excerpt notice returned');
+check(!portal.includes('news-briefs.json'),'Front end still reads excerpt-only data');
 const htmls=['index.html','story.html','editorial.html','privacy.html','player.html'];
 for(const f of htmls){
   const full=path.join(dir,f);
