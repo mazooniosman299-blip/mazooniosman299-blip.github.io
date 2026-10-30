@@ -213,7 +213,7 @@ fetch('report-clips.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('man
  reportClips=(Array.isArray(d.clips)?d.clips:[]).filter(x=>
  x&&typeof x.filename==='string'&&x.filename.endsWith('.webm')&&
  typeof x.source_page==='string'&&x.source_page.startsWith('https://commons.wikimedia.org/wiki/File:')&&
- x.license==='CC BY 3.0'&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&typeof x.title==='string'&&typeof x.source==='string'
+ ['CC BY 3.0','CC BY 4.0'].includes(x.license)&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&typeof x.title==='string'&&typeof x.source==='string'
  );
  reportLoad(0);
 }).catch(()=>{reportLoading.textContent='تعذّر تحميل التقارير المرخّصة';reportLoading.hidden=false});
