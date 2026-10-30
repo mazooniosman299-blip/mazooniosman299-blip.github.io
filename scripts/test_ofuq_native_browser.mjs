@@ -47,6 +47,14 @@ try{
   if(passed.length>=2)break;
  }
  if(passed.length<2)throw Error('Only '+passed.length+' direct channels decoded video; need at least 2.');
+ // Staged public HLS candidates: do not merge them without a decoded video frame for every new channel.
+ for(const countryChannel of ['تلفزيون سلطنة عُمان','تلفزيون قطر','قناة الريان','تلفزيون السودان']){
+  const btn=page.getByRole('button',{name:new RegExp(countryChannel)}).first();
+  if(!(await btn.count()))throw Error('Candidate channel missing: '+countryChannel);
+  await btn.click();
+  if(!(await videoProgress(page,countryChannel)))throw Error('Candidate cannot decode: '+countryChannel);
+ }
+
  const ad=await page.locator('#adVideo').evaluate(v=>({time:v.currentTime,width:v.videoWidth,height:v.videoHeight,src:v.currentSrc,paused:v.paused,error:v.error?.code||null}));
  console.log('AD STATE '+JSON.stringify(ad));
  if(ad.width<100||ad.time<1)throw Error('Upper advertising MP4 did not play');

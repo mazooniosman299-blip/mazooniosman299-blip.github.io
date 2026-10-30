@@ -253,6 +253,50 @@
       "streams": [
         "https://live.france24.com/hls/live/2037220/F24_ES_HI_HLS/master_5000.m3u8"
       ]
+    },
+    {
+      "id": "omantv",
+      "title": "تلفزيون سلطنة عُمان",
+      "initial": "OM",
+      "category": "عربية • عُمان",
+      "publisher": "تلفزيون سلطنة عُمان",
+      "sourceType": "hls",
+      "streams": [
+        "https://partneta.cdn.mgmlcdn.com/omantv/smil:omantv.stream.smil/chunklist.m3u8"
+      ]
+    },
+    {
+      "id": "qatartv",
+      "title": "تلفزيون قطر",
+      "initial": "QTV",
+      "category": "عربية • قطر",
+      "publisher": "تلفزيون قطر",
+      "sourceType": "hls",
+      "streams": [
+        "https://live.kwikmotion.com/qtv1live/qtv1.smil/playlist.m3u8"
+      ]
+    },
+    {
+      "id": "alrayyan",
+      "title": "قناة الريان",
+      "initial": "RYN",
+      "category": "عربية • قطر",
+      "publisher": "قناة الريان",
+      "sourceType": "hls",
+      "streams": [
+        "https://alrayyancdn.vidgyor.com/pub-noalrayy3pwz0l/liveabr/playlist_dvr.m3u8"
+      ]
+    },
+    {
+      "id": "sudantv",
+      "title": "تلفزيون السودان",
+      "initial": "SD",
+      "category": "عربية • السودان",
+      "publisher": "تلفزيون السودان",
+      "sourceType": "hls",
+      "streams": [
+        "https://cdn-globecast.akamaized.net/live/eds/sudan_tv/hls_roku/index.m3u8"
+      ]
     }
   ]
 }
