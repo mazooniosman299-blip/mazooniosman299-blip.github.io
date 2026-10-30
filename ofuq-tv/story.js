@@ -11,20 +11,19 @@ function clean(text){return String(text||'').replace(/\*\*/g,'').replace(/<[^>]*
 function addText(root,tag,cl,str){const text=clean(str);if(text)root.append(node(tag,cl,text))}
 Promise.all([
  fetch('news-archive.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('archive');return r.json()}).catch(()=>fetch('news.json',{cache:'no-store'}).then(r=>r.json())),
- fetch('news-briefs.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}),
  fetch('full-articles.json?ts='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({}))
-]).then(([data,briefs,licensedArticles])=>{
+]).then(([data,licensedArticles])=>{
  const items=Array.isArray(data.items)?data.items:[];
  const story=items.find(n=>articleId(n)===id);host.replaceChildren();
  if(!story){host.append(node('h1','','الخبر غير متاح'),node('p','loading','الرجاء اختيار خبر آخر من القائمة.'));return}
- const brief=briefs[id]||{};
  const full=licensedArticles[id];
  const validFull=Boolean(full&&full.approved===true&&['original','licensed'].includes(full.rights)&&Array.isArray(full.paragraphs)&&full.paragraphs.length>=5&&full.paragraphs.some(p=>p.text?.length>70)&&full.original_url===story.url);
  // Keep every reader route in OFUQ. Do not copy full publisher texts
  // from a short RSS feed unless their reuse rights have been verified.
  // Non-licensed feeds are explicitly identified as briefs, never full reports.
  document.title=story.title+' | أُفُق TV';
- host.append(node('div','category',brief.category||CATEGORIES[story.section]||'الأخبار'));
+ if(!validFull){host.replaceChildren(node('h1','','الخبر غير متاح'),node('p','loading','هذه المادة ليست مرخصة للنشر داخل أُفُق.'));return}
+ host.append(node('div','category',CATEGORIES[story.section]||'الأخبار'));
  host.append(node('h1','',story.title));
  const meta=node('div','meta','');
  meta.append(node('span','',date(story.published_at)));host.append(meta);
@@ -59,18 +58,8 @@ Promise.all([
   rights.append(license);
   rights.append(node('span','',' · أعيد تنسيق النص مع نسبة المصدر والمؤلف.'));
   host.append(rights);
- }else{
-  host.append(node('p','licensed-byline','موجز إخباري موثق — النص الكامل غير مرخص لإعادة النشر داخل أُفُق'));
-  // A feed excerpt is NOT a full article nor a grant to copy the publisher's full work.
-  // Keep it factually accurate; prioritize complete licensed reports elsewhere.
-  const paragraphs=Array.isArray(brief.paragraphs)?brief.paragraphs.map(clean).filter(Boolean):[];
-  const lead=clean(brief.lead||story.excerpt||'');
-  if(lead)addText(host,'p','intro',lead);
-  const body=node('div','body-copy','');
-  for(const para of paragraphs)if(para!==lead)addText(body,'p','',para);
-  host.append(body);
  }
- const more=items.filter(n=>articleId(n)!==id&&(n.section===story.section||n.section==='world')).slice(0,4);
+ const more=items.filter(n=>n.full_article===true&&articleId(n)!==id&&(n.section===story.section||n.section==='world')).slice(0,4);
  if(more.length){
   const section=node('section','article-more','');
   section.append(node('h2','','أخبار وتطورات مرتبطة'));
@@ -85,6 +74,6 @@ Promise.all([
  // Preserve a source reference for transparency without imposing an outbound reading flow.
 
  const related=$('related');related.replaceChildren();
- for(const n of items.filter(n=>articleId(n)!==id).slice(0,6)){const a=node('a','',n.title);a.href='story.html?id='+encodeURIComponent(articleId(n));related.append(a)}
+ for(const n of items.filter(n=>n.full_article===true&&articleId(n)!==id).slice(0,6)){const a=node('a','',n.title);a.href='story.html?id='+encodeURIComponent(articleId(n));related.append(a)}
 }).catch(()=>{host.replaceChildren(node('h1','','تعذّر عرض الخبر'),node('p','loading','يرجى العودة إلى الأخبار.'))});
 })();
