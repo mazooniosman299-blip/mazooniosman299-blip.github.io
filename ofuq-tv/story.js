@@ -22,7 +22,7 @@ Promise.all([
  // from a short RSS feed unless their reuse rights have been verified.
  // Non-licensed feeds are explicitly identified as briefs, never full reports.
  document.title=story.title+' | أُفُق TV';
- if(!validFull){host.replaceChildren(node('h1','','الخبر غير متاح'),node('p','loading','هذه المادة ليست مرخصة للنشر داخل أُفُق.'));return}
+ if(!validFull){host.replaceChildren(node('h1','','الخبر غير متاح'));return}
  host.append(node('div','category',CATEGORIES[story.section]||'الأخبار'));
  host.append(node('h1','',story.title));
  const meta=node('div','meta','');
