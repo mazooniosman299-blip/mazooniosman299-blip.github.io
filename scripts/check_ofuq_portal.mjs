@@ -2,6 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 const root=process.cwd(), dir=path.join(root,'ofuq-tv');
+const portal=fs.readFileSync(path.join(dir,'portal.js'),'utf8');
+const mainPage=fs.readFileSync(path.join(dir,'index.html'),'utf8');
+if(portal.includes('عدد المواد:')||portal.includes('آخر تحديث من المصادر الرسمية')||mainPage.includes('id="newsSummary"'))throw Error('Removed news counter unexpectedly returned');
 let errors=[], checks=0;
 function check(test,msg){checks++;if(!test)errors.push(msg)}
 function json(f){try{return JSON.parse(fs.readFileSync(path.join(dir,f),'utf8'))}catch(e){errors.push(f+': JSON invalid ('+e.message+')');return{}}}
