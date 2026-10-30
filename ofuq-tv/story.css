@@ -42,3 +42,6 @@
 .article-credits summary{cursor:pointer}.article-credits a{display:inline-block;padding:10px;color:#94e5e7}
 .related-report-note{font-size:12px;line-height:2;color:#a4c1cc;margin-top:20px}
 .news-card .full-news-tag{display:inline-block;padding:3px 7px;background:#0d5759;color:#fff;border-radius:4px;font-size:11px}
+
+.article .meta,.article .meta time{font-size:10px!important;color:#fff!important;line-height:1.65!important}
+.article .licensed-byline{color:#e8f6fd}
