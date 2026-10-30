@@ -179,6 +179,8 @@ def main():
         value = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
         if not path.exists() or path.read_text(encoding="utf-8") != value:
             path.write_text(value, encoding="utf-8")
+    from update_ofuq_news import update_sitemap
+    update_sitemap(archive)
     print(f"LICENSED COMPLETE ARTICLES: imported={len(imported)}, stored={len(new_full)}, latest={len(current)}, archive={len(archive)}", flush=True)
 
 if __name__ == "__main__":
