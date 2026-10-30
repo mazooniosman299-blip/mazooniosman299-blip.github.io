@@ -71,7 +71,7 @@ try{
  }
 
  // Only authentic source footage with the human's original recorded voice.
- await page.waitForFunction(()=>window.ofuqReportInfo?.().count===3,null,{timeout:14000});
+ await page.waitForFunction(()=>window.ofuqReportInfo?.().count===5,null,{timeout:14000});
  if(await page.evaluate(()=>document.body.innerText.includes('إعلانك على شاشة أُفُق')))throw Error('Old OFUQ advertising message remains');
  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.currentTime>1.5&&v.videoWidth>=600&&!v.paused},null,{timeout:55000});
  const initialReport=await page.locator('#reportVideo').evaluate(v=>({time:v.currentTime,videoWidth:v.videoWidth,videoHeight:v.videoHeight,muted:v.muted,src:v.currentSrc}));
@@ -91,6 +91,16 @@ try{
  await page.waitForFunction(()=>window.ofuqReportInfo?.().index===2,null,{timeout:8000});
  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.videoWidth>=600&&v.currentTime>1&&!v.paused},null,{timeout:55000});
  console.log('AUTO ADVANCE THIRD REPORT PASS '+await page.locator('#reportTitle').innerText());
+ // Extra news footage must decode real motion and a real audio track before release.
+ for(const target of [3,4]){
+  await page.locator('#reportVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
+  await page.waitForFunction(i=>window.ofuqReportInfo?.().index===i,target,{timeout:14000});
+  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v.videoWidth>320&&v.currentTime>1&&!v.paused},null,{timeout:60000});
+  const clip=await page.locator('#reportVideo').evaluate(v=>({title:document.getElementById('reportTitle').textContent,time:v.currentTime,width:v.videoWidth,height:v.videoHeight,muted:v.muted,audioBytes:v.webkitAudioDecodedByteCount??null}));
+  console.log('EXTRA AUTHENTIC EVENT VIDEO '+JSON.stringify(clip));
+  if(clip.audioBytes===0)throw Error('Extra footage lacks recorded human/ambient audio: '+clip.title);
+ }
+
 
 
  await page.setViewportSize({width:390,height:844});
