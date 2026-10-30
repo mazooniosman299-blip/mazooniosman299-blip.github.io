@@ -228,7 +228,7 @@ def licensed_cards():
             "id": sid, "title": article.get("title", ""), "url": url,
             "source": "الأصوات العالمية", "section": "articles",
             "published_at": article.get("published_at", ""),
-            "excerpt": intro[:260], "image": "", "full_article": True
+            "excerpt": intro[:260], "image": article.get("image", ""), "full_article": True
         })
     return out
 
