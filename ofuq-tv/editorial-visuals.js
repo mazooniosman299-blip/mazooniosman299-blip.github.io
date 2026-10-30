@@ -30,7 +30,13 @@ function illustration(story){
 function media(host,story,opts={}){
  const imgUrl=typeof story?.image==='string'?story.image:'';
  let uri;try{uri=new URL(imgUrl);if(uri.protocol!=='https:')uri=null}catch{uri=null}
- const visual=()=>{const fallback=illustration(story);host.append(fallback);host.classList.add('illustrated');const badge=host.querySelector('.image-source');if(badge)badge.textContent='رسم توضيحي';return fallback};
+ const visual=()=>{
+   // Never depict a reported event with an unrelated icon or stock illustration.
+   // A source story without usable licensed/attributed photography is text-only.
+   host.classList.add('no-source-image');
+   host.hidden=true;
+   return null;
+ };
  if(!uri){visual();return}
  const image=document.createElement('img');
  image.src=uri.href;image.alt='صورة من المصدر: '+(story.source||'الناشر');
