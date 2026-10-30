@@ -1,5 +1,9 @@
 // Deployment safety gate. Do not silently reactivate news/broadcasts without permissions.
-const fs=require('node:fs'),assert=require('node:assert/strict'),path=require('node:path');
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const __dirname=path.dirname(fileURLToPath(import.meta.url));
 const root=path.resolve(__dirname,'../ofuq-tv');
 const read=name=>fs.readFileSync(path.join(root,name),'utf8');
 const absent=['channels.json','news.json','news-archive.json','full-articles.json','breaking.json','report-clips.json','sitemap.xml'];
