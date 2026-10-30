@@ -223,7 +223,7 @@ fetch('report-clips.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('man
 }).catch(()=>{reportLoading.textContent='تعذّر تحميل التقارير المرخّصة';reportLoading.hidden=false});
 window.ofuqReportInfo=()=>({count:reportClips.length,index:reportIndex,source:reportSource.href,playing:!reportVideo.paused,videoWidth:reportVideo.videoWidth,soundEnabled:reportSoundOn,speakingAI:false,advertising:false});
 
-let allNews=[],briefs={},group='all',search='',visibleNews=24;
+let allNews=[],group='all',search='',visibleNews=24;
 const SECTION_NAMES={world:'العالم',region:'المنطقة',sudan:'السودان',sports:'رياضة',technology:'تكنولوجيا',arts:'فنون',variety:'منوعات',articles:'مقالات'};
 function category(item){
  const title=typeof item==='string'?item:item?.title||'';
@@ -264,13 +264,13 @@ const selection=(group==='all'&&!search?[...matching].sort((a,b)=>{
 }
 async function refreshNews(){
  try{
-  const [data,b]=await Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?ts='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():{})]);
+  const data=await fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()});
   const next=(Array.isArray(data.items)?data.items:[]).filter(n=>n.full_article===true&&n.source==='الأصوات العالمية'&&/^https:\/\/ar\.globalvoices\.org\//.test(n.url||'')&&typeof n.title==='string');
   if(!next.length)throw Error('news empty');
   // A live story can change photo, section, headline or excerpt without changing URL.
   const sig=n=>[n.id,n.url,n.title,n.section,n.image,n.excerpt,n.published_at,n.full_article].join('\u001f');
   const changed=next.length!==allNews.length||next.some((n,i)=>sig(n)!==sig(allNews[i]||{}));
-  allNews=next;briefs=b||{};if(changed||!$('newsGrid').querySelector('.news-card'))renderNews();
+  allNews=next;if(changed||!$('newsGrid').querySelector('.news-card'))renderNews();
  }catch{if(!allNews.length){$('newsGrid').replaceChildren();const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)}}
 }
 refreshNews();
