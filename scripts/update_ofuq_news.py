@@ -18,6 +18,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 ROOT = pathlib.Path(__file__).resolve().parents[1] / "ofuq-tv"
 DEST = ROOT / "news.json"
 ARCHIVE = ROOT / "news-archive.json"
+FULL = ROOT / "full-articles.json"
 SITEMAP = ROOT / "sitemap.xml"
 BASE = "https://mazooniosman299-blip.github.io/ofuq-tv/"
 MRSS = "{http://search.yahoo.com/mrss/}"
@@ -140,6 +141,33 @@ def update_sitemap(items):
         SITEMAP.write_text(xml, encoding="utf-8")
         print(f"SITEMAP SAVED: {len(pages)} real URLs")
 
+def licensed_cards():
+    """Restore all fully licensed stories to listings after each RSS refresh.
+
+    External RSS feeds provide only summaries; this function exposes only the
+    separately stored complete works that were explicitly approved and credited.
+    """
+    out = []
+    for sid, article in load(FULL).items():
+        if not isinstance(article, dict) or article.get("approved") is not True:
+            continue
+        if article.get("rights") != "licensed" or article.get("license") != "CC BY 3.0":
+            continue
+        url = article.get("original_url", "")
+        if not re.fullmatch(r"[a-f0-9]{14}", sid) or not url.startswith("https://ar.globalvoices.org/"):
+            continue
+        blocks = article.get("paragraphs") or []
+        if len(blocks) < 5 or article.get("word_count", 0) < 220:
+            continue
+        intro = next((b.get("text", "") for b in blocks if isinstance(b, dict) and b.get("type") == "p"), "")
+        out.append({
+            "id": sid, "title": article.get("title", ""), "url": url,
+            "source": "الأصوات العالمية", "section": "articles",
+            "published_at": article.get("published_at", ""),
+            "excerpt": intro[:260], "image": "", "full_article": True
+        })
+    return out
+
 def main():
     collected = []
     counts = {}
@@ -203,8 +231,16 @@ def main():
         if len(chosen) >= 240:
             break
         include(item)
+    # RSS may omit older long-form reports. Keep the CC BY complete stories
+    # discoverable even when newer short headlines replace the feed window.
+    full_items = licensed_cards()
+    by_story = {x["url"]: x for x in chosen}
+    for article in full_items:
+        by_story[article["url"]] = article
+    chosen = sorted(by_story.values(), key=lambda x: x.get("published_at", ""), reverse=True)
+
     # Preserve old UN material in the archive, and never fabricate missing topic coverage.
-    history = sorted((x for x in chosen + archived.get("items", []) + previous.get("items", []) if x.get("source") not in {"BBC عربي"}), key=lambda x:x.get("published_at", ""), reverse=True)
+    history = sorted((x for x in full_items + chosen + archived.get("items", []) + previous.get("items", []) if x.get("source") not in {"BBC عربي"}), key=lambda x:x.get("published_at", ""), reverse=True)
     archive, seen_archive = [], set()
     for item in history:
         if not isinstance(item, dict) or not isinstance(item.get("url"), str): continue
