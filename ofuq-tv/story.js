@@ -32,11 +32,9 @@ Promise.all([
   link.href=full.original_url;link.target='_blank';link.rel='noopener noreferrer';
   byline.append(link);host.append(byline);
  }
- if(safe(story.image)){
-  const figure=node('figure','article-photo','');
-  const img=document.createElement('img');img.src=story.image;img.alt='صورة مرتبطة بالخبر';img.loading='eager';img.decoding='async';img.referrerPolicy='no-referrer';img.onerror=()=>figure.remove();
-  figure.append(img);host.append(figure);
- }
+ const figure=node('figure','article-photo','');
+ window.OFUQVisual.media(figure,story,{eager:true});
+ host.append(figure);
  if(validFull){
   const content=node('div','body-copy complete-article','');
   for(const block of full.paragraphs){
@@ -71,7 +69,7 @@ Promise.all([
   const list=node('div','article-more-grid','');
   for(const item of more){
    const card=node('a','article-more-card','');card.href='story.html?id='+encodeURIComponent(articleId(item));
-   if(safe(item.image)){const img=document.createElement('img');img.loading='lazy';img.alt='';img.src=item.image;img.referrerPolicy='no-referrer';card.append(img)}
+   const media=node('div','related-visual','');window.OFUQVisual.media(media,item);card.append(media);
    const copy=node('div','','');addText(copy,'h3','',item.title);addText(copy,'p','',item.excerpt);card.append(copy);list.append(card)
   }
   section.append(list);host.append(section);
