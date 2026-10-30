@@ -37,7 +37,7 @@ try{
  console.log('CODEC SUPPORT '+JSON.stringify(await page.evaluate(()=>({userAgent:navigator.userAgent,mp4:MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E"'),mp3:MediaSource.isTypeSupported('audio/mp4; codecs="mp4a.40.2"')}))));
  const passed=[];
  if(await videoProgress(page,'autoplay initial channel'))passed.push('autoplay');
- const firstQuality=await page.evaluate(()=>({played:document.getElementById('nativePlayer').videoHeight,options:[...document.getElementById('qualitySelect').options].map(x=>({name:x.textContent,value:x.value})),hlsLevels:typeof hlsController==='undefined'?[]:hlsController?.levels?.map(x=>({height:x.height,bitrate:x.bitrate}))||[],startEstimate:typeof hlsController==='undefined'?0:hlsController?.config?.abrEwmaDefaultEstimate||0,testBandwidth:typeof hlsController==='undefined'?null:hlsController?.config?.testBandwidth}));
+ const firstQuality=await page.evaluate(()=>({...window.ofuqQualityInfo(),played:document.getElementById('nativePlayer').videoHeight,options:[...document.getElementById('qualitySelect').options].map(x=>({name:x.textContent,value:x.value})),hlsLevels:window.ofuqQualityInfo().levels}));
  console.log('FIRST CHANNEL QUALITY '+JSON.stringify(firstQuality));
  // Some Chrome/Safari configurations use the browser's native HLS pipeline.
  // In that case hls.js settings are deliberately not active and the video element handles ABR.
@@ -55,10 +55,10 @@ try{
  await msePage.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded',timeout:30000});
  await msePage.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>=20,{timeout:15000});
  if(!await videoProgress(msePage,'forced MSE HLS.js adaptive channel'))throw Error('HLS.js playback failed in MSE mode');
- const mseQuality=await msePage.evaluate(()=>({nativeHls:document.getElementById('nativePlayer').canPlayType('application/vnd.apple.mpegurl'),options:[...document.getElementById('qualitySelect').options].map(x=>x.textContent),levels:hlsController?.levels?.map(x=>({height:x.height,bitrate:x.bitrate}))||[],automatic:hlsController?.autoLevelEnabled??null,testBandwidth:hlsController?.config?.testBandwidth??null,estimate:hlsController?.config?.abrEwmaDefaultEstimate||null,decoded:document.getElementById('nativePlayer').videoHeight}));
+ const mseQuality=await msePage.evaluate(()=>({...window.ofuqQualityInfo(),nativeHls:document.getElementById('nativePlayer').canPlayType('application/vnd.apple.mpegurl'),options:[...document.getElementById('qualitySelect').options].map(x=>x.textContent)}));
  console.log('MSE HLS.JS QUALITY '+JSON.stringify(mseQuality));
  if(mseQuality.testBandwidth!==false)throw Error('HLS.js low-level bandwidth probe is still enabled');
- if(!mseQuality.automatic)throw Error('HLS.js ABR unexpectedly disabled by default');
+ if(mseQuality.engine!=='hls.js'||mseQuality.auto!==true)throw Error('HLS.js ABR unexpectedly unavailable by default');
  if(mseQuality.levels.length>1&&mseQuality.options.length<2)throw Error('HLS.js manual quality menu did not populate');
  await msePage.close();
 
