@@ -320,9 +320,15 @@ function renderNews(){
   const id=newsId(n);if(!id)continue;
   const link=document.createElement('a');link.className='news-card';link.href='story.html?id='+encodeURIComponent(id);
   const photo=document.createElement('div');photo.className='news-photo';
-  if(safeImage(n.image)){const img=document.createElement('img');img.src=n.image;img.alt='صورة الخبر من '+(n.source||'المصدر');img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';img.onerror=()=>{img.remove();photo.classList.add('no-photo')};photo.append(img)}
-  else photo.classList.add('no-photo');
-  const watermark=document.createElement('span');watermark.className='image-source';watermark.textContent=n.image?(n.source||'صورة المصدر'):'أُفُق TV';photo.append(watermark);
+  const img=document.createElement('img');
+  img.src=safeImage(n.image)?n.image:'assets/news-cover.svg';
+  img.alt=safeImage(n.image)?'صورة الخبر من المصدر الناشر':'غلاف توضيحي لأخبار أُفُق';
+  img.loading='lazy';img.decoding='async';img.referrerPolicy='no-referrer';
+  img.onerror=()=>{img.onerror=null;img.src='assets/news-cover.svg';img.alt='غلاف توضيحي لأخبار أُفُق';photo.classList.add('no-photo')};
+  if(!safeImage(n.image))photo.classList.add('no-photo');
+  photo.append(img);
+  const watermark=document.createElement('span');watermark.className='image-source';
+  watermark.textContent=safeImage(n.image)?'صورة المصدر':'غلاف توضيحي';photo.append(watermark);
   const body=document.createElement('div');body.className='news-content';
   const label=document.createElement('span');label.className='tag';label.textContent=SECTION_NAMES[category(n)]||'العالم';
   if(n.full_article===true){const fullTag=document.createElement('span');fullTag.className='full-news-tag';fullTag.textContent='مقال كامل';body.append(fullTag)}
