@@ -34,6 +34,12 @@ try{
  console.log('CODEC SUPPORT '+JSON.stringify(await page.evaluate(()=>({userAgent:navigator.userAgent,mp4:MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E"'),mp3:MediaSource.isTypeSupported('audio/mp4; codecs="mp4a.40.2"')}))));
  const passed=[];
  if(await videoProgress(page,'autoplay initial channel'))passed.push('autoplay');
+ const picture=await page.evaluate(()=>window.ofuqQualityInfo?.());
+ console.log('2026 ADAPTIVE HLS QUALITY '+JSON.stringify(picture));
+ if(!picture||!['hls.js','browser-native'].includes(picture.engine)||picture.decodedHeight===0)throw Error('The new native picture-quality feature is unavailable');
+ if(picture.engine==='hls.js'&&(picture.testBandwidth!==false||picture.auto!==true))throw Error('HLS automatic high-quality startup not configured');
+ if(!await page.locator('#qualitySelect').count())throw Error('Manual quality selector missing');
+
  const attempts=[['الجزيرة','الجزيرة'],['سكاي نيوز عربية','سكاي نيوز عربية'],['العربية','العربية']];
  for(const [label,channel] of attempts){
   const btn=page.getByRole('button',{name:new RegExp(channel)}).first();if(!await btn.count())continue;
