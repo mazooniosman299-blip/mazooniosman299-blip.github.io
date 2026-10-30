@@ -98,9 +98,9 @@ def get_feed(url):
     return ET.fromstring(xml_data)
 
 def section_for(title):
-    if re.search(r"رياضة|كرة القدم|بطولة|أولمبي", title): return "sports"
-    if re.search(r"تكنولوجيا|الإنترنت|الذكاء الاصطناعي|رقمي|تقنية", title): return "technology"
-    if re.search(r"فن|موسيقى|سينما|ثقافة|فيلم|تراث", title): return "arts"
+    if re.search(r"كرة القدم|كأس العالم|الملاعب|المباراة|المنتخب|بطولة|أولمبي", title): return "sports"
+    if re.search(r"تكنولوجيا|الإنترنت|الذكاء الاصطناعي|الرقمي|رقمية|تقنية|البيانات", title): return "technology"
+    if re.search(r"الفنان|فنانة|موسيقى|سينما|الثقافة|الأدب|الشاعر|المسرح|الفني|فيلم|تراث", title): return "arts"
     if re.search(r"سودان|دارفور|الخرطوم|الفاشر", title): return "sudan"
     return "world"
 
@@ -143,7 +143,7 @@ def import_articles():
                 "original_url": link, "license": "CC BY 3.0", "license_url": LICENCE,
                 "rights": "licensed", "approved": True,
                 "transformation": "حُوّلت تنسيقات HTML إلى فقرات نصية وحُذفت الصور والتضمينات؛ لم يضف نص تحريري جديد.",
-                "published_at": date, "paragraphs": blocks, "word_count": words(plain),
+                "published_at": date, "section": section_for(title), "paragraphs": blocks, "word_count": words(plain),
                 "image": image, "image_credit": "صورة أصلية من صفحة الناشر" if image else ""
             }
             item = {
