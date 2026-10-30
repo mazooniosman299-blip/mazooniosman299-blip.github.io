@@ -39,8 +39,9 @@ try{
  if(!await page.locator('#qualitySelect').count())throw Error('Manual quality selector missing');
  // Mix the newest headlines with verifiably complete, licensed article cards.
  await page.waitForFunction(()=>document.querySelectorAll('#newsGrid .news-card').length>=12,{timeout:12000});
- const homeFull=await page.locator('#newsGrid .full-news-tag').count();
+ const homeFull=await page.locator('#newsGrid .news-card[data-full-article="true"]').count();
  if(homeFull<4)throw Error('Licensed full stories are not visible in the default newsroom: '+homeFull);
+ if((await page.locator('#newsGrid').innerText()).includes('مقال كامل'))throw Error('Unwanted full-article badge is still visible');
  await page.locator('#newsGrid').scrollIntoViewIfNeeded();
  await page.waitForTimeout(2500);
  const thumbs=await page.locator('#newsGrid .news-photo img').evaluateAll(images=>({total:images.length,loaded:images.filter(x=>x.complete&&x.naturalWidth>0).length,broken:images.filter(x=>x.complete&&x.naturalWidth===0).length,waiting:images.filter(x=>!x.complete).length}));
@@ -71,7 +72,7 @@ try{
  }
 
  // Only authentic source footage with the human's original recorded voice.
- await page.waitForFunction(()=>window.ofuqReportInfo?.().count===5,null,{timeout:14000});
+ await page.waitForFunction(()=>window.ofuqReportInfo?.().count===3,null,{timeout:14000});
  if(await page.evaluate(()=>document.body.innerText.includes('إعلانك على شاشة أُفُق')))throw Error('Old OFUQ advertising message remains');
  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.currentTime>1.5&&v.videoWidth>=600&&!v.paused},null,{timeout:55000});
  const initialReport=await page.locator('#reportVideo').evaluate(v=>({time:v.currentTime,videoWidth:v.videoWidth,videoHeight:v.videoHeight,muted:v.muted,src:v.currentSrc}));
@@ -91,18 +92,11 @@ try{
  await page.waitForFunction(()=>window.ofuqReportInfo?.().index===2,null,{timeout:8000});
  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v&&v.videoWidth>=600&&v.currentTime>1&&!v.paused},null,{timeout:55000});
  console.log('AUTO ADVANCE THIRD REPORT PASS '+await page.locator('#reportTitle').innerText());
- // Extra news footage must decode real motion and a real audio track before release.
- for(const target of [3,4]){
-  await page.locator('#reportVideo').evaluate(v=>v.dispatchEvent(new Event('ended')));
-  await page.waitForFunction(i=>window.ofuqReportInfo?.().index===i,target,{timeout:14000});
-  await page.waitForFunction(()=>{const v=document.getElementById('reportVideo');return v.videoWidth>320&&v.currentTime>1&&!v.paused},null,{timeout:60000});
-  const clip=await page.locator('#reportVideo').evaluate(v=>({title:document.getElementById('reportTitle').textContent,time:v.currentTime,width:v.videoWidth,height:v.videoHeight,muted:v.muted,audioBytes:v.webkitAudioDecodedByteCount??null}));
-  console.log('EXTRA AUTHENTIC EVENT VIDEO '+JSON.stringify(clip));
-  if(clip.audioBytes===0)throw Error('Extra footage lacks recorded human/ambient audio: '+clip.title);
- }
-
-
-
+ const verifiedClips=await page.evaluate(async()=>{const j=await fetch('report-clips.json').then(r=>r.json());return j.clips});
+ if(verifiedClips.length!==3||verifiedClips.some(x=>!x.date.startsWith('2026-')))throw Error('Old videos remain in 2026 playlist');
+ const thirdFilm=await page.locator('#reportVideo').evaluate(v=>({width:v.videoWidth,time:v.currentTime,audio:v.webkitAudioDecodedByteCount??null}));
+ if(thirdFilm.width<300||thirdFilm.time<1||thirdFilm.audio===0)throw Error('Third 2026 clip lacks actual video and original audio');
+ console.log('THREE 2026 FOOTAGE TEST PASS '+JSON.stringify(thirdFilm));
  await page.setViewportSize({width:390,height:844});
  const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#reportScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
  console.log('MOBILE LAYOUT '+JSON.stringify(mobile));
@@ -113,12 +107,35 @@ try{
 
  if(!columns.dateColor?.includes('255, 255, 255')||columns.dateSize<14)throw Error('News date must be readable at 14px or larger in white');
  if(!columns.editorialColor?.includes('255, 255, 255'))throw Error('Editorial link is not white');
+ const ui=await page.evaluate(()=>{const clock=document.getElementById('clock'),privacy=document.querySelector('footer a[href="privacy.html"]');return {clockText:clock?.textContent,clockSize:clock?parseFloat(getComputedStyle(clock).fontSize):0,clockColor:clock?getComputedStyle(clock).color:'',privacyColor:privacy?getComputedStyle(privacy).color:''}});
+ if(!/\d{2}:\d{2}:\d{2}/.test(ui.clockText)||ui.clockSize<13||ui.clockColor!=='rgb(255, 255, 255)'||ui.privacyColor!=='rgb(255, 255, 255)')throw Error('Clock and privacy contrast failed '+JSON.stringify(ui));
+ console.log('VISIBLE CLOCK AND PRIVACY PASS '+JSON.stringify(ui));
  if((await page.locator('body').innerText()).includes('تغطية متجددة مع أقسام متخصصة'))throw Error('Unwanted news description persists');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
  // Every short-only RSS story must open the original source, never a tiny in-site excerpt.
- const newsLinks=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(a=>({full:!!a.querySelector('.full-news-tag'),href:a.getAttribute('href')})));
+ const newsLinks=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(a=>({full:a.dataset.fullArticle==='true',href:a.getAttribute('href')})));
  if(newsLinks.some(x=>!x.href.startsWith('story.html?id=')))throw Error('An OFUQ news item still navigates outside the website');
  if(newsLinks.filter(x=>x.full).length<15)throw Error('Default news cards do not prioritize complete on-site licensed articles');
+ // The user needs an honest full-body audit of ALL visible topic filters.
+ const requiredTopics=['sudan','world','region','sports','technology','arts','variety','articles'];
+ const sectionResults=[];
+ for(const name of requiredTopics){
+   await page.locator('[data-group="'+name+'"]').click();
+   const results=await page.locator('#newsGrid .news-card').evaluateAll(cards=>({
+     count:cards.length,
+     fullyLicensed:cards.filter(c=>c.dataset.fullArticle==='true').length,
+     imageUrls:cards.filter(c=>!!c.querySelector('.news-photo img')).length,
+     brokenPhotos:cards.filter(c=>{const img=c.querySelector('.news-photo img');return img&&img.complete&&img.naturalWidth===0}).length
+   }));
+   sectionResults.push({name,...results});
+ }
+ console.log('ALL NEWS SECTION QUALITY '+JSON.stringify(sectionResults));
+ if(sectionResults.some(x=>x.count===0))throw Error('Empty category: '+sectionResults.filter(x=>!x.count).map(x=>x.name).join(', '));
+ if(sectionResults.some(x=>x.count!==x.fullyLicensed))
+   throw Error('Some categories contain truncated RSS briefs: '+JSON.stringify(sectionResults.filter(x=>x.count!==x.fullyLicensed)));
+ if(sectionResults.some(x=>x.imageUrls!==x.count||x.brokenPhotos>0))
+   throw Error('Original story pictures missing or broken: '+JSON.stringify(sectionResults));
+ await page.locator('[data-group="all"]').click();
  const briefId=await page.evaluate(async()=>{const d=await (await fetch('news.json')).json();return d.items.find(x=>x.full_article!==true)?.id});
  if(briefId){
   await page.goto('http://127.0.0.1:8765/story.html?id='+briefId,{waitUntil:'domcontentloaded'});
@@ -139,18 +156,32 @@ if(!await page.locator('#article .article-credits a, #article .licensed-byline a
  if(articleVisual.hasIllustration||(!articleVisual.hasPhoto&&!articleVisual.noSourcePhoto))throw Error('Article shows stock illustration or empty photo slot');
 
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
- await page.getByRole('button',{name:'مقالات كاملة'}).click();
+ await page.getByRole('button',{name:'مقالات',exact:true}).click();
  await page.waitForFunction(()=>document.querySelectorAll('#newsGrid .news-card').length>=10,{timeout:10000});
  if(await page.locator('#newsGrid .news-card').count()<10)throw Error('Licensed complete reports missing from dedicated newsroom filter');
- const fullRecords=await page.evaluate(async()=>{const d=await fetch('full-articles.json').then(r=>r.json());return Object.entries(d).map(([id,x])=>({id,expected:x.word_count}))});
- if(fullRecords.length<10)throw Error('Not enough verified complete licensed articles available');
- for(const article of fullRecords){
+ const fullRecords=await page.evaluate(async()=>{const d=await fetch('full-articles.json').then(r=>r.json());return Object.entries(d).map(([id,x])=>({id,expected:x.word_count,section:x.section}))});
+ if(fullRecords.length<500)throw Error('Licensed archive expansion too small: '+fullRecords.length);
+ // Verify every archived body structurally in Python; exercise the same browser
+ // rendering path across category representatives and archive positions.
+ const tested=new Map();
+ for(const topic of ['sudan','world','region','sports','technology','arts','variety']){
+  const candidates=fullRecords.filter(x=>x.section===topic);
+  for(const a of candidates.slice(0,3))tested.set(a.id,a);
+ }
+ for(const i of [0,25,75,150,250,350,450,550,650,750]){
+  const a=fullRecords[i];if(a)tested.set(a.id,a);
+ }
+ console.log('ARTICLE BROWSER SAMPLE:',tested.size,'of',fullRecords.length);
+ for(const article of tested.values()){
   await page.goto('http://127.0.0.1:8765/story.html?id='+article.id,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelectorAll('#article .complete-article p,#article .complete-article h2,#article .complete-article h3').length>=5,{timeout:12000});
   const text=await page.locator('#article .complete-article').innerText();
   const count=text.trim().split(/\s+/).length;
   if(count<220||count<article.expected*.8)throw Error('Incomplete article '+article.id+': expected '+article.expected+' words, got '+count);
   if(!await page.locator('#article .licensed-byline a').count()||!await page.locator('#article .license-credit a').count())throw Error('Missing author/source/license in '+article.id);
+   const credit=await page.locator('#article').innerText();
+   if(credit.includes('إعادة نشر بموجب ترخيص')||credit.includes('أُزيلت الصور والتضمينات'))throw Error('Old verbose licensing notice appears');
+   if(!credit.includes('المصدر:'))throw Error('Article is missing source line');
   console.log('COMPLETE STORY VERIFIED '+article.id+': '+count+' words');
  }
  const licensed=fullRecords[0].id;

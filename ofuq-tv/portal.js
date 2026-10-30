@@ -1,8 +1,8 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
 const notify=(message,kind='neutral')=>{ const status=$('playState');if(status)status.textContent=kind==='playing'?message:kind==='error'?'البث غير متاح الآن':'';const light=$('signalLight');if(light)light.className='signal'+(kind==='playing'?' playing':kind==='error'?' error':'') };
-const clockFmt=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',hour:'2-digit',minute:'2-digit',hour12:false});
-function clock(){$('clock').textContent=clockFmt.format(new Date())+' · مسقط'}clock();setInterval(clock,60000);
+const clockFmt=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Muscat',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+function clock(){$('clock').textContent='مسقط · '+clockFmt.format(new Date())}clock();setInterval(clock,1000);
 $('year').textContent=String(new Date().getFullYear());
 $('menuButton').addEventListener('click',()=>{const nav=$('navigation');const open=nav.classList.toggle('open');$('menuButton').setAttribute('aria-expanded',String(open))});
 document.querySelectorAll('#navigation a').forEach(a=>a.addEventListener('click',()=>{$('navigation').classList.remove('open');$('menuButton').setAttribute('aria-expanded','false')}));
@@ -213,7 +213,7 @@ fetch('report-clips.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('man
  reportClips=(Array.isArray(d.clips)?d.clips:[]).filter(x=>
  x&&typeof x.filename==='string'&&x.filename.endsWith('.webm')&&
  typeof x.source_page==='string'&&x.source_page.startsWith('https://commons.wikimedia.org/wiki/File:')&&
- ['CC BY 3.0','CC BY 4.0'].includes(x.license)&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&typeof x.title==='string'&&typeof x.source==='string'
+ ['CC BY 4.0','CC BY-SA 4.0','CC0 1.0'].includes(x.license)&&/^2026-\d{2}-\d{2}$/.test(x.date)&&typeof x.title==='string'&&typeof x.source==='string'
  );
  reportLoad(0);
 }).catch(()=>{reportLoading.textContent='تعذّر تحميل التقارير المرخّصة';reportLoading.hidden=false});
@@ -230,13 +230,11 @@ function newsId(item){return typeof item.id==='string'&&/^[a-z0-9]{5,20}$/i.test
 function safeImage(url){try{const parsed=new URL(url);return parsed.protocol==='https:'&&Boolean(parsed.hostname)}catch{return false}}
 function renderNews(){
  const host=$('newsGrid');host.replaceChildren();
- const matching=allNews.filter(n=>(group==='all'||(group==='full'&&n.full_article===true)||category(n)===group)&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
+ const matching=allNews.filter(n=>n.full_article===true&&(group==='all'||group==='full'||group==='articles'||category(n)===group)&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
 // In the default newsroom, surface genuine authorized full-length reporting among
 // the newest headlines. Keep newest news first and avoid duplicate cards.
 // Put authorized complete articles first without removing any RSS headline.
-const complete=matching.filter(n=>n.full_article===true);
-const summaries=matching.filter(n=>n.full_article!==true);
-const selection=group==='all'&&!search?[...complete,...summaries]:matching;
+const selection=matching; // Licensed long-form articles only; raw RSS briefs never rendered as complete news.
 
  if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار لهذا القسم حالياً. اختر قسماً آخر.';host.append(p)}
  for(const n of selection.slice(0,visibleNews)){
@@ -249,13 +247,15 @@ const selection=group==='all'&&!search?[...complete,...summaries]:matching;
   const watermark=document.createElement('span');watermark.className='image-source';watermark.textContent=photo.classList.contains('illustrated')?'رسم توضيحي':(n.source||'صورة المصدر');photo.append(watermark);
   const body=document.createElement('div');body.className='news-content';
   const label=document.createElement('span');label.className='tag';label.textContent=SECTION_NAMES[category(n)]||'العالم';
-  if(n.full_article===true){const fullTag=document.createElement('span');fullTag.className='full-news-tag';fullTag.textContent='مقال كامل';body.append(fullTag)}
+  // Completeness is a machine-readable accessibility/test attribute,
+  // not a visually noisy badge on every single card.
+  link.dataset.fullArticle=n.full_article===true?'true':'false';
   const title=document.createElement('h3');title.textContent=n.title;
   const excerpt=document.createElement('p');excerpt.className='news-excerpt';excerpt.textContent=n.excerpt||'اطّلع على موجز الخبر ومصدره وتاريخ النشر.';
   const meta=document.createElement('div');meta.className='date';
   const time=document.createElement('span');try{time.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{time.textContent=''}
   meta.append(time);
-  if(n.full_article!==true){const sourceBadge=document.createElement('small');sourceBadge.className='full-at-source';sourceBadge.textContent='موجز من '+(n.source||'الناشر')+' · ليس مقالاً كاملاً';body.append(sourceBadge)}
+
   body.append(label,title,excerpt,meta);link.append(photo,body);host.append(link);
  }
  $('moreNews').hidden=selection.length<=visibleNews;
@@ -265,7 +265,10 @@ async function refreshNews(){
   const [data,b]=await Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?ts='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():{})]);
   const next=(Array.isArray(data.items)?data.items:[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');
   if(!next.length)throw Error('news empty');
-  const changed=next.length!==allNews.length||next.some((n,i)=>n.url!==allNews[i]?.url);
+  // An article can be updated in place: changes to its section, image, title,
+  // excerpt or full-text status must refresh the currently selected topic too.
+  const signature=item=>[item.id,item.url,item.title,item.section,item.image,item.excerpt,item.published_at,item.full_article].join('\u001f');
+  const changed=next.length!==allNews.length||next.some((n,i)=>signature(n)!==signature(allNews[i]||{}));
   allNews=next;briefs=b||{};if(changed||!$('newsGrid').querySelector('.news-card'))renderNews();
  }catch{if(!allNews.length){$('newsGrid').replaceChildren();const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)}}
 }

@@ -17,7 +17,7 @@ permissions:
   contents: write
 # Synchronize writes with the hourly headline refresher; never race the same feed files.
 concurrency:
-  group: ofuq-news
+  group: ofuq-content-publisher
   cancel-in-progress: false
 jobs:
   update-news:
@@ -45,11 +45,13 @@ jobs:
         run: python scripts/update_ofuq_full_articles.py
       - name: Validate published news and links
         run: node scripts/check_ofuq_portal.mjs
+      - name: Reject publishing any incomplete or unlicensed news feed
+        run: python scripts/audit_ofuq_release.py
       - name: Save automatically refreshed news
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ofuq-tv/news.json ofuq-tv/news-archive.json ofuq-tv/full-articles.json ofuq-tv/sitemap.xml
+          git add -A ofuq-tv/news.json ofuq-tv/news-archive.json ofuq-tv/full-articles.json ofuq-tv/article-data ofuq-tv/sitemap.xml
           if ! git diff --cached --quiet; then
             git commit -m "Refresh OFUQ Arabic news topics and publisher thumbnails"
             git push origin HEAD:${{ github.ref_name }}

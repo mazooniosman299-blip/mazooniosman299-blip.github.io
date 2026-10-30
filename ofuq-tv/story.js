@@ -12,13 +12,19 @@ function addText(root,tag,cl,str){const text=clean(str);if(text)root.append(node
 Promise.all([
  fetch('news-archive.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('archive');return r.json()}).catch(()=>fetch('news.json',{cache:'no-store'}).then(r=>r.json())),
  fetch('news-briefs.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}),
- fetch('full-articles.json?ts='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({}))
-]).then(([data,briefs,licensedArticles])=>{
+ // Load one story, not an 800-article file on every article visit.
+ fetch(/^[a-f0-9]{14}$/.test(id||'')?'article-data/'+id+'.json':'article-data/none.json',{cache:'no-store'})
+   .then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(async ([data,briefs,licensedArticle])=>{
  const items=Array.isArray(data.items)?data.items:[];
  const story=items.find(n=>articleId(n)===id);host.replaceChildren();
  if(!story){host.append(node('h1','','الخبر غير متاح'),node('p','loading','الرجاء اختيار خبر آخر من القائمة.'));return}
  const brief=briefs[id]||{};
- const full=licensedArticles[id];
+ let full=licensedArticle?.id===id?licensedArticle:null;
+ // Backward compatible with previously published 120 story records until shards deploy.
+ if(story.full_article===true&&!full){
+   try{const previous=await fetch('full-articles.json',{cache:'no-store'});if(previous.ok){const older=await previous.json();full=older[id]||null}}catch{}
+ }
  const validFull=Boolean(full&&full.approved===true&&['original','licensed'].includes(full.rights)&&Array.isArray(full.paragraphs)&&full.paragraphs.length>=5&&full.paragraphs.some(p=>p.text?.length>70)&&full.original_url===story.url);
  // Keep every reader route in OFUQ. Do not copy full publisher texts
  // from a short RSS feed unless their reuse rights have been verified.
@@ -28,13 +34,14 @@ Promise.all([
  host.append(node('h1','',story.title));
  const meta=node('div','meta','');
  meta.append(node('span','',date(story.published_at)));host.append(meta);
- if(validFull){
-  const byline=node('p','licensed-byline','');
-  byline.append(node('span','','بقلم '+full.author+' · '));
-  const link=node('a','','الأصوات العالمية — النسخة الأصلية');
-  link.href=full.original_url;link.target='_blank';link.rel='noopener noreferrer';
-  byline.append(link);host.append(byline);
- }
+ const byline=node('p','licensed-byline','');
+ byline.append(node('span','','المصدر: '));
+ const sourceLink=node('a','',story.source||full?.source||'الناشر');
+ sourceLink.href=validFull?full.original_url:story.url;
+ sourceLink.target='_blank';sourceLink.rel='noopener noreferrer';
+ byline.append(sourceLink);
+ if(validFull&&full.author)byline.append(node('span','',' · بقلم '+full.author));
+ host.append(byline);
  const figure=node('figure','article-photo','');
  window.OFUQVisual.media(figure,story,{eager:true});
  host.append(figure);
@@ -47,13 +54,17 @@ Promise.all([
    if(cleaned)content.append(node(tag,'',cleaned));
   }
   host.append(content);
-  const rights=node('div','license-credit','');
-  rights.append(node('span','','إعادة نشر بموجب ترخيص '));
+  // A small, expandable attribution record preserves mandatory CC details
+  // without repeating a large explanatory paragraph under every story.
+  const rights=node('details','license-credit','');
+  const summary=node('summary','','ⓘ');summary.title='تفاصيل ترخيص النص';
+  summary.setAttribute('aria-label','تفاصيل ترخيص النص');
+  rights.append(summary);
   const license=node('a','',full.license||'CC BY 3.0');
-  license.href='https://creativecommons.org/licenses/by/3.0/';
+  license.href=full.license_url||'https://creativecommons.org/licenses/by/3.0/';
   license.target='_blank';license.rel='noopener noreferrer';
   rights.append(license);
-  rights.append(node('span','',' · نُسب النص إلى الكاتب والمصدر أعلاه. أُزيلت الصور والتضمينات، وأُعيد تنسيق الفقرات.'));
+  rights.append(node('span','',' · تحرير التنسيق فقط، مع نسبة النص إلى الكاتب والمصدر أعلاه.'));
   host.append(rights);
  }else{
   host.append(node('p','licensed-byline','موجز إخباري موثق — النص الكامل غير مرخص لإعادة النشر داخل أُفُق'));
@@ -79,7 +90,7 @@ Promise.all([
   section.append(list);host.append(section);
  }
  // Preserve a source reference for transparency without imposing an outbound reading flow.
- if(!validFull&&safe(story.url)){const source=node('details','article-credits','');source.append(node('summary','','توثيق الخبر'));const a=node('a','','الناشر الأصلي');a.href=story.url;a.target='_blank';a.rel='noopener noreferrer';source.append(a);host.append(source)}
+
  const related=$('related');related.replaceChildren();
  for(const n of items.filter(n=>articleId(n)!==id).slice(0,6)){const a=node('a','',n.title);a.href='story.html?id='+encodeURIComponent(articleId(n));related.append(a)}
 }).catch(()=>{host.replaceChildren(node('h1','','تعذّر عرض الخبر'),node('p','loading','يرجى العودة إلى الأخبار.'))});
