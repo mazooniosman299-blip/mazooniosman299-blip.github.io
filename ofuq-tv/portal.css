@@ -319,3 +319,45 @@
  .channels-bg .channel-player .player-foot button{font-size:9px;padding:4px 7px}
  .channels-bg .channel-player .video-stage{aspect-ratio:16/9}
 }
+
+
+/* OFUQ NEWS BREAKS 2026 — editorial interludes over first-party motion background.
+   A real third-party VAST commercial, if approved, always remains above this layer. */
+.hero-ad-screen .news-promo{position:absolute;inset:0 0 35px;z-index:6;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;text-align:right;direction:rtl;color:#fff;background:linear-gradient(115deg,#020b1bd9,#09283cc9 48%,#083853ae),radial-gradient(ellipse at 78% 45%,#1e738993,transparent 57%);padding:clamp(12px,2.4vw,26px) clamp(14px,3vw,30px)}
+.hero-ad-screen .news-promo[hidden]{display:none!important}
+.hero-ad-screen.has-news-promo .ad-message,.hero-ad-screen.has-news-promo .ad-identity{opacity:0!important;visibility:hidden!important}
+.news-promo-grid{position:absolute;inset:-50%;z-index:-1;opacity:.28;background:linear-gradient(#8deffa1e 1px,transparent 1px),linear-gradient(90deg,#8deffa1e 1px,transparent 1px);background-size:42px 42px;transform:rotate(-12deg);animation:ofuqPromoDrift 19s linear infinite}
+.news-promo-orb{position:absolute;left:4%;top:12%;width:45%;aspect-ratio:1;border-radius:50%;border:1px solid #a5f6f54f;box-shadow:0 0 50px #53dad72d,inset 0 0 60px #30add11c;opacity:.76;animation:ofuqPromoRotate 16s linear infinite;z-index:-1}
+.news-promo-orb:before,.news-promo-orb:after{content:'';position:absolute;inset:0;border:1px solid #85e8f48b;border-radius:50%;transform:rotate(45deg) scaleX(.48)}
+.news-promo-orb:after{transform:rotate(-42deg) scaleX(.68)}
+.news-promo-top,.news-promo-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.news-promo-brand{font-size:clamp(13px,1.9vw,22px);font-weight:900;line-height:1.4}.news-promo-brand em{font:800 .78em Arial,sans-serif;color:#7feaf3}
+.news-promo-mark{background:#db1928;color:white;padding:4px 11px;border-right:4px solid #fff;font-size:clamp(9px,1.2vw,12px);font-weight:800}
+.news-promo-body{width:min(100%,600px);margin-inline-start:0;margin-inline-end:auto;position:relative}
+.news-promo-country{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border:1px solid #87e5f599;background:#073c5dc9;color:#baf6fb;font-size:clamp(12px,1.55vw,17px);font-weight:800}
+.news-promo-country>span:first-child{font-size:1.25em}
+.news-promo-body h2{font-size:clamp(18px,2.9vw,34px);font-weight:900;line-height:1.55;margin:9px 0 6px;color:#fff;text-shadow:0 3px 13px #000e1e;max-width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-promo-body p{color:#d4edf4;font-size:clamp(10px,1.2vw,14px);line-height:1.7;max-width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+.news-promo-body p[hidden]{display:none!important}
+.news-promo-bottom{color:#c8e6ed;font-size:clamp(8px,.9vw,11px);padding-bottom:4px}
+.news-promo-progress{position:absolute;left:0;bottom:0;right:0;height:4px;background:#083549}
+.news-promo-progress:before{content:'';position:absolute;inset:0;right:auto;width:0;background:#59e1e8}
+.news-promo.promo-enter .news-promo-body{animation:ofuqPromoEnter .5s cubic-bezier(.2,.7,.3,1) both}
+.news-promo.promo-enter .news-promo-progress:before{animation:ofuqPromoProgress 7.8s linear both}
+@keyframes ofuqPromoEnter{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:translateX(0)}}
+@keyframes ofuqPromoProgress{from{width:0}to{width:100%}}
+@keyframes ofuqPromoRotate{to{transform:rotate(360deg)}}
+@keyframes ofuqPromoDrift{to{transform:rotate(-12deg) translate(42px,30px)}}
+@media(max-width:650px){
+ .hero-ad-screen .news-promo{bottom:30px;padding:10px 12px}
+ .news-promo-mark{padding:3px 7px}
+ .news-promo-body h2{font-size:clamp(14px,3.65vw,22px);margin:5px 0}
+ .news-promo-body p{font-size:9px;line-height:1.5}
+ .news-promo-country{padding:2px 7px;font-size:11px}
+ .news-promo-bottom{font-size:8px}
+ .news-promo-orb{width:50%;top:21%}
+}
+@media(prefers-reduced-motion:reduce){
+ .news-promo-grid,.news-promo-orb,.news-promo.promo-enter .news-promo-body,.news-promo.promo-enter .news-promo-progress:before{animation:none!important}
+ .news-promo.promo-enter .news-promo-progress:before{width:100%}
+}
