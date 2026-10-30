@@ -55,7 +55,15 @@ try{
  await page.waitForFunction(()=>document.querySelectorAll('#article .article-more-card').length>=1,{timeout:12000});
  const body=await page.locator('#article').innerText();
  for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
- if(!await page.locator('#article .article-source a').count())throw Error('Original reference missing');
+if(!await page.locator('#article .article-credits a').count())throw Error('Original source documentation absent');
+ const licensed=await page.evaluate(async()=>{const d=await fetch('full-articles.json').then(r=>r.json());return Object.keys(d)[0]});
+ if(!licensed)throw Error('No genuine complete CC BY article was ingested from the source');
+ await page.goto('http://127.0.0.1:8765/story.html?id='+licensed,{waitUntil:'domcontentloaded'});
+ await page.waitForFunction(()=>document.querySelectorAll('#article .complete-article p').length>=5,{timeout:13000});
+ const fullText=await page.locator('#article .complete-article').innerText();
+ if(fullText.trim().split(/\\s+/).length<220)throw Error('RSS excerpt incorrectly presented as complete news');
+ if(!await page.locator('#article .licensed-byline a').count()||!await page.locator('#article .license-credit a').count())throw Error('Creative Commons author and license attribution missing');
+ console.log('FULL-LENGTH ARABIC NEWS PASS:',fullText.trim().split(/\\s+/).length,'words')
  console.log('ON-SITE STORY PASS with '+await page.locator('#article .article-more-card').count()+' connected articles');
  if(errs.length)throw Error('Unexpected page errors: '+errs.slice(0,4).join(' | '));
  console.log('OFUQ BROWSER SMOKE TEST PASS');
