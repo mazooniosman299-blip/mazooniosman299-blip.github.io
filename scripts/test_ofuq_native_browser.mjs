@@ -43,6 +43,11 @@ try{
  await page.waitForFunction(()=>document.querySelectorAll('#newsGrid .news-card').length>=12,{timeout:12000});
  const homeFull=await page.locator('#newsGrid .full-news-tag').count();
  if(homeFull<4)throw Error('Licensed full stories are not visible in the default newsroom: '+homeFull);
+ await page.locator('#newsGrid').scrollIntoViewIfNeeded();
+ await page.waitForTimeout(2500);
+ const thumbs=await page.locator('#newsGrid .news-photo img').evaluateAll(images=>({total:images.length,loaded:images.filter(x=>x.complete&&x.naturalWidth>0).length,broken:images.filter(x=>x.complete&&x.naturalWidth===0).length,waiting:images.filter(x=>!x.complete).length}));
+ console.log('PUBLISHER NEWS PHOTO CHECK '+JSON.stringify(thumbs));
+
 
  const attempts=[['الجزيرة','الجزيرة'],['سكاي نيوز عربية','سكاي نيوز عربية'],['العربية','العربية']];
  for(const [label,channel] of attempts){
