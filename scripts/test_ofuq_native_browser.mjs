@@ -39,6 +39,10 @@ try{
  if(!picture||!['hls.js','browser-native'].includes(picture.engine)||picture.decodedHeight===0)throw Error('The new native picture-quality feature is unavailable');
  if(picture.engine==='hls.js'&&(picture.testBandwidth!==false||picture.auto!==true))throw Error('HLS automatic high-quality startup not configured');
  if(!await page.locator('#qualitySelect').count())throw Error('Manual quality selector missing');
+ // Mix the newest headlines with verifiably complete, licensed article cards.
+ await page.waitForFunction(()=>document.querySelectorAll('#newsGrid .news-card').length>=12,{timeout:12000});
+ const homeFull=await page.locator('#newsGrid .full-news-tag').count();
+ if(homeFull<4)throw Error('Licensed full stories are not visible in the default newsroom: '+homeFull);
 
  const attempts=[['الجزيرة','الجزيرة'],['سكاي نيوز عربية','سكاي نيوز عربية'],['العربية','العربية']];
  for(const [label,channel] of attempts){
