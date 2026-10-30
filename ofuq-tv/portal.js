@@ -233,20 +233,17 @@ function renderNews(){
  const matching=allNews.filter(n=>(group==='all'||(group==='full'&&n.full_article===true)||category(n)===group)&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
 // In the default newsroom, surface genuine authorized full-length reporting among
 // the newest headlines. Keep newest news first and avoid duplicate cards.
-const featured=group==='all'&&!search?matching.filter(n=>n.full_article===true).slice(0,6):[];
-const featuredIds=new Set(featured.map(n=>n.id));
-const remaining=matching.filter(n=>!featuredIds.has(n.id));
-const selection=featured.length?[...remaining.slice(0,6),...featured,...remaining.slice(6)]:matching;
+// Put authorized complete articles first without removing any RSS headline.
+const complete=matching.filter(n=>n.full_article===true);
+const summaries=matching.filter(n=>n.full_article!==true);
+const selection=group==='all'&&!search?[...complete,...summaries]:matching;
 
  if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار لهذا القسم حالياً. اختر قسماً آخر.';host.append(p)}
  for(const n of selection.slice(0,visibleNews)){
   const id=newsId(n);if(!id)continue;
   const link=document.createElement('a');link.className='news-card';
-  // Full source article instead of a dead-end excerpt when reproduction rights
-  // are not granted. Keep licensed complete articles readable inside OFUQ.
-  if(n.full_article===true){link.href='story.html?id='+encodeURIComponent(id)}
-  else if(/^https:\/\//i.test(n.url)){link.href=n.url;link.target='_blank';link.rel='noopener noreferrer';link.title='قراءة المقال كاملاً من المصدر الأصلي'}
-  else {link.href='story.html?id='+encodeURIComponent(id)}
+  // Every card stays within OFUQ; only verified licensed articles are labeled complete.
+  link.href='story.html?id='+encodeURIComponent(id);
   const photo=document.createElement('div');photo.className='news-photo';
   window.OFUQVisual.media(photo,n);
   const watermark=document.createElement('span');watermark.className='image-source';watermark.textContent=photo.classList.contains('illustrated')?'رسم توضيحي':(n.source||'صورة المصدر');photo.append(watermark);
@@ -258,7 +255,7 @@ const selection=featured.length?[...remaining.slice(0,6),...featured,...remainin
   const meta=document.createElement('div');meta.className='date';
   const time=document.createElement('span');try{time.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{time.textContent=''}
   meta.append(time);
-  if(n.full_article!==true){const sourceBadge=document.createElement('small');sourceBadge.className='full-at-source';sourceBadge.textContent='النص الكامل لدى '+(n.source||'الناشر');body.append(sourceBadge)}
+  if(n.full_article!==true){const sourceBadge=document.createElement('small');sourceBadge.className='full-at-source';sourceBadge.textContent='موجز من '+(n.source||'الناشر')+' · ليس مقالاً كاملاً';body.append(sourceBadge)}
   body.append(label,title,excerpt,meta);link.append(photo,body);host.append(link);
  }
  $('moreNews').hidden=selection.length<=visibleNews;
