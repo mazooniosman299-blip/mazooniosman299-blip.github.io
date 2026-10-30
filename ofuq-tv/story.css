@@ -58,3 +58,10 @@
 @media(max-width:650px){.related-visual{height:160px}}
 
 .article-full-source-link{display:inline-flex;margin:10px 0 25px;padding:10px 16px;background:#0b4754;color:white;border:1px solid #5fdbe4;font-size:16px;font-weight:800;border-radius:4px}
+
+/* Compact legally required attribution under credited stories */
+.license-credit{display:inline-block!important;margin:9px 0 16px!important;padding:0!important;background:transparent!important;border:0!important;font-size:12px!important;color:#d8ecf4!important}
+.license-credit summary{display:inline-flex;align-items:center;justify-content:center;width:30px;height:28px;border:1px solid #568397;border-radius:4px;color:#f8ffff;cursor:pointer;list-style:none;font-weight:800}
+.license-credit summary::-webkit-details-marker{display:none}
+.license-credit[open]{display:block!important;padding:10px 12px!important;border:1px solid #345669!important}
+.license-credit[open] summary{margin-bottom:8px}
