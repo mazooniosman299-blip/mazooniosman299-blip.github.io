@@ -11,7 +11,7 @@ on:
       - 'ofuq-tv/full-articles.json'
   push:
     branches:
-      - ofuq-2026-modernization-oct30
+      - ofuq-licensed-full-news-20261030
       - main
     paths:
       - 'ofuq-tv/**'
