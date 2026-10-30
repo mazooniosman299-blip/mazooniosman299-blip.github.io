@@ -226,7 +226,7 @@ def licensed_cards():
         intro = next((b.get("text", "") for b in blocks if isinstance(b, dict) and b.get("type") == "p"), "")
         out.append({
             "id": sid, "title": article.get("title", ""), "url": url,
-            "source": "الأصوات العالمية", "section": article.get("section") if article.get("section") in {"sports","technology","arts","sudan","region"} else "articles",
+            "source": "الأصوات العالمية", "section": article.get("section") if article.get("section") in {"sports","technology","arts","sudan","region","variety"} else "articles",
             "published_at": article.get("published_at", ""),
             "excerpt": intro[:260], "image": article.get("image", ""), "full_article": True
         })
