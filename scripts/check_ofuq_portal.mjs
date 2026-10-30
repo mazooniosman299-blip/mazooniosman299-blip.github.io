@@ -74,7 +74,8 @@ check(!home.includes('ad-network.js'),'Advertising SDK script must not load');
 check(Array.isArray(reports.clips)&&reports.clips.length>=2,'Insufficient original verified recorded reports');
 for(const clip of reports.clips||[]){
  check(/^\d{4}-\d{2}-\d{2}$/.test(clip.date),'Archival clip missing true date');
- check(clip.license==='CC BY 3.0'&&/^https:\/\/commons.wikimedia.org\/wiki\/File:/.test(clip.source_page),'Unlicensed report video '+clip.title);
+ check(['CC BY 3.0','CC BY 4.0'].includes(clip.license)&&/^https:\/\/commons.wikimedia.org\/wiki\/File:/.test(clip.source_page),'Unlicensed report video '+clip.title);
+ check(clip.license_url==='https://creativecommons.org/licenses/by/'+(clip.license==='CC BY 4.0'?'4.0':'3.0')+'/', 'Wrong Creative Commons attribution URL '+clip.title);
  check(clip.filename.endsWith('.webm'),'Unsafe clip filename '+clip.title);
 }
 check(!portal.includes('speechSynthesis'),'Generated speech must never replace actual reporter voice');
