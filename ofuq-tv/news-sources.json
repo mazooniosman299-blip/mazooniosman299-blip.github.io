@@ -7,7 +7,9 @@
       "url": "https://news.un.org/feed/subscribe/ar/news/all/rss.xml",
       "hosts": [
         "news.un.org"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "أخبار الأمم المتحدة",
@@ -15,7 +17,9 @@
       "url": "https://news.un.org/feed/subscribe/ar/news/region/middle-east/feed/rss.xml",
       "hosts": [
         "news.un.org"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "يورونيوز العربية",
@@ -23,7 +27,9 @@
       "url": "https://arabic.euronews.com/rss?format=mrss&level=theme&name=news",
       "hosts": [
         "arabic.euronews.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "يورونيوز العربية",
@@ -31,7 +37,9 @@
       "url": "https://arabic.euronews.com/rss?format=mrss&level=theme&name=sport",
       "hosts": [
         "arabic.euronews.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "يورونيوز العربية",
@@ -39,7 +47,9 @@
       "url": "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=next",
       "hosts": [
         "arabic.euronews.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "يورونيوز العربية",
@@ -47,7 +57,9 @@
       "url": "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=culture",
       "hosts": [
         "arabic.euronews.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "يورونيوز العربية",
@@ -55,7 +67,9 @@
       "url": "https://arabic.euronews.com/rss?format=mrss&level=vertical&name=travel",
       "hosts": [
         "arabic.euronews.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "BBC عربي",
@@ -69,7 +83,8 @@
       ],
       "enabled": false,
       "requiresCommercialLicense": true,
-      "notice": "BBC terms require permission for commercial RSS metadata use. Disabled pending publisher authorization."
+      "notice": "BBC terms require permission for commercial RSS metadata use. Disabled pending publisher authorization.",
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "BBC عربي",
@@ -82,7 +97,8 @@
       ],
       "enabled": false,
       "requiresCommercialLicense": true,
-      "notice": "BBC terms require permission for commercial RSS metadata use. Disabled pending publisher authorization."
+      "notice": "BBC terms require permission for commercial RSS metadata use. Disabled pending publisher authorization.",
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "سكاي نيوز عربية",
@@ -90,7 +106,9 @@
       "url": "https://www.skynewsarabia.com/rss.xml",
       "hosts": [
         "skynewsarabia.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "الجزيرة نت",
@@ -98,7 +116,9 @@
       "url": "https://www.aljazeera.net/rss",
       "hosts": [
         "aljazeera.net"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "CNN بالعربية",
@@ -106,7 +126,9 @@
       "url": "https://arabic.cnn.com/api/v1/rss/rss.xml",
       "hosts": [
         "arabic.cnn.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "CNN بالعربية",
@@ -114,7 +136,9 @@
       "url": "https://arabic.cnn.com/api/v1/rss/middle_east/rss.xml",
       "hosts": [
         "arabic.cnn.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "CNN بالعربية",
@@ -122,7 +146,9 @@
       "url": "https://arabic.cnn.com/api/v1/rss/entertainment/rss.xml",
       "hosts": [
         "arabic.cnn.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "RT عربي",
@@ -130,7 +156,9 @@
       "url": "https://arabic.rt.com/rss/",
       "hosts": [
         "arabic.rt.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "سبوتنيك عربي",
@@ -138,7 +166,9 @@
       "url": "https://arabic.sputniknews.com/export/rss2/archive/index.xml",
       "hosts": [
         "arabic.sputniknews.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "العربي الجديد",
@@ -146,7 +176,9 @@
       "url": "https://www.alaraby.co.uk/feeds",
       "hosts": [
         "alaraby.co.uk"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "فرانس 24 العربية",
@@ -154,7 +186,9 @@
       "url": "https://www.france24.com/ar/rss",
       "hosts": [
         "france24.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "DW عربية",
@@ -162,7 +196,9 @@
       "url": "https://rss.dw.com/rdf/rss-ar-all",
       "hosts": [
         "dw.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "البوابة العربية للأخبار التقنية",
@@ -170,7 +206,9 @@
       "url": "https://aitnews.com/feed/",
       "hosts": [
         "aitnews.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "دارفور24",
@@ -178,7 +216,9 @@
       "url": "https://darfur24.com/feed/",
       "hosts": [
         "darfur24.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "Sudan Tribune",
@@ -186,7 +226,9 @@
       "url": "https://sudantribune.com/feed/",
       "hosts": [
         "sudantribune.com"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     },
     {
       "name": "الأصوات العالمية",
@@ -194,7 +236,10 @@
       "url": "https://ar.globalvoices.org/feed/",
       "hosts": [
         "ar.globalvoices.org"
-      ]
+      ],
+      "enabled": false,
+      "deactivated_reason": "No redistributable complete text in RSS feed; news section accepts verified CC BY full articles only."
     }
-  ]
+  ],
+  "license_policy": "rss_excerpts_disabled__full_cc_by_text_only"
 }
