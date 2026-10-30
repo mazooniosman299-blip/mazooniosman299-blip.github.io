@@ -47,6 +47,14 @@ try{
  await page.waitForTimeout(2500);
  const thumbs=await page.locator('#newsGrid .news-photo img').evaluateAll(images=>({total:images.length,loaded:images.filter(x=>x.complete&&x.naturalWidth>0).length,broken:images.filter(x=>x.complete&&x.naturalWidth===0).length,waiting:images.filter(x=>!x.complete).length}));
  console.log('PUBLISHER NEWS PHOTO CHECK '+JSON.stringify(thumbs));
+ const cardVisuals=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(card=>{
+  const figure=card.querySelector('.news-photo');
+  return {hasPublisherImage:!!figure?.querySelector('img'),hasEditorialArt:!!figure?.querySelector('svg.ofuq-editorial-visual')};
+ }));
+ if(cardVisuals.some(x=>!x.hasPublisherImage&&!x.hasEditorialArt))throw Error('Empty news thumbnail container');
+ if(!cardVisuals.some(x=>x.hasEditorialArt))throw Error('No fallback editorial illustration for image-free news');
+ console.log('VISIBLE NEWS VISUALS PASS '+JSON.stringify({total:cardVisuals.length,editorial:cardVisuals.filter(x=>x.hasEditorialArt).length}));
+
 
 
  const attempts=[['الجزيرة','الجزيرة'],['سكاي نيوز عربية','سكاي نيوز عربية'],['العربية','العربية']];
@@ -111,6 +119,11 @@ try{
  const body=await page.locator('#article').innerText();
  for(const banned of ['اقرأ التقرير الكامل لدى المصدر','نسبت الصور والمعلومات إلى الجهة الناشرة','صورة الخبر:'])if(body.includes(banned))throw Error('Old source caption remains: '+banned);
 if(!await page.locator('#article .article-credits a, #article .licensed-byline a').count())throw Error('Original source documentation absent');
+ const relatedTile=await page.locator('#related a').first().evaluate(el=>({height:el.getBoundingClientRect().height,pad:getComputedStyle(el).paddingTop}));
+ if(relatedTile.height>120||parseFloat(relatedTile.pad)>12)throw Error('Related story box remains over-tall '+JSON.stringify(relatedTile));
+ const articleVisual=await page.locator('#article .article-photo').evaluate(el=>Boolean(el.querySelector('img,svg.ofuq-editorial-visual')));
+ if(!articleVisual)throw Error('Article feature image/illustration missing');
+
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
  await page.getByRole('button',{name:'مقالات كاملة'}).click();
  await page.waitForFunction(()=>document.querySelectorAll('#newsGrid .news-card').length>=10,{timeout:10000});
