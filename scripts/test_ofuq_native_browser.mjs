@@ -46,12 +46,12 @@ try{
  const thumbs=await page.locator('#newsGrid .news-photo img').evaluateAll(images=>({total:images.length,loaded:images.filter(x=>x.complete&&x.naturalWidth>0).length,broken:images.filter(x=>x.complete&&x.naturalWidth===0).length,waiting:images.filter(x=>!x.complete).length}));
  console.log('PUBLISHER NEWS PHOTO CHECK '+JSON.stringify(thumbs));
  const cardVisuals=await page.locator('#newsGrid .news-card').evaluateAll(cards=>cards.map(card=>{
-  const figure=card.querySelector('.news-photo');
-  return {hasPublisherImage:!!figure?.querySelector('img'),hasEditorialArt:!!figure?.querySelector('svg.ofuq-editorial-visual')};
+   const figure=card.querySelector('.news-photo');
+   return {sourceImage:!!figure?.querySelector('img'),hidden:!!figure?.hidden,svg:!!figure?.querySelector('svg'),broken:!!figure?.querySelector('img')?.complete&&!figure.querySelector('img').naturalWidth};
  }));
- if(cardVisuals.some(x=>!x.hasPublisherImage&&!x.hasEditorialArt))throw Error('Empty news thumbnail container');
- if(!cardVisuals.some(x=>x.hasEditorialArt))throw Error('No fallback editorial illustration for image-free news');
- console.log('VISIBLE NEWS VISUALS PASS '+JSON.stringify({total:cardVisuals.length,editorial:cardVisuals.filter(x=>x.hasEditorialArt).length}));
+ if(cardVisuals.some(x=>x.svg||(!x.hidden&&!x.sourceImage)))throw Error('Story cards must use real source images or a clean text-only layout');
+ if(cardVisuals.some(x=>x.broken))throw Error('Broken publisher image detected');
+ console.log('ORIGINAL NEWS PHOTOS PASS '+JSON.stringify({total:cardVisuals.length,sourcePhotos:cardVisuals.filter(x=>x.sourceImage).length,textOnly:cardVisuals.filter(x=>x.hidden).length}));
 
 
 
@@ -115,8 +115,8 @@ try{
 if(!await page.locator('#article .article-credits a, #article .licensed-byline a').count())throw Error('Original source documentation absent');
  const relatedTile=await page.locator('#related a').first().evaluate(el=>({height:el.getBoundingClientRect().height,pad:getComputedStyle(el).paddingTop}));
  if(relatedTile.height>120||parseFloat(relatedTile.pad)>12)throw Error('Related story box remains over-tall '+JSON.stringify(relatedTile));
- const articleVisual=await page.locator('#article .article-photo').evaluate(el=>Boolean(el.querySelector('img,svg.ofuq-editorial-visual')));
- if(!articleVisual)throw Error('Article feature image/illustration missing');
+ const articleVisual=await page.locator('#article .article-photo').evaluate(el=>({hasPhoto:!!el.querySelector('img'),noSourcePhoto:el.hidden,hasIllustration:!!el.querySelector('svg')}));
+ if(articleVisual.hasIllustration||(!articleVisual.hasPhoto&&!articleVisual.noSourcePhoto))throw Error('Article shows stock illustration or empty photo slot');
 
  await page.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
  await page.getByRole('button',{name:'مقالات كاملة'}).click();
