@@ -3,7 +3,7 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import Counter
 from email.utils import parsedate_to_datetime
-from scripts.update_ofuq_full_articles import get_feed, section_for, CONTENT_NS, DC_NS
+from update_ofuq_full_articles import get_feed, section_for, CONTENT_NS, DC_NS
 from urllib.parse import urlsplit
 import json, re, os
 MAX_PAGE=int(os.getenv("PROBE_PAGES","80"))
