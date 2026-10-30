@@ -28,6 +28,8 @@ def configured_feeds():
     data = json.loads(SOURCE_CONFIG.read_text(encoding="utf-8"))
     feeds = []
     for config in data.get("sources", []):
+        if config.get("enabled") is False or (config.get("requiresCommercialLicense") and not config.get("commercialLicenseApproved")):
+            continue
         url = config.get("url", "")
         parsed = urllib.parse.urlparse(url)
         hosts = [h.lower() for h in config.get("hosts", []) if isinstance(h, str)]
@@ -196,7 +198,7 @@ def main():
             break
         include(item)
     # Preserve old UN material in the archive, and never fabricate missing topic coverage.
-    history = sorted(chosen + archived.get("items", []) + previous.get("items", []), key=lambda x:x.get("published_at", ""), reverse=True)
+    history = sorted((x for x in chosen + archived.get("items", []) + previous.get("items", []) if x.get("source") not in {"BBC عربي"}), key=lambda x:x.get("published_at", ""), reverse=True)
     archive, seen_archive = [], set()
     for item in history:
         if not isinstance(item, dict) or not isinstance(item.get("url"), str): continue
