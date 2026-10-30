@@ -370,3 +370,8 @@
 .player-foot .quality-control select:disabled{opacity:.58;cursor:not-allowed}
 .player-foot #qualityStatus{direction:ltr;display:inline-block;min-width:40px;line-height:1.4;text-align:center;font:700 11px Arial,sans-serif;color:#95e8ec}
 @media(max-width:630px){.player-foot .quality-tools{gap:6px}.player-foot .quality-control select{min-width:89px;max-width:125px;font-size:10px}.player-foot #qualityStatus{min-width:29px;font-size:10px}}
+
+/* Audible first-party promo + newsroom voice are user-initiated (browser autoplay policy). */
+.hero-ad-screen .ad-sound{position:absolute;top:13px;left:13px;z-index:12;min-width:115px;padding:7px 12px;border:1px solid #a7edf4;color:#fff;background:#03192bd9;backdrop-filter:blur(8px);border-radius:6px;font-size:12px;font-weight:800;line-height:1.6;cursor:pointer}
+.hero-ad-screen .ad-sound:hover,.hero-ad-screen .ad-sound:focus-visible{background:#155167;border-color:#fff}
+@media(max-width:650px){.hero-ad-screen .ad-sound{top:9px;left:8px;min-width:auto;font-size:11px;padding:5px 8px}}
