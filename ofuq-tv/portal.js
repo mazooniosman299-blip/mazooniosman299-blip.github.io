@@ -249,7 +249,9 @@ const selection=!search?[...complete,...summaries]:matching;
   const watermark=document.createElement('span');watermark.className='image-source';watermark.textContent=photo.classList.contains('illustrated')?'رسم توضيحي':(n.source||'صورة المصدر');photo.append(watermark);
   const body=document.createElement('div');body.className='news-content';
   const label=document.createElement('span');label.className='tag';label.textContent=SECTION_NAMES[category(n)]||'العالم';
-  if(n.full_article===true){const fullTag=document.createElement('span');fullTag.className='full-news-tag';fullTag.textContent='مقال كامل';body.append(fullTag)}
+  // Completeness is a machine-readable accessibility/test attribute,
+  // not a visually noisy badge on every single card.
+  link.dataset.fullArticle=n.full_article===true?'true':'false';
   const title=document.createElement('h3');title.textContent=n.title;
   const excerpt=document.createElement('p');excerpt.className='news-excerpt';excerpt.textContent=n.excerpt||'اطّلع على موجز الخبر ومصدره وتاريخ النشر.';
   const meta=document.createElement('div');meta.className='date';
