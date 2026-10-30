@@ -28,13 +28,14 @@ Promise.all([
  host.append(node('h1','',story.title));
  const meta=node('div','meta','');
  meta.append(node('span','',date(story.published_at)));host.append(meta);
- if(validFull){
-  const byline=node('p','licensed-byline','');
-  byline.append(node('span','','بقلم '+full.author+' · '));
-  const link=node('a','','الأصوات العالمية — النسخة الأصلية');
-  link.href=full.original_url;link.target='_blank';link.rel='noopener noreferrer';
-  byline.append(link);host.append(byline);
- }
+ const byline=node('p','licensed-byline','');
+ byline.append(node('span','','المصدر: '));
+ const sourceLink=node('a','',story.source||full?.source||'الناشر');
+ sourceLink.href=validFull?full.original_url:story.url;
+ sourceLink.target='_blank';sourceLink.rel='noopener noreferrer';
+ byline.append(sourceLink);
+ if(validFull&&full.author)byline.append(node('span','',' · بقلم '+full.author));
+ host.append(byline);
  const figure=node('figure','article-photo','');
  window.OFUQVisual.media(figure,story,{eager:true});
  host.append(figure);
@@ -47,13 +48,16 @@ Promise.all([
    if(cleaned)content.append(node(tag,'',cleaned));
   }
   host.append(content);
-  const rights=node('div','license-credit','');
-  rights.append(node('span','','إعادة نشر بموجب ترخيص '));
+  const rights=node('details','license-credit','');
+  const summary=node('summary','','ⓘ');
+  summary.title='تفاصيل ترخيص النص';
+  summary.setAttribute('aria-label','تفاصيل ترخيص النص');
+  rights.append(summary);
   const license=node('a','',full.license||'CC BY 3.0');
-  license.href='https://creativecommons.org/licenses/by/3.0/';
+  license.href=full.license_url||'https://creativecommons.org/licenses/by/3.0/';
   license.target='_blank';license.rel='noopener noreferrer';
   rights.append(license);
-  rights.append(node('span','',' · نُسب النص إلى الكاتب والمصدر أعلاه. أُزيلت الصور والتضمينات، وأُعيد تنسيق الفقرات.'));
+  rights.append(node('span','',' · أعيد تنسيق النص مع نسبة المصدر والمؤلف.'));
   host.append(rights);
  }else{
   host.append(node('p','licensed-byline','موجز إخباري موثق — النص الكامل غير مرخص لإعادة النشر داخل أُفُق'));
@@ -79,7 +83,7 @@ Promise.all([
   section.append(list);host.append(section);
  }
  // Preserve a source reference for transparency without imposing an outbound reading flow.
- if(!validFull&&safe(story.url)){const source=node('details','article-credits','');source.append(node('summary','','توثيق الخبر'));const a=node('a','','الناشر الأصلي');a.href=story.url;a.target='_blank';a.rel='noopener noreferrer';source.append(a);host.append(source)}
+
  const related=$('related');related.replaceChildren();
  for(const n of items.filter(n=>articleId(n)!==id).slice(0,6)){const a=node('a','',n.title);a.href='story.html?id='+encodeURIComponent(articleId(n));related.append(a)}
 }).catch(()=>{host.replaceChildren(node('h1','','تعذّر عرض الخبر'),node('p','loading','يرجى العودة إلى الأخبار.'))});
