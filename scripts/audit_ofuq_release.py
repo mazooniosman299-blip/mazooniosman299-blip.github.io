@@ -28,9 +28,20 @@ unverified_full_images=[x for x in full.values() if x.get("image") and not (
     x.get("image_license_url") and x.get("image_creator") and x.get("image_rights") in ("licensed","original","public_domain"))]
 issues=[]
 if any(totals[s]<1 for s in sections): issues.append("Empty news sections: "+", ".join(s for s in sections if totals[s]<1))
-if any(complete[s]<1 for s in sections): issues.append("No licensed complete article in: "+", ".join(s for s in sections if complete[s]<1))
+# Every displayed article in every topic must have a legally authorized full body:
+# a few licensed articles amid unlicensed snippets DO NOT satisfy the user's goal.
+incomplete=[x for x in news if not (x.get("full_article") is True and x.get("id") in full)]
+if incomplete:
+    by_category=Counter(x.get("section","unknown") for x in incomplete)
+    issues.append(f"{len(incomplete)} excerpt-only cards are still exposed: "+str(dict(by_category)))
+if any(complete[section]<1 for section in sections):
+    issues.append("No legally complete article in: "+", ".join(section for section in sections if complete[section]<1))
+if any(totals[section]<1 for section in sections):
+    issues.append("Empty topic sections: "+", ".join(section for section in sections if totals[section]<1))
 if any(photos[s]!=totals[s] for s in sections): issues.append("Not all stories have per-story photographs")
 if unknown_source_images: issues.append(f"{len(unknown_source_images)} linked publisher images lack explicit individually documented reuse rights")
+if any(not x.get("image") for x in news):
+    issues.append(f"{sum(not x.get('image') for x in news)} article cards have no publisher image at all")
 if unverified_full_images: issues.append(f"{len(unverified_full_images)} full-story images lack creator and item-level photo license metadata")
 if any(not x.get("date","").startswith("2026-") for x in clips):issues.append("Footage older than 2026")
 if len(clips)<2:issues.append("Fewer than two footage clips")
