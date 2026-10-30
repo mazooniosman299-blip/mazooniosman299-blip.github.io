@@ -234,13 +234,12 @@ function newsId(item){return typeof item.id==='string'&&/^[a-z0-9]{5,20}$/i.test
 function safeImage(url){try{const parsed=new URL(url);return parsed.protocol==='https:'&&Boolean(parsed.hostname)}catch{return false}}
 function renderNews(){
  const host=$('newsGrid');host.replaceChildren();
- const matching=allNews.filter(n=>(group==='all'||(group==='full'&&n.full_article===true)||category(n)===group)&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
-// In the default newsroom, surface genuine authorized full-length reporting among
-// the newest headlines. Keep newest news first and avoid duplicate cards.
-// Put authorized complete articles first without removing any RSS headline.
-const complete=matching.filter(n=>n.full_article===true);
-const summaries=matching.filter(n=>n.full_article!==true);
-const selection=group==='all'&&!search?[...complete,...summaries]:matching;
+ const matching=allNews.filter(n=>n.full_article===true&&(group==='all'||group==='articles'||category(n)===group)&&(!search||[n.title,n.source||'',n.excerpt||''].join(' ').toLocaleLowerCase().includes(search)));
+// All cards have complete licensed bodies; international/world first in 'الكل'.
+const selection=(group==='all'&&!search?[...matching].sort((a,b)=>{
+ const priority=n=>category(n)==='world'?0:1;
+ return priority(a)-priority(b)||String(b.published_at||'').localeCompare(String(a.published_at||''));
+}):matching);
 
  if(!selection.length){const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار لهذا القسم حالياً. اختر قسماً آخر.';host.append(p)}
  for(const n of selection.slice(0,visibleNews)){
@@ -255,11 +254,10 @@ const selection=group==='all'&&!search?[...complete,...summaries]:matching;
   const label=document.createElement('span');label.className='tag';label.textContent=SECTION_NAMES[category(n)]||'العالم';
   link.dataset.fullArticle=n.full_article===true?'true':'false';
   const title=document.createElement('h3');title.textContent=n.title;
-  const excerpt=document.createElement('p');excerpt.className='news-excerpt';excerpt.textContent=n.excerpt||'اطّلع على موجز الخبر ومصدره وتاريخ النشر.';
+  const excerpt=document.createElement('p');excerpt.className='news-excerpt';excerpt.textContent=n.excerpt||'';
   const meta=document.createElement('div');meta.className='date';
   const time=document.createElement('span');try{time.textContent=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',dateStyle:'medium'}).format(new Date(n.published_at))}catch{time.textContent=''}
   meta.append(time);
-  if(n.full_article!==true){const sourceBadge=document.createElement('small');sourceBadge.className='full-at-source';sourceBadge.textContent='موجز من '+(n.source||'الناشر')+' · ليس مقالاً كاملاً';body.append(sourceBadge)}
   body.append(label,title,excerpt,meta);link.append(photo,body);host.append(link);
  }
  $('moreNews').hidden=selection.length<=visibleNews;
@@ -267,7 +265,7 @@ const selection=group==='all'&&!search?[...complete,...summaries]:matching;
 async function refreshNews(){
  try{
   const [data,b]=await Promise.all([fetch('news.json?ts='+Math.floor(Date.now()/60000),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('news');return r.json()}),fetch('news-briefs.json?ts='+Math.floor(Date.now()/300000),{cache:'no-store'}).then(r=>r.ok?r.json():{})]);
-  const next=(Array.isArray(data.items)?data.items:[]).filter(n=>typeof n.title==='string'&&typeof n.url==='string');
+  const next=(Array.isArray(data.items)?data.items:[]).filter(n=>n.full_article===true&&n.source==='الأصوات العالمية'&&/^https:\/\/ar\.globalvoices\.org\//.test(n.url||'')&&typeof n.title==='string');
   if(!next.length)throw Error('news empty');
   // A live story can change photo, section, headline or excerpt without changing URL.
   const sig=n=>[n.id,n.url,n.title,n.section,n.image,n.excerpt,n.published_at,n.full_article].join('\u001f');
