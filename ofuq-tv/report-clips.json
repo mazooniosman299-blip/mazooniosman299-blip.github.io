@@ -2,57 +2,37 @@
   "updated_at": "2026-10-30",
   "original_audio_only": true,
   "synthetic_narration": false,
-  "archival_notice": "المقاطع أرشيفية موثقة وليست تغطية آنية؛ صوت الفيديو الأصلي فقط ولا يوجد صوت ذكاء اصطناعي.",
+  "archival_notice": "جميع المقاطع أحداث مصوّرة في 2026 مع الأصوات الأصلية من الموقع؛ ليست بثًا حيًا ولا تعليقًا مذيعًا",
   "clips": [
     {
-      "title": "تصوير ميداني من درعا بعد غارة على مدينة إنخل",
-      "date": "2015-11-21",
-      "source": "وكالة قاسيون للأنباء",
-      "filename": "Qasioun news - Daraa - heavy airstrike on Inkhil city nearby Qasioun reporter 21-11-2015.webm",
-      "source_page": "https://commons.wikimedia.org/wiki/File:Qasioun_news_-_Daraa_-_heavy_airstrike_on_Inkhil_city_nearby_Qasioun_reporter_21-11-2015.webm",
-      "license": "CC BY 3.0",
-      "license_url": "https://creativecommons.org/licenses/by/3.0/",
-      "note": "تغطية ميدانية أرشيفية، ليست خبرًا وقع اليوم"
+      "title": "مشاهد حقيقية من حريق مبنى بلدية ليموج بفرنسا",
+      "date": "2026-10-17",
+      "source": "Lucas Destrem",
+      "filename": "Incendie Hotel de ville Limoges 20261017-2033.webm",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Incendie_Hotel_de_ville_Limoges_20261017-2033.webm",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "note": "تصوير ميداني أصلي بتاريخ 17 أكتوبر 2026 بصوته الطبيعي، وليس بثا مباشرا"
     },
     {
-      "title": "تقرير مروى السيد: احتجاجات متقاعدين عسكريين في عدن",
-      "date": "2017-03-30",
-      "source": "قناة بلقيس الفضائية",
-      "filename": "احتجاجات للمتقاعدين العسكريين أمام مكتب البريد في عدن للمطالبة برواتبهم تقرير مروى السيد.webm",
-      "source_page": "https://commons.wikimedia.org/wiki/File:احتجاجات_للمتقاعدين_العسكريين_أمام_مكتب_البريد_في_عدن_للمطالبة_برواتبهم_تقرير_مروى_السيد.webm",
-      "license": "CC BY 3.0",
-      "license_url": "https://creativecommons.org/licenses/by/3.0/",
-      "note": "تقرير تلفزيوني بصوت بشري أصلي من أرشيف مارس 2017"
-    },
-    {
-      "title": "جلسة حقوق الإنسان بشأن التقرير الدوري المقدم من الكويت",
-      "date": "2025-12-03",
-      "source": "وكالة أنباء الشرق الأوسط",
-      "filename": "لجنة الميثاق العربي لحقوق الإنسان تناقش التقرير الدوري الثاني المقدم من الكويت.webm",
-      "source_page": "https://commons.wikimedia.org/wiki/File:لجنة_الميثاق_العربي_لحقوق_الإنسان_تناقش_التقرير_الدوري_الثاني_المقدم_من_الكويت.webm",
-      "license": "CC BY 3.0",
-      "license_url": "https://creativecommons.org/licenses/by/3.0/",
-      "note": "تقرير مصور بأصوات بشرية من المادة الأصلية. مراجعة الترخيص البشرية الإضافية معلقة في Commons"
-    },
-    {
-      "title": "لقطات حقيقية من مظاهرة تضامن مع فلسطين في باريس — مشهد 1",
-      "date": "2025-04-06",
-      "source": "Wyslijp16",
-      "filename": "Pro-Palestine protest in Paris (April 6, 2025) — 01.webm",
-      "source_page": "https://commons.wikimedia.org/wiki/File:Pro-Palestine_protest_in_Paris_(April_6,_2025)_—_01.webm",
+      "title": "مظاهرة في بودابست وإغلاق معبر شارع كوشوت",
+      "date": "2026-04-07",
+      "source": "Envagyokabela",
+      "filename": "56th We Will Not Stop! protest at the Kossuth street crossing.webm",
+      "source_page": "https://commons.wikimedia.org/wiki/File:56th_We_Will_Not_Stop!_protest_at_the_Kossuth_street_crossing.webm",
       "license": "CC BY 4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
-      "note": "تسجيل ميداني بصوته الطبيعي للمظاهرة بتاريخ 6 أبريل 2025، بدون تعليق مولد"
+      "note": "لقطات من مظاهرة 7 أبريل 2026 بصوت الحدث الأصلي"
     },
     {
-      "title": "لقطات حقيقية من مظاهرة تضامن مع فلسطين في باريس — مشهد 3",
-      "date": "2025-04-06",
-      "source": "Wyslijp16",
-      "filename": "Pro-Palestine protest in Paris (April 6, 2025) — 03.webm",
-      "source_page": "https://commons.wikimedia.org/wiki/File:Pro-Palestine_protest_in_Paris_(April_6,_2025)_—_03.webm",
-      "license": "CC BY 4.0",
-      "license_url": "https://creativecommons.org/licenses/by/4.0/",
-      "note": "مقطع مصور من مظاهرة باريس يوم 6 أبريل 2025"
+      "title": "محتجون يهتفون أمام مركز ديلاني هول في نيوجيرسي",
+      "date": "2026-05-25",
+      "source": "Jwswikiuser191",
+      "filename": "Delaney Hall immigrants visible from windows, May 25, 2026.webm",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Delaney_Hall_immigrants_visible_from_windows,_May_25,_2026.webm",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "note": "مشاهد حقيقية مع أصوات هتافات وطبول مسجلة أصلًا في 25 مايو 2026"
     }
   ]
 }
