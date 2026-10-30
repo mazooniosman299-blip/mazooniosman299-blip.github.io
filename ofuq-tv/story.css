@@ -45,3 +45,8 @@
 
 .article .meta,.article .meta time{font-size:15px!important;color:#fff!important;line-height:1.8!important;font-weight:700!important}
 .article .licensed-byline{color:#e8f6fd}
+
+/* Tighter related-news links: independent heights, no stretched empty cards. */
+.related{align-items:start;grid-auto-rows:min-content;gap:9px}
+.related a{align-self:start;min-height:0;height:auto;padding:8px 11px;line-height:1.55;font-size:14px}
+@media(max-width:640px){.related{gap:7px}.related a{padding:8px 10px}}
