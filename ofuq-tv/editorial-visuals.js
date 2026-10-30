@@ -2,6 +2,7 @@
    Real publisher photographs remain preferred and keep source attribution. */
 (()=>{'use strict';
 const NS='http://www.w3.org/2000/svg';
+let visualIndex=0;
 function svgEl(tag,attrs={},value){const e=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));if(value!==undefined)e.textContent=String(value);return e}
 const topics=[
  {re:/حريق|حرائق|نيران|احتراق|انفجار|قصف|صواريخ/,icon:'🔥',label:'تطورات ميدانية',colors:['#54232b','#aa5136']},
@@ -13,11 +14,11 @@ const topics=[
 ];
 function topic(story){const t=String(story?.title||'');return topics.find(x=>x.re.test(t))||{icon:'🌍',label:'أخبار وتقارير',colors:['#17405b','#276e91']}}
 function illustration(story){
- const chosen=topic(story),svg=svgEl('svg',{viewBox:'0 0 960 540',width:'960',height:'540',role:'img','aria-label':'رسم توضيحي للموضوع، وليس صورة توثيقية للحدث'});
+ const chosen=topic(story),gradientId='ofuqEditorialGradient'+(++visualIndex),svg=svgEl('svg',{viewBox:'0 0 960 540',width:'960',height:'540',role:'img','aria-label':'رسم توضيحي للموضوع، وليس صورة توثيقية للحدث'});
  svg.classList.add('ofuq-editorial-visual');
- const defs=svgEl('defs'),grad=svgEl('linearGradient',{id:'ofuqEditorialGradient',x1:'0',y1:'0',x2:'1',y2:'1'});
+ const defs=svgEl('defs'),grad=svgEl('linearGradient',{id:gradientId,x1:'0',y1:'0',x2:'1',y2:'1'});
  grad.append(svgEl('stop',{offset:'0%', 'stop-color':chosen.colors[0]}),svgEl('stop',{offset:'100%','stop-color':chosen.colors[1]}));defs.append(grad);svg.append(defs);
- svg.append(svgEl('rect',{width:'960',height:'540',fill:'url(#ofuqEditorialGradient)'}));
+ svg.append(svgEl('rect',{width:'960',height:'540',fill:'url(#'+gradientId+')'}));
  for(let i=0;i<8;i++)svg.append(svgEl('path',{d:`M ${i*130-180} 540 L ${i*130+220} 0`,stroke:'#bceaf0','stroke-opacity':'.08','stroke-width':'3'}));
  svg.append(svgEl('circle',{cx:'480',cy:'240',r:'175',fill:'none',stroke:'#c9eff4','stroke-opacity':'.25','stroke-width':'4'}));
  svg.append(svgEl('text',{x:'480',y:'285','text-anchor':'middle','font-size':'170'},chosen.icon));
@@ -29,11 +30,11 @@ function illustration(story){
 function media(host,story,opts={}){
  const imgUrl=typeof story?.image==='string'?story.image:'';
  let uri;try{uri=new URL(imgUrl);if(uri.protocol!=='https:')uri=null}catch{uri=null}
- const visual=()=>{const fallback=illustration(story);host.append(fallback);host.classList.add('illustrated');return fallback};
+ const visual=()=>{const fallback=illustration(story);host.append(fallback);host.classList.add('illustrated');const badge=host.querySelector('.image-source');if(badge)badge.textContent='رسم توضيحي';return fallback};
  if(!uri){visual();return}
  const image=document.createElement('img');
  image.src=uri.href;image.alt='صورة من المصدر: '+(story.source||'الناشر');
- image.loading=opts.eager?'eager':'lazy';image.decoding='async';image.referrerPolicy='no-referrer';
+ image.loading=opts.eager?'eager':'lazy';image.decoding='async';image.referrerPolicy='strict-origin-when-cross-origin';
  image.addEventListener('error',()=>{image.remove();if(!host.querySelector('svg.ofuq-editorial-visual'))visual()},{once:true});
  host.append(image);
 }
