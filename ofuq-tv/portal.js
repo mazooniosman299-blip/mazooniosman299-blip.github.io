@@ -159,6 +159,7 @@ function renderNews(){
   const watermark=document.createElement('span');watermark.className='image-source';watermark.textContent=n.image?(n.source||'صورة المصدر'):'أُفُق TV';photo.append(watermark);
   const body=document.createElement('div');body.className='news-content';
   const label=document.createElement('span');label.className='tag';label.textContent=SECTION_NAMES[category(n)]||'العالم';
+  if(n.full_article===true){const fullTag=document.createElement('span');fullTag.className='full-news-tag';fullTag.textContent='مقال كامل';body.append(fullTag)}
   const title=document.createElement('h3');title.textContent=n.title;
   const excerpt=document.createElement('p');excerpt.className='news-excerpt';excerpt.textContent=n.excerpt||'اطّلع على موجز الخبر ومصدره وتاريخ النشر.';
   const meta=document.createElement('div');meta.className='date';
