@@ -422,3 +422,9 @@
  .channels-bg .channel-directory .channel small{display:block!important;font-size:9px!important}
 }
 @media(max-width:360px){.channels-bg .channel-directory .channel-list{grid-template-columns:1fr!important}}
+
+/* Legible Muscat clock and privacy link, both mobile and desktop. */
+.eyebar #clock{display:inline-flex!important;align-items:center!important;justify-content:center!important;direction:ltr!important;color:#fff!important;background:#103a52!important;border:1px solid #6cbdcd!important;border-radius:5px!important;padding:6px 12px!important;min-height:34px!important;white-space:nowrap!important;font:800 15px/1.4 Arial,Tahoma,sans-serif!important;letter-spacing:.3px!important;text-shadow:none!important}
+.foot nav a[href="privacy.html"],.foot nav a[href="privacy.html"]:visited,.foot nav a[href="privacy.html"]:hover{color:#fff!important;font-weight:800!important;text-decoration:none}
+.foot nav a[href="privacy.html"]:hover{text-decoration:underline!important}
+@media(max-width:630px){.eyebar #clock{font-size:13px!important;padding:5px 8px!important;min-height:31px!important}.foot nav a[href="privacy.html"]{color:#fff!important}}
