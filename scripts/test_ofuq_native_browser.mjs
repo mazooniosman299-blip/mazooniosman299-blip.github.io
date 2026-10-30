@@ -30,10 +30,19 @@ try{
  if(!(desktopLayout.adX<desktopLayout.copyX&&desktopLayout.liveY<desktopLayout.newsY&&desktopLayout.adW<740&&desktopLayout.adW>250))throw Error('Incorrect ad-left, title-right, or channels-first layout');
 
  await page.waitForFunction(()=>document.querySelectorAll('#channelList .channel').length>10,{timeout:18000});
+ if(!await page.locator('#qualitySelect').count())throw Error('Quality selector is absent');
+ if((await page.locator('#qualitySelect').inputValue())!=='auto')throw Error('Automatic playback is not the default');
+
  console.log('CHANNEL BUTTONS '+await page.locator('#channelList .channel').count());
  console.log('CODEC SUPPORT '+JSON.stringify(await page.evaluate(()=>({userAgent:navigator.userAgent,mp4:MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E"'),mp3:MediaSource.isTypeSupported('audio/mp4; codecs="mp4a.40.2"')}))));
  const passed=[];
  if(await videoProgress(page,'autoplay initial channel'))passed.push('autoplay');
+ const firstQuality=await page.evaluate(()=>({played:document.getElementById('nativePlayer').videoHeight,options:[...document.getElementById('qualitySelect').options].map(x=>({name:x.textContent,value:x.value})),hlsLevels:typeof hlsController==='undefined'?[]:hlsController?.levels?.map(x=>({height:x.height,bitrate:x.bitrate}))||[],startEstimate:typeof hlsController==='undefined'?0:hlsController?.config?.abrEwmaDefaultEstimate||0,testBandwidth:typeof hlsController==='undefined'?null:hlsController?.config?.testBandwidth}));
+ console.log('FIRST CHANNEL QUALITY '+JSON.stringify(firstQuality));
+ if(firstQuality.testBandwidth!==false)throw Error('HLS still probes lowest quality at startup');
+ if(firstQuality.hlsLevels.length>1&&firstQuality.options.length<2)throw Error('Missing manual quality levels');
+ if(firstQuality.hlsLevels.length&&firstQuality.played===0)throw Error('No decoded first channel resolution');
+
  const attempts=[['الجزيرة','الجزيرة'],['سكاي نيوز عربية','سكاي نيوز عربية'],['العربية','العربية']];
  for(const [label,channel] of attempts){
   const btn=page.getByRole('button',{name:new RegExp(channel)}).first();if(!await btn.count())continue;
@@ -58,5 +67,6 @@ try{
  if(!await page.locator('#article .article-source a').count())throw Error('Original reference missing');
  console.log('ON-SITE STORY PASS with '+await page.locator('#article .article-more-card').count()+' connected articles');
  if(errs.length)throw Error('Unexpected page errors: '+errs.slice(0,4).join(' | '));
+ console.log('OFUQ QUALITY CHECK PASS');
  console.log('OFUQ BROWSER SMOKE TEST PASS');
 }finally{await browser?.close();server.kill()}
