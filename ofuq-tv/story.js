@@ -20,6 +20,12 @@ Promise.all([
  const brief=briefs[id]||{};
  const full=licensedArticles[id];
  const validFull=Boolean(full&&full.approved===true&&['original','licensed'].includes(full.rights)&&Array.isArray(full.paragraphs)&&full.paragraphs.length>=5&&full.paragraphs.some(p=>p.text?.length>70)&&full.original_url===story.url);
+ // Never present a short publisher RSS excerpt as though it were a complete report.
+ // Older deep links to an excerpt go straight to the authoritative publisher article.
+ if(!validFull&&safe(story.url)){
+  location.replace(story.url);
+  return;
+ }
  document.title=story.title+' | أُفُق TV';
  host.append(node('div','category',brief.category||CATEGORIES[story.section]||'الأخبار'));
  host.append(node('h1','',story.title));
@@ -32,11 +38,9 @@ Promise.all([
   link.href=full.original_url;link.target='_blank';link.rel='noopener noreferrer';
   byline.append(link);host.append(byline);
  }
- if(safe(story.image)){
-  const figure=node('figure','article-photo','');
-  const img=document.createElement('img');img.src=story.image;img.alt='صورة مرتبطة بالخبر';img.loading='eager';img.decoding='async';img.referrerPolicy='no-referrer';img.onerror=()=>figure.remove();
-  figure.append(img);host.append(figure);
- }
+ const figure=node('figure','article-photo','');
+ window.OFUQVisual.media(figure,story,{eager:true});
+ host.append(figure);
  if(validFull){
   const content=node('div','body-copy complete-article','');
   for(const block of full.paragraphs){
@@ -71,7 +75,7 @@ Promise.all([
   const list=node('div','article-more-grid','');
   for(const item of more){
    const card=node('a','article-more-card','');card.href='story.html?id='+encodeURIComponent(articleId(item));
-   if(safe(item.image)){const img=document.createElement('img');img.loading='lazy';img.alt='';img.src=item.image;img.referrerPolicy='no-referrer';card.append(img)}
+   const media=node('div','related-visual','');window.OFUQVisual.media(media,item);card.append(media);
    const copy=node('div','','');addText(copy,'h3','',item.title);addText(copy,'p','',item.excerpt);card.append(copy);list.append(card)
   }
   section.append(list);host.append(section);
