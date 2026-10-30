@@ -136,7 +136,7 @@ const heroClockFmt=new Intl.DateTimeFormat('ar-OM',{timeZone:'Asia/Muscat',hour:
 function updateHeroClock(){if($('upperClock'))$('upperClock').textContent=heroClockFmt.format(new Date())+' · مسقط'}
 updateHeroClock();setInterval(updateHeroClock,60000);
 
-let allNews=[],briefs={},group='all',search='',visibleNews=12;
+let allNews=[],briefs={},group='all',search='',visibleNews=24;
 const SECTION_NAMES={world:'العالم',region:'المنطقة',sudan:'السودان',sports:'رياضة',technology:'تكنولوجيا',arts:'فنون',variety:'منوعات',articles:'مقالات'};
 function category(item){
  const title=typeof item==='string'?item:item?.title||'';
@@ -178,8 +178,9 @@ async function refreshNews(){
  }catch{if(!allNews.length){$('newsGrid').replaceChildren();const p=document.createElement('p');p.className='empty-news';p.textContent='لا توجد أخبار متاحة حالياً.';$('newsGrid').append(p)}}
 }
 refreshNews();
-setInterval(()=>{if(!document.hidden)refreshNews()},180000);
-$('newsSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase();visibleNews=12;renderNews()});
+setInterval(()=>{if(!document.hidden)refreshNews()},60000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshNews()});
+$('newsSearch').addEventListener('input',e=>{search=e.target.value.trim().toLocaleLowerCase();visibleNews=24;renderNews()});
 document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.group;visibleNews=12;document.querySelectorAll('[data-group]').forEach(el=>el.classList.toggle('active',el===b));renderNews()}));
 $('moreNews').addEventListener('click',()=>{visibleNews+=12;renderNews()});
 const BREAKING_ALLOW_HOSTS=new Set(['news.un.org','www.news.un.org','www.ungeneva.org']);
