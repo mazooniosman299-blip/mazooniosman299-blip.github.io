@@ -48,6 +48,12 @@ try{
  const mobile=await page.evaluate(()=>{const hero=document.querySelector('.hero').getBoundingClientRect(),copy=document.querySelector('.hero-copy').getBoundingClientRect(),ad=document.querySelector('#adScreen').getBoundingClientRect();return {copyY:copy.y,adY:ad.y,adWidth:ad.width,viewport:innerWidth,heroWidth:hero.width,scrollWidth:document.documentElement.scrollWidth}});
  console.log('MOBILE LAYOUT '+JSON.stringify(mobile));
  if(!(mobile.copyY<mobile.adY&&mobile.adWidth<=mobile.viewport&&mobile.scrollWidth<=mobile.viewport+2))throw Error('Mobile layout overflow or wrong stacked order');
+ const columns=await page.evaluate(()=>{const watch=document.querySelector('.watch-column').getBoundingClientRect(),list=document.querySelector('.channel-directory').getBoundingClientRect();const grid=getComputedStyle(document.querySelector('.player-grid'));const editorial=document.querySelector('.about-policy');const date=document.querySelector('.news-card .date');return {watchX:watch.x,watchW:watch.width,listX:list.x,listW:list.width,grid: grid.gridTemplateColumns,dateColor:date?getComputedStyle(date).color:null,dateSize:date?parseFloat(getComputedStyle(date).fontSize):null,editorialColor:editorial?getComputedStyle(editorial).color:null}});
+ console.log('MOBILE CHANNELS / NEWS STYLE '+JSON.stringify(columns));
+ if(!(columns.watchW>100&&columns.listW>80&&Math.abs(columns.watchX-columns.listX)>70))throw Error('Channel guide is not beside the video on mobile');
+ if(!columns.dateColor?.includes('255, 255, 255')||columns.dateSize>10)throw Error('News date is not small and white');
+ if(!columns.editorialColor?.includes('255, 255, 255'))throw Error('Editorial link is not white');
+ if((await page.locator('body').innerText()).includes('تغطية متجددة مع أقسام متخصصة'))throw Error('Unwanted news description persists');
  if(!(await page.locator('[data-group="world"]').count()))throw Error('World section filter is missing');
  const articles=await page.evaluate(async()=>{const r=await fetch('news.json');const d=await r.json();return d.items.slice(0,3).map(x=>x.id)});
  await page.goto('http://127.0.0.1:8765/story.html?id='+articles[0],{waitUntil:'domcontentloaded'});
