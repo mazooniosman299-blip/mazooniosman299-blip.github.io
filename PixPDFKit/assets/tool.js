@@ -7,7 +7,33 @@ input.multiple=multi;input.accept=imageMode?'image/jpeg,image/png,image/webp,.jp
 function say(message,bad=false){status.textContent=message;status.className='status'+(bad?' err':'');}
 function resetResult(){result.classList.remove('ready');download.removeAttribute('href');if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null;}}
 function setFiles(list){resetResult();const added=Array.from(list);if(!added.length)return;const allowable=added.filter(f=>(imageMode?/^image\/(jpeg|png|webp)$/.test(f.type)||/\.(jpe?g|png|webp)$/i.test(f.name):f.type==='application/pdf'||/\.pdf$/i.test(f.name)));if(allowable.length!==added.length){say(t('أحد الملفات ليس بالصيغة المطلوبة.','Some files are not a supported format.'),true);return}if(allowable.some(f=>f.size===0)){say(t('لا يمكن معالجة ملف فارغ.','Empty files are not supported.'),true);return}if(allowable.some(f=>f.size>MAX)){say(t('الحد الأقصى 80 ميغابايت للملف الواحد.','Each file must be under 80 MB.'),true);return}files=multi?[...files,...allowable]:[allowable[0]];if(files.length>40){files=files.slice(0,40);say(t('حد أقصى 40 ملفاً.','Maximum 40 files.'))}else say(t('الملفات جاهزة للمعالجة داخل جهازك.','Files are ready for local processing.'));renderFiles()}
-function renderFiles(){fileList.replaceChildren();files.forEach((f,i)=>{const item=document.createElement('div');item.className='file-row';const name=document.createElement('span');name.textContent=(i+1)+'. '+f.name;const size=document.createElement('small');size.textContent=(f.size/MB).toFixed(2)+' MB';item.append(name,size);fileList.append(item)});}input.addEventListener('change',()=>{setFiles(input.files);input.value=''});drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('drag')});drop.addEventListener('dragleave',()=>drop.classList.remove('drag'));drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('drag');setFiles(e.dataTransfer.files)});drop.addEventListener('keydown',e=>{if(e.target===drop&&(e.key==='Enter'||e.key===' ')){e.preventDefault();input.click()}});drop.addEventListener('click',e=>{if(e.target!==input)input.click()});clear.addEventListener('click',()=>{files=[];renderFiles();resetResult();say('');});
+function renderFiles(){
+  fileList.replaceChildren();
+  if(multi && files.length>1){
+    const tip=document.createElement('p');tip.className='file-order-tip';
+    tip.textContent=t('استخدم الأسهم لترتيب الملفات قبل إنشاء النتيجة.','Use the arrows to put files in the output order.');
+    fileList.append(tip);
+  }
+  files.forEach((f,i)=>{
+    const item=document.createElement('div');item.className='file-row';
+    const name=document.createElement('span');name.textContent=(i+1)+'. '+f.name;
+    const size=document.createElement('small');size.textContent=(f.size/MB).toFixed(2)+' MB';
+    const actions=document.createElement('div');actions.className='file-actions';
+    const makeButton=(label,title,fn,disabled=false)=>{
+      const button=document.createElement('button');button.type='button';button.className='file-action';
+      button.textContent=label;button.setAttribute('aria-label',title+' '+f.name);
+      button.title=title;button.disabled=disabled;button.addEventListener('click',fn);
+      actions.append(button);
+    };
+    const refresh=()=>{resetResult();renderFiles();say(t('ترتيب الملفات محدّث.','File order updated.'));};
+    if(multi){
+      makeButton('↑',t('تحريك لأعلى','Move up'),()=>{[files[i-1],files[i]]=[files[i],files[i-1]];refresh();},i===0);
+      makeButton('↓',t('تحريك لأسفل','Move down'),()=>{[files[i],files[i+1]]=[files[i+1],files[i]];refresh();},i===files.length-1);
+    }
+    makeButton('×',t('إزالة الملف','Remove file'),()=>{files.splice(i,1);resetResult();renderFiles();say(t('تم حذف الملف من قائمة العمل فقط.','File removed from the working list only.'));});
+    item.append(name,size,actions);fileList.append(item);
+  });
+}input.addEventListener('change',()=>{setFiles(input.files);input.value=''});drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('drag')});drop.addEventListener('dragleave',()=>drop.classList.remove('drag'));drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('drag');setFiles(e.dataTransfer.files)});drop.addEventListener('keydown',e=>{if(e.target===drop&&(e.key==='Enter'||e.key===' ')){e.preventDefault();input.click()}});drop.addEventListener('click',e=>{if(e.target!==input)input.click()});clear.addEventListener('click',()=>{files=[];renderFiles();resetResult();say('');});
 const value=id=>document.getElementById(id)?.value||'';
 function ranges(raw,length,allowRepeated=false){if(!raw.trim())throw new Error(t('أدخل أرقام الصفحات.','Enter page numbers.'));let indexes=[];for(const token of raw.replace(/\s/g,'').split(',')){if(!token)throw new Error(t('صيغة الصفحات غير صحيحة.','Invalid page range.'));const m=token.match(/^(\d+)(?:-(\d+))?$/);if(!m)throw new Error(t('صيغة الصفحات غير صحيحة. مثال: 1,3-5','Invalid page range. Example: 1,3-5'));const a=Number(m[1]),b=m[2]?Number(m[2]):a;if(a<1||b<a||b>length)throw new Error(t('صفحة خارج عدد صفحات الملف أو نطاق معكوس.','Page outside document range, or reversed range.'));for(let x=a;x<=b;x++)if(allowRepeated||!indexes.includes(x-1))indexes.push(x-1);}return indexes;}
 function blobDownload(data,filename,type){const blob=data instanceof Blob?data:new Blob([data],{type});resetResult();objectUrl=URL.createObjectURL(blob);download.href=objectUrl;download.download=filename;document.getElementById('outputName').textContent=filename;result.classList.add('ready');say(t('اكتملت العملية. اضغط «تنزيل النتيجة» لحفظ الملف مباشرة.','Done. Click Download result to save your file immediately.'));}
