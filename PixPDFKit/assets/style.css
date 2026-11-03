@@ -5,3 +5,11 @@
 .footer .logo b{color:#71e7c9}
 .footer .logo-icon{background:#d9f8ef;color:#006b5e}
 .tool-card .tool-cta,.prose a,.breadcrumb a{color:#006a5d}
+
+/* Browser-side file order is visible, keyboard accessible, and editable. */
+.file-order-tip{color:#496575;font-size:12px;line-height:1.75;margin:3px 0 7px}
+.file-row .file-actions{display:flex;align-items:center;gap:5px;flex:none}
+.file-action{border:1px solid #b6d4d0;background:#fff;color:#164d47;border-radius:8px;width:31px;height:31px;font-weight:800;display:inline-grid;place-items:center}
+.file-action:hover:not(:disabled){background:#e7f6f1}
+.file-action:disabled{opacity:.4;cursor:default}
+@media(max-width:480px){.file-row{flex-wrap:wrap}.file-row span{flex:1;min-width:65%}.file-row .file-actions{margin-inline-start:auto}}
