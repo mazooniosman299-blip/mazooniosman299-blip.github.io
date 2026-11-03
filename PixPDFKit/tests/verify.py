@@ -18,6 +18,15 @@ for lang in ("ar", "en"):
         assert 'id="download"' in html, path
         assert "pdf-lib.min.js" in html, path
         assert "assets/tool.js" in html, path
+        # Require task-specific, substantive user guidance on every advertised tool page.
+        import re
+        from html import unescape
+        article = re.search(r'<article class="prose" id="tool-specific-instructions">(.*?)</article>', html, re.S)
+        assert article, f"Missing tailored tool guidance: {path}"
+        guidance = unescape(re.sub(r'<[^>]+>', ' ', article.group(1)))
+        assert len(guidance.strip()) > 500, f"Thin tool guidance: {path}"
+        assert article.group(1).count('<h2>') == 4, f"Incomplete guidance sections: {path}"
+
     guide_index = ROOT / lang / "guides" / "index.html"
     assert guide_index.exists()
     for slug in ("pdf-under-2mb", "job-application-pdf"):
@@ -27,5 +36,7 @@ for lang in ("ar", "en"):
 script = (ROOT / "assets" / "tool.js").read_text(encoding="utf-8")
 for snippet in ("function blobDownload(", "async function main()", "form.addEventListener('submit'", "download.href=objectUrl"):
     assert snippet in script, f"PDF tool script contract missing: {snippet}"
+for token in ("file-order-tip", "Move up", "Move down", "Remove file", "file-actions"):
+    assert token in script, f"Accessible file ordering contract missing: {token}"
 assert (ROOT / "assets" / "jszip.min.js").stat().st_size > 50000
 print("PASS: 50 sitemap URLs, 13 tools per language, guide links, PDF processing and download contract")
